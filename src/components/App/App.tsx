@@ -28,11 +28,13 @@ import RSVP from '../WeddingGuests/RSVP/RSVP';
 import Hotels from '../WeddingGuests/Hotels/Hotels';
 import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
+import { ThemeProvider } from '@material-ui/core/styles';
+import {theme} from '../../theme/theme'
 
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <AppHeader/>
       <Routes>
         <Route path="/" element={<HomePage/>} />
@@ -64,7 +66,7 @@ function App() {
         <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
       </Routes> 
       <AppFooter/>
-    </div>
+    </ThemeProvider>
   );
 }
 
