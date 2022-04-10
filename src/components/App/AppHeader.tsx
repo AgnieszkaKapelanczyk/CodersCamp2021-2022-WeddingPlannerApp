@@ -1,5 +1,4 @@
 import { AppBar, Button, Typography, Box} from '@material-ui/core'
-import React from 'react'
 
 const AppHeader = () => {
   return (
