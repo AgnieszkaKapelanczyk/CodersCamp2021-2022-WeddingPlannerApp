@@ -72,10 +72,10 @@ export const LoginDialog = () => {
           onChange={handleChange}
         />
 
-        <Box alignItems='center'>
-        <Button sx={{type:"submit" ,
-        
-        color:"primary", variant:"contained", size:"large" }}
+        <Box sx={{display:"flex", justifyContent:'center' }}>
+        <Button 
+        type="submit"        
+        color="primary" variant="contained" size="large"
         onClick={()=> {dispatch(openDialog({formType:FormType.zalogowano}))}}
         className={classes.field} >
           Zaloguj się

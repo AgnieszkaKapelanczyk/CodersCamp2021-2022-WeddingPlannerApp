@@ -102,7 +102,7 @@ export const RejestracjaEmail = () => {
         helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
       />
 
-<Box textAlign='center'>
+<Box sx={{display:"flex", justifyContent:'center'}}>
       <Button
         type="submit"
         className={classes.field}
