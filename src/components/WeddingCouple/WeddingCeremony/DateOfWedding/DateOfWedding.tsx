@@ -2,6 +2,8 @@ import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, Ic
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
+import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
+import DatePicker from '../DateOfWedding/DatePicker';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -46,14 +48,21 @@ const DateOfWedding = () => {
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent style={{display:'flex', justifyContent:'center'}}>
-        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} style={{marginLeft:'5rem'}}>
-          <Typography variant="body1">Wybierz datę ceremonii ślubnej</Typography>
-          <Typography variant="body1" style={{paddingTop:'1rem'}}>Podaj godzinę:</Typography>
+        <Box style={{ display:'flex', justifyContent:'center', flexDirection:'column'}}>
+          <Box style={{ display:'flex', justifyContent:'center'}}>
+            <Typography variant="body1">Wybierz datę ceremonii ślubnej</Typography>
+          </Box>
+          <DatePicker/>
+          <Box style={{display:'flex'}}>
+            <Typography variant="body1" style={{padding:'0 2rem'}}>Podaj godzinę:</Typography>
+            <CustomTimePicker />  
+          </Box>
         </Box>
-        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} style={{marginLeft:'5rem'}}>
+        <Box>
             <Typography variant="body1">Wasz ślub odbędzie się:</Typography>
             <Typography variant="body1" style={{paddingTop:'1rem'}}>Data</Typography>
             <Typography variant="body1" style={{paddingTop:'1rem'}}>Do dnia, w którym zostaniecie Małżeństwem pozostało:</Typography>
+            <Typography variant="body1" style={{paddingTop:'1rem'}}>Timer</Typography>
         </Box>
       </CardContent>
       </Collapse>

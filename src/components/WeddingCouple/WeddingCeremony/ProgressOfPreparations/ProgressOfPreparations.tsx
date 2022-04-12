@@ -2,7 +2,7 @@
 import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@material-ui/core"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-import { CircularProgressWithLabel } from "./CircularProgress";
+import { CircularProgressWithLabel } from '../ProgressOfPreparations/CircularProgress';
 import { useState } from "react";
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -47,14 +47,14 @@ const ProgressOfPreparations = () => {
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <CardContent style={{display:'flex', justifyContent:'center'}}>
-        <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} style={{marginLeft:'5rem'}}>
+      <CardContent style={{display:'flex', justifyContent:'center', alignItems:'center', margin:'3rem'}}>
+        <Box>
           <Typography variant="h3">GRATULACJE!</Typography>
           <Typography variant="body1" style={{paddingTop:'1rem'}}>Wasz postęp przygotowań ceremonii <br/>ślubnej wynosi 75%.
             Wypełnij wszystkie <br/>pola w tej zakładce, aby uzyskać 100%.</Typography>
         </Box>
-        <Box style={{marginLeft:'5rem'}}>
-          <CircularProgressWithLabel value={75} fontSize={"large"} />
+        <Box style={{marginLeft:'3rem'}}>
+          <CircularProgressWithLabel value={75} />
         </Box>
       </CardContent>
       </Collapse>

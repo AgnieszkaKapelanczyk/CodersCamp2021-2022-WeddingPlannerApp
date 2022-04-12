@@ -1,7 +1,7 @@
 import { Box } from "@material-ui/core"
 import ChoosingOfBestManAndBridesmaid from "./ChoosingOfBestManAndBridesmaid"
-import DateOfWedding from "./DateOfWedding"
-import ProgressOfPreparations from "./ProgressOfPreparations"
+import DateOfWedding from "./DateOfWedding/DateOfWedding"
+import ProgressOfPreparations from "./ProgressOfPreparations/ProgressOfPreparations"
 import TypeOfWedding from "./TypeOfWedding"
 
 const WeddingCeremony = () => {
