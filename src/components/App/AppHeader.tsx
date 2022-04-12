@@ -61,3 +61,21 @@ const names= 'Anna & Jakub'
   }
 
 
+const AppHeader = () => {
+  
+  return (
+    <div>
+      <AppBar position='static' color='inherit'  >
+      <Box display={"flex"} > 
+        {getLogo()}
+        <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1rem"}>
+        {GetRightSide()}
+        </Box>
+      
+      </Box>
+      </AppBar>
+    </div>
+  )
+}
+
+export default AppHeader;
