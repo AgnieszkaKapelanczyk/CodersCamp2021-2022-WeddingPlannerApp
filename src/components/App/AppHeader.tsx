@@ -2,8 +2,8 @@ import { AppBar, Button, Typography, Box} from '@mui/material'
 import Logoprzed from '../../assets/img/logo_przed_zalogowaniem.png'
 import Logopo from '../../assets/img/logo_po_zalogowaniu.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useDispatch, useSelector } from "react-redux";
-import { openDialog, FormType } from '../../store/dialogSlice';
+import { useDispatch } from "react-redux";
+import { openDialog, FormType } from '../../store/dialogSlice'
 
  
  const iconStyle= ({
@@ -35,7 +35,7 @@ const names= 'Anna & Jakub'
   const logo = (
   <Box style={LogoBox}>
   <Button>
-    <img src={loggedIn? Logopo : Logoprzed} height='50px'></img>
+    <img alt='' src={loggedIn? Logopo : Logoprzed} height='50px'/>
   <Typography variant='h3' color='primary' style={{margin:'0.5rem'}}>{loggedIn? names : 'WeddingPlanner'}</Typography>
   </Button>
   </Box>
@@ -61,6 +61,7 @@ const names= 'Anna & Jakub'
   }
 
 
+
 const AppHeader = () => {
   
   return (
@@ -80,3 +81,4 @@ const AppHeader = () => {
 }
 
 export default AppHeader;
+
