@@ -3,7 +3,7 @@ import Logoprzed from '../../assets/img/logo_przed_zalogowaniem.png'
 import Logopo from '../../assets/img/logo_po_zalogowaniu.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch, useSelector } from "react-redux";
-import { openDialog, FormType } from '../../store/dialogSlice';
+import { openDialog, FormType } from '../../store/dialogSlice'
 
  
  const iconStyle= ({
@@ -60,4 +60,21 @@ const names= 'Anna & Jakub'
     return rightSide
   }
 
-
+  const AppHeader = () => {
+  
+    return (
+      <div>
+        <AppBar position='static' color='inherit'  >
+        <Box display={"flex"} > 
+          {getLogo()}
+          <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1rem"}>
+          {GetRightSide()}
+          </Box>
+        
+        </Box>
+        </AppBar>
+      </div>
+    )
+  }
+  
+  export default AppHeader;
