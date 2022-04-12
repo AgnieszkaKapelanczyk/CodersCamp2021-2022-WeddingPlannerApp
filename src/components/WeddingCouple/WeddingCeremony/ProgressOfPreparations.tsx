@@ -1,52 +1,52 @@
 
-import { Box, Card, CardContent, CardHeader, CircularProgress, IconButton,  Theme, Typography } from "@material-ui/core"
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@material-ui/core"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-//import { CircularProgressWithLabel } from "./CircularProgress";
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-//import { useState } from "react";
+import { CircularProgressWithLabel } from "./CircularProgress";
+import { useState } from "react";
 
-export interface MyProps { 
-  theme: Theme; 
-  expand: boolean
+interface ExpandMoreProps extends IconButtonProps {
+  expand: boolean;
 }
- 
 
-/*const ExpandMore = styled((props) => {
+const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
-})(({ theme, expand}) => ({
+})
+(({expand}:ExpandMoreProps) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));*/
+}));
+
 
 
 const ProgressOfPreparations = () => {
 
-  //const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  /*const handleExpandClick = () => {
+  const handleExpandClick = () => {
     setExpanded(!expanded);
-  };*/
-
+  };
 
   return (
     <Card style={{display:'flex', flexDirection:'column'}}>
-      <CardHeader
+      <CardHeader 
          avatar={
           <BubbleChartIcon/>
         }
         action={
-          <IconButton
+          <ExpandMore
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
           aria-label="show more"
           >
-          <ExpandMoreIcon />
-        </IconButton>
+            <ExpandMoreIcon />
+          </ExpandMore>
         }
         title="Postęp przygotowań ceremonii ślubnej"
       />
+      <Divider/>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent style={{display:'flex', justifyContent:'center'}}>
         <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} style={{marginLeft:'5rem'}}>
           <Typography variant="h3">GRATULACJE!</Typography>
@@ -54,9 +54,10 @@ const ProgressOfPreparations = () => {
             Wypełnij wszystkie <br/>pola w tej zakładce, aby uzyskać 100%.</Typography>
         </Box>
         <Box style={{marginLeft:'5rem'}}>
-          <CircularProgress variant="determinate" value={75}/>
+          <CircularProgressWithLabel value={75} fontSize={"large"} />
         </Box>
       </CardContent>
+      </Collapse>
     </Card>
   )
 }

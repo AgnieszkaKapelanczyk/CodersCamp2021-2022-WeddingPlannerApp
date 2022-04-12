@@ -1,4 +1,5 @@
-import { Box, Card } from "@material-ui/core"
+import { Box } from "@material-ui/core"
+import ChoosingOfBestManAndBridesmaid from "./ChoosingOfBestManAndBridesmaid"
 import DateOfWedding from "./DateOfWedding"
 import ProgressOfPreparations from "./ProgressOfPreparations"
 import TypeOfWedding from "./TypeOfWedding"
@@ -9,7 +10,7 @@ const WeddingCeremony = () => {
       <ProgressOfPreparations/>
       <DateOfWedding/>
       <TypeOfWedding/>
-      <Card>Wybór świadków</Card>
+      <ChoosingOfBestManAndBridesmaid/>
     </Box>
   )
 }

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-export function CircularProgressWithLabel(props: React.ReactNode & number & boolean) {
+export function CircularProgressWithLabel(
+  props: CircularProgressProps & { value: number } & {fontSize: string},
+) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
       <CircularProgress variant="determinate" {...props} />
@@ -19,10 +21,14 @@ export function CircularProgressWithLabel(props: React.ReactNode & number & bool
           justifyContent: 'center',
         }}
       >
-        <Typography variant="caption" component="div" color="secondary">
-          {`${Math.round(props)}%`}
-        </Typography>
+        <Typography
+          variant="caption"
+          component="div"
+          color="secondary"
+        >{`${Math.round(props.value)}%`}</Typography>
       </Box>
     </Box>
   );
 }
+
+

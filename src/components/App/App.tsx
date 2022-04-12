@@ -18,9 +18,6 @@ import PicturesForInspiration from '../WeddingCouple/PicturesForInspiration/Pict
 import ListOfQuestionsForTheRoom from '../WeddingCouple/ListOfQuestionsForTheRoom/ListOfQuestionsForTheRoom';
 import ToDoList from '../WeddingCouple/ToDoList/ToDoList';
 import WeddingParty from '../WeddingCouple/WeddingParty/WeddingParty';
-import ConcordatWedding from '../WeddingCouple/WeddingCeremony/ConcordatWedding/ConcordatWedding';
-import CivilWedding from '../WeddingCouple/WeddingCeremony/CivilWedding/CivilWedding';
-import BestManAndBridesMaid from '../WeddingCouple/WeddingCeremony/BestManAndBridesMaid/BestManAndBridesMaid';
 import InvitationDesign from '../WeddingCouple/Invitations/InvitationDesign/InvitationDesign';
 import SendingTheInvitation from '../WeddingCouple/Invitations/SendingTheInvitation/SendingTheInvitation';
 import WeddingGuests from '../WeddingGuests/WeddingGuests';
@@ -53,9 +50,6 @@ function App() {
         <Route path="/WeddingCouple/Bride/" element={<Bride/>} />
         <Route path="/WeddingCouple/ToDoList/" element={<ToDoList/>} />
         <Route path="/WeddingCouple/WeddingCeremony/" element={<WeddingCeremony/>} />
-        <Route path="/WeddingCouple/WeddingCeremony/ConcordatWedding/" element={<ConcordatWedding/>} />
-        <Route path="/WeddingCouple/WeddingCeremony/CivilWedding/" element={<CivilWedding/>} />
-        <Route path="/WeddingCouple/WeddingCeremony/BestManAndBridesMaid/" element={<BestManAndBridesMaid/>} />
         <Route path="/WeddingCouple/WeddingParty/" element={<WeddingParty/>} />
         <Route path="/WeddingCouple/WeddingCalendar/" element={<WeddingCalendar/>} />
         <Route path="/WeddingCouple/GuestList/" element={<GuestList/>} />
