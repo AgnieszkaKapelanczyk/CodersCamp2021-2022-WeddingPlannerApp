@@ -5,6 +5,7 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from "@mui/material/styles"
 
 
 const rootElement = document.getElementById('root');

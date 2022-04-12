@@ -1,13 +1,12 @@
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
 import LeftBarListCouple from './LeftBarListCouple';
 import LeftBarListGuest from './LeftBarListGuests';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { useNavigate } from 'react-router-dom';
-import Toolbar from '@mui/material/Toolbar';
+import { useNavigate} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
+import { Box,Drawer,Toolbar,IconButton,List,ListItemText,ListItemIcon} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 const useStyles = makeStyles({
@@ -28,26 +27,42 @@ function AppLeftBar() {
     const classes = useStyles();
     const drawerWidth=250;
     const navigate= useNavigate();
-    
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+
+
     return(
+      <Box sx={{ display: 'flex' }}>
+      {/* <Toolbar/> */}
+      <IconButton
+        onClick={handleOpen}
+      >
+        <MenuIcon />
+      </IconButton>
     
     <Drawer
-    // PaperProps={{ style: { height: "90vh" } }}
-    // className={classes.drawer}
     sx={{
       width: drawerWidth,
       flexShrink: 1,
-      // '& .MuiDrawer-paper': {
-      //   width: drawerWidth,
-      //   boxSizing: 'border-box',
-      // },
+      '& .MuiDrawer-paper': {
+        width: drawerWidth,
+        boxSizing: 'border-box',
+      },
     }}
-    variant="permanent"
+    variant="persistent"
     anchor="left"
-   
+    open={open}
   >
-    <Toolbar />
+    {/* <Toolbar /> */}
     <List style={leftBarStyle} >
+      <CloseIcon onClick={handleClose}/>
       {LeftBarListCouple.map((item) => (
         <ListItem sx={{padding:0.3}} button key={item.label} onClick={()=>navigate(item.path)} divider>
           <ListItemIcon style={leftBarStyle}>
@@ -59,7 +74,7 @@ function AppLeftBar() {
     </List>
 
   </Drawer>
-  
+  </Box>
 )
       
 }
