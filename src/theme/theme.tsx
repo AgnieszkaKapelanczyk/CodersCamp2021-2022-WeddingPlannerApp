@@ -38,7 +38,7 @@ export const theme = createTheme({
         textTransform: 'none',
         letterSpacing: '1.2px',
         fontSize: '1rem',
-        fontFamily: "'Lato"
+        fontFamily: "Lato"
       },
     },  
 });

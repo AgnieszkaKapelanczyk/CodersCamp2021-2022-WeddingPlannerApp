@@ -73,10 +73,11 @@ export const LoginDialog = () => {
         />
 
         <Box alignItems='center'>
-        <Button type="submit" 
-        className={classes.field} 
-        color="primary" variant="contained" size="large" 
-        onClick={()=> {dispatch(openDialog({formType:FormType.zalogowano}))}}>
+        <Button sx={{type:"submit" ,
+        
+        color:"primary", variant:"contained", size:"large" }}
+        onClick={()=> {dispatch(openDialog({formType:FormType.zalogowano}))}}
+        className={classes.field} >
           Zaloguj się
         </Button>
         </Box>
