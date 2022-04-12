@@ -1,4 +1,5 @@
 import Drawer from '@mui/material/Drawer';
+import { Box } from '@mui/material';
 import List from '@mui/material/List';
 import LeftBarListCouple from './LeftBarListCouple';
 import LeftBarListGuest from './LeftBarListGuests';
@@ -7,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 
 const useStyles = makeStyles({
@@ -31,23 +32,23 @@ function AppLeftBar() {
     
     return(
     
-    <Drawer
-    // PaperProps={{ style: { height: "90vh" } }}
-    // className={classes.drawer}
-    sx={{
-      width: drawerWidth,
-      flexShrink: 1,
-      // '& .MuiDrawer-paper': {
-      //   width: drawerWidth,
-      //   boxSizing: 'border-box',
-      // },
-    }}
-    variant="permanent"
-    anchor="left"
+  //   <Drawer
+  //   // PaperProps={{ style: { height: "90vh" } }}
+  //   // className={classes.drawer}
+  //   sx={{
+  //     width: drawerWidth,
+  //     flexShrink: 1,
+  //     '& .MuiDrawer-paper': {
+  //       width: drawerWidth,
+  //       boxSizing: 'border-box',
+  //     },
+  //   }}
+  //   variant="permanent"
+  //   anchor="left"
    
-  >
-    <Toolbar />
-    <List style={leftBarStyle} >
+  // >
+  
+    <List style={leftBarStyle} sx={{borderRight: '1px solid', borderColor:'#6F59C9' ,maxWidth:"260px", height:"100%", paddingRight:'10px'}}>
       {LeftBarListCouple.map((item) => (
         <ListItem sx={{padding:0.3}} button key={item.label} onClick={()=>navigate(item.path)} divider>
           <ListItemIcon style={leftBarStyle}>
@@ -57,8 +58,8 @@ function AppLeftBar() {
         </ListItem>
       ))}
     </List>
-
-  </Drawer>
+ 
+  // </Drawer>
   
 )
       

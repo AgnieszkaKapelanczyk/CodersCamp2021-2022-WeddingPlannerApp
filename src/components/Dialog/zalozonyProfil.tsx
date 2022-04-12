@@ -1,4 +1,4 @@
-import { Typography, Button, Box } from "@material-ui/core";
+import { Typography, Button, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { closeDialog } from "../../store/dialogSlice";
 

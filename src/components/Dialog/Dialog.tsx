@@ -1,9 +1,9 @@
 import { useDispatch, useSelector,  RootStateOrAny } from "react-redux";
-import { Dialog, DialogTitle, DialogContent, Box, Typography, Divider, IconButton } from '@material-ui/core'
+import { Dialog, DialogTitle, DialogContent, Box, Typography, Divider, IconButton } from '@mui/material'
 import { closeDialog } from "../../store/dialogSlice"
 import { getDialogEl } from "./dialog.utils";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import PersonIcon from '@mui/icons-material/Person';
 
 const useStyles = makeStyles({
