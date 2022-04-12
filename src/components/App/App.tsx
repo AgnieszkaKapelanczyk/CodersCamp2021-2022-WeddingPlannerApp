@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
-import WeddingCouple from '../WeddingCouple/WeddingCouple'
+import WeddingCouple from '../WeddingCouple/MainPanel/WeddingCouple';
 import Groom from '../WeddingCouple/Groom/Groom';
 import Bride from '../WeddingCouple/Bride/Bride';
 import WeddingCeremony from '../WeddingCouple/WeddingCeremony/WeddingCeremony';
@@ -28,8 +28,8 @@ import RSVP from '../WeddingGuests/RSVP/RSVP';
 import Hotels from '../WeddingGuests/Hotels/Hotels';
 import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
-import { ThemeProvider } from '@material-ui/core/styles';
-import {theme} from '../../theme/theme'
+import {theme} from '../../theme/theme';
+import { ThemeProvider } from '@material-ui/core';
 
 
 function App() {
