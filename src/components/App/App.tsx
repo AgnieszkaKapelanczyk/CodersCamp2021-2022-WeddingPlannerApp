@@ -30,12 +30,22 @@ import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
 import { ThemeProvider } from '@material-ui/core/styles';
 import {theme} from '../../theme/theme'
+import AppLeftBar from './AppLeftBar';
+import Dialog from '../Dialog/Dialog'
+import { Box} from '@material-ui/core'
+
+
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppHeader/>
+      <Dialog />
+      <Box height={"100%"} display={"flex"} flexDirection={"column"}> 
+      <Box sx={{ zIndex:'2', width:'100%'}}> <AppHeader/> </Box>
+      <Box  zIndex='1'>
+      <AppLeftBar />
+        </Box>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/WeddingCouple/" element={<WeddingCouple/>} />
@@ -65,7 +75,11 @@ function App() {
         <Route path="/WeddingGuests/Hotels/" element={<Hotels/>} />
         <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
       </Routes> 
+      <Box>
+
       <AppFooter/>
+      </Box>
+      </Box>
     </ThemeProvider>
   );
 }
