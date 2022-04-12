@@ -32,7 +32,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import {theme} from '../../theme/theme'
 import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog'
-import { Box} from '@material-ui/core'
+import { Box, Grid} from '@material-ui/core'
+import { grid } from '@mui/system';
 
 
 
@@ -41,11 +42,23 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Dialog />
-      <Box height={"100%"} display={"flex"} flexDirection={"column"}> 
-      <Box sx={{ zIndex:'2', width:'100%'}}> <AppHeader/> </Box>
-      <Box  zIndex='1'>
+      <Box height={"100%"} > 
+      <Box
+  sx={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateRows: 'auto',
+    gridTemplateAreas: `"header header header header header"
+  "leftBar main main main main"
+  "footer footer footer footer footer "`,
+  }}>
+        <Box sx={{ gridArea: 'header'}}>
+      <AppHeader/> 
+        </Box>  
+      <Box sx={{ gridArea: 'leftBar'}}>
       <AppLeftBar />
-        </Box>
+      </Box>
+        <Box sx={{ gridArea: 'main'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/WeddingCouple/" element={<WeddingCouple/>} />
@@ -75,11 +88,14 @@ function App() {
         <Route path="/WeddingGuests/Hotels/" element={<Hotels/>} />
         <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
       </Routes> 
-      <Box>
-
+      </Box>
+      <Box sx={{ gridArea: 'footer'}}>
       <AppFooter/>
       </Box>
+     
       </Box>
+      </Box>
+      
     </ThemeProvider>
   );
 }

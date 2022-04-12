@@ -46,10 +46,10 @@ const names= 'Anna & Jakub'
   function GetRightSide(){
     let dispatch = useDispatch();
     let elementForNotLoggedIn= (
-      <>
+      <Box display= "flex">
       <Button variant='text' color='primary' style={{margin:'0.2rem', fontSize:'0.9rem'}} onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
       <Button variant='text' color='primary' style={{margin:'0.2rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
-    </>
+    </Box>
     )
     let elementForLoggedIn= (
       <Button >
@@ -64,17 +64,18 @@ const names= 'Anna & Jakub'
 const AppHeader = () => {
   
   return (
-    <div>
+    
       <AppBar position='static' color='inherit'  >
-      <Box display={"flex"} > 
+      <Box display={"flex"} flexDirection="row"> 
         {getLogo()}
         <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1rem"}>
         {GetRightSide()}
-        </Box>
-      
+       
+      </Box>
       </Box>
       </AppBar>
-    </div>
+      
+    
   )
 }
 
