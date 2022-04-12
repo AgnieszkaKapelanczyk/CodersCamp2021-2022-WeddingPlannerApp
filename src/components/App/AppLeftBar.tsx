@@ -1,5 +1,5 @@
 import Drawer from '@mui/material/Drawer';
-import { Box } from '@material-ui/core';
+import { Box } from '@mui/material';
 import List from '@mui/material/List';
 import LeftBarListCouple from './LeftBarListCouple';
 import LeftBarListGuest from './LeftBarListGuests';
@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 
 const useStyles = makeStyles({

@@ -5,6 +5,8 @@ import { store } from './store/store';
 import { Provider } from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from "@mui/material/styles"
+import { theme } from './theme/theme';
 
 
 const rootElement = document.getElementById('root');
@@ -13,10 +15,12 @@ const root = ReactDOM.createRoot(rootElement)
 
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
 );

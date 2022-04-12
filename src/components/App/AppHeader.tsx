@@ -1,4 +1,4 @@
-import { AppBar, Button, Typography, Box} from '@material-ui/core'
+import { AppBar, Button, Typography, Box} from '@mui/material'
 import Logoprzed from '../../assets/img/logo_przed_zalogowaniem.png'
 import Logopo from '../../assets/img/logo_po_zalogowaniu.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -46,9 +46,9 @@ const names= 'Anna & Jakub'
   function GetRightSide(){
     let dispatch = useDispatch();
     let elementForNotLoggedIn= (
-      <Box display= "flex">
-      <Button variant='text' color='primary' style={{margin:'0.2rem', fontSize:'0.9rem'}} onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
-      <Button variant='text' color='primary' style={{margin:'0.2rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
+      <Box sx={{display:"flex"}}>
+      <Button sx= {{variant:'text', color:'primary' }}  onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
+      <Button sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
     </Box>
     )
     let elementForLoggedIn= (
@@ -68,7 +68,7 @@ const AppHeader = () => {
       <AppBar position='static' color='inherit'  >
       <Box display={"flex"} flexDirection="row"> 
         {getLogo()}
-        <Box display={"flex"} justifyContent={"flex-end"} flexGrow={"1"} gridColumnGap={"1rem"}>
+        <Box sx={{display:"flex", justifyContent:"flex-end", flexGrow:"1", gridColumnGap:"1rem"}}>
         {GetRightSide()}
        
       </Box>

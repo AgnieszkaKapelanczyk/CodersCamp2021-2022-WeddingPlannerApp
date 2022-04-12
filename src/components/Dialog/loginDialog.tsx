@@ -1,5 +1,5 @@
-import { TextField, Button, Typography, Link, styled, Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core';
+import { TextField, Button, Typography, Link, styled, Box } from  "@mui/material";
+import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -72,7 +72,7 @@ export const LoginDialog = () => {
           onChange={handleChange}
         />
 
-        <Box textAlign='center'>
+        <Box alignItems='center'>
         <Button type="submit" 
         className={classes.field} 
         color="primary" variant="contained" size="large" 
