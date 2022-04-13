@@ -1,4 +1,4 @@
-import { TextField, Button, Typography, Link, styled, Box } from  "@mui/material";
+import { TextField, Button, Typography, Link, Box } from  "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
@@ -47,7 +47,7 @@ export const LoginDialog = () => {
   
     return (
       <form onSubmit={handleSubmit}>
-        <TextField 
+        <TextField sx={{marginBottom:'20px'}}
           className={classes.field}
           type="text"
           name="email"
@@ -60,7 +60,7 @@ export const LoginDialog = () => {
           onChange={handleChange}
         />
   
-        <TextField 
+        <TextField sx={{marginBottom:'20px'}}
           className={classes.field}
           type="password"
           name="password"
@@ -73,7 +73,7 @@ export const LoginDialog = () => {
         />
 
         <Box sx={{display:"flex", justifyContent:'center' }}>
-        <Button 
+        <Button sx={{marginBottom:'20px'}}
         type="submit"        
         color="primary" variant="contained" size="large"
         onClick={()=> {dispatch(openDialog({formType:FormType.zalogowano}))}}
