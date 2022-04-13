@@ -7,6 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { Box} from '@mui/material'
 
 
 const useStyles = makeStyles({
@@ -45,6 +46,7 @@ function AppLeftBar() {
    
   // >
     
+  
     <List style={leftBarStyle} >
       {LeftBarListCouple.map((item) => (
         <ListItem sx={{padding:0.3, color:'tertiary'}} button key={item.label} onClick={()=>navigate(item.path)} divider>
