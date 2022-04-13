@@ -31,8 +31,9 @@ import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
 import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppLeftBar from './AppLeftBar';
-import Dialog from '../Dialog/Dialog'
+import Dialog from '../Dialog/Dialog';
 import { Box } from '@mui/material';
+
 
 function App() {
   return (
@@ -51,7 +52,7 @@ function App() {
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
-      <Box sx={{ gridArea: 'leftBar'}}>
+      <Box sx={{ gridArea: 'leftBar' , marginRight:'20px', borderRight: '1px solid', borderColor:'tertiary'}}>
       <AppLeftBar />
       </Box>
         <Box sx={{ gridArea: 'main'}}>

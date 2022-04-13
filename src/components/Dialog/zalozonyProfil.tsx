@@ -6,9 +6,8 @@ export const ZalozonyProfil = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <Box
-        sx={{ marginTop: 20 }}>
+    <Box sx={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"space-between"  }}>
+      <Box sx={{marginTop:'20px', marginBottom:'20px'}}>
           <Typography
             variant="body1"
             align="center">
@@ -16,8 +15,8 @@ export const ZalozonyProfil = () => {
           </Typography>
       </Box>
       <Box
-        sx={{ marginTop: 35, marginBottom: 25 }}
-        textAlign='center'>
+        sx={{ marginBottom: '20px', textAlign:'center' }}
+        >
           <Button
             variant="contained"
             color="primary"
@@ -25,7 +24,7 @@ export const ZalozonyProfil = () => {
             ZACZYNAMY!
           </Button>
       </Box>
-    </>
+    </Box>
   )
 }
 
