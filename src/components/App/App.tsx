@@ -52,7 +52,7 @@ function App() {
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
-      <Box sx={{ gridArea: 'leftBar' , marginRight:'20px', borderRight: '1px solid', borderColor:'tertiary'}}>
+      <Box sx={{ gridArea: 'leftBar', borderRight: '1px solid', borderColor:'tertiary'}}>
       <AppLeftBar />
       </Box>
         <Box sx={{ gridArea: 'main'}}>
