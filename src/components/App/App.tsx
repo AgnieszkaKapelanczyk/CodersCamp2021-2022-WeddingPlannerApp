@@ -32,10 +32,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import {theme} from '../../theme/theme'
 import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog'
-import { Box, Grid} from '@mui/material'
-import { grid } from '@mui/system';
-
-
+import { Box} from '@mui/material'
 
 
 function App() {

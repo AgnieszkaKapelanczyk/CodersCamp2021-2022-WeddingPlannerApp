@@ -6,27 +6,25 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
-import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
-  drawer: {
-    height: 'calc(100% - 70px)',
-    top: 70
+  leftBar: {
+    color:'tertiary',
+    paddingLeft: '5px'
   }
 })
 
 const leftBarStyle=({
-    color:'#6F59C9',
-    paddingLeft: '4px'
+    color:'tertiary',
+    paddingLeft: '5px'
 })
 
 
 
 function AppLeftBar() {
     const classes = useStyles();
-    const drawerWidth=250;
     const navigate= useNavigate();
     
     return(
@@ -46,11 +44,11 @@ function AppLeftBar() {
   //   anchor="left"
    
   // >
-    // <Toolbar />
+    
     <List style={leftBarStyle} >
       {LeftBarListCouple.map((item) => (
-        <ListItem sx={{padding:0.3}} button key={item.label} onClick={()=>navigate(item.path)} divider>
-          <ListItemIcon style={leftBarStyle}>
+        <ListItem sx={{padding:0.3, color:'tertiary'}} button key={item.label} onClick={()=>navigate(item.path)} divider>
+          <ListItemIcon className={classes.leftBar} >
             {item.icon}
           </ListItemIcon>
           <ListItemText  primary={item.label} />
