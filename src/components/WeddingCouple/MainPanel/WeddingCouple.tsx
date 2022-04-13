@@ -2,25 +2,26 @@ import { Card, CardHeader, Divider } from "@material-ui/core";
 import GridLayout from "react-grid-layout";
 import { styled } from '@mui/material/styles';
 import PanelThemeBg from "assets/img/rusticTheme.jpg";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import TimerIcon from '@mui/icons-material/Timer';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
-import { useState } from "react";
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import { CardContent, Collapse, Typography } from "@mui/material";
+import IconButton from '@mui/material/IconButton';
+import {  Typography } from "@mui/material";
 import TimerWidgetContent from "components/Widgets/TimerWidgetContent";
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import ReminderWidgetContent from "components/Widgets/ReminderWidgetContent";
 import NotificationWidgetContent from "components/Widgets/NotificationWidgetContent";
-import {makeStyles} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import { theme } from "theme/theme";
+import { relative } from "node:path/win32";
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
     color: theme.palette.tertiary.main,
+    position: 'relative',
+    top: '2px',
   },
   headerTitle: {
     color: theme.palette.tertiary.main,
