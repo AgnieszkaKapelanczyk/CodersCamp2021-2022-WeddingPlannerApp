@@ -13,7 +13,7 @@ import { Box} from '@mui/material'
 const useStyles = makeStyles({
   leftBar: {
     color:'tertiary',
-    paddingLeft: '5px'
+    paddingLeft: '10px',
   }
 })
 
@@ -53,7 +53,7 @@ function AppLeftBar() {
           <ListItemIcon className={classes.leftBar} >
             {item.icon}
           </ListItemIcon>
-          <ListItemText  primary={item.label} />
+          <ListItemText  primary={item.label} sx={{paddingRight:'10px'}}  />
         </ListItem>
       ))}
     </List>
