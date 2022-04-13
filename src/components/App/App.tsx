@@ -29,10 +29,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import {theme} from '../../theme/theme'
 import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog'
-import { Box, Grid} from '@mui/material'
-import { grid } from '@mui/system';
-
-
+import { Box} from '@mui/material'
 
 
 function App() {
@@ -52,7 +49,7 @@ function App() {
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
-      <Box sx={{ gridArea: 'leftBar'}}>
+      <Box sx={{ gridArea: 'leftBar' , marginRight:'20px', borderRight: '1px solid', borderColor:'tertiary'}}>
       <AppLeftBar />
       </Box>
         <Box sx={{ gridArea: 'main'}}>

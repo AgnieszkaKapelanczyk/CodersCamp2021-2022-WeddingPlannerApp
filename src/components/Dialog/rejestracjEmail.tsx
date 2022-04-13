@@ -46,7 +46,7 @@ export const RejestracjaEmail = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField 
+      <TextField sx={{marginBottom:'10px'}}
         className={classes.field}
         type="text"
         name="firstName"
@@ -60,7 +60,7 @@ export const RejestracjaEmail = () => {
         helperText="Minimum 3 litery"
       />
 
-      <TextField 
+      <TextField sx={{marginBottom:'10px'}}
         className={classes.field}
         type="text"
         name="lastName"
@@ -75,7 +75,7 @@ export const RejestracjaEmail = () => {
       />
 
 
-      <TextField 
+      <TextField sx={{marginBottom:'20px'}}
         className={classes.field}
         type="email"
         name="email"
@@ -88,7 +88,7 @@ export const RejestracjaEmail = () => {
         onChange={handleChange}
       />
 
-      <TextField 
+      <TextField sx={{marginBottom:'20px'}}
         className={classes.field}
         type="password"
         name="password"
@@ -102,7 +102,7 @@ export const RejestracjaEmail = () => {
         helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
       />
 
-<Box textAlign='center'>
+<Box sx={{display:"flex", justifyContent:'center'}}>
       <Button
         type="submit"
         className={classes.field}

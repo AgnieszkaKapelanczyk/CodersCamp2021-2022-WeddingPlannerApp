@@ -32,10 +32,10 @@ const Dialogs = () => {
     <Dialog open={isOpen} maxWidth={width} fullWidth>
       {title && (
         <DialogTitle>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center">
+          <Box sx={{display:"flex",
+            justifyContent:"center",
+            alignItems:"center"}}
+            >
                 <PersonIcon
                 className={classes.icon}
                 >
