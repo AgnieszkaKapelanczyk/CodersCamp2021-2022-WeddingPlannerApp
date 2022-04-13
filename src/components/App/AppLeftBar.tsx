@@ -47,7 +47,7 @@ function AppLeftBar() {
   // >
     
   
-    <List style={leftBarStyle} >
+    <List sx={{style:{leftBarStyle}}} >
       {LeftBarListCouple.map((item) => (
         <ListItem sx={{padding:0.3, color:'tertiary'}} button key={item.label} onClick={()=>navigate(item.path)} divider>
           <ListItemIcon className={classes.leftBar} >
