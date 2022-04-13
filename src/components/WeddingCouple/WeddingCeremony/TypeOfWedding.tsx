@@ -1,5 +1,5 @@
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, Collapse, styled, IconButtonProps } from "@material-ui/core";
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, Collapse, styled, IconButtonProps } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Checkbox from '@mui/material/Checkbox';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';

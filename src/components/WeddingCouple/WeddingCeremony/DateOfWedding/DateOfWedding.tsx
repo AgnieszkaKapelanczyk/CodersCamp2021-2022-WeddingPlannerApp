@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@material-ui/core"
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@mui/material"
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
@@ -47,7 +47,7 @@ const DateOfWedding = () => {
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <CardContent style={{display:'flex', justifyContent:'center'}}>
+      <CardContent style={{display:'flex', justifyContent:'center', marginTop:'2rem'}}>
         <Box style={{ display:'flex', justifyContent:'center', flexDirection:'column'}}>
           <Box style={{ display:'flex', justifyContent:'center'}}>
             <Typography variant="body1">Wybierz datę ceremonii ślubnej</Typography>

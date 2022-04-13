@@ -1,9 +1,22 @@
 
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@material-ui/core"
+import { Box, CardContent, IconButton, Typography, IconButtonProps, styled, Collapse} from "@mui/material"
+import { Card, CardHeader, Divider } from "@material-ui/core";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import { CircularProgressWithLabel } from '../ProgressOfPreparations/CircularProgress';
 import { useState } from "react";
+import { theme } from '../../../../theme/theme';
+import {makeStyles} from '@material-ui/core';
+
+const useStyles = makeStyles({
+  cardHeaderIcon: {
+    color: theme.palette.tertiary.main,
+  },
+  headerTitle: {
+    color: theme.palette.tertiary.main,
+  }
+});
+
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -21,6 +34,8 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 const ProgressOfPreparations = () => {
 
+  const classes = useStyles(theme);
+
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -29,9 +44,10 @@ const ProgressOfPreparations = () => {
 
   return (
     <Card style={{display:'flex', flexDirection:'column'}}>
-      <CardHeader 
+      <CardHeader
+        title={<Typography className={classes.headerTitle}>Postęp przygotowań ceremonii ślubnej</Typography>}
          avatar={
-          <BubbleChartIcon/>
+          <BubbleChartIcon className={classes.cardHeaderIcon}/>
         }
         action={
           <ExpandMore
@@ -43,9 +59,9 @@ const ProgressOfPreparations = () => {
             <ExpandMoreIcon />
           </ExpandMore>
         }
-        title="Postęp przygotowań ceremonii ślubnej"
+        
       />
-      <Divider/>
+      <Divider style={{backgroundColor:'secondary'}}/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
       <CardContent style={{display:'flex', justifyContent:'center', alignItems:'center', margin:'3rem'}}>
         <Box>

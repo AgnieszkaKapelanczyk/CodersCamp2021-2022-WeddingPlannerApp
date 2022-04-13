@@ -1,4 +1,3 @@
-import * as React from 'react';
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -8,7 +7,7 @@ export function CircularProgressWithLabel(
 ) {
   return (
     <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress style={{height:'90px', width:'90px'}} variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
@@ -22,7 +21,7 @@ export function CircularProgressWithLabel(
         }}
       >
         <Typography
-          fontSize={'3rem'}
+          fontSize={'2rem'}
           variant="caption"
           component="div"
           color="secondary"

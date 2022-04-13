@@ -1,12 +1,12 @@
-import { Box } from "@material-ui/core"
-import ChoosingOfBestManAndBridesmaid from "./ChoosingOfBestManAndBridesmaid"
-import DateOfWedding from "./DateOfWedding/DateOfWedding"
-import ProgressOfPreparations from "./ProgressOfPreparations/ProgressOfPreparations"
-import TypeOfWedding from "./TypeOfWedding"
+import { Box } from "@mui/material";
+import ChoosingOfBestManAndBridesmaid from "./ChoosingOfBestManAndBridesmaid";
+import DateOfWedding from "./DateOfWedding/DateOfWedding";
+import ProgressOfPreparations from "./ProgressOfPreparations/ProgressOfPreparations";
+import TypeOfWedding from "./TypeOfWedding";
 
 const WeddingCeremony = () => {
   return (
-    <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} alignItems={'center'} style={{margin:'6rem 12rem 6rem 6rem'}}>
+    <Box style={{margin:'6rem 12rem 6rem 6rem'}}>
       <ProgressOfPreparations/>
       <DateOfWedding/>
       <TypeOfWedding/>
