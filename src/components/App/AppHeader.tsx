@@ -4,6 +4,7 @@ import Logopo from '../../assets/img/logo_po_zalogowaniu.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch } from "react-redux";
 import { openDialog, FormType } from '../../store/dialogSlice'
+import { useNavigate } from 'react-router-dom';
 
  
  const iconStyle= ({
@@ -29,12 +30,13 @@ const LogoBox = ({
 
 let loggedIn=false
 
-function getLogo() {
+function GetLogo() {
+  const navigate=useNavigate()
  
 const names= 'Anna & Jakub'
   const logo = (
   <Box style={LogoBox}>
-  <Button>
+  <Button onClick={()=> navigate('/')}>
     <img alt='' src={loggedIn? Logopo : Logoprzed} height='50px'/>
   <Typography variant='h3' color='primary' style={{margin:'0.5rem'}}>{loggedIn? names : 'WeddingPlanner'}</Typography>
   </Button>
@@ -68,7 +70,7 @@ const AppHeader = () => {
     
       <AppBar position='static' color='inherit'  >
       <Box display={"flex"} flexDirection="row"> 
-        {getLogo()}
+        {GetLogo()}
         <Box sx={{display:"flex", justifyContent:"flex-end", flexGrow:"1", gridColumnGap:"1rem"}}>
         {GetRightSide()}
        
