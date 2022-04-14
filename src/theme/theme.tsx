@@ -71,5 +71,5 @@ export const theme = createTheme({
         fontSize: '1rem',
         fontFamily: "'Lato"
       },
-    },  
+    }, 
 });
