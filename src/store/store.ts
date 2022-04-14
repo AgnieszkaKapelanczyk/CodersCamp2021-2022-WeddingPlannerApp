@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import dialogReducer from 'store/dialogSlice';
 import layoutReducer from 'store/layoutSlice';
+import {pickDateSlice} from './dateOfWeddingSlice'
 
 export const store = configureStore({
   reducer: {
     dialog: dialogReducer,
-    layout: layoutReducer
+    layout: layoutReducer,
+    dateOfWedding: pickDateSlice.reducer
   },
 });
 

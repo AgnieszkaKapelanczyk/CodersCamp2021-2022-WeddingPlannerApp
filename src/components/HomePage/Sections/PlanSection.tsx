@@ -2,15 +2,6 @@ import {Card, CardHeader, CardContent, Box, Divider, Typography, Avatar, Button}
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import { theme} from '../../../theme/theme'
 import logoprzed from '../../../assets/img/logo_przed_zalogowaniem.png'
-import { makeStyles } from '@mui/styles';
-
-const useStyles = makeStyles({
-  text: {
-    fontSize:'5rem',
-    color: theme.palette.primary.main,
-  },
-});
-
 
 const PlanSection = () => {
 
@@ -33,10 +24,8 @@ const PlanSection = () => {
    
   }
 
-  const classes=useStyles()
-
   return(
-  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"space-evenly"}}>
+  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"center", gap:"3%"}}>
     <Card style={styles.card}>
       <Box sx={{display:"flex", justifyContent:"center", padding: '10px'}}>
     <CardHeader   
