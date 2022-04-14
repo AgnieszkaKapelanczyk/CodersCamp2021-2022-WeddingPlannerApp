@@ -54,10 +54,11 @@ export const theme = createTheme({
         fontWeight: 400,
       },
       body1: {
-        fontSize: '1.1rem',
+        fontSize: '1.2rem',
         fontFamily:"'Lato'",
-        fontWeight: 400,
-        lineHeight:'1.4'
+        fontWeight: 500,
+        lineHeight:'1.4',
+        letterSpacing: "1px"
       },
       body2: {
         fontSize: '1rem',
@@ -68,7 +69,7 @@ export const theme = createTheme({
         textTransform: 'none',
         letterSpacing: '1.2px',
         fontSize: '1rem',
-        fontFamily: "Lato"
+        fontFamily: "'Lato"
       },
-    },  
+    }, 
 });

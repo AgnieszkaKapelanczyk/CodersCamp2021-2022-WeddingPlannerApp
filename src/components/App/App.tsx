@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from '../HomePage/HomePage';
 import AppFooter from './AppFooter';
 import AppHeader from './AppHeader';
-import WeddingCouple from '../WeddingCouple/WeddingCouple'
 import Groom from '../WeddingCouple/Groom/Groom';
 import Bride from '../WeddingCouple/Bride/Bride';
 import WeddingCeremony from '../WeddingCouple/WeddingCeremony/WeddingCeremony';
@@ -25,12 +24,12 @@ import RSVP from '../WeddingGuests/RSVP/RSVP';
 import Hotels from '../WeddingGuests/Hotels/Hotels';
 import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
+import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import {theme} from '../../theme/theme'
 import AppLeftBar from './AppLeftBar';
-import Dialog from '../Dialog/Dialog'
-import { Box} from '@mui/material'
-
+import Dialog from '../Dialog/Dialog';
+import { Box } from '@mui/material';
+import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 
 function App() {
   return (
@@ -55,7 +54,7 @@ function App() {
         <Box sx={{ gridArea: 'main'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
-        <Route path="/WeddingCouple/" element={<WeddingCouple/>} />
+        <Route path="/WeddingCouple/" element={<DashboardWeddingCouple/>} />
         <Route path="/WeddingCouple/Groom/" element={<Groom/>} />
         <Route path="/WeddingCouple/Bride/" element={<Bride/>} />
         <Route path="/WeddingCouple/ToDoList/" element={<ToDoList/>} />
