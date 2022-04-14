@@ -5,10 +5,11 @@ import HowItWorksSection from './Sections/HowItWorksSection';
 import SubscribeSection from './Sections/SubscribeSection';
 import ThemeSection from './Sections/ThemeSection';
 import PlanSection from './Sections/PlanSection';
+import { Box } from '@mui/material';
 
 const HomePage = () => {
   return (
-    <>
+    <Box sx={{display:"flex", flexDirection:"column"}}>
       <MainSection />
       <AboutSection />
       <FeaturesSection />
@@ -16,7 +17,7 @@ const HomePage = () => {
       <SubscribeSection />
       <ThemeSection />
       <PlanSection />
-    </>
+    </Box>
   );
 };
 
