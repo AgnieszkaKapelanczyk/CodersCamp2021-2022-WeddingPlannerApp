@@ -8,7 +8,7 @@ import { theme } from '../../../../theme/theme';
 import {makeStyles} from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 //import { useSelector } from "react-redux";
-//import dateOfWeddingSlice from '../../../../store/dateOfWeddingSlice'
+//import  {pickDateSlice} from '../../../../store/dateOfWeddingSlice'
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -40,8 +40,8 @@ const DateOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles(theme);
-  //const dateOfWedding = useSelector((state) =>
-  //state.pickDate)
+  //const dateOfWedding = useSelector( state =>
+  //state.dateOfWedding)
    
 
   const handleExpandClick = () => {

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState: never[] = [];
+const initialState: string = '';
 
 export const pickDateSlice = createSlice({
     name: 'dateOfWedding',
