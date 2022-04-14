@@ -36,7 +36,7 @@ const PlanSection = () => {
   const classes=useStyles()
 
   return(
-  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"space-evenly"}}>
+  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"center", gap:'3%'}}>
     <Card style={styles.card}>
       <Box sx={{display:"flex", justifyContent:"center", padding: '10px'}}>
     <CardHeader   
