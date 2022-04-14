@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { SetStateAction, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { pickDateSlice } from '../../../../store/dateOfWeddingSlice';
+import { pickDate} from '../../../../store/dateOfWeddingSlice';
 
 const DatePicker = () => {
 
@@ -17,7 +17,7 @@ const DatePicker = () => {
         displayStaticWrapperAs="desktop"
         value={value}
         onChange={(newValue: SetStateAction<Date | null>) => {
-          dispatch(pickDateSlice.actions.pickDate(newValue))
+          dispatch(pickDate.pickDate(newValue))
           setValue(newValue);
         }}
         renderInput={(params: JSX.IntrinsicAttributes & TextFieldProps) => <TextField {...params} />}

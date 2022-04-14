@@ -1,15 +1,15 @@
 import { Card } from "@material-ui/core";
 import RGL, { Responsive, WidthProvider } from "react-grid-layout";
 import { styled } from '@mui/material/styles';
-import PanelThemeBg from "assets/img/rusticTheme.jpg";
-import TimerWidget from "components/Widgets/TimerWidget";
-import ReminderWidget from "components/Widgets/ReminderWidget";
-import NotificationWidget from "components/Widgets/NotificationWidget";
-import ProgressWidget from "components/Widgets/ProgressWidget";
-import PhotoWidget from "components/Widgets/PhotoWidget";
+import PanelThemeBg from "../../../assets/img/rusticTheme.jpg";
+import TimerWidget from "../../Widgets/TimerWidget";
+import ReminderWidget from "../../Widgets/ReminderWidget";
+import NotificationWidget from "../../Widgets/NotificationWidget";
+import ProgressWidget from "../../Widgets/ProgressWidget";
+import PhotoWidget from "../../Widgets/PhotoWidget";
 import { Box } from "@mui/system";
-import { useAppSelector } from "store/hooks";
-import { LayoutArray, selectLayout  } from "store/layoutSlice";
+import { useAppSelector } from "../../../store/hooks";
+import { LayoutArray, selectLayout  } from "../../../store/layoutSlice";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',

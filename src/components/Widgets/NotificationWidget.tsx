@@ -6,7 +6,7 @@ import MessageIcon from '@mui/icons-material/Message';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {makeStyles} from '@material-ui/core';
-import { theme } from "theme/theme";
+import { theme } from "../../theme/theme";
 
 const useStyles = makeStyles({
     successIcon: {

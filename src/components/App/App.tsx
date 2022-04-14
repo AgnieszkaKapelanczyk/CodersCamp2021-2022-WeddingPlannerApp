@@ -29,7 +29,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog';
 import { Box } from '@mui/material';
-import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
+import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 
 function App() {
   return (
