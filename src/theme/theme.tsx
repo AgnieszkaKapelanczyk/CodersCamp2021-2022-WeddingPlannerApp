@@ -30,7 +30,7 @@ export const theme = createTheme({
         fontWeight: 400,
       },
       body1: {
-        fontSize: '1.3rem',
+        fontSize: '0.8rem',
         fontFamily:"'Lato'",
         fontWeight: 400,
       },
@@ -38,7 +38,7 @@ export const theme = createTheme({
         textTransform: 'none',
         letterSpacing: '1.2px',
         fontSize: '1rem',
-        fontFamily: "'Lato"
+        fontFamily: "Lato"
       },
     },  
 });
