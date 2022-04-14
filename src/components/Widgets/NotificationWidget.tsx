@@ -45,7 +45,7 @@ const NotificationWidget = () => {
             }>
            </CardHeader>
            <Divider style={{backgroundColor:'secondary'}}/>
-           <CardContent style={{textAlign: 'center', margin:'0rem 1rem'}}>
+           <CardContent style={{textAlign: 'center', margin:'0rem'}}>
              <ListItemButton
                         key={`listitembutton-1}`} 
                         style={{width: "100%"}} 
@@ -58,9 +58,18 @@ const NotificationWidget = () => {
                     style={{margin:'1rem'}}/>
                 <ListItemText 
                     key={`listitem-1`}
-                    primary="Za dwa dni masz umówione spotkanie w sprawie 
-                    menu weselnego."
-                ></ListItemText>
+                    primary= {
+                        <>
+                          <Typography
+                            style={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                          > Za dwa dni masz umówione spotkanie w sprawie 
+                          menu weselnego.
+                          </Typography>
+                        </>
+                      }
+                  />
               </ListItemButton>
               <ListItemButton
                     key={`listitembutton-2}`} 
@@ -74,8 +83,17 @@ const NotificationWidget = () => {
                     style={{margin:'1rem'}}/>
                 <ListItemText
                     key={`listitem-2`}
-                    primary={"Mateusz Kochanowski potwierdził przybycie."}       
-                    ></ListItemText>
+                    primary= {
+                        <>
+                          <Typography
+                            style={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                          > Mateusz Kochanowski potwierdził przybycie.
+                          </Typography>
+                        </>
+                      }
+                  />
               </ListItemButton>
               <ListItemButton
                     key={`listitembutton-3}`} 
@@ -89,8 +107,17 @@ const NotificationWidget = () => {
                     style={{margin:'1rem'}}/>
                 <ListItemText
                     key={`listitem-2`}
-                    primary={"Marcin Kowarczyk potwierdził nieobecność."}       
-                    ></ListItemText>
+                    primary= {
+                        <>
+                          <Typography
+                            style={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                          > Marcin Kowarczyk potwierdził nieobecność.
+                          </Typography>
+                        </>
+                      }
+                  />
               </ListItemButton>
               <ListItemButton
                     key={`listitembutton-4}`} 
@@ -104,8 +131,17 @@ const NotificationWidget = () => {
                     style={{margin:'1rem'}}/>
                 <ListItemText
                     key={`listitem-2`}
-                    primary={"Katarzyna Olesiuk napisała wiadomość."}       
-                    ></ListItemText>
+                    primary= {
+                        <>
+                          <Typography
+                            style={{ display: 'inline' }}
+                            component="span"
+                            variant="body2"
+                          > Katarzyna Olesiuk napisała wiadomość.
+                          </Typography>
+                        </>
+                      }
+                  />
               </ListItemButton>
             </CardContent>
         </>

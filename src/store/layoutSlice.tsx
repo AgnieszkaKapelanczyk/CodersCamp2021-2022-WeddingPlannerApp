@@ -23,11 +23,11 @@ export interface LayoutArray {
 
 const initialState: LayoutArray = {
     layout: [
-        { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1 },
-        { i: "ReminderWidget", x: 4, y: 1, w: 4, h: 1 },
-        { i: "NotificationWidget", x: 0, y: 1, w:4, h: 2 },
-        { i: "ProgressWidget", x: 3, y: 4, w: 4, h: 1 },
-        { i: "PhotosWidget", x: 4, y: 1, w: 2, h: 1 }
+      { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1 },
+      { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
+      { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
+      { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1 },
+      { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
     ]
 };
 

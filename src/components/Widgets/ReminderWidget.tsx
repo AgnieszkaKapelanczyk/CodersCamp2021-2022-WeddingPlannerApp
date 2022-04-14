@@ -5,6 +5,7 @@ import { theme } from "theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
+import React from "react";
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -47,9 +48,17 @@ const ReminderWidget = () => {
                   style={{margin:'1rem'}}/>
               <ListItemText
                   key={`listitem-1`}
-                  primary="Za dwa dni masz umówione spotkanie w sprawie 
-                  menu weselnego."
-              ></ListItemText>
+                  primary= {
+                    <>
+                      <Typography
+                        style={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                      > Za dwa dni masz umówione spotkanie w sprawie menu weselnego.
+                      </Typography>
+                    </>
+                  }
+              />
           </ListItemButton>
           <ListItemButton
                   key={`listitembutton-2}`} 
@@ -63,8 +72,17 @@ const ReminderWidget = () => {
                   style={{margin:'1rem'}}/>
               <ListItemText
                   key={`listitem-2`}
-                  primary={"W najbliższą sobotę o 11:00 zaczynają się nauki przedmałżeńskie."}       
-                  ></ListItemText>
+                  primary= {
+                    <>
+                      <Typography
+                        style={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                      > W najbliższą sobotę o 11:00 zaczynają się nauki przedmałżeńskie.
+                      </Typography>
+                    </>
+                  }
+              />
           </ListItemButton>
         </CardContent>
        </>

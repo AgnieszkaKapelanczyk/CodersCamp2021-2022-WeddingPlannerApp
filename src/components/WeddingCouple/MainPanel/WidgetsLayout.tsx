@@ -18,7 +18,7 @@ const Props: LayoutProps = {
 }
 
 const WidgetsLayout = () => {
-  const dispatch = useAppDispatch;
+  const dispatch = useAppDispatch();
   const WidgetGridLayout = WidthProvider(RGL);
   const actualLayout = useAppSelector(selectLayout);
 

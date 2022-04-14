@@ -14,6 +14,7 @@ const useStyles = makeStyles({
       borderRadius: '6px',
       padding: '0.6rem',
       lineHeight: 1,
+      margin: '0 10px'
   },
   cardHeaderIcon: {
     color: theme.palette.tertiary.main,

@@ -1,25 +1,23 @@
-import Drawer from '@mui/material/Drawer';
+//import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import LeftBarListCouple from './LeftBarListCouple';
-import LeftBarListGuest from './LeftBarListGuests';
+import LeftBarListCouple from 'components/Sidebar/LeftBarListCouple';
+//import LeftBarListGuest from 'components/Sidebar/LeftBarListGuests';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box} from '@mui/material'
-import { theme } from 'theme/theme';
 
 
 const useStyles = makeStyles({
   leftBar: {
-    color: theme.palette.tertiary.main,
+    color:'tertiary',
     paddingLeft: '10px',
   }
 })
 
 const leftBarStyle=({
-    color: theme.palette.tertiary.main,
+    color:'tertiary',
     paddingLeft: '5px'
 })
 

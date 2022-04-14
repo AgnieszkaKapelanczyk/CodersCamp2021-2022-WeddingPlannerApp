@@ -1,5 +1,5 @@
 import { Card } from "@material-ui/core";
-import GridLayout from "react-grid-layout";
+import RGL, { Responsive, WidthProvider } from "react-grid-layout";
 import { styled } from '@mui/material/styles';
 import PanelThemeBg from "assets/img/rusticTheme.jpg";
 import TimerWidget from "components/Widgets/TimerWidget";
@@ -8,6 +8,8 @@ import NotificationWidget from "components/Widgets/NotificationWidget";
 import ProgressWidget from "components/Widgets/ProgressWidget";
 import PhotoWidget from "components/Widgets/PhotoWidget";
 import { Box } from "@mui/system";
+import { useAppSelector } from "store/hooks";
+import { LayoutArray, selectLayout  } from "store/layoutSlice";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
@@ -15,7 +17,28 @@ const Widget = styled(Card)(({ theme }) => ({
   borderRadius: '12px',
 }));
 
+interface LayoutProps {
+  className: string
+  cols: number
+  rowHeight: number
+  margin?: [number, number]
+  width?: number
+  //onLayoutChange?(layout: LayoutArray[]): void;
+}
+
+const Props: LayoutProps = {
+  className: "layout",
+  cols: 12,
+  rowHeight: 280,
+  width: 1400,
+  margin: [30, 30],
+  //onLayoutChange: ()=>{},
+}
+
+
 const DashboardWeddingCouple = () => {
+  const actualLayout = useAppSelector(selectLayout);
+  const WidgetGridLayout = WidthProvider(RGL);
 
   const weddingThemeStyle={
     backgroundImage: `url(${PanelThemeBg})`,
@@ -24,18 +47,10 @@ const DashboardWeddingCouple = () => {
     padding: "2rem",
     height: '100%',
 };
-
-  const layout = [
-    { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1 },
-    { i: "ReminderWidget", x: 4, y: 1, w: 5, h: 1 },
-    { i: "NotificationWidget", x: 0, y: 1, w:4, h: 2 },
-    { i: "ProgressWidget", x: 3, y: 4, w: 4, h: 1 },
-    { i: "PhotosWidget", x: 4, y: 1, w: 2, h: 1 }
-  ];
   
   return (
     <Box style={weddingThemeStyle}>
-        <GridLayout layout={layout} cols={12} rowHeight={280} width={1400} margin={[30, 30]} >
+        <WidgetGridLayout layout={actualLayout} {...Props}>
         <Widget key='TimerWidget'>
             <TimerWidget/>
         </Widget>
@@ -51,7 +66,7 @@ const DashboardWeddingCouple = () => {
         <Widget key='PhotosWidget'>
             <PhotoWidget/>
         </Widget> 
-      </GridLayout>
+      </WidgetGridLayout>
     </Box>
   )
 }
