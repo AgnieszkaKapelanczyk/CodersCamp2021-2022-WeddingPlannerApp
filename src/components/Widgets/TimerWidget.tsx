@@ -1,7 +1,7 @@
 import { Box, Typography, makeStyles, CardHeader } from "@material-ui/core";
 import { CardContent, Divider, IconButton } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { theme } from "theme/theme";
+import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
