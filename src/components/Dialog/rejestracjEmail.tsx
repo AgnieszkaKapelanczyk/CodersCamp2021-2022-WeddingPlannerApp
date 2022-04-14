@@ -38,6 +38,7 @@ export const RejestracjaEmail = () => {
   const handleSubmit = (e: React.ChangeEvent<any>): void => {
     e.preventDefault();
     console.log(data);
+    dispatch(openDialog({ formType: FormType.zalozonyProfil }))
   };
 
 //   if(responseStatus === 'succeeded register (:') {
@@ -109,7 +110,7 @@ export const RejestracjaEmail = () => {
         color={'primary'}
         variant="contained"
         size="large"
-        onClick={()=> {dispatch(openDialog({ formType: FormType.zalozonyProfil }))}}
+       
       >
         ZAREJESTRUJ SIĘ
       </Button>

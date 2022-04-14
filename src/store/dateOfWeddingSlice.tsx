@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
-const initialState: string = '';
+const initialState: string[]= [];
 
-export const pickDateSlice = createSlice({
+const pickDateSlice = createSlice({
     name: 'dateOfWedding',
     initialState,
     reducers:{
@@ -12,5 +13,6 @@ export const pickDateSlice = createSlice({
 
     }
 })
-
-
+export const pickDate = pickDateSlice.actions;
+export default pickDateSlice.reducer;
+export const pickDateOfWedding = ((state: RootState)=>state.dateOfWedding);

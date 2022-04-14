@@ -1,26 +1,24 @@
-import Drawer from '@mui/material/Drawer';
+//import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import LeftBarListCouple from './LeftBarListCouple';
-import LeftBarListGuest from './LeftBarListGuests';
+import LeftBarListCouple from 'components/Sidebar/LeftBarListCouple';
+//import LeftBarListGuest from 'components/Sidebar/LeftBarListGuests';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import { theme} from '../../theme/theme'
-
 
 
 const useStyles = makeStyles({
   leftBar: {
-    color: theme.palette.tertiary.main,
+    color:'tertiary',
     paddingLeft: '10px',
   }
 })
 
 const leftBarStyle=({
-    color:theme.palette.tertiary.main,
-    paddingLeft: '10px'
+    color:'tertiary',
+    paddingLeft: '5px'
 })
 
 
@@ -48,13 +46,13 @@ function AppLeftBar() {
   // >
     
   
-    <List style={leftBarStyle} >
+    <List sx={{style:{leftBarStyle}}} >
       {LeftBarListCouple.map((item) => (
-        <ListItem sx={{padding:0.3, color:theme.palette.tertiary.main}} button key={item.label} onClick={()=>navigate(item.path)} divider>
-          <ListItemIcon  >
+        <ListItem sx={{padding:0.3, color:'tertiary'}} button key={item.label} onClick={()=>navigate(item.path)} divider>
+          <ListItemIcon className={classes.leftBar} >
             {item.icon}
           </ListItemIcon>
-          <ListItemText  primary={item.label} sx={{paddingRight:'10px', color:'BAAAFB' }}  />
+          <ListItemText  primary={item.label} sx={{paddingRight:'10px'}}  />
         </ListItem>
       ))}
     </List>
