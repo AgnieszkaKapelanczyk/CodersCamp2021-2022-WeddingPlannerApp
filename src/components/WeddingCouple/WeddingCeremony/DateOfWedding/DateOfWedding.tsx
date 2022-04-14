@@ -1,11 +1,26 @@
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@mui/material"
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, Collapse} from "@mui/material"
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
-import { useSelector } from "react-redux";
+import { theme } from '../../../../theme/theme';
+import {makeStyles} from '@material-ui/core';
+import { styled } from '@mui/material/styles';
+//import { useSelector } from "react-redux";
 //import dateOfWeddingSlice from '../../../../store/dateOfWeddingSlice'
+
+const useStyles = makeStyles({
+  cardHeaderIcon: {
+    color: theme.palette.tertiary.main,
+  },
+  headerTitle: {
+    color: theme.palette.tertiary.main,
+  },
+  typoTitle: {
+    color: theme.palette.tertiary.main,
+  }
+});
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -24,6 +39,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 const DateOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
+  const classes = useStyles(theme);
   //const dateOfWedding = useSelector((state) =>
   //state.pickDate)
    
@@ -36,7 +52,7 @@ const DateOfWedding = () => {
     <Card style={{display:'flex', flexDirection:'column', marginTop:'2rem'}}>
       <CardHeader
          avatar={
-          <CalendarTodayIcon/>
+          <CalendarTodayIcon className={classes.cardHeaderIcon}/>
         }
         action={
           <ExpandMore
@@ -48,7 +64,7 @@ const DateOfWedding = () => {
             <ExpandMoreIcon />
           </ExpandMore>
         }
-        title="Data ceremonii ślubnej"
+        title={<Typography className={classes.headerTitle}>Data ceremonii ślubnej</Typography>}
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
