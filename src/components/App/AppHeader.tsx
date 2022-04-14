@@ -34,7 +34,7 @@ function getLogo() {
 const names= 'Anna & Jakub'
   const logo = (
   <Box style={LogoBox}>
-  <Button>
+  <Button type="button">
     <img src={loggedIn? Logopo : Logoprzed} height='50px'></img>
   <Typography variant='h3' color='primary' style={{margin:'0.5rem'}}>{loggedIn? names : 'WeddingPlanner'}</Typography>
   </Button>
@@ -47,12 +47,12 @@ const names= 'Anna & Jakub'
     let dispatch = useDispatch();
     let elementForNotLoggedIn= (
       <Box sx={{display:"flex"}}>
-      <Button sx= {{variant:'text', color:'primary' }}  onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
-      <Button sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
+      <Button type="button" sx= {{variant:'text', color:'primary' }}  onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
+      <Button type="button" sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
     </Box>
     )
     let elementForLoggedIn= (
-      <Button >
+      <Button type="button">
         <AccountCircleIcon style={ iconStyle} />
       </Button>
     )

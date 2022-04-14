@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { openDialog, FormType } from '../../store/dialogSlice';
+import { addNewUser } from "../../store/userSlice";
 
 
 const useStyles = makeStyles({
@@ -22,7 +23,6 @@ export const RejestracjaEmail = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    login: "",
     email: "",
     password: ""
   });
@@ -35,9 +35,11 @@ export const RejestracjaEmail = () => {
     });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<any>): void => {
+  const handleSubmit = ( e:React.FormEvent<HTMLFormElement>)=> {
     e.preventDefault();
-    console.log(data);
+    dispatch( addNewUser({data}))
+    console.log(data)
+    dispatch(openDialog({ formType: FormType.zalozonyProfil }))
   };
 
 //   if(responseStatus === 'succeeded register (:') {
@@ -109,7 +111,6 @@ export const RejestracjaEmail = () => {
         color={'primary'}
         variant="contained"
         size="large"
-        onClick={()=> {dispatch(openDialog({ formType: FormType.zalozonyProfil }))}}
       >
         ZAREJESTRUJ SIĘ
       </Button>
