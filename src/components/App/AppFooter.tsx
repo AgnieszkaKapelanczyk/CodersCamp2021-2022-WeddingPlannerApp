@@ -11,12 +11,12 @@ const AppFooter = () => {
 
       <Typography  paddingLeft='25px' paddingRight='20px' variant='body1' paragraph={true} >Projekt został zrealizowany w ramach:</Typography>
       <Link href='https://www.coderscamp.edu.pl/'>
-      <img src={codersLogo} height="35px" />
+      <img alt='' src={codersLogo} height="35px" />
       </Link>
       </Box>
       <Box sx={{padding:'20px', paddingRight:'30px'}}>
         <Link href='https://github.com/AgnieszkaKapelanczyk/CodersCamp2021-2022-WeddingPlannerApp'>
-      <img src={gitLogo} height="20px" />
+      <img alt='' src={gitLogo} height="20px" />
         </Link>
       </Box>
       </Box>

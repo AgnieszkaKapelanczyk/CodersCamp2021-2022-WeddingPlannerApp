@@ -4,6 +4,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
+import { useSelector } from "react-redux";
+//import dateOfWeddingSlice from '../../../../store/dateOfWeddingSlice'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -22,6 +24,9 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 const DateOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
+  //const dateOfWedding = useSelector((state) =>
+  //state.pickDate)
+   
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
