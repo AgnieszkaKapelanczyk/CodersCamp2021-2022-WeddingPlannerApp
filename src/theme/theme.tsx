@@ -49,27 +49,27 @@ export const theme = createTheme({
         
       },
       h4: {
-        fontFamily: "'Lato'",
+        fontFamily: "Lato",
         fontSize: "0.9rem",
         fontWeight: 400,
       },
       body1: {
         fontSize: '1.2rem',
-        fontFamily:"'Lato'",
+        fontFamily:"Lato",
         fontWeight: 500,
         lineHeight:'1.4',
         letterSpacing: "1px"
       },
       body2: {
         fontSize: '1rem',
-        fontFamily:"'Lato'",
+        fontFamily:"Lato",
         fontWeight: 400
       },
       button: {
         textTransform: 'none',
         letterSpacing: '1.2px',
         fontSize: '1rem',
-        fontFamily: "'Lato"
+        fontFamily: "Lato"
       },
     }, 
 });
