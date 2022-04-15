@@ -2,6 +2,7 @@ import { TextField, Button, Box} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addNewUser } from "store/userSlice";
 import { openDialog, FormType } from '../../store/dialogSlice';
 
 
@@ -38,6 +39,7 @@ export const RejestracjaEmail = () => {
   const handleSubmit = (e: React.ChangeEvent<any>): void => {
     e.preventDefault();
     console.log(data);
+    dispatch(addNewUser(data));
     dispatch(openDialog({ formType: FormType.zalozonyProfil }))
   };
 
