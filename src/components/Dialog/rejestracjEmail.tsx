@@ -23,7 +23,6 @@ export const RejestracjaEmail = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    login: "",
     email: "",
     password: ""
   });

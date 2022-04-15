@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 type Users = {
     name:string,
@@ -18,10 +18,8 @@ const initialState = {
     reducers: {
     
         addNewUser: (state, action) => {
-            console.log(initialState)
-            console.log(action.payload)
           state.users.push(action.payload);
-          console.log(state.users)
+          console.log(current(state));
          }
     
     },
