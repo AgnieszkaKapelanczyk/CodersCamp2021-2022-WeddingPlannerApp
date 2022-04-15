@@ -3,6 +3,7 @@ import { Divider, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
+import { Box } from "@mui/system";
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -32,6 +33,9 @@ const ProgressWidget = () => {
               }>
           </CardHeader>
           <Divider style={{backgroundColor:'secondary'}}/>
+          <Box display={"flex"}>
+              
+          </Box>
     </>
   );
 };

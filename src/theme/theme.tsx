@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-
+import type {} from '@mui/lab/themeAugmentation';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -39,7 +39,9 @@ export const theme = createTheme({
     typography: {
       fontFamily: "'Abril Fatface'", 
       h1: {
-        fontSize: '2.2rem',
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+        WebkitFontSmoothing: "antialiased",
       },
       h2: {
         fontSize: '1.8rem',
@@ -72,4 +74,15 @@ export const theme = createTheme({
         fontFamily: "'Lato"
       },
     }, 
+    components: {
+      MuiTimeline: {
+        styleOverrides: {
+          root: {
+            '&::before': {
+              content: 'none',
+            }
+          },
+        },
+      },
+    },
 });
