@@ -28,29 +28,37 @@ import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog';
-import { Box } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
+import { StyledEngineProvider } from '@mui/material/styles';
+
+const StyledBox = styled(Box)<{ component?: React.ElementType }>({
+  gridArea: 'leftBar', 
+  borderRight: '1px solid ',
+  borderColor: theme.palette.tertiary.main,
+})
 
 function App() {
   return (
+    <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <Dialog />
       <Box height={"100%"} > 
       <Box
-  sx={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    gridTemplateRows: 'auto',
-    gridTemplateAreas: `"header header header header header"
-  "leftBar main main main main"
-  "footer footer footer footer footer "`,
-  }}>
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridTemplateRows: 'auto',
+          gridTemplateAreas: `"header header header header header"
+        "leftBar main main main main"
+        "footer footer footer footer footer "`,
+        }}>
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
-      <Box sx={{ gridArea: 'leftBar', borderRight: '1px solid', borderColor:'tertiary'}}>
+      <StyledBox>
       <AppLeftBar />
-      </Box>
+      </StyledBox>
         <Box sx={{ gridArea: 'main'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
@@ -82,11 +90,10 @@ function App() {
       <Box sx={{ gridArea: 'footer'}}>
       <AppFooter/>
       </Box>
-     
       </Box>
       </Box>
-      
     </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

@@ -1,11 +1,9 @@
-import { CardContent, ListItemText, Divider, IconButton } from "@material-ui/core";
-import { Link, ListItemButton } from '@mui/material';
-import { Typography, makeStyles, CardHeader } from "@material-ui/core";
+import { CardHeader, Divider, IconButton, Link, ListItemButton, ListItemText, styled, Typography } from '@mui/material';
 import { theme } from "../../theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
-import React from "react";
+import {makeStyles} from '@material-ui/core';
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -18,12 +16,20 @@ const useStyles = makeStyles({
   }
 });
 
+const StyledListButton = styled(ListItemButton)<{ component?: React.ElementType }>({
+  '&:hover': {
+    backgroundColor: theme.palette.tertiary.light,
+    color:  theme.palette.tertiary.main,
+    fontWeight: 600
+  }
+});
+
 const ReminderWidget = () => {
     const classes = useStyles(theme);
     
     return (
        <>
-            <CardHeader 
+            <CardHeader
             title={<Typography className={classes.headerTitle}>Przypomnienia</Typography>}
             avatar={
               <PriorityHighRoundedIcon className={classes.cardHeaderIcon}/>
@@ -35,8 +41,7 @@ const ReminderWidget = () => {
               }>
           </CardHeader>
           <Divider style={{backgroundColor:'secondary'}}/>
-          <CardContent style={{textAlign: 'center', padding:'1rem'}}>
-          <ListItemButton
+          <StyledListButton
                       key={`listitembutton-1}`} 
                       style={{width: "100%"}} 
                       disableGutters
@@ -59,8 +64,8 @@ const ReminderWidget = () => {
                     </>
                   }
               />
-          </ListItemButton>
-          <ListItemButton
+          </StyledListButton>
+          <StyledListButton
                   key={`listitembutton-2}`} 
                   style={{width: "100%"}} 
                   disableGutters
@@ -83,8 +88,7 @@ const ReminderWidget = () => {
                     </>
                   }
               />
-          </ListItemButton>
-        </CardContent>
+          </StyledListButton>
        </>
       );
     };
