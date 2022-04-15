@@ -1,7 +1,7 @@
 import { CardContent, ListItemText, Divider, IconButton } from "@material-ui/core";
 import { Link, ListItemButton } from '@mui/material';
 import { Typography, makeStyles, CardHeader } from "@material-ui/core";
-import { theme } from "theme/theme";
+import { theme } from "../../theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';

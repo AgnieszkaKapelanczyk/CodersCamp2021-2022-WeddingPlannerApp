@@ -7,8 +7,12 @@ import DatePicker from '../DateOfWedding/DatePicker';
 import { theme } from '../../../../theme/theme';
 import {makeStyles} from '@material-ui/core';
 import { styled } from '@mui/material/styles';
-//import { useSelector } from "react-redux";
-//import dateOfWeddingSlice from '../../../../store/dateOfWeddingSlice'
+import { useSelector } from "react-redux";
+import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
+import moment from 'moment';
+import 'moment/locale/pl'  
+moment.locale('pl')
+
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -40,8 +44,7 @@ const DateOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles(theme);
-  //const dateOfWedding = useSelector((state) =>
-  //state.pickDate)
+  const dateOfWedding = useSelector(pickDateOfWedding)
    
 
   const handleExpandClick = () => {
@@ -81,7 +84,7 @@ const DateOfWedding = () => {
         </Box>
         <Box>
             <Typography variant="body1">Wasz ślub odbędzie się:</Typography>
-            <Typography variant="body1" style={{paddingTop:'1rem'}}>Data</Typography>
+            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{moment(dateOfWedding.toString()).format("dddd DD-MM-YYYY") + ' o godzinie '}</Typography>
             <Typography variant="body1" style={{paddingTop:'1rem'}}>Do dnia, w którym zostaniecie Małżeństwem pozostało:</Typography>
             <Typography variant="body1" style={{paddingTop:'1rem'}}>Timer</Typography>
         </Box>
