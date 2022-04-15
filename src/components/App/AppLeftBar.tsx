@@ -42,7 +42,7 @@ const SideBar = styled(List)<{ component?: React.ElementType }>({
 
 function AppLeftBar() {
     const navigate= useNavigate();
-    
+
     return(
     
     <SideBar sx={{paddingTop: 0}}>
