@@ -45,7 +45,7 @@ function AppLeftBar() {
 
     return(
     
-    <SideBar sx={{paddingTop: 0}}>
+    <SideBar sx={{paddingTop: 0, paddingBottom: 0}}>
       {LeftBarListCouple.map((item) => (
         <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider>
           <ListItemIcon>

@@ -34,7 +34,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 
 const StyledBox = styled(Box)<{ component?: React.ElementType }>({
   gridArea: 'leftBar', 
-  borderRight: '1px solid ',
+  border: '1px solid ',
   borderColor: theme.palette.tertiary.main,
 })
 
@@ -47,11 +47,11 @@ function App() {
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridTemplateColumns: 'repeat(6, 1fr)',
           gridTemplateRows: 'auto',
-          gridTemplateAreas: `"header header header header header"
-        "leftBar main main main main"
-        "footer footer footer footer footer "`,
+          gridTemplateAreas: `"header header header header header header"
+        "leftBar main main main main main"
+        "footer footer footer footer footer footer"`,
         }}>
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
