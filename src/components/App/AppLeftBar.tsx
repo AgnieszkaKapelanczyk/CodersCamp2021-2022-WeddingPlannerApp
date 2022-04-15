@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { theme} from '../../theme/theme'
 import { styled } from '@material-ui/styles';
 
-
 const SideBar = styled(List)<{ component?: React.ElementType }>({
   '& .MuiTypography-root': {
     fontSize: '0.9rem',
@@ -19,6 +18,7 @@ const SideBar = styled(List)<{ component?: React.ElementType }>({
     '&:hover, &:focus': {
       backgroundColor: theme.palette.tertiary.light,
     }
+    
   },
   '& .MuiListItemButton-root': {
     margin: '10px',
@@ -38,14 +38,15 @@ const SideBar = styled(List)<{ component?: React.ElementType }>({
   },
 });
 
+
 function AppLeftBar() {
     const navigate= useNavigate();
 
     return(
-
-    <SideBar sx={{paddingTop: 0}}>
+ 
+    <SideBar sx={{paddingTop: 0, position:"sticky", top:"0"}}>
       {LeftBarListCouple.map((item) => (
-        <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider>
+        <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider >
           <ListItemIcon>
             {item.icon}
           </ListItemIcon>
@@ -53,7 +54,7 @@ function AppLeftBar() {
         </ListItem>
       ))}
     </SideBar>
-
+   
     );
 };
 
