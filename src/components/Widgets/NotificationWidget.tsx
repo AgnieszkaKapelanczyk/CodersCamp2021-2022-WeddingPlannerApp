@@ -1,5 +1,4 @@
-import { CardContent, ListItemText, Typography } from "@material-ui/core";
-import { CardHeader, Divider, IconButton, Link, ListItemButton } from '@mui/material';
+import { CardHeader, Divider, IconButton, Link, ListItemButton, ListItemText, styled, Typography } from '@mui/material';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import CancelIcon from '@mui/icons-material/Cancel';
 import MessageIcon from '@mui/icons-material/Message';
@@ -28,6 +27,14 @@ const useStyles = makeStyles({
     }
   });
 
+  const StyledListButton = styled(ListItemButton)<{ component?: React.ElementType }>({
+      '&:hover': {
+        backgroundColor: theme.palette.tertiary.light,
+        color:  theme.palette.tertiary.main,
+        fontWeight: 600
+      }
+  });
+
 const NotificationWidget = () => {
     const classes = useStyles(theme);
     
@@ -45,8 +52,7 @@ const NotificationWidget = () => {
             }>
            </CardHeader>
            <Divider style={{backgroundColor:'secondary'}}/>
-           <CardContent style={{textAlign: 'center', margin:'0rem'}}>
-             <ListItemButton
+             <StyledListButton
                         key={`listitembutton-1}`} 
                         style={{width: "100%"}} 
                         disableGutters
@@ -56,7 +62,7 @@ const NotificationWidget = () => {
                 <LibraryAddCheckIcon 
                     className={classes.successIcon}
                     style={{margin:'1rem'}}/>
-                <ListItemText 
+                <ListItemText
                     key={`listitem-1`}
                     primary= {
                         <>
@@ -70,8 +76,8 @@ const NotificationWidget = () => {
                         </>
                       }
                   />
-              </ListItemButton>
-              <ListItemButton
+              </StyledListButton>
+              <StyledListButton
                     key={`listitembutton-2}`} 
                     style={{width: "100%"}} 
                     disableGutters
@@ -94,8 +100,8 @@ const NotificationWidget = () => {
                         </>
                       }
                   />
-              </ListItemButton>
-              <ListItemButton
+              </StyledListButton>
+              <StyledListButton
                     key={`listitembutton-3}`} 
                     style={{width: "100%"}} 
                     disableGutters
@@ -118,8 +124,8 @@ const NotificationWidget = () => {
                         </>
                       }
                   />
-              </ListItemButton>
-              <ListItemButton
+              </StyledListButton>
+              <StyledListButton
                     key={`listitembutton-4}`} 
                     style={{width: "100%"}} 
                     disableGutters
@@ -142,10 +148,8 @@ const NotificationWidget = () => {
                         </>
                       }
                   />
-              </ListItemButton>
-            </CardContent>
+              </StyledListButton>
         </>
-        
       );
     };
     

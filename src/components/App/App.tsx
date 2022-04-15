@@ -30,26 +30,28 @@ import AppLeftBar from './AppLeftBar';
 import Dialog from '../Dialog/Dialog';
 import { Box, styled } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const StyledBox = styled(Box)<{ component?: React.ElementType }>({
   gridArea: 'leftBar', 
-  borderRight: '1px solid ',
+  border: '1px solid ',
   borderColor: theme.palette.tertiary.main,
 })
 
 function App() {
   return (
+    <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <Dialog />
       <Box height={"100%"} > 
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
+          gridTemplateColumns: 'repeat(6, 1fr)',
           gridTemplateRows: 'auto',
-          gridTemplateAreas: `"header header header header header"
-        "leftBar main main main main"
-        "footer footer footer footer footer "`,
+          gridTemplateAreas: `"header header header header header header"
+        "leftBar main main main main main"
+        "footer footer footer footer footer footer"`,
         }}>
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
@@ -91,6 +93,7 @@ function App() {
       </Box>
       </Box>
     </ThemeProvider>
+    </StyledEngineProvider>
   );
 }
 

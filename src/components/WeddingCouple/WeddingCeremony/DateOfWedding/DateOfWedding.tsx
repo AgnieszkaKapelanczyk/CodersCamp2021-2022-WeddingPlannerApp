@@ -8,7 +8,7 @@ import { theme } from '../../../../theme/theme';
 import {makeStyles} from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import { useSelector } from "react-redux";
-import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
+import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
 import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')
