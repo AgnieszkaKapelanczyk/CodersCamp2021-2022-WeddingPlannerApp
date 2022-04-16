@@ -37,9 +37,9 @@ const Timer = () => {
   const dateOfWedding = useSelector(pickDateOfWedding)
   const timeOfWedding = useSelector(pickTimeOfWedding) 
 
-  let currentDay = moment().format();
+  let currentDay = moment();
   let givenDay = moment(dateOfWedding).format('YYYY-MM-DD');
-  let givenTime = moment(timeOfWedding).format("HH:MM:SS");
+  let givenTime = moment(timeOfWedding).format("HH:mm");
   let dayAndTimeOfWedding = `${givenDay}T${givenTime}`;
   let dayAndTime = moment(dayAndTimeOfWedding)
   console.log(dayAndTime)
@@ -47,6 +47,7 @@ const Timer = () => {
   let hours = dayAndTime.diff(currentDay,'hours')-(days*24)
   let minutes = dayAndTime.diff(currentDay,'minutes')-(hours*60)-(days*1440)
   let seconds = dayAndTime.diff(currentDay,'seconds')-(hours*3600)-(days*86400)-(minutes*60)
+  
  
 
   return (
@@ -70,7 +71,7 @@ const Timer = () => {
           <Typography variant="body2" style={{margin:"0.4rem 0"}}>MINUT</Typography>
         </Box>
         <Box alignSelf={'center'} textAlign={'center'}>
-          <Typography className={classes.timerNumber}>{seconds<=0?0:seconds}</Typography>
+          <Typography className={classes.timerNumber}>{seconds<0?0:seconds}</Typography>
           <Typography variant="body2" style={{margin:"0.4rem 0"}}>SEKUND</Typography>
         </Box>
       </StyledBox>
