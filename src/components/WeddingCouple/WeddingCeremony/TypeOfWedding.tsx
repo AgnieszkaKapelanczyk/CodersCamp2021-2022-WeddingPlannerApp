@@ -6,6 +6,20 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
 import { useState } from 'react';
+import { theme } from '../../../theme/theme';
+import {makeStyles} from '@material-ui/core';
+
+const useStyles = makeStyles({
+  cardHeaderIcon: {
+    color: theme.palette.tertiary.main,
+  },
+  headerTitle: {
+    color: theme.palette.tertiary.main,
+  },
+  typoTitle: {
+    color: theme.palette.tertiary.main,
+  }
+});
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -22,6 +36,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 const TypeOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
+  const classes = useStyles(theme);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -31,7 +46,7 @@ const TypeOfWedding = () => {
     <Card style={{display:'flex', flexDirection:'column', marginTop:'2rem'}}>
       <CardHeader
          avatar={
-          <EditIcon/>
+          <EditIcon className={classes.cardHeaderIcon}/>
         }
         action={
           <ExpandMore
@@ -43,7 +58,7 @@ const TypeOfWedding = () => {
             <ExpandMoreIcon />
           </ExpandMore>
         }
-        title="Rodzaj ślubu"
+        title={<Typography className={classes.headerTitle}>Rodzaj ślubu</Typography>}
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

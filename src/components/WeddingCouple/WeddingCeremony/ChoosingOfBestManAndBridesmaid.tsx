@@ -1,7 +1,21 @@
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, styled, Collapse} from "@mui/material"
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, Collapse, styled} from "@mui/material"
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import PersonPinIcon from '@mui/icons-material/PersonPin';
+import { theme } from '../../../theme/theme';
+import {makeStyles} from '@material-ui/core';
+
+const useStyles = makeStyles({
+  cardHeaderIcon: {
+    color: theme.palette.tertiary.main,
+  },
+  headerTitle: {
+    color: theme.palette.tertiary.main,
+  },
+  typoTitle: {
+    color: theme.palette.tertiary.main,
+  }
+});
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -18,6 +32,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 const ChoosingOfBestManAndBridesmaid = () => {
     const [expanded, setExpanded] = useState(false);
+    const classes = useStyles(theme);
 
     const handleExpandClick = () => {
       setExpanded(!expanded);
@@ -28,7 +43,7 @@ const ChoosingOfBestManAndBridesmaid = () => {
     <Card style={{display:'flex', flexDirection:'column', marginTop:'2rem'}}>
       <CardHeader 
          avatar={
-          <PersonPinIcon/>
+          <PersonPinIcon className={classes.cardHeaderIcon}/>
         }
         action={
           <ExpandMore
@@ -40,7 +55,7 @@ const ChoosingOfBestManAndBridesmaid = () => {
             <ExpandMoreIcon />
           </ExpandMore>
         }
-        title="Wybór świadków"
+        title={<Typography className={classes.headerTitle}>Wybór świadków</Typography>}
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>

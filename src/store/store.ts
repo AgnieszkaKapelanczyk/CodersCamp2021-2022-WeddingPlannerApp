@@ -2,12 +2,14 @@ import { configureStore} from '@reduxjs/toolkit';
 import dialogReducer from '../store/dialogSlice';
 import layoutReducer from '../store/layoutSlice';
 import dateOfWeddingReducer from './dateOfWeddingSlice';
+import timeOfWeddingReducer from './timeOfWeddingSlice';
 
 export const store = configureStore({
   reducer: {
     dialog: dialogReducer,
     layout: layoutReducer,
     dateOfWedding: dateOfWeddingReducer,
+    timeOfWedding: timeOfWeddingReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false
