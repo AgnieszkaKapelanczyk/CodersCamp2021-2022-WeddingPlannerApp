@@ -85,7 +85,7 @@ const DateOfWedding = () => {
         </Box>
         <Box>
             <Typography variant="body2">Wasz ślub odbędzie się:</Typography>
-            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("hh:mm A")}`}</Typography>
+            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("HH:mm")}`}</Typography>
             <Timer/>
         </Box>
       </CardContent>
