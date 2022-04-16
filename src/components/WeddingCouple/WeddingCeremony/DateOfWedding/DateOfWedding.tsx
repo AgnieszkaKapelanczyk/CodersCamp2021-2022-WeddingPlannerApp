@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, Collapse} from "@mui/material"
+import { Box, Card, CardContent, CardHeader, IconButton, Typography, Divider, IconButtonProps, Collapse, styled} from "@mui/material"
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
@@ -6,9 +6,10 @@ import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
 import { theme } from '../../../../theme/theme';
 import {makeStyles} from '@material-ui/core';
-import { styled } from '@mui/material/styles';
 import { useSelector } from "react-redux";
-import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
+import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
+import {pickTimeOfWedding} from '../../../../store/timeOfWeddingSlice';
+import Timer from '../../WeddingCeremony/DateOfWedding/Timer'
 import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')
@@ -45,7 +46,7 @@ const DateOfWedding = () => {
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles(theme);
   const dateOfWedding = useSelector(pickDateOfWedding)
-   
+  const timeOfWedding = useSelector(pickTimeOfWedding) 
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -74,19 +75,18 @@ const DateOfWedding = () => {
       <CardContent style={{display:'flex', justifyContent:'center', marginTop:'2rem'}}>
         <Box style={{ display:'flex', justifyContent:'center', flexDirection:'column'}}>
           <Box style={{ display:'flex', justifyContent:'center'}}>
-            <Typography variant="body1">Wybierz datę ceremonii ślubnej</Typography>
+            <Typography variant="body2">Wybierz datę ceremonii ślubnej</Typography>
           </Box>
           <DatePicker/>
           <Box style={{display:'flex'}}>
-            <Typography variant="body1" style={{padding:'0 2rem'}}>Podaj godzinę:</Typography>
+            <Typography variant="body2" style={{padding:'0 2rem'}}>Podaj godzinę:</Typography>
             <CustomTimePicker />  
           </Box>
         </Box>
         <Box>
-            <Typography variant="body1">Wasz ślub odbędzie się:</Typography>
-            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{moment(dateOfWedding.toString()).format("dddd DD-MM-YYYY") + ' o godzinie '}</Typography>
-            <Typography variant="body1" style={{paddingTop:'1rem'}}>Do dnia, w którym zostaniecie Małżeństwem pozostało:</Typography>
-            <Typography variant="body1" style={{paddingTop:'1rem'}}>Timer</Typography>
+            <Typography variant="body2">Wasz ślub odbędzie się:</Typography>
+            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("hh:mm A")}`}</Typography>
+            <Timer/>
         </Box>
       </CardContent>
       </Collapse>
