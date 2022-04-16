@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-
+import type {} from '@mui/lab/themeAugmentation';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -27,10 +27,10 @@ export const theme = createTheme({
       },
       tertiary: {
         main: '#6F59C9',
-        light:'#BAAAFB',
+        light:'#E7E2FF',
       },
       success: {
-        main: '#99D983'
+        main: '#68B24E'
       },
       error: {
         main: '#FF1A4B'
@@ -39,7 +39,9 @@ export const theme = createTheme({
     typography: {
       fontFamily: "'Abril Fatface'", 
       h1: {
-        fontSize: '2.2rem',
+        fontSize: '2.5rem',
+        letterSpacing: '1px',
+        WebkitFontSmoothing: "antialiased",
       },
       h2: {
         fontSize: '1.8rem',
@@ -54,14 +56,14 @@ export const theme = createTheme({
         fontWeight: 400,
       },
       body1: {
-        fontSize: '1.2rem',
+        fontSize: '1rem',
         fontFamily:"Lato",
         fontWeight: 500,
         lineHeight:'1.4',
         letterSpacing: "1px"
       },
       body2: {
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         fontFamily:"Lato",
         fontWeight: 400
       },
@@ -72,4 +74,15 @@ export const theme = createTheme({
         fontFamily: "Lato"
       },
     }, 
+    components: {
+      MuiTimeline: {
+        styleOverrides: {
+          root: {
+            '&::before': {
+              content: 'none',
+            }
+          },
+        },
+      },
+    },
 });

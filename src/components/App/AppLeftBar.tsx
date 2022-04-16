@@ -1,68 +1,63 @@
-import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import LeftBarListCouple from './LeftBarListCouple';
-import LeftBarListGuest from './LeftBarListGuests';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { useNavigate } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import { theme} from '../../theme/theme'
+import { styled } from '@material-ui/styles';
 
-
-
-const useStyles = makeStyles({
-  leftBar: {
+const SideBar = styled(List)<{ component?: React.ElementType }>({
+  '& .MuiTypography-root': {
+    fontSize: '0.9rem',
+    lineHeight: '1.6',
     color: theme.palette.tertiary.main,
-    paddingLeft: '10px',
-  }
-})
-
-const leftBarStyle=({
+  },
+  '& .MuiListItem-root': {
+    padding: '5px',
+    '&:hover': {
+      backgroundColor: theme.palette.tertiary.light,
+    }
+    
+  },
+  '& .MuiListItemButton-root': {
+    margin: '10px',
+    paddingLeft: 24,
+    paddingRight: 24,
+    color: theme.palette.tertiary.main,
+    border: '1px solid',
+    borderColor: theme.palette.tertiary.light,
+  },
+  '& .MuiListItemIcon-root': {
+    minWidth: 0,
+    margin: '10px 14px',
     color:theme.palette.tertiary.main,
-    paddingLeft: '10px'
-})
-
+  },
+  '& .MuiSvgIcon-root': {
+    fontSize: 20,
+    position: 'relative',
+    top: "1.5px"
+  },
+});
 
 
 function AppLeftBar() {
-    const classes = useStyles();
     const navigate= useNavigate();
-    
+
     return(
-    
-  //   <Drawer
-  //   // PaperProps={{ style: { height: "90vh" } }}
-  //   // className={classes.drawer}
-  //   sx={{
-  //     width: drawerWidth,
-  //     flexShrink: 1,
-  //     // '& .MuiDrawer-paper': {
-  //     //   width: drawerWidth,
-  //     //   boxSizing: 'border-box',
-  //     // },
-  //   }}
-  //   variant="permanent"
-  //   anchor="left"
-   
-  // >
-    
-  
-    <List style={leftBarStyle} >
+ 
+    <SideBar sx={{paddingTop: 0, paddingBottom: 0, position:"sticky", top:"0"}}>
       {LeftBarListCouple.map((item) => (
-        <ListItem sx={{padding:0.3, color:theme.palette.tertiary.main}} button key={item.label} onClick={()=>navigate(item.path)} divider>
-          <ListItemIcon  >
+        <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider >
+          <ListItemIcon>
             {item.icon}
           </ListItemIcon>
-          <ListItemText  primary={item.label} sx={{paddingRight:'10px', color:'BAAAFB' }}  />
+          <ListItemText  primary={item.label}  />
         </ListItem>
       ))}
-    </List>
+    </SideBar>
 
-  // </Drawer>
-  
-)
-      
-}
+    );   
+};
 
 export default AppLeftBar;
