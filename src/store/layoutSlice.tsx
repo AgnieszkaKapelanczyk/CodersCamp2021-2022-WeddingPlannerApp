@@ -1,27 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
 
-interface ItemObject {
-    i: string
-    x: number
-    y: number
-    w: number
-    h: number
-    minW?: number | undefined;
-    maxW?: number | undefined;
-    minH?: number | undefined;
-    maxH?: number | undefined;
-    moved?: boolean | undefined;
-    isDraggable?: boolean | undefined;
-    isResizable?: boolean | undefined;
-    isBounded?: boolean | undefined;
-};
+type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
+export interface Layout {
+  i: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  minW?: number | undefined;
+  maxW?: number | undefined;
+  minH?: number | undefined;
+  maxH?: number | undefined;
+  moved?: boolean | undefined;
+  static?: boolean | undefined;
+  isDraggable?: boolean | undefined;
+  isResizable?: boolean | undefined;
+  resizeHandles?: ResizeHandle[] | undefined;
+  isBounded?: boolean | undefined;
+}
+export interface Layouts {
+  [P: string]: Layout[];
+}
 
-export interface LayoutArray {
-    [P: string]: ItemObject[];
-};
-
-const initialState: LayoutArray = {
+const initialState: Layouts = {
     layout: [
       { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1 },
       { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },

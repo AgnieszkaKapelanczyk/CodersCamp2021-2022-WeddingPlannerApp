@@ -1,4 +1,3 @@
-import { Box, Typography } from "@material-ui/core";
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';
@@ -6,6 +5,7 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import MockupImage from 'assets/img/mockup.png';
+import { Box, Typography } from '@mui/material';
 
 const HowItWorksSection = () => {
   return (
@@ -17,7 +17,7 @@ const HowItWorksSection = () => {
       justifyContent={"center"}
       alignItems={"center"}
   > 
-    <Typography 
+    <Typography
       gutterBottom variant="h1" 
       align={'center'}
       color={'primary'}

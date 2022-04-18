@@ -1,13 +1,13 @@
 import RGL, { WidthProvider } from "react-grid-layout";
 import { useDispatch, useSelector } from "react-redux";
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { LayoutArray, selectLayout, setLayout } from "store/layoutSlice";
+import { Layouts, selectLayout, setLayout } from "store/layoutSlice";
 
 interface LayoutProps {
     className: string
     cols: number
     rowHeight: number
-    onLayoutChange?(layout: LayoutArray[]): void;
+    onLayoutChange?(layout: Layouts[]): void;
 }
 
 const Props: LayoutProps = {
@@ -66,7 +66,7 @@ function getFromLS(key:string) {
   //return ls[key];
 }
 
-function saveToLS(key:string, value:  LayoutArray[]) {
+function saveToLS(key:string, value:  Layouts[]) {
   if (global.localStorage) {
     global.localStorage.setItem(
       "rgl-7",
