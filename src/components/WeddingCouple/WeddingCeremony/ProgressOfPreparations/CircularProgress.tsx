@@ -22,7 +22,7 @@ export function CircularProgressWithLabel(
       >
         <Typography
           fontSize={'2rem'}
-          variant="caption"
+          variant="h2"
           component="div"
           color="secondary"
         >{`${Math.round(props.value)}%`}</Typography>
