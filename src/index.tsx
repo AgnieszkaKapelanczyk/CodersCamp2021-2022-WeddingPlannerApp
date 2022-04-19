@@ -1,5 +1,7 @@
 import React from 'react';
 import './index.css';
+import '/node_modules/react-grid-layout/css/styles.css';
+import '/node_modules/react-resizable/css/styles.css';
 import App from './components/App/App';
 import { store } from './store/store';
 import { Provider } from 'react-redux';

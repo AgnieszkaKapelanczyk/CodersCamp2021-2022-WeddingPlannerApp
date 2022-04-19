@@ -19,7 +19,8 @@ export const theme = createTheme({
     palette: {
       primary: {
         main: '#C26D6D',
-        contrastText: '#fff'
+        contrastText: '#fff',
+        dark: '#B85C5C',
       },
       secondary: {
         main: '#FEC5BB',
@@ -39,7 +40,7 @@ export const theme = createTheme({
     typography: {
       fontFamily: "'Abril Fatface'", 
       h1: {
-        fontSize: '2.5rem',
+        fontSize: '3.4rem',
         letterSpacing: '1px',
         WebkitFontSmoothing: "antialiased",
       },
@@ -59,7 +60,7 @@ export const theme = createTheme({
         fontSize: '1rem',
         fontFamily:"Lato",
         fontWeight: 500,
-        lineHeight:'1.4',
+        lineHeight:'1.6',
         letterSpacing: "1px"
       },
       body2: {
@@ -69,20 +70,11 @@ export const theme = createTheme({
       },
       button: {
         textTransform: 'none',
-        letterSpacing: '1.2px',
-        fontSize: '1rem',
-        fontFamily: "Lato"
+        letterSpacing: '2px',
+        fontSize: '16rem',
+        fontFamily: "Lato",
+        fontWeight: 500,
+        padding: '0.6rem 4rem',
       },
     }, 
-    components: {
-      MuiTimeline: {
-        styleOverrides: {
-          root: {
-            '&::before': {
-              content: 'none',
-            }
-          },
-        },
-      },
-    },
 });

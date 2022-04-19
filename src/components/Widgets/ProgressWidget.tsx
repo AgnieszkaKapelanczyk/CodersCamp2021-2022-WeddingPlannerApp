@@ -4,6 +4,7 @@ import { theme } from "../../theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import { Box } from "@mui/system";
+import ProgressCircle from 'common/ProgressCircle/ProgressCircle';
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -34,7 +35,11 @@ const ProgressWidget = () => {
           </CardHeader>
           <Divider style={{backgroundColor:'secondary'}}/>
           <Box display={"flex"}>
-              
+            <ProgressCircle
+              radius={ 60 }
+              stroke={ 8 }
+              progress={ 75 }
+            />
           </Box>
     </>
   );

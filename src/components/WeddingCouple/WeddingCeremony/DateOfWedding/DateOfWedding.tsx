@@ -4,7 +4,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
-import { theme } from '../../../../theme/theme';
+import { theme } from 'theme/theme';
 import {makeStyles} from '@material-ui/core';
 import { useSelector } from "react-redux";
 import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
