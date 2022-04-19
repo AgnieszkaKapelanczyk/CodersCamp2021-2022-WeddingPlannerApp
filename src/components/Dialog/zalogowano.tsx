@@ -20,6 +20,7 @@ export const Zalogowano = () => {
           <Button
             variant="contained"
             color="primary"
+            size="small"
             onClick={() => dispatch(closeDialog())}>
             ZACZYNAMY!
           </Button>
