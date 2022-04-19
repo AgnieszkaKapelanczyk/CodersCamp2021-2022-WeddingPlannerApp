@@ -5,6 +5,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useDispatch } from "react-redux";
 import { openDialog, FormType } from 'store/dialogSlice'
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from "@mui/material";
 
  const iconStyle= ({
       color:"#C26D6D",
@@ -33,13 +34,27 @@ function GetLogo() {
   const navigate=useNavigate()
  
 const names= 'Anna & Jakub'
-  const logo = (
+  const LogoBig = (
   <Box style={LogoBox}>
   <Button onClick={()=> navigate('/')}>
     <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
   <Typography variant='h3' color='primary' style={{margin:'0.5rem'}}>{loggedIn? names : 'WeddingPlanner'}</Typography>
-  </Button>
+ </Button>
   </Box>
+  )
+
+  const LogoSmall=(
+    <Box >
+  <Button onClick={()=> navigate('/')}>
+    <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
+ </Button>
+  </Box>
+  )
+
+  const matches = useMediaQuery('(min-width:500px)');
+ 
+  const logo=(
+    loggedIn? LogoBig:  matches ?  LogoBig :  LogoSmall
   )
 
   return logo}
@@ -48,8 +63,8 @@ const names= 'Anna & Jakub'
     let dispatch = useDispatch();
     let elementForNotLoggedIn= (
       <Box sx={{display:"flex"}}>
-      <Button sx= {{variant:'text', color:'primary' }} style={{margin:'0.2rem 1rem',  fontSize:'0.9rem'}} onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
-      <Button sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem 1rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
+      <Button sx= {{variant:'text', color:'primary' }} style={{margin:'0.2rem 0.5rem',  fontSize:'0.9rem'}} onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
+      <Button sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem 0.5rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
     </Box>
     )
     let elementForLoggedIn= (
