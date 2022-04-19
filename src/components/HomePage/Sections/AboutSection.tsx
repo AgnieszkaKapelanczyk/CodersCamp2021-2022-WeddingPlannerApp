@@ -58,8 +58,8 @@ const AboutSection = () => {
             <br />
             umoliwić gościom potwierdzanie swojego przybycia!.
           </Typography>
-          <Button variant="contained" size="medium" style={styles.aboutSection__button}>
-            Zarejestruj się
+          <Button size="large" variant="contained" color="primary" style={{margin: '2rem 0', width: '70%'}}>
+            ZAREJESTRUJ SIĘ
           </Button>
         </Box>
       </Box>

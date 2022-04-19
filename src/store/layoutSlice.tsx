@@ -39,7 +39,7 @@ const initialState: Layouts[]  = [
       },
       {
         md: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1, minH: 1, minW: 4},
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
           { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
           { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
@@ -48,7 +48,7 @@ const initialState: Layouts[]  = [
       },
       {
         sm: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "TimerWidget", x: 0, y: 0, w: 3, h: 1, minH: 1, minW: 3 },
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
           { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
           { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
@@ -57,7 +57,7 @@ const initialState: Layouts[]  = [
       },
       {
         xs: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "TimerWidget", x: 0, y: 0, w: 2, h: 1, minH: 1, minW: 2},
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
           { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
           { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
@@ -66,7 +66,7 @@ const initialState: Layouts[]  = [
       },
       {
         xxs: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "TimerWidget", x: 0, y: 0, w: 2, h: 1, minH: 1, minW: 2 },
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
           { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
           { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
