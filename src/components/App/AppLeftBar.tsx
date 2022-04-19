@@ -1,8 +1,5 @@
-import List from '@mui/material/List';
 import LeftBarListCouple from './LeftBarListCouple';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import {List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import { useNavigate } from 'react-router-dom';
 import { theme} from '../../theme/theme'
 import { styled } from '@material-ui/styles';
@@ -46,7 +43,7 @@ function AppLeftBar() {
 
     return(
  
-    <SideBar sx={{paddingTop: 0, paddingBottom: 0, position:"sticky", top:"0"}}>
+    <SideBar sx={{paddingTop: 0, paddingBottom: 0, position:"sticky", top:"0", minWidth:'180px'}}>
       {LeftBarListCouple.map((item) => (
         <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider >
           <ListItemIcon>

@@ -26,17 +26,29 @@ import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
 import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
-import AppLeftBar from './AppLeftBar';
+import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
 import { Box, styled } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 
-const StyledBox = styled(Box)<{ component?: React.ElementType }>({
-  gridArea: 'leftBar', 
-  border: '1px solid ',
-  borderColor: theme.palette.tertiary.main,
-})
+const StyledBox = styled(Box)(({ theme }) => ({
+  display: 'grid',
+          gridTemplateColumns: 'repeat(6, 1fr)',
+          gridTemplateRows: 'auto',
+          gridTemplateAreas: `"header header header header header header"
+        "leftBar main main main main main"
+        "footer footer footer footer footer footer"`,
+
+  [theme.breakpoints.down('sm')]: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto',
+    gridTemplateAreas: `"header "
+  " main"
+  " footer"`
+  },
+}));
 
 function App() {
   return (
@@ -44,21 +56,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <Dialog />
       <Box height={"100%"} > 
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(6, 1fr)',
-          gridTemplateRows: 'auto',
-          gridTemplateAreas: `"header header header header header header"
-        "leftBar main main main main main"
-        "footer footer footer footer footer footer"`,
-        }}>
+        <StyledBox>
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
-      <StyledBox>
-      <AppLeftBar />
-      </StyledBox>
+      <Box>
+      <AppSideBar />
+      </Box>
         <Box sx={{ gridArea: 'main'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
@@ -90,7 +94,7 @@ function App() {
       <Box sx={{ gridArea: 'footer'}}>
       <AppFooter/>
       </Box>
-      </Box>
+      </StyledBox>
       </Box>
     </ThemeProvider>
     </StyledEngineProvider>

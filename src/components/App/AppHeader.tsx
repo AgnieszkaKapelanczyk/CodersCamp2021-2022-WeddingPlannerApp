@@ -82,7 +82,7 @@ const AppHeader = () => {
   
   return (
     
-      <AppBar position='static' color='inherit'  >
+      <AppBar position='static' color='inherit' >
       <Box display={"flex"} flexDirection="row"> 
         {GetLogo()}
         <Box sx={{display:"flex", justifyContent:"flex-end", flexGrow:"1", gridColumnGap:"1rem"}}>
