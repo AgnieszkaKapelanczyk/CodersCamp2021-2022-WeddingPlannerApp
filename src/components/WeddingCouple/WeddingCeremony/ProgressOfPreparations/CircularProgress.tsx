@@ -1,13 +1,30 @@
 import CircularProgress, { CircularProgressProps } from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {Box, styled} from '@mui/material';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  position: 'relative',
+   display: 'inline-flex',
+   '& .MuiCircularProgress-svg': {
+    width:'95px',
+    height:'95px',
+  },
+  
+  [theme.breakpoints.down('md')]: {
+      '& .MuiCircularProgress-svg': {
+        width:'45px',
+        height:'45px',
+      },
+  },
+}));
+
 
 export function CircularProgressWithLabel(
   props: CircularProgressProps & { value: number },
 ) {
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex' }}>
-      <CircularProgress style={{height:'90px', width:'90px'}} variant="determinate" {...props} />
+    <StyledBox>
+      <CircularProgress variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
@@ -27,7 +44,7 @@ export function CircularProgressWithLabel(
           color="secondary"
         >{`${Math.round(props.value)}%`}</Typography>
       </Box>
-    </Box>
+    </StyledBox>
   );
 }
 

@@ -14,6 +14,20 @@ import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')
 
+const StyledCardContent = styled(Card)(({ theme }) => ({
+  display:'flex',
+  justifyContent:'center',
+  padding:'2rem',
+  [theme.breakpoints.down('md')]: {
+    padding:'1rem',
+    flexDirection:'column',
+    alignItems:'center',
+    '& .MuiInputBase-root': {
+      fontSize:'0.6rem',
+    },
+  },
+}));
+
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -45,15 +59,15 @@ const DateOfWedding = () => {
 
   const [expanded, setExpanded] = useState(false);
   const classes = useStyles(theme);
-  const dateOfWedding = useSelector(pickDateOfWedding)
-  const timeOfWedding = useSelector(pickTimeOfWedding) 
+  const dateOfWedding = useSelector(pickDateOfWedding);
+  const timeOfWedding = useSelector(pickTimeOfWedding) ;
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   return (
-    <Card style={{display:'flex', flexDirection:'column', marginTop:'2rem'}}>
+    <Card style={{ display:'flex', flexDirection:'column', marginTop:'2rem',}}>
       <CardHeader
          avatar={
           <CalendarTodayIcon className={classes.cardHeaderIcon}/>
@@ -72,23 +86,23 @@ const DateOfWedding = () => {
       />
       <Divider/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <CardContent style={{display:'flex', justifyContent:'center', marginTop:'2rem'}}>
+      <StyledCardContent>
         <Box style={{ display:'flex', justifyContent:'center', flexDirection:'column'}}>
           <Box style={{ display:'flex', justifyContent:'center'}}>
             <Typography variant="body2">Wybierz datę ceremonii ślubnej</Typography>
           </Box>
           <DatePicker/>
-          <Box style={{display:'flex'}}>
-            <Typography variant="body2" style={{padding:'0 2rem'}}>Podaj godzinę:</Typography>
+          <Box style={{display:'flex', paddingBottom:'1rem'}}>
+            <Typography variant="body2" style={{padding:'1rem'}}>Podaj godzinę:</Typography>
             <CustomTimePicker />  
           </Box>
         </Box>
-        <Box>
-            <Typography variant="body2">Wasz ślub odbędzie się:</Typography>
-            <Typography variant="h3" className={classes.typoTitle} style={{paddingTop:'1rem'}}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("HH:mm")}`}</Typography>
+        <Box style={{marginLeft:'2rem'}}>
+            <Typography variant="body2" style={{paddingBottom:'1rem'}}>Wasz ślub odbędzie się:</Typography>
+            <Typography variant="h3" className={classes.typoTitle}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("HH:mm")}`}</Typography>
             <Timer/>
         </Box>
-      </CardContent>
+      </StyledCardContent>
       </Collapse>
     </Card>
   )

@@ -3,7 +3,8 @@ import dialogReducer from '../store/dialogSlice';
 import layoutReducer from '../store/layoutSlice';
 import dateOfWeddingReducer from './dateOfWeddingSlice';
 import timeOfWeddingReducer from './timeOfWeddingSlice';
-import usersReducer from '../store/userSlice'
+import usersReducer from '../store/userSlice';
+import eventInCalendarReducer from './eventInCalendarSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     layout: layoutReducer,
     dateOfWedding: dateOfWeddingReducer,
     timeOfWedding: timeOfWeddingReducer,
-    users:usersReducer
+    users:usersReducer,
+    eventInCalendar:eventInCalendarReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false
