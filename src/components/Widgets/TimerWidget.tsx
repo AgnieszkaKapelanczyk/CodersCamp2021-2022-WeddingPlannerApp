@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { createRef, useLayoutEffect, useRef, useState } from "react";
 
 const useStyles = makeStyles({
   timerNumber: {
@@ -34,8 +35,22 @@ const StyledBox = styled(Box)(({ theme }) => ({
   justifyContent: 'space-evenly',
 }));
 
+
 const TimerWidget = () => {
   const classes = useStyles(theme);
+  const targetRef = useRef<HTMLDivElement>(null);
+  const [cardDimension, setCardDimension] = useState({ width:0, height: 0 });
+
+  useLayoutEffect(() => {
+    if (targetRef.current) {
+      setCardDimension({
+        width: targetRef.current.offsetWidth,
+        height: targetRef.current.offsetHeight
+      });
+    }
+  }, []);
+
+  console.log(cardDimension);
 
   return (
     <>
@@ -74,7 +89,7 @@ const TimerWidget = () => {
         </Box>
       </StyledBox>
     </CardContent>
-  </>
+    </>
   );
 };
 

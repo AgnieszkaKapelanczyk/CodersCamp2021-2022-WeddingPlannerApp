@@ -15,6 +15,7 @@ const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
   boxShadow: '0px 2px 1px rgba(0, 0, 0, 0.2)',
   borderRadius: '12px',
+  cursor: 'pointer'
 }));
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
@@ -85,7 +86,7 @@ const Props: LayoutProps = {
   breakpoints: { "lg": 1200, "md": 996, "sm": 768, "xs": 480, "xxs": 0 },
   cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
   className: "layout",
-  rowHeight: 260,
+  rowHeight: 280,
   maxRows: 30,
   width: 1000,
   margin: [30, 30],
@@ -104,14 +105,6 @@ const DashboardWeddingCouple = () => {
   const actualLayout = useAppSelector(selectLayout);
   const ResponsiveGridLayout = WidthProvider(Responsive);
 
-  const  layoutMD =  [
-    { i: "TimerWidget", x: 0, y: 0, w: 6, h: 1, minH: 1, minW: 5 },
-    { i: "ReminderWidget", x: 6, y: 1, w: 6, h: 1 },
-    { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-    { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1 },
-    { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
-  ];
-
   const weddingThemeStyle={
     backgroundImage: `url(${PanelThemeBg})`,
     backgroundSize: 'cover',
@@ -122,10 +115,6 @@ const DashboardWeddingCouple = () => {
   //const handleLayoutChange = (actualLayout, layouts) => {
   //  localStorage.setItem("grid-layout", JSON.stringify(layouts));
   //};
-
-  type ResponsiveLayout = Layouts | undefined;
-
-
 
   return (
     <Box style={weddingThemeStyle}>
