@@ -19,6 +19,7 @@ export const ZalozonyProfil = () => {
         >
           <Button
             variant="contained"
+            size="small"
             color="primary"
             onClick={() => dispatch(closeDialog())}>
             ZACZYNAMY!
