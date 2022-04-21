@@ -5,6 +5,7 @@ import dateOfWeddingReducer from './dateOfWeddingSlice';
 import timeOfWeddingReducer from './timeOfWeddingSlice';
 import usersReducer from '../store/userSlice';
 import eventInCalendarReducer from './eventInCalendarSlice'
+import loginReducer from './loginSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,8 @@ export const store = configureStore({
     timeOfWedding: timeOfWeddingReducer,
     users:usersReducer,
     eventInCalendar:eventInCalendarReducer,
+    login: loginReducer,
+
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false
