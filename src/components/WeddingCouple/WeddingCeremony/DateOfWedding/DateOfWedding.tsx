@@ -5,7 +5,7 @@ import { useState } from "react";
 import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
 import { theme } from 'theme/theme';
-import {makeStyles} from '@material-ui/core';
+import {CardContent, makeStyles} from '@material-ui/core';
 import { useSelector } from "react-redux";
 import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
 import {pickTimeOfWedding} from '../../../../store/timeOfWeddingSlice';
@@ -14,7 +14,7 @@ import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')
 
-const StyledCardContent = styled(Card)(({ theme }) => ({
+const StyledCardContent = styled(CardContent)(({ theme }) => ({
   display:'flex',
   justifyContent:'center',
   padding:'2rem',
