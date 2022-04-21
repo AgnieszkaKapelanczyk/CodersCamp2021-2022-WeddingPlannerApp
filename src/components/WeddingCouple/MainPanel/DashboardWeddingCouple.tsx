@@ -8,18 +8,20 @@ import NotificationWidget from "../../Widgets/NotificationWidget";
 import ProgressWidget from "../../Widgets/ProgressWidget";
 import PhotoWidget from "../../Widgets/PhotoWidget";
 import { Box } from "@mui/system";
-import { useAppSelector } from "../../../store/hooks";
-import { Layout, Layouts, selectLayout  } from "../../../store/layoutSlice";
+import { useAppSelector } from "store/hooks";
+import { Layout, Layouts, selectLayout  } from "store/layoutSlice";
+import { useState, useEffect } from "react";
+import { LG_BREAKPOINT_WIDTH, MD_BREAKPOINT_WIDTH, SM_BREAKPOINT_WIDTH, XS_BREAKPOINT_WIDTH, XXS_BREAKPOINT_WIDTH } from "common/Breakpoints/constans";
+import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
   boxShadow: '0px 2px 1px rgba(0, 0, 0, 0.2)',
   borderRadius: '12px',
-  cursor: 'pointer'
+  cursor: 'move'
 }));
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
-
 
 type ItemCallback = (
   layout: Layout[],
@@ -44,7 +46,6 @@ interface LayoutProps {
   autoSize?: boolean | undefined;
   draggableCancel?: string | undefined;
   draggableHandle?: string | undefined;
-  compactType?: 'vertical' | 'horizontal' | null | undefined;
   rowHeight?: number | undefined;
   droppingItem?: {
       i: string;
@@ -57,36 +58,30 @@ interface LayoutProps {
   isResizable?: boolean | undefined;
   isBounded?: boolean | undefined;
   useCSSTransforms?: boolean | undefined;
-  transformScale?: number | undefined;
-  allowOverlap?: boolean | undefined;
-  preventCollision?: boolean | undefined;
   isDroppable?: boolean | undefined;
   resizeHandles?: ResizeHandle[] | undefined;
   resizeHandle?: React.ReactNode | ((resizeHandle: ResizeHandle) => React.ReactNode) | undefined;
-  onDragStart?: ItemCallback | undefined;
-  onDrag?: ItemCallback | undefined;
-  onDragStop?: ItemCallback | undefined;
-  onResizeStart?: ItemCallback | undefined;
-  onResize?: ItemCallback | undefined;
-  onResizeStop?: ItemCallback | undefined;
-  onDrop?(layout: Layout[], item: Layout, e: Event): void;
-  onDropDragOver?(e: DragOverEvent): { w?: number, h?: number } | false | undefined;
-  innerRef?: React.Ref<HTMLDivElement>;
   layout?: Layout[] | undefined;
   margin?: [number, number] | undefined;
   children?: React.ReactNode;
-  containerPadding?: [number, number] | undefined;
-  onLayoutChange?(layout: Layout[]): void;
   cols?: { [P: string]: number } | undefined;
   breakpoint?: string | undefined;
   breakpoints?: { [P: string]: number } | undefined;
+  onLayoutChange: (currentLayout: Layout[], layouts: Layouts)=> void;
+  measureBeforeMount?: boolean | undefined;
 }
 
 const Props: LayoutProps = {
-  breakpoints: { "lg": 1200, "md": 996, "sm": 768, "xs": 480, "xxs": 0 },
+  breakpoints: { 
+    "lg": LG_BREAKPOINT_WIDTH, 
+    "md": MD_BREAKPOINT_WIDTH, 
+    "sm": SM_BREAKPOINT_WIDTH, 
+    "xs": XS_BREAKPOINT_WIDTH, 
+    "xxs": XXS_BREAKPOINT_WIDTH
+  },
   cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
   className: "layout",
-  rowHeight: 280,
+  rowHeight: 287,
   maxRows: 30,
   width: 1000,
   margin: [30, 30],
@@ -95,26 +90,38 @@ const Props: LayoutProps = {
   resizeHandles: ['se'],
   isBounded: true,
   verticalCompact: true,
-  onLayoutChange: function() {},
   isDraggable: true,
-  //onLayoutChange={handleLayoutChange}
-  
+  onLayoutChange: function() {},
+  useCSSTransforms: true,
 }
 
 const DashboardWeddingCouple = () => {
   const actualLayout = useAppSelector(selectLayout);
   const ResponsiveGridLayout = WidthProvider(Responsive);
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint | undefined>(undefined);
+  const [currentLayout, setCurrentLayout] = useState<Layout[]>([])
 
   const weddingThemeStyle={
     backgroundImage: `url(${PanelThemeBg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100%',
-  };
+  }; 
   
-  //const handleLayoutChange = (actualLayout, layouts) => {
-  //  localStorage.setItem("grid-layout", JSON.stringify(layouts));
-  //};
+  const handleLayoutChange = (currentLayout: Layout[], layouts: Layouts[]) => {
+    
+  };
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newBreakpoint= getDeviceConfig(window.innerWidth);
+        setCurrentBreakpoint(newBreakpoint);
+    };
+    console.log(currentBreakpoint) 
+    window.addEventListener("resize", updateWindowDimensions);
+    return () => window.removeEventListener("resize", updateWindowDimensions);
+    
+  }, [currentBreakpoint]);
 
   return (
     <Box style={weddingThemeStyle}>
@@ -126,6 +133,7 @@ const DashboardWeddingCouple = () => {
           xxs: actualLayout[4].xxs
           }} 
           {...Props}
+          //onLayoutChange ={handleLayoutChange(currentLayout)}
           >
         <Widget key='TimerWidget'>
             <TimerWidget/>

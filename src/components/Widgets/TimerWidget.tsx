@@ -4,11 +4,11 @@ import { styled } from '@mui/material/styles';
 import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { createRef, useLayoutEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
 
 const useStyles = makeStyles({
   timerNumber: {
-      fontSize: '2.5rem',
       backgroundColor: theme.palette.secondary.main,
       fontWeight: 700,
       color: 'white',
@@ -32,28 +32,66 @@ const StyledBox = styled(Box)(({ theme }) => ({
   textAlign: 'center',
   alignSelf: 'center',
   margin: '1rem',
-  justifyContent: 'space-evenly',
+  justifyContent: 'center',
 }));
 
+interface TimerNumber {
+  days: string;
+  hours: string;
+  minutes: string;
+  seconds: string;
+};
 
 const TimerWidget = () => {
   const classes = useStyles(theme);
   const targetRef = useRef<HTMLDivElement>(null);
-  const [cardDimension, setCardDimension] = useState({ width:0, height: 0 });
+  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint | undefined>(undefined);
+  const [currentCardHeight, setHeight] = useState<number>(0);
+  const [currentCardWidth, setWidth] = useState<number>(0);
+  const [isCardResize, setResize] = useState<boolean>(false);
+  const [currentFontSize, setFontSize] = useState<string>('2.5em');
+  const [content, setContent] = useState<ReactNode>(null);
 
-  useLayoutEffect(() => {
-    if (targetRef.current) {
-      setCardDimension({
-        width: targetRef.current.offsetWidth,
-        height: targetRef.current.offsetHeight
-      });
-    }
-  }, []);
+  const TimerNumbers: TimerNumber = {
+    days: '365',
+    hours: '08',
+    minutes: '25',
+    seconds: '59',
+  };
+  
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newBreakpoint= getDeviceConfig(window.innerWidth);
+        setCurrentBreakpoint(newBreakpoint);
+    };
+    window.addEventListener("resize", updateWindowDimensions);
+    return () => window.removeEventListener("resize", updateWindowDimensions);
+    
+  }, [currentBreakpoint]);
 
-  console.log(cardDimension);
+  useEffect(() => {
+      if (targetRef.current){
+        const newWidth: number = targetRef.current.clientWidth;
+        const newHeight: number =  targetRef.current.clientHeight;
+        console.log(targetRef.current.clientHeight+ "x" + targetRef.current.clientWidth)
+        setWidth(newWidth);
+        setHeight(newHeight);
+        setResize(true);
+      }
+  },[currentCardHeight,currentCardWidth]);
+
+  useEffect(()=> {
+      if (isCardResize && currentCardWidth > 565 && currentCardWidth < 880){
+        setFontSize('5em');
+      } else if (isCardResize && currentCardWidth > 880 && currentBreakpoint === 'md') {
+        setFontSize('4em');
+      }
+
+  },[isCardResize, currentCardHeight, currentCardWidth]);
+
 
   return (
-    <>
+    <div ref={targetRef}>
     <CardHeader 
         title={<Typography className={classes.headerTitle}>Odliczanie</Typography>}
         avatar={
@@ -66,30 +104,30 @@ const TimerWidget = () => {
         }>
     </CardHeader>
     <Divider/>
-    <CardContent style={{textAlign: 'center', margin:'0.6rem 1rem'}}>
+    <CardContent style={{textAlign: 'center'}}>
       <Typography variant="body2">
         Do dnia, w którym zostaniemy małżeństwem pozostało:
       </Typography>
       <StyledBox>
-        <Box alignSelf={'center'} textAlign={'center'}>
-          <Typography className={classes.timerNumber}>365</Typography>
-          <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
-        </Box>
-        <Box alignSelf={'center'} textAlign={'center'}>
-          <Typography className={classes.timerNumber}>08</Typography>
-          <Typography variant="body2" style={{margin:"0.4rem 0"}}>GODZIN</Typography>
-        </Box>
-        <Box alignSelf={'center'} textAlign={'center'}>
-          <Typography className={classes.timerNumber}>23</Typography>
-          <Typography variant="body2" style={{margin:"0.4rem 0"}}>MINUT</Typography>
-        </Box>
-        <Box alignSelf={'center'} textAlign={'center'}>
-          <Typography className={classes.timerNumber}>59</Typography>
-          <Typography variant="body2" style={{margin:"0.4rem 0"}}>SEKUND</Typography>
-        </Box>
+      <Box alignSelf={'center'} textAlign={'center'}>
+            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.days}</Typography>
+            <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
+          </Box>
+          <Box alignSelf={'center'} textAlign={'center'}>
+            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.hours}</Typography>
+            <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
+          </Box>
+            <Box alignSelf={'center'} textAlign={'center'}>
+            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.minutes}</Typography>
+            <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
+          </Box>
+          <Box alignSelf={'center'} textAlign={'center'}>
+            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.seconds}</Typography>
+            <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
+          </Box>
       </StyledBox>
     </CardContent>
-    </>
+    </div>
   );
 };
 

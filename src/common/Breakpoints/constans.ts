@@ -1,0 +1,5 @@
+export const LG_BREAKPOINT_WIDTH = 1200;
+export const MD_BREAKPOINT_WIDTH = 996;
+export const SM_BREAKPOINT_WIDTH = 768;
+export const XS_BREAKPOINT_WIDTH = 480;
+export const XXS_BREAKPOINT_WIDTH = 0;
