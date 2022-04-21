@@ -2,8 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
-type Breakpoint = 'lg' | "md" | "sm" | "xs" | "xxs";
-
 
 export interface Layout {
     i: string;
@@ -23,53 +21,62 @@ export interface Layout {
     isBounded?: boolean | undefined;
 }
 
-export interface Layouts {
+//type Breakpoint = 'lg' | "md" | "sm" | "xs" | "xxs";
+
+enum Breakpoint {
+  lg = 'lg',
+  md = "md",
+  sm = "sm",
+  xs = "xs",
+  xxs = "xxs"
+}
+export type Layouts = {
   [P: string]: Layout[];
 }
 
 const initialState: Layouts[]  = [
       {
         lg: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 4},
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.2},
+          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1},
           { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
         ]
       },
       {
         md: [
-          { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1, minH: 1, minW: 4},
-          { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
-          { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
+          { i: "TimerWidget", x: 0, y: 0, w: 10, h: 1, minH: 1, minW: 5},
+          { i: "ReminderWidget", x: 0, y: 1, w: 3, h: 1 },
+          { i: "NotificationWidget", x: 0, y: 2, w: 2, h: 1.2 },
+          { i: "ProgressWidget", x: 0, y: 3, w: 5, h: 1},
+          { i: "PhotosWidget", x: 0, y: 4, w: 4, h: 1 }
         ]
       },
       {
         sm: [
-          { i: "TimerWidget", x: 0, y: 0, w: 3, h: 1, minH: 1, minW: 3 },
+          { i: "TimerWidget", x: 0, y: 0, w: 6, h: 1, minH: 1, minW: 6 },
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.2 },
+          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1 },
           { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
         ]
       },
       {
         xs: [
-          { i: "TimerWidget", x: 0, y: 0, w: 2, h: 1, minH: 1, minW: 2},
-          { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
-          { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
+          { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1, minH: 1, minW: 4},
+          { i: "ReminderWidget", x: 0, y: 1, w: 4, h: 1 },
+          { i: "NotificationWidget", x: 0, y: 2, w: 4, h: 1.2 },
+          { i: "ProgressWidget", x: 0, y: 3, w: 4, h: 1},
+          { i: "PhotosWidget", x: 0, y: 4, w: 4, h: 1 }
         ]
       },
       {
         xxs: [
           { i: "TimerWidget", x: 0, y: 0, w: 2, h: 1, minH: 1, minW: 2 },
           { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1 },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.5 },
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, minH: 1, minW: 5 },
+          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1.2 },
+          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1 },
           { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1 }
         ]
       }
@@ -80,6 +87,7 @@ const layoutSlice = createSlice({
     initialState,
     reducers: {
       setLayout: (state, action) => {
+        sessionStorage.setItem('layout', JSON.stringify({state}));
         return state;
       },
       addWidget: (state, action) => {

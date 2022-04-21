@@ -70,12 +70,11 @@ const ProgressCircle = (props: ProgressCircleProps) => {
                 strokeWidth={ props.stroke }
                 strokeDasharray={ circumference + ' ' + circumference }
                 style={ {  strokeDashoffset,  ...circleStyle } }
-                stroke-width={ props.stroke }
                 r={ normalizedRadius }
                 cx={ props.radius }
                 cy={ props.radius }
             />
-            <text x="50%" y="50%" text-anchor="middle" dy=".3em" style={{...textStyle}}>75</text>
+            <text x="50%" y="50%" textAnchor="middle" dy=".3em" style={{...textStyle}}>75</text>
             </svg>
             </Box>
             <Box style={{flex: '1'}}>
