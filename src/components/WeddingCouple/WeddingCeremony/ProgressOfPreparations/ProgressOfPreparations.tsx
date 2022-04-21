@@ -10,6 +10,25 @@ import {makeStyles} from '@material-ui/core';
 import { styled } from '@mui/material/styles';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 
+
+const StyledCardContent = styled(CardContent)(({ theme }) => ({
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  margin:'3rem',
+  [theme.breakpoints.down('md')]: {
+    margin:'1rem',
+    flexDirection:'column',
+  },
+}));
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  marginLeft:'3rem',
+  [theme.breakpoints.down('md')]: {
+    margin:'0rem',
+  },
+}));
+
 const useStyles = makeStyles({
   cardHeaderIcon: {
     color: theme.palette.tertiary.main,
@@ -68,16 +87,16 @@ const ProgressOfPreparations = () => {
       />
       <Divider style={{backgroundColor:'secondary'}}/>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <CardContent style={{display:'flex', justifyContent:'center', alignItems:'center', margin:'3rem'}}>
+      <StyledCardContent >
         <Box>
           <Typography variant="h3" className={classes.typoTitle}>GRATULACJE!</Typography>
-          <Typography variant="body1" style={{paddingTop:'1rem'}}>Wasz postęp przygotowań ceremonii <br/>ślubnej wynosi 75%.
+          <Typography variant="body1" style={{paddingBottom:'1rem'}}>Wasz postęp przygotowań ceremonii <br/>ślubnej wynosi 75%.
             Wypełnij wszystkie <br/>pola w tej zakładce, aby uzyskać 100%.</Typography>
         </Box>
-        <Box style={{marginLeft:'3rem'}}>
+        <StyledBox>
           <CircularProgressWithLabel value={75} />
-        </Box>
-      </CardContent>
+        </StyledBox>
+      </StyledCardContent>
       </Collapse>
     </Card>
   )

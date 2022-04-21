@@ -5,16 +5,13 @@ import {Box, styled} from '@mui/material';
 const StyledBox = styled(Box)(({ theme }) => ({
   position: 'relative',
    display: 'inline-flex',
-   '& .MuiCircularProgress-svg': {
-    width:'95px',
-    height:'95px',
+   '& .MuiTypography-root': {
+    fontSize: '2rem',
   },
-  
   [theme.breakpoints.down('md')]: {
-      '& .MuiCircularProgress-svg': {
-        width:'45px',
-        height:'45px',
-      },
+    '& .MuiTypography-root': {
+      fontSize: '2rem',
+    },
   },
 }));
 
@@ -24,7 +21,7 @@ export function CircularProgressWithLabel(
 ) {
   return (
     <StyledBox>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress style={{width:'80px', height:'80px'}} variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
@@ -38,7 +35,6 @@ export function CircularProgressWithLabel(
         }}
       >
         <Typography
-          fontSize={'2rem'}
           variant="h2"
           component="div"
           color="secondary"
