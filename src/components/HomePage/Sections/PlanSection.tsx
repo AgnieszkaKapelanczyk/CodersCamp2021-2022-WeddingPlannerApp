@@ -8,6 +8,7 @@ const PlanSection = () => {
   const styles={
     card :{
       maxWidth:' 300px',
+      minHeight:'400px',
       margin: '20px'   
     },
     text:{
