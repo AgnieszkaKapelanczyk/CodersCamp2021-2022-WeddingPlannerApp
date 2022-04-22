@@ -56,7 +56,9 @@ const navigate=useNavigate()
       }
 
     return(
-    <Box sx={{backgroundImage:`url(${bg})`, height:'100%', gridArea:'main'}}>
+    <Box sx={{backgroundImage:`url(${bg})`, backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    height: '100%'}}>
     
 <Box sx={{display:"flex", justifyContent:"center", padding: '10px'}}>
 <StyledCard>
