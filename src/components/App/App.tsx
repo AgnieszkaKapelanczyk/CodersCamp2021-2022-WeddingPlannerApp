@@ -34,6 +34,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from '../../theme/styledBox'
 import {useSelector} from 'react-redux'
 import { loggedInUser } from 'store/loginSlice';
+import StartPlanning from 'components/WeddingCouple/StartPlaning/StartingPlanning';
 
 function App() {
   const loggedIn= useSelector(loggedInUser)
@@ -52,6 +53,7 @@ function App() {
         <Box sx={{ gridArea: 'main'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
+        <Route path="/StartPlanning" element={<StartPlanning/>} />
         <Route path="/WeddingCouple/" element={<DashboardWeddingCouple/>} />
         <Route path="/WeddingCouple/Groom/" element={<Groom/>} />
         <Route path="/WeddingCouple/Bride/" element={<Bride/>} />

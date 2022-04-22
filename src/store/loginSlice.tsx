@@ -28,6 +28,7 @@ const initialState : User = {
            state.user=undefined
            state.status = 'logout';
            state.loggedIn=false;
+           localStorage.clear();
          }
     
     },

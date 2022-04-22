@@ -72,7 +72,7 @@ export const theme = createTheme({
       button: {
         textTransform: 'none',
         letterSpacing: '2px',
-        fontSize: '16rem',
+        fontSize: '1.6rem',
         fontFamily: "Lato",
         fontWeight: 500,
         padding: '0.6rem 4rem',
