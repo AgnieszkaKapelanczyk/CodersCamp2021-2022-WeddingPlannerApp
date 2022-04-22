@@ -6,7 +6,8 @@ interface formType{
   zalozonyProfil:string,
   loginDialog: string,
   rejestracjaEmail:string,
-  zalogowano:string
+  zalogowano:string,
+  wyloguj: string
 }
 
 export const FormType: formType = Object.freeze({
@@ -15,6 +16,7 @@ export const FormType: formType = Object.freeze({
   loginDialog: 'loginDialog',
   rejestracjaEmail: 'rejestracjaEmail',
   zalogowano: 'zalogowano',
+  wyloguj: 'wyloguj'
 });
 
 const initialState = {
