@@ -5,12 +5,14 @@ import { Menu } from "@mui/material";
 import ListIcon from '@mui/icons-material/List';
 import CloseIcon from '@mui/icons-material/Close';
 import {theme} from '../../theme/theme'
+import { useSelector } from "react-redux";
+import { loggedInUser } from "store/loginSlice";
  
   
   function AppSideBar() {
       const [open, setOpen] = useState(false);
       const matches = useMediaQuery('(min-width:600px)')
-
+      const loggedIn= useSelector(loggedInUser)
       const handleOpen = () => {
         setOpen(true);
       };
@@ -21,6 +23,7 @@ import {theme} from '../../theme/theme'
 
     
       return(
+        !loggedIn ? null : (
           matches ? <AppLeftBar/> : (
         <Box >
             <Box sx={{ position:'absolute', top:'70px', backgroundColor:'#FFF', borderRadius:'50%', padding:'0'}}> 
@@ -33,7 +36,7 @@ import {theme} from '../../theme/theme'
           <AppLeftBar/> 
       </Menu>
       </Box>
-      ));   
+      )));   
   };
 
 

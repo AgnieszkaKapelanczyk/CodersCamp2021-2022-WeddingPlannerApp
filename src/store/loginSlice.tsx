@@ -21,6 +21,7 @@ const initialState : User = {
            state.user= action.payload.user
            state.loggedIn = true;
            state.status = 'login';
+           localStorage.setItem('user', state.user)
 
          },
          logout: (state)=> {

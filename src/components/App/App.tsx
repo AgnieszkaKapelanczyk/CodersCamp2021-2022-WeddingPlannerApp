@@ -31,32 +31,18 @@ import Dialog from '../Dialog/Dialog';
 import { Box, styled } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
-
-const StyledBox = styled(Box)(({ theme }) => ({
-  display: 'grid',
-          gridTemplateColumns: 'repeat(6, 1fr)',
-          gridTemplateRows: 'auto',
-          gridTemplateAreas: `"header header header header header header"
-        "leftBar main main main main main"
-        "footer footer footer footer footer footer"`,
-
-  [theme.breakpoints.down('sm')]: {
-    display: 'grid',
-    gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto',
-    gridTemplateAreas: `"header "
-  " main"
-  " footer"`
-  },
-}));
+import StyledBox from '../../theme/styledBox'
+import {useSelector} from 'react-redux'
+import { loggedInUser } from 'store/loginSlice';
 
 function App() {
+  const loggedIn= useSelector(loggedInUser)
   return (
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
       <Dialog />
       <Box height={"100%"} > 
-        <StyledBox>
+       <Box component={StyledBox(loggedIn)}>
         <Box sx={{ gridArea: 'header'}}>
       <AppHeader/> 
         </Box>  
@@ -94,7 +80,7 @@ function App() {
       <Box sx={{ gridArea: 'footer'}}>
       <AppFooter/>
       </Box>
-      </StyledBox>
+      </Box>
       </Box>
     </ThemeProvider>
     </StyledEngineProvider>

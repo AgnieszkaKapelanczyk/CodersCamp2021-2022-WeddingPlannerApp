@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { loggedInUser } from 'store/loginSlice';
+import {selectName} from '../../store/userSlice';
 
  const iconStyle= ({
       color:"#C26D6D",
@@ -26,6 +27,8 @@ function GetLogo() {
   const navigate=useNavigate()
   const loggedIn = useSelector(loggedInUser);
 const names= 'Anna & Jakub'
+const names2=useSelector(selectName)
+console.log(names2)
   const LogoBig = (
   <Box style={LogoBox}>
   <Button onClick={()=> navigate('/')}>
