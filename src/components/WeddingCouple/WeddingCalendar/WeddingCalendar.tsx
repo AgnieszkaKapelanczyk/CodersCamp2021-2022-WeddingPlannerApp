@@ -8,8 +8,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { makeStyles} from '@material-ui/core';
 import { theme } from '../../../theme/theme';
 import { useState } from 'react';
-import FullCalendar from '@fullcalendar/react';
+import FullCalendar, {EventInput} from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+
+const data: EventInput[] =[
+  {
+    title:'Ślub',
+    start: '2022-05-21'},
+  {
+    title:'Wieczór panieński',
+    start:'2022-05-14'
+  },
+  {
+    title:'Ostateczne podanie liczby gości',
+    start:'2022-04-28'
+  },
+  {
+    title:'Zakupy- pan młody',
+    start:'2022-04-05'
+  }
+]
 
 const useStyles = makeStyles({
   typoTitle: {
@@ -63,6 +81,7 @@ const WeddingCalendar = () => {
       <StyledBox>
         <FullCalendar 
           plugins={[ dayGridPlugin ]}
+          events={data}
         /> 
       </StyledBox>
     </StyledCard>
