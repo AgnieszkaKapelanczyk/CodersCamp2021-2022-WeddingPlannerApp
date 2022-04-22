@@ -1,9 +1,11 @@
 import { Typography, Button, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { closeDialog } from "../../store/dialogSlice";
+import { useNavigate } from "react-router-dom";
 
 export const ZalozonyProfil = () => {
   const dispatch = useDispatch();
+  const navigate= useNavigate();
 
   return (
     <Box sx={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"space-between"  }}>
@@ -21,7 +23,8 @@ export const ZalozonyProfil = () => {
             variant="contained"
             size="small"
             color="primary"
-            onClick={() => dispatch(closeDialog())}>
+            onClick={() => {dispatch(closeDialog())
+            navigate('/StartPlanning')}}>
             ZACZYNAMY!
           </Button>
       </Box>

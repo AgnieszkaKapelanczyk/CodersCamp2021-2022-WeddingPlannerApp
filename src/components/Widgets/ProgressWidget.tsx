@@ -33,7 +33,7 @@ const ProgressWidget = () => {
               </IconButton>
               }>
           </CardHeader>
-          <Divider style={{backgroundColor:'secondary'}}/>
+          <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
           <Box display={"flex"}>
             <ProgressCircle
               radius={ 60 }

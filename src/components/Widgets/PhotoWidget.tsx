@@ -1,8 +1,9 @@
 import { Typography, makeStyles, CardHeader } from "@material-ui/core";
-import { Divider, IconButton } from "@mui/material";
-import { theme } from "../../theme/theme"
+import { Box, Divider, IconButton } from "@mui/material";
+import { theme } from "theme/theme"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
+import Love from 'assets/img/loveCouple.jpg';
 
 const useStyles = makeStyles({
   cardHeaderIcon: {
@@ -18,6 +19,8 @@ const useStyles = makeStyles({
 const PhotoWidget = () => {
   const classes = useStyles(theme);
 
+  const PhotoArray = [Love, ]
+
   return (
     <>
       <CardHeader 
@@ -32,6 +35,17 @@ const PhotoWidget = () => {
               }>
           </CardHeader>
           <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
+          <Box display={'flex'} justifyContent={'center'} style={{alignItems: 'center'}}>
+          <img
+            alt="love"
+            src={Love}
+            style={{
+              alignSelf: 'center',
+              margin: '0.6rem',
+              maxHeight: '200px'
+            }}
+          />
+          </Box>
     </>
   );
 };

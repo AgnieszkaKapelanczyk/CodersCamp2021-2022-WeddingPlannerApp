@@ -16,6 +16,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
 import { openToolbox } from "components/Widgets/Toolbox/store/ToolboxSlice";
+import EditIcon from '@mui/icons-material/Edit';
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
@@ -159,12 +160,23 @@ const DashboardWeddingCouple = () => {
  
   return (
     <Box style={weddingThemeStyle}>
-        <StyledIconButton 
-          aria-label="add a widget" 
-          style={{color: `${theme.palette.secondary.main}`, position: 'fixed', top: '80px', right: '10px', zIndex:2 }}
-          onClick={() => dispatch(openToolbox)} >
-          <AddIcon style= {{fontSize: '4rem', borderRadius: '50%', background: '#fff'}}/>
-        </StyledIconButton>
+        <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex:2 }}>
+            <StyledIconButton 
+              aria-label="change theme" 
+              style={{color: `${theme.palette.tertiary.main}` }}
+              onClick={() => dispatch(openToolbox)}
+              title='Edytuj motyw' >
+              <EditIcon style= {{fontSize: '1.9rem', borderRadius: '50%', background: '#fff', padding:'0.6rem'}}/>
+            </StyledIconButton>
+            <StyledIconButton 
+              aria-label="add a widget" 
+              style={{color: `${theme.palette.tertiary.main}` }}
+              onClick={() => dispatch(openToolbox)}
+              title='Dodaj Widget'  >
+              <AddIcon style= {{fontSize: '3rem', borderRadius: '50%', background: '#fff'}}/>
+            </StyledIconButton>
+           
+        </Box>
         <ResponsiveGridLayout 
           layouts={layouts} 
           {...Props}

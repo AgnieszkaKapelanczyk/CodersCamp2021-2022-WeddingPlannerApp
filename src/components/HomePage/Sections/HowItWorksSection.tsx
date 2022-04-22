@@ -73,8 +73,7 @@ const HowItWorksSection = () => {
         alt="mockup Wedding Planner"
         src={MockupImage}
         title="Znajdź wolontariusza"
-      >
-      </img>
+      />
         <StyledTimeline position='right'>
           <TimelineItem >
             <TimelineSeparator>

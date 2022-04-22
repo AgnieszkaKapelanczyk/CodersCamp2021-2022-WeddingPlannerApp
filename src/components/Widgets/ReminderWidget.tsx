@@ -40,7 +40,7 @@ const ReminderWidget = () => {
               </IconButton>
               }>
           </CardHeader>
-          <Divider style={{backgroundColor:'secondary'}}/>
+          <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
           <StyledListButton
                       key={`listitembutton-1}`} 
                       style={{width: "100%"}} 
@@ -84,6 +84,30 @@ const ReminderWidget = () => {
                         component="span"
                         variant="body2"
                       > W najbliższą sobotę o 11:00 zaczynają się nauki przedmałżeńskie.
+                      </Typography>
+                    </>
+                  }
+              />
+          </StyledListButton>
+          <StyledListButton
+                      key={`listitembutton-3}`} 
+                      style={{width: "100%"}} 
+                      disableGutters
+                      dense
+                      component={Link}
+          >
+              <AlarmOnIcon 
+                  color={'success'}
+                  style={{margin:'1rem'}}/>
+              <ListItemText
+                  key={`listitem-3`}
+                  primary= {
+                    <>
+                      <Typography
+                        style={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                      > Za dwa dni masz umówione spotkanie w sprawie zespołu.
                       </Typography>
                     </>
                   }

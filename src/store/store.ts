@@ -6,6 +6,8 @@ import timeOfWeddingReducer from './timeOfWeddingSlice';
 import usersReducer from 'store/userSlice';
 import eventInCalendarReducer from './eventInCalendarSlice';
 import toolboxReducer from 'components/Widgets/Toolbox/store/ToolboxSlice';
+import loginReducer from './loginSlice';
+
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +18,8 @@ export const store = configureStore({
     users: usersReducer,
     eventInCalendar: eventInCalendarReducer,
     toolbox: toolboxReducer,
+    login: loginReducer,
+
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

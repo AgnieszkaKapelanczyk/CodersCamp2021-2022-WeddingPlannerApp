@@ -8,6 +8,7 @@ const PlanSection = () => {
   const styles={
     card :{
       maxWidth:' 300px',
+      minHeight:'400px',
       margin: '20px'   
     },
     text:{
@@ -25,7 +26,7 @@ const PlanSection = () => {
   }
 
   return(
-  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"center", gap:"3%"}}>
+  <Box sx={{display:"flex", flexDirection:"row", justifyContent:"center", gap:"3%", flexWrap:'wrap'}}>
     <Card style={styles.card}>
       <Box sx={{display:"flex", justifyContent:"center", padding: '10px'}}>
     <CardHeader   
@@ -53,7 +54,7 @@ const PlanSection = () => {
 
     title="39zł/ miesiąc"
     subheader="PREMIUM" 
-    style={styles.text}
+    style={styles.text2}
     />
     </Box>
      <Divider/>
@@ -74,7 +75,7 @@ const PlanSection = () => {
     <CardHeader
       title="0zł/ miesiąc"
       subheader="DARMOWY"
-      style={styles.text} />
+      style={styles.text2} />
       </Box>
     <Divider/>
     <CardContent>

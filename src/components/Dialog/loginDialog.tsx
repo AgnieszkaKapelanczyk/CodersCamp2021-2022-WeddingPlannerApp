@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { login } from "store/loginSlice";
 
 const useStyles = makeStyles({
     field: {
@@ -19,13 +20,12 @@ const useStyles = makeStyles({
 export const LoginDialog = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    // const responseStatus = useSelector(selectResponseStatus);
+        // const responseStatus = useSelector(selectResponseStatus);
     const [data, setData] = useState({
       email: "",
       password: ""
     });
   
-    // const handleChange = (e) => {
         const handleChange=(e: React.ChangeEvent<any>): void => {
       const value = e.target.value;
       setData({
@@ -36,8 +36,9 @@ export const LoginDialog = () => {
   
     const handleSubmit = (e: React.ChangeEvent<any>) => {
       e.preventDefault();
-    //   dispatch(fetchLoginData(data)); 
-    console.log(data)  
+      dispatch(login(data)); 
+      dispatch(openDialog({formType:FormType.zalogowano}))
+
     };
   
     // if(responseStatus === 'succeeded log in (:') {
@@ -76,7 +77,6 @@ export const LoginDialog = () => {
         <Button sx={{marginBottom:'20px'}}
         type="submit"        
         color="primary" variant="contained" size="large"
-        onClick={()=> {dispatch(openDialog({formType:FormType.zalogowano}))}}
         className={classes.field} >
           Zaloguj się
         </Button>

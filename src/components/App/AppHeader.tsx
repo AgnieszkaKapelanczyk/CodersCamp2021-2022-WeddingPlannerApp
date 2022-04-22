@@ -6,7 +6,9 @@ import { useDispatch } from "react-redux";
 import { openDialog, FormType } from 'store/dialogSlice'
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
-import { theme } from 'theme/theme';
+import { useSelector } from 'react-redux';
+import { loggedInUser } from 'store/loginSlice';
+import {selectName} from '../../store/userSlice';
 
  const iconStyle= ({
       color:"#C26D6D",
@@ -21,20 +23,12 @@ const LogoBox = ({
   display:'flex',
 });
 
-
-
-// const Header = () => {
-//   let navigate = useNavigate();
-//   // let dispatch = useDispatch();
-//   const matches = useMediaQuery('(min-width:600px)', { noSsr: true });
-//   // const loggedIn = useSelector(selectIsLoggedIn);
-
-let loggedIn=false
-
 function GetLogo() {
   const navigate=useNavigate()
- 
+  const loggedIn = useSelector(loggedInUser);
 const names= 'Anna & Jakub'
+const names2=useSelector(selectName)
+console.log(names2)
   const LogoBig = (
   <Box style={LogoBox}>
   <Button onClick={()=> navigate('/')}>
@@ -61,6 +55,7 @@ const names= 'Anna & Jakub'
   return logo}
 
   function GetRightSide(){
+    const loggedIn = useSelector(loggedInUser);
     let dispatch = useDispatch();
     let elementForNotLoggedIn= (
       <Box sx={{display:"flex"}}>
@@ -70,7 +65,8 @@ const names= 'Anna & Jakub'
     )
     let elementForLoggedIn= (
       <Button >
-        <AccountCircleIcon style={ iconStyle} />
+        <AccountCircleIcon style={ iconStyle}
+        onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))} />
       </Button>
     )
     const rightSide= loggedIn? elementForLoggedIn : elementForNotLoggedIn

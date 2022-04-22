@@ -112,7 +112,7 @@ const NotificationWidget = () => {
                     className={classes.errorIcon}
                     style={{margin:'1rem'}}/>
                 <ListItemText
-                    key={`listitem-2`}
+                    key={`listitem-3`}
                     primary= {
                         <>
                           <Typography
@@ -120,30 +120,6 @@ const NotificationWidget = () => {
                             component="span"
                             variant="body2"
                           > Marcin Kowarczyk potwierdził nieobecność.
-                          </Typography>
-                        </>
-                      }
-                  />
-              </StyledListButton>
-              <StyledListButton
-                    key={`listitembutton-4}`} 
-                    style={{width: "100%"}} 
-                    disableGutters
-                    dense
-                    component={Link}
-              >
-                 <MessageIcon
-                    className={classes.newMessageIcon}
-                    style={{margin:'1rem'}}/>
-                <ListItemText
-                    key={`listitem-2`}
-                    primary= {
-                        <>
-                          <Typography
-                            style={{ display: 'inline' }}
-                            component="span"
-                            variant="body2"
-                          > Katarzyna Olesiuk napisała wiadomość.
                           </Typography>
                         </>
                       }

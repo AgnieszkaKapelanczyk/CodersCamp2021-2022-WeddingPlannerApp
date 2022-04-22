@@ -12,8 +12,8 @@ const toolboxSlice = createSlice({
     name: 'toolbox',
     initialState,
     reducers: {
-        openToolbox: (state, action) => {
-            return { ...action.payload, isOpen: true };
+        openToolbox: (state) => {
+            state.isOpen = true;
         },
         closeToolbox: (state) => {
             state.isOpen = false;
