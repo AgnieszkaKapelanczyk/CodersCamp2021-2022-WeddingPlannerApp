@@ -8,8 +8,8 @@ import NotificationWidget from "../../Widgets/NotificationWidget";
 import ProgressWidget from "../../Widgets/ProgressWidget";
 import PhotoWidget from "../../Widgets/PhotoWidget";
 import { Box } from "@mui/system";
-import { useAppSelector } from "store/hooks";
-import { Layout, Layouts, selectLayout  } from "store/layoutSlice";
+import { useAppSelector, useAppDispatch } from "store/hooks";
+import { Layout, Layouts, selectLayout, setNewLayout  } from "store/layoutSlice";
 import { useState, useEffect } from "react";
 import { LG_BREAKPOINT_WIDTH, MD_BREAKPOINT_WIDTH, SM_BREAKPOINT_WIDTH, XS_BREAKPOINT_WIDTH, XXS_BREAKPOINT_WIDTH } from "common/Breakpoints/constans";
 import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
@@ -69,47 +69,69 @@ interface LayoutProps {
   breakpoints?: { [P: string]: number } | undefined;
   onLayoutChange: (currentLayout: Layout[], layouts: Layouts)=> void;
   measureBeforeMount?: boolean | undefined;
-}
-
-const Props: LayoutProps = {
-  breakpoints: { 
-    "lg": LG_BREAKPOINT_WIDTH, 
-    "md": MD_BREAKPOINT_WIDTH, 
-    "sm": SM_BREAKPOINT_WIDTH, 
-    "xs": XS_BREAKPOINT_WIDTH, 
-    "xxs": XXS_BREAKPOINT_WIDTH
-  },
-  cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-  className: "layout",
-  rowHeight: 287,
-  maxRows: 30,
-  width: 1000,
-  margin: [30, 30],
-  isResizable: true,
-  autoSize: true,
-  resizeHandles: ['se'],
-  isBounded: true,
-  verticalCompact: true,
-  isDraggable: true,
-  onLayoutChange: function() {},
-  useCSSTransforms: true,
-}
+};
 
 const DashboardWeddingCouple = () => {
-  const actualLayout = useAppSelector(selectLayout);
+  const dispatch = useAppDispatch();
+  const actualLayout: Layouts | undefined = useAppSelector(selectLayout);
   const ResponsiveGridLayout = WidthProvider(Responsive);
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint | undefined>(undefined);
-  const [currentLayout, setCurrentLayout] = useState<Layout[]>([])
+  const [layouts, setLayouts] = useState<Layouts | undefined>(undefined);
+
+  const Props: LayoutProps = {
+    breakpoints: { 
+      "lg": LG_BREAKPOINT_WIDTH, 
+      "md": MD_BREAKPOINT_WIDTH, 
+      "sm": SM_BREAKPOINT_WIDTH, 
+      "xs": XS_BREAKPOINT_WIDTH, 
+      "xxs": XXS_BREAKPOINT_WIDTH
+    },
+    cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
+    className: "layout",
+    rowHeight: 287,
+    maxRows: 30,
+    width: 1000,
+    margin: [30, 30],
+    isResizable: true,
+    autoSize: true,
+    resizeHandles: ['se'],
+    isBounded: true,
+    verticalCompact: true,
+    isDraggable: true,
+    onLayoutChange: ()=>{},
+    useCSSTransforms: true,
+  };
 
   const weddingThemeStyle={
     backgroundImage: `url(${PanelThemeBg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100%',
-  }; 
-  
-  const handleLayoutChange = (currentLayout: Layout[], layouts: Layouts[]) => {
-    
+  };  
+
+  const handleModify = (layout: Layout[], layouts: Layouts) => {
+    let tempArray= layouts;
+    const newBreakpoint= getDeviceConfig(window.innerWidth);
+
+     switch (newBreakpoint) {
+      case "lg":
+        tempArray.lg = layout;
+        break;
+      case "md":
+        tempArray.md = layout;
+        break;  
+      case "sm":
+        tempArray.sm= layout;
+        break;  
+      case "xs":
+        tempArray.xs = layout;
+        break;  
+      case "xxs":
+        tempArray.xxs = layout;
+        break;
+     };
+     
+     dispatch(setNewLayout({newLayout: tempArray}));
   };
 
   useEffect(() => {
@@ -117,23 +139,21 @@ const DashboardWeddingCouple = () => {
       const newBreakpoint= getDeviceConfig(window.innerWidth);
         setCurrentBreakpoint(newBreakpoint);
     };
-    console.log(currentBreakpoint) 
     window.addEventListener("resize", updateWindowDimensions);
     return () => window.removeEventListener("resize", updateWindowDimensions);
     
   }, [currentBreakpoint]);
 
+  useEffect(()=> {
+    setLayouts(actualLayout);
+  },[actualLayout]);
+ 
   return (
     <Box style={weddingThemeStyle}>
-        <ResponsiveGridLayout layouts={{
-          lg: actualLayout[0].lg, 
-          md: actualLayout[1].md,
-          sm: actualLayout[2].sm,
-          xs: actualLayout[3].xs,
-          xxs: actualLayout[4].xxs
-          }} 
+        <ResponsiveGridLayout 
+          layouts={layouts} 
           {...Props}
-          //onLayoutChange ={handleLayoutChange(currentLayout)}
+          onLayoutChange={handleModify}
           >
         <Widget key='TimerWidget'>
             <TimerWidget/>
@@ -153,6 +173,8 @@ const DashboardWeddingCouple = () => {
       </ResponsiveGridLayout>
     </Box>
   )
-}
+};
+
+
 
 export default DashboardWeddingCouple;

@@ -26,9 +26,9 @@ const WeddingCalendar = () => {
   const dispatch = useDispatch();
 
   return (
-    <Card style={{display:'flex', flexDirection:'column', margin:'3rem 8rem 5rem 3rem'}}>
-      <Button onClick={()=>dispatch(addEvent.addEvent(event))} style={{margin:'2rem 0rem 1rem 2rem', width:'18rem'}} variant="contained" color='tertiary' startIcon={<AddCircleIcon />}>NOWE PRZYPOMNIENIE</Button>
-      <Input placeholder='Nowe Przypomnienie' value={event} onChange={e=>setEvent(e.target.value)}  style={{margin:'0rem 0rem 1rem 2rem', width:'18rem'}}></Input>
+    <Card style={{display:'flex', flexDirection:'column'}}>
+      <Button onClick={()=>dispatch(addEvent.addEvent(event))} style={{width: '20%', margin: '2rem'}} variant="contained" color='tertiary' startIcon={<AddCircleIcon />}>NOWE PRZYPOMNIENIE</Button>
+      <Input placeholder='Nowe Przypomnienie' value={event} onChange={e=>setEvent(e.target.value)}  style={{margin:'0rem 0rem 1rem 2rem'}}></Input>
       <Box style={{display:'flex', margin:'1rem 2rem 2rem 2rem'}}>
         <Box style={{marginRight:'3rem'}}>
           {events.map(e=><Card className={classes.typoTitle} style={{padding:'0.5rem 1rem', marginBottom:'1rem'}}>{e.title}</Card>)}

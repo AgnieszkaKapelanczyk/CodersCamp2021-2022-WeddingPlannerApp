@@ -45,12 +45,10 @@ interface TimerNumber {
 const TimerWidget = () => {
   const classes = useStyles(theme);
   const targetRef = useRef<HTMLDivElement>(null);
-  const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint | undefined>(undefined);
   const [currentCardHeight, setHeight] = useState<number>(0);
   const [currentCardWidth, setWidth] = useState<number>(0);
   const [isCardResize, setResize] = useState<boolean>(false);
   const [currentFontSize, setFontSize] = useState<string>('2.5em');
-  const [content, setContent] = useState<ReactNode>(null);
 
   const TimerNumbers: TimerNumber = {
     days: '365',
@@ -58,22 +56,11 @@ const TimerWidget = () => {
     minutes: '25',
     seconds: '59',
   };
-  
-  useEffect(() => {
-    const updateWindowDimensions = () => {
-      const newBreakpoint= getDeviceConfig(window.innerWidth);
-        setCurrentBreakpoint(newBreakpoint);
-    };
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => window.removeEventListener("resize", updateWindowDimensions);
-    
-  }, [currentBreakpoint]);
 
   useEffect(() => {
       if (targetRef.current){
         const newWidth: number = targetRef.current.clientWidth;
         const newHeight: number =  targetRef.current.clientHeight;
-        console.log(targetRef.current.clientHeight+ "x" + targetRef.current.clientWidth)
         setWidth(newWidth);
         setHeight(newHeight);
         setResize(true);
@@ -81,6 +68,7 @@ const TimerWidget = () => {
   },[currentCardHeight,currentCardWidth]);
 
   useEffect(()=> {
+    const currentBreakpoint= getDeviceConfig(window.innerWidth);
       if (isCardResize && currentCardWidth > 565 && currentCardWidth < 880){
         setFontSize('5em');
       } else if (isCardResize && currentCardWidth > 880 && currentBreakpoint === 'md') {
