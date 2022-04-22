@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { openDialog, FormType } from 'store/dialogSlice'
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
+import { theme } from 'theme/theme';
 
  const iconStyle= ({
       color:"#C26D6D",
@@ -82,7 +83,7 @@ const AppHeader = () => {
   
   return (
     
-      <AppBar position='static' color='inherit' >
+      <AppBar position='static' color='inherit' style={{boxShadow: `0px 10px -14px 14px #B85C5C`}}>
       <Box display={"flex"} flexDirection="row"> 
         {GetLogo()}
         <Box sx={{display:"flex", justifyContent:"flex-end", flexGrow:"1", gridColumnGap:"1rem"}}>

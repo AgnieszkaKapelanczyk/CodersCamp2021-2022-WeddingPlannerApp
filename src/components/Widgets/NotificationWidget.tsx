@@ -51,7 +51,7 @@ const NotificationWidget = () => {
             </IconButton>
             }>
            </CardHeader>
-           <Divider style={{backgroundColor:'secondary'}}/>
+           <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
              <StyledListButton
                         key={`listitembutton-1}`} 
                         style={{width: "100%"}} 

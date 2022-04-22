@@ -7,18 +7,28 @@ import ReminderWidget from "../../Widgets/ReminderWidget";
 import NotificationWidget from "../../Widgets/NotificationWidget";
 import ProgressWidget from "../../Widgets/ProgressWidget";
 import PhotoWidget from "../../Widgets/PhotoWidget";
-import { Box } from "@mui/system";
 import { useAppSelector, useAppDispatch } from "store/hooks";
 import { Layout, Layouts, selectLayout, setNewLayout  } from "store/layoutSlice";
 import { useState, useEffect } from "react";
 import { LG_BREAKPOINT_WIDTH, MD_BREAKPOINT_WIDTH, SM_BREAKPOINT_WIDTH, XS_BREAKPOINT_WIDTH, XXS_BREAKPOINT_WIDTH } from "common/Breakpoints/constans";
 import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
+import AddIcon from '@mui/icons-material/Add';
+import { Box, IconButton } from "@mui/material";
+import { theme } from "theme/theme";
+import { openToolbox } from "components/Widgets/Toolbox/store/ToolboxSlice";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
   boxShadow: '0px 2px 1px rgba(0, 0, 0, 0.2)',
   borderRadius: '12px',
   cursor: 'move'
+}));
+
+const StyledIconButton = styled(IconButton)(({theme}) => ({
+  transition: 'transform .2s',
+  '&:hover': {
+    transform: 'scale(1.1)', 
+  }
 }));
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
@@ -99,7 +109,6 @@ const DashboardWeddingCouple = () => {
     verticalCompact: true,
     isDraggable: true,
     onLayoutChange: ()=>{},
-    useCSSTransforms: true,
   };
 
   const weddingThemeStyle={
@@ -150,6 +159,12 @@ const DashboardWeddingCouple = () => {
  
   return (
     <Box style={weddingThemeStyle}>
+        <StyledIconButton 
+          aria-label="add a widget" 
+          style={{color: `${theme.palette.secondary.main}`, position: 'fixed', top: '80px', right: '10px', zIndex:2 }}
+          onClick={() => dispatch(openToolbox)} >
+          <AddIcon style= {{fontSize: '4rem', borderRadius: '50%', background: '#fff'}}/>
+        </StyledIconButton>
         <ResponsiveGridLayout 
           layouts={layouts} 
           {...Props}

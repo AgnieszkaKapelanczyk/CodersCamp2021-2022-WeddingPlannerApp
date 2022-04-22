@@ -25,6 +25,7 @@ export const theme = createTheme({
       secondary: {
         main: '#FEC5BB',
         contrastText: '#000',
+        light: '#F8EDEB',
       },
       tertiary: {
         main: '#6F59C9',
@@ -60,12 +61,12 @@ export const theme = createTheme({
       body1: {
         fontSize: '1rem',
         fontFamily:"Lato",
-        fontWeight: 500,
+        fontWeight: 600,
         lineHeight:'1.6',
-        letterSpacing: "1px"
+        letterSpacing: "2px"
       },
       body2: {
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         fontFamily:"Lato",
         fontWeight: 400
       },

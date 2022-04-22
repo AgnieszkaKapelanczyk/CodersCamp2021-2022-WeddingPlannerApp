@@ -1,10 +1,11 @@
 import { configureStore} from '@reduxjs/toolkit';
-import dialogReducer from '../store/dialogSlice';
-import layoutReducer from '../store/layoutSlice';
+import dialogReducer from 'store/dialogSlice';
+import layoutReducer from 'store/layoutSlice';
 import dateOfWeddingReducer from './dateOfWeddingSlice';
 import timeOfWeddingReducer from './timeOfWeddingSlice';
-import usersReducer from '../store/userSlice';
+import usersReducer from 'store/userSlice';
 import eventInCalendarReducer from './eventInCalendarSlice';
+import toolboxReducer from 'components/Widgets/Toolbox/store/ToolboxSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     timeOfWedding: timeOfWeddingReducer,
     users: usersReducer,
     eventInCalendar: eventInCalendarReducer,
+    toolbox: toolboxReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

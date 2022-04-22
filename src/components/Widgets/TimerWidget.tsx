@@ -4,11 +4,11 @@ import { styled } from '@mui/material/styles';
 import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
+import { useEffect, useRef, useState } from "react";
+import { getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
 
 const useStyles = makeStyles({
-  timerNumber: {
+  timerNumbers: {
       backgroundColor: theme.palette.secondary.main,
       fontWeight: 700,
       color: 'white',
@@ -91,26 +91,26 @@ const TimerWidget = () => {
         </IconButton>
         }>
     </CardHeader>
-    <Divider/>
+    <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
     <CardContent style={{textAlign: 'center'}}>
       <Typography variant="body2">
         Do dnia, w którym zostaniemy małżeństwem pozostało:
       </Typography>
       <StyledBox>
       <Box alignSelf={'center'} textAlign={'center'}>
-            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.days}</Typography>
+            <Typography className={classes.timerNumbers} style={{fontSize: currentFontSize}}>{TimerNumbers.days}</Typography>
             <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
           </Box>
           <Box alignSelf={'center'} textAlign={'center'}>
-            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.hours}</Typography>
+            <Typography className={classes.timerNumbers} style={{fontSize: currentFontSize}}>{TimerNumbers.hours}</Typography>
             <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
           </Box>
             <Box alignSelf={'center'} textAlign={'center'}>
-            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.minutes}</Typography>
+            <Typography className={classes.timerNumbers} style={{fontSize: currentFontSize}}>{TimerNumbers.minutes}</Typography>
             <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
           </Box>
           <Box alignSelf={'center'} textAlign={'center'}>
-            <Typography className={classes.timerNumber} style={{fontSize: currentFontSize}}>{TimerNumbers.seconds}</Typography>
+            <Typography className={classes.timerNumbers} style={{fontSize: currentFontSize}}>{TimerNumbers.seconds}</Typography>
             <Typography variant="body2" style={{margin:"0.4rem 0"}}>DNI</Typography>
           </Box>
       </StyledBox>

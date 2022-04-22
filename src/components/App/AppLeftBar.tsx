@@ -23,7 +23,7 @@ const SideBar = styled(List)<{ component?: React.ElementType }>({
     paddingRight: 24,
     color: theme.palette.tertiary.main,
     border: '1px solid',
-    borderColor: theme.palette.tertiary.light,
+    borderColor: theme.palette.tertiary.main,
   },
   '& .MuiListItemIcon-root': {
     minWidth: 0,
@@ -43,7 +43,7 @@ function AppLeftBar() {
 
     return(
  
-    <SideBar sx={{paddingTop: 0, paddingBottom: 0, position:"sticky", top:"0", minWidth:'180px'}}>
+    <SideBar sx={{paddingTop: 0, paddingBottom: 0, position:"sticky", top:"0", minWidth:'180px', backgroundColor:`${theme.palette.secondary.light}`}}>
       {LeftBarListCouple.map((item) => (
         <ListItem button key={item.label} onClick={()=>navigate(item.path)} divider >
           <ListItemIcon>

@@ -31,7 +31,7 @@ const PhotoWidget = () => {
               </IconButton>
               }>
           </CardHeader>
-          <Divider style={{backgroundColor:'secondary'}}/>
+          <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
     </>
   );
 };
