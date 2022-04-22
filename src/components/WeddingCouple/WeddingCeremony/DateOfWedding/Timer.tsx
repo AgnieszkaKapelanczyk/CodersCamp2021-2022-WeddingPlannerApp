@@ -30,6 +30,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
   margin: '1rem 1rem 1rem 0',
   padding:'0',
   justifyContent: 'space-evenly',
+  [theme.breakpoints.down('md')]: {
+    '& .MuiTypography-root': {
+      fontSize: '0.7rem',
+    },
+  }
 }));
 
 const Timer = () => {
@@ -52,8 +57,8 @@ const Timer = () => {
 
   return (
     <>
-    <CardContent style={{padding:'1rem 0 0 0'}}>
-      <Typography variant="body2">
+    <CardContent style={{padding:'2rem 0 0 0'}}>
+      <Typography style={{paddingBottom:'1rem'}} variant="body2">
         Do dnia, w którym zostaniemy małżeństwem pozostało:
       </Typography>
       <StyledBox>
