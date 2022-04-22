@@ -1,50 +1,33 @@
-import { Box, Typography, Button, Divider } from '@material-ui/core';
+import { Box, Typography, Button, Divider } from '@mui/material';
 import AboutSectionImage from '../../../assets/img/homepage2.jpg';
+import { theme } from 'theme/theme';
+import { useDispatch } from 'react-redux';
+import { openDialog, FormType } from 'store/dialogSlice';
 
 const AboutSection = () => {
-  const styles = {
-    aboutSection__mainText: {
-      color: '#C26D6D',
-      fontFamily: 'Abril Fatface',
-      fontSize: '4.5rem',
-      paddingTop: '2%',
-      paddingLeft: '5%',
-    },
+  let dispatch = useDispatch();
 
-    aboutSection__rightSection: {},
-    aboutSection__image: {
-      width: '45%',
-    },
-    aboutSection__button: {
-      backgroundColor: '#C26D6D',
-      color: '#fff',
-      marginTop: '3%',
-    },
-    aboutSection__divider: {
-      height: '10px',
-      backgroundColor: '#FEC5BB',
-      borderRadius: '10px',
-    },
-    aboutSection__center: {
-      display: 'flex',
-      alignItems: 'center',
-
-      paddingTop: '5%',
-      gap: '10%',
-    },
-  };
   return (
     <Box>
       <Box>
-        <Typography style={styles.aboutSection__mainText}>Kilka słów o Wedding Plannerze </Typography>
-        <Divider style={styles.aboutSection__divider} variant="inset" />
+        <Typography
+          style={{
+            color: `${theme.palette.primary.main}`,
+            fontFamily: `${theme.typography.fontFamily}`,
+            fontSize: '4.5rem',
+            paddingTop: '3vh',
+            paddingLeft: '4vw',
+          }}
+        >
+          Kilka słów o Wedding Plannerze{' '}
+        </Typography>
+        <Divider style={{ height: '0.6rem', backgroundColor: `${theme.palette.secondary.main}` }} variant="inset" />
       </Box>
-      <Box style={styles.aboutSection__center}>
-        <Box style={styles.aboutSection__image}>
-          <img src={AboutSectionImage} width="100%" height="100%" />
+      <Box style={{ display: 'flex', alignItems: 'center', paddingTop: '4vh', gap: '10%' }}>
+        <Box style={{ width: '45%' }}>
+          <img src={AboutSectionImage} alt="WeddingPhoto" width="100%" height="100%" />
         </Box>
-
-        <Box style={styles.aboutSection__rightSection}>
+        <Box>
           <Typography>
             Wedding Planner powstał z myślą o wszystkich
             <br />
@@ -58,8 +41,14 @@ const AboutSection = () => {
             <br />
             umoliwić gościom potwierdzanie swojego przybycia!.
           </Typography>
-          <Button size="large" variant="contained" color="primary" style={{margin: '2rem 0', width: '70%'}}>
-            ZAREJESTRUJ SIĘ
+          <Button
+            size="large"
+            variant="contained"
+            color="primary"
+            style={{ margin: '2rem 0', width: '70%', textTransform: 'uppercase', marginTop: '3vh' }}
+            onClick={() => dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}
+          >
+            Zarejestruj się
           </Button>
         </Box>
       </Box>
