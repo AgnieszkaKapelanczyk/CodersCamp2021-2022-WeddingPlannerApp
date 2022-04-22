@@ -6,7 +6,7 @@ const createEvent = (title:string) =>({
     id: nanoid(),
     title,
     completed: false,
-    assignedTo:''
+    date:''
 })
 
 const initialState= [
