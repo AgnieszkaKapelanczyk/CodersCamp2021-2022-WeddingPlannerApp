@@ -1,34 +1,41 @@
-import { Drawer, IconButton } from "@mui/material";
+import { Box, Drawer, IconButton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector } from "store/hooks";
+import { selecToolboxState } from "store/ToolboxSlice";
 
 export default function ToolboxMenu() {
-  const ToolboxState: boolean | undefined = useAppSelector((state) => state.toolbox.isOpen);
-
+  const toolboxState: boolean | undefined = useAppSelector(selecToolboxState);
   const [isOpen, setOpen] = useState<boolean | undefined>(false);
-
+  
   const handleToolboxClose = () => {
     setOpen(false);
-
   };
 
   useEffect(()=> {
-    if (ToolboxState) {
+    if (toolboxState) {
       setOpen(true);
     }
-  }, [ToolboxState]);
+  }, [toolboxState]);
 
   return (
       <Drawer
         variant="persistent"
-        anchor="right"
+        anchor='right'
         open={isOpen}
+        onClose={handleToolboxClose}
       >
-          <IconButton onClick={handleToolboxClose}>
-            <CloseIcon />
-          </IconButton>
+        <Box display={'flex'} flexDirection={'column'}>
+          <Box>
+            <IconButton onClick={handleToolboxClose}>
+                <CloseIcon />
+              </IconButton>
+          </Box>
+          <Box>
+            <Typography variant='body1'>Dodaj widget</Typography>
+          </Box>
+        </Box>
       
       </Drawer>
-  );
-}
+  )
+};

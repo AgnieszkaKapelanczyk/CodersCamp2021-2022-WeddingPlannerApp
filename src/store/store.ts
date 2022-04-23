@@ -1,12 +1,12 @@
 import { configureStore} from '@reduxjs/toolkit';
 import dialogReducer from 'store/dialogSlice';
 import layoutReducer from 'store/layoutSlice';
-import dateOfWeddingReducer from './dateOfWeddingSlice';
-import timeOfWeddingReducer from './timeOfWeddingSlice';
+import dateOfWeddingReducer from 'store/dateOfWeddingSlice';
+import timeOfWeddingReducer from 'store/timeOfWeddingSlice';
 import usersReducer from 'store/userSlice';
-import eventInCalendarReducer from './eventInCalendarSlice';
-import toolboxReducer from 'components/Widgets/Toolbox/store/ToolboxSlice';
-import loginReducer from './loginSlice';
+import eventInCalendarReducer from 'store/eventInCalendarSlice';
+import toolboxReducer from 'store/ToolboxSlice';
+import loginReducer from 'store/loginSlice';
 
 
 export const store = configureStore({

@@ -15,8 +15,9 @@ import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig"
 import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
-import { openToolbox } from "components/Widgets/Toolbox/store/ToolboxSlice";
+import { openToolbox } from "store/ToolboxSlice";
 import EditIcon from '@mui/icons-material/Edit';
+import ToolboxMenu from "components/Widgets/Toolbox/ToolboxMenu";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
@@ -34,6 +35,7 @@ const StyledIconButton = styled(IconButton)(({theme}) => ({
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
 
+// eslint-disable-next-line
 type ItemCallback = (
   layout: Layout[],
   oldItem: Layout,
@@ -43,6 +45,7 @@ type ItemCallback = (
   element: HTMLElement,
 ) => void;
 
+// eslint-disable-next-line
 type DragOverEvent = MouseEvent & {
   nativeEvent: {
       layerX: number,
@@ -160,7 +163,8 @@ const DashboardWeddingCouple = () => {
  
   return (
     <Box style={weddingThemeStyle}>
-        <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex:2 }}>
+      <ToolboxMenu/>
+        <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex: 2 }}>
             <StyledIconButton 
               aria-label="change theme" 
               style={{color: `${theme.palette.tertiary.main}` }}
@@ -171,11 +175,10 @@ const DashboardWeddingCouple = () => {
             <StyledIconButton 
               aria-label="add a widget" 
               style={{color: `${theme.palette.tertiary.main}` }}
-              onClick={() => dispatch(openToolbox)}
+              onClick={() => dispatch(openToolbox())}
               title='Dodaj Widget'  >
               <AddIcon style= {{fontSize: '3rem', borderRadius: '50%', background: '#fff'}}/>
             </StyledIconButton>
-           
         </Box>
         <ResponsiveGridLayout 
           layouts={layouts} 
