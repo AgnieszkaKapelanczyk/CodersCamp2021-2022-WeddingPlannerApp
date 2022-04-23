@@ -59,9 +59,8 @@ export const theme = createTheme({
         fontWeight: 400,
       },
       body1: {
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         fontFamily:"Lato",
-        fontWeight: 600,
         lineHeight:'1.6',
         letterSpacing: "2px"
       },

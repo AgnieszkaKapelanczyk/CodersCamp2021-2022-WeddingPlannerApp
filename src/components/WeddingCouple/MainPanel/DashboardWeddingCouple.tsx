@@ -101,7 +101,7 @@ const DashboardWeddingCouple = () => {
     className: "layout",
     rowHeight: 287,
     maxRows: 30,
-    width: 1000,
+    width: 1200,
     margin: [30, 30],
     isResizable: true,
     autoSize: true,

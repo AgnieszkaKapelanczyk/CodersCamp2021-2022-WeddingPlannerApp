@@ -14,6 +14,7 @@ const toolboxSlice = createSlice({
     reducers: {
         openToolbox: (state) => {
             state.isOpen = true;
+            console.log('here')
         },
         closeToolbox: (state) => {
             state.isOpen = false;

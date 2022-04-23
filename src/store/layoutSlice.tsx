@@ -38,11 +38,11 @@ export type Layouts = {
 const userLayout: Layouts  = 
       {
         lg: [
-          { i: "TimerWidget", x: 0, y: 0, w: 5, h: 1, minH: 1, minW: 4, isDraggable: true, isResizable: true},
-          { i: "ReminderWidget", x: 5, y: 1, w: 5, h: 1, isDraggable: true, isResizable: true },
-          { i: "NotificationWidget", x: 0, y: 1, w: 5, h: 1, isDraggable: true, isResizable: true},
-          { i: "ProgressWidget", x: 5, y: 4, w: 5, h: 1, isDraggable: true, isResizable: true},
-          { i: "PhotosWidget", x: 5, y: 4, w: 4, h: 1, isDraggable: true, isResizable: true }
+          { i: "TimerWidget", x: 0, y: 0, w: 4, h: 1, minH: 1, minW: 4, isDraggable: true, isResizable: true},
+          { i: "ReminderWidget", x: 5, y: 1, w: 3, h: 1, isDraggable: true, isResizable: true },
+          { i: "NotificationWidget", x: 0, y: 1, w: 3, h: 1, isDraggable: true, isResizable: true},
+          { i: "ProgressWidget", x: 5, y: 4, w: 3, h: 1, isDraggable: true, isResizable: true},
+          { i: "PhotosWidget", x: 5, y: 4, w: 3, h: 1, isDraggable: true, isResizable: true }
         ],
       
         md: [
