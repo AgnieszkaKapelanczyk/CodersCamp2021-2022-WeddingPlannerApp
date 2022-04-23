@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 });
 
 const StyledListButton = styled(ListItemButton)<{ component?: React.ElementType }>({
+  padding: '0.4rem',
   '&:hover': {
     backgroundColor: theme.palette.tertiary.light,
     color:  theme.palette.tertiary.main,

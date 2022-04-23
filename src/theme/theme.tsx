@@ -69,6 +69,12 @@ export const theme = createTheme({
         fontFamily:"Lato",
         fontWeight: 400
       },
+      subtitle1: {
+        fontSize: '1.1rem',
+        fontFamily: "Lato",
+        letterSpacing: '1px',
+        fontWeight: 600,
+      },
       button: {
         textTransform: 'none',
         letterSpacing: '2px',

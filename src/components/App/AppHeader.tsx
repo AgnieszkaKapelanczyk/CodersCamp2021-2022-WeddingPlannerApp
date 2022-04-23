@@ -79,7 +79,7 @@ const AppHeader = () => {
   
   return (
     
-      <AppBar position='static' color='inherit' style={{boxShadow: `0px 10px -14px 14px #B85C5C`}}>
+      <AppBar position='fixed' color='inherit' style={{boxShadow: `0px 10px -14px 14px #B85C5C`}}>
       <Box display={"flex"} flexDirection="row"> 
         {GetLogo()}
         <Box sx={{display:"flex", justifyContent:"flex-end", flexGrow:"1", gridColumnGap:"1rem"}}>

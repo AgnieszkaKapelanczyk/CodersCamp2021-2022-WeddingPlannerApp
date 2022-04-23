@@ -1,7 +1,6 @@
 import { CardHeader, Divider, IconButton, Link, ListItemButton, ListItemText, styled, Typography } from '@mui/material';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
 import CancelIcon from '@mui/icons-material/Cancel';
-import MessageIcon from '@mui/icons-material/Message';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {makeStyles} from '@material-ui/core';
@@ -28,6 +27,7 @@ const useStyles = makeStyles({
   });
 
   const StyledListButton = styled(ListItemButton)<{ component?: React.ElementType }>({
+    padding: '0.4rem',
       '&:hover': {
         backgroundColor: theme.palette.tertiary.light,
         color:  theme.palette.tertiary.main,

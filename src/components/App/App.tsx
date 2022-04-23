@@ -45,12 +45,12 @@ function App() {
       <Box height={"100%"} > 
        <Box component={StyledBox(loggedIn)}>
         <Box sx={{ gridArea: 'header'}}>
-      <AppHeader/> 
+          <AppHeader/> 
         </Box>  
-      <Box>
-      <AppSideBar />
+      <Box style={{position: 'relative', top: '68px'}}>
+        <AppSideBar />
       </Box>
-        <Box sx={{ gridArea: 'main'}}>
+        <Box sx={{ gridArea: 'main', position: 'relative', top: '66px'}}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />

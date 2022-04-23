@@ -36,7 +36,7 @@ const initialState = {
   
   export const { addNewUser} = usersSlice.actions;
 
-  export const selectName= (state:RootState)=> state.users;
+  export const selectName = (state:RootState)=> state.users;
   
   export default usersSlice.reducer;
   

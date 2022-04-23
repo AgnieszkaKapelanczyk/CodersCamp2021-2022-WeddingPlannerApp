@@ -168,7 +168,7 @@ const DashboardWeddingCouple = () => {
             <StyledIconButton 
               aria-label="change theme" 
               style={{color: `${theme.palette.tertiary.main}` }}
-              onClick={() => dispatch(openToolbox)}
+              //onClick={() => dispatch()}
               title='Edytuj motyw' >
               <EditIcon style= {{fontSize: '1.9rem', borderRadius: '50%', background: '#fff', padding:'0.6rem'}}/>
             </StyledIconButton>
