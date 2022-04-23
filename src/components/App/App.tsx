@@ -28,7 +28,7 @@ import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
-import { Box } from '@mui/material';
+import { Box, GlobalStyles } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from '../../theme/styledBox'
@@ -41,6 +41,20 @@ function App() {
   return (
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
+      <GlobalStyles
+          styles={{
+            h1: { color: 'primary' },
+            '*::-webkit-scrollbar': {
+              width: '0.7em',
+            },
+            '*::-webkit-scrollbar-track': {
+              background: theme.palette.common.white,
+            },
+            '*::-webkit-scrollbar-thumb': {
+              backgroundColor: `${theme.palette.primary.main}`,
+            },
+          }}
+        />
       <Dialog />
       <Box height={"100%"} > 
        <Box component={StyledBox(loggedIn)}>
