@@ -28,7 +28,7 @@ import { theme } from '../../theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
-import { Box, styled } from '@mui/material';
+import { Box } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from '../../theme/styledBox'

@@ -2,7 +2,7 @@ import { TextField, Button, Typography, Link, Box } from  "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { openDialog, FormType } from '../../store/dialogSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from "store/loginSlice";
 
 const useStyles = makeStyles({

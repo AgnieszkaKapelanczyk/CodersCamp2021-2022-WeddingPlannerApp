@@ -23,6 +23,7 @@ const Widget = styled(Card)(({ theme }) => ({
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
 
+// eslint-disable-next-line
 type ItemCallback = (
   layout: Layout[],
   oldItem: Layout,
@@ -32,6 +33,7 @@ type ItemCallback = (
   element: HTMLElement,
 ) => void;
 
+// eslint-disable-next-line
 type DragOverEvent = MouseEvent & {
   nativeEvent: {
       layerX: number,

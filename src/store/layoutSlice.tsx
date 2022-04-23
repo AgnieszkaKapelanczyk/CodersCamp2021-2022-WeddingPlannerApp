@@ -1,4 +1,3 @@
-import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store/store';
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
