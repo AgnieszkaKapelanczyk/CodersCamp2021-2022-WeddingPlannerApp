@@ -4,8 +4,8 @@ import { styled } from '@mui/material/styles';
 import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
+import { useEffect, useRef, useState } from "react";
+import { getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
 
 const useStyles = makeStyles({
   timerNumber: {
