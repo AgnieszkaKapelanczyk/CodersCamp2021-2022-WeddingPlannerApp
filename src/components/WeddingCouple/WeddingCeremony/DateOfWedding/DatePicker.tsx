@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { SetStateAction, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { pickDate} from '../../../../store/dateOfWeddingSlice';
+import { pickDate} from 'store/dateOfWeddingSlice';
 
 const DatePicker = () => {
 

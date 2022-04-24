@@ -9,7 +9,7 @@ import ProgressWidget from "../../Widgets/ProgressWidget";
 import PhotoWidget from "../../Widgets/PhotoWidget";
 import { useAppSelector, useAppDispatch } from "store/hooks";
 import { Layout, Layouts, selectLayout, setNewLayout  } from "store/layoutSlice";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import { LG_BREAKPOINT_WIDTH, MD_BREAKPOINT_WIDTH, SM_BREAKPOINT_WIDTH, XS_BREAKPOINT_WIDTH, XXS_BREAKPOINT_WIDTH } from "common/Breakpoints/constans";
 import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
 import AddIcon from '@mui/icons-material/Add';
@@ -34,24 +34,6 @@ const StyledIconButton = styled(IconButton)(({theme}) => ({
 }));
 
 type ResizeHandle = 's' | 'w' | 'e' | 'n' | 'sw' | 'nw' | 'se' | 'ne';
-
-// eslint-disable-next-line
-type ItemCallback = (
-  layout: Layout[],
-  oldItem: Layout,
-  newItem: Layout,
-  placeholder: Layout,
-  event: MouseEvent,
-  element: HTMLElement,
-) => void;
-
-// eslint-disable-next-line
-type DragOverEvent = MouseEvent & {
-  nativeEvent: {
-      layerX: number,
-      layerY: number,
-  } & Event
-};
 
 interface LayoutProps {
   className?: string | undefined;

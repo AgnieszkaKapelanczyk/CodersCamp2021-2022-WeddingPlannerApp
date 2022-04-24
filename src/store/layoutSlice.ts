@@ -1,3 +1,4 @@
+import { defaultLayout } from './../components/WeddingCouple/MainPanel/defaultLayout';
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'store/store';
 
@@ -90,10 +91,51 @@ const layoutSlice = createSlice({
         sessionStorage.setItem("userLayout", JSON.stringify(action.payload.newLayout));
       },
       addWidget: (state, action) => {
-        //state.layout.push(action.payload)
+        const defaultArray = defaultLayout;
+      
+        const addingIndexLg = defaultArray?.lg.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+        const addingIndexMd = defaultArray?.md.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+        const addingIndexSm = defaultArray?.sm.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+        const addingIndexXs = defaultArray?.xs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+        const addingIndexXxs = defaultArray?.xxs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+
+        if ( addingIndexLg && addingIndexMd && addingIndexSm && addingIndexXs && addingIndexXxs){
+          state?.lg.push(defaultLayout?.lg[addingIndexLg]);
+          state?.md.push(defaultLayout?.md[addingIndexMd]);
+          state?.sm.push(defaultLayout?.sm[addingIndexSm]);
+          state?.xs.push(defaultLayout?.xs[addingIndexXs]);
+          state?.xxs.push(defaultLayout?.xxs[addingIndexXxs]);
+        }
       },
       removeWidget: (state, action) => {
-        //state.layout.splice(action.payload, 1)
+        const removeIndexLg = state?.lg.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+        const removeIndexMd = state?.md.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+        const removeIndexSm = state?.sm.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+        const removeIndexXs = state?.xs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+        const removeIndexXxs = state?.xxs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+
+        if (state && removeIndexLg && removeIndexMd && removeIndexSm && removeIndexXs && removeIndexXxs) {
+          state.lg[removeIndexLg].w = 0;
+          state.lg[removeIndexLg].minW = 0;
+          state.lg[removeIndexLg].h = 0; 
+          state.lg[removeIndexLg].minH = 0; 
+          state.md[removeIndexMd].w = 0;
+          state.md[removeIndexMd].minW = 0;
+          state.md[removeIndexMd].h= 0;
+          state.md[removeIndexMd].minH= 0;
+          state.sm[removeIndexSm].w = 0;
+          state.sm[removeIndexSm].minW = 0;
+          state.sm[removeIndexSm].h = 0;
+          state.sm[removeIndexSm].minH = 0;
+          state.xs[removeIndexXs].w = 0;
+          state.xs[removeIndexXs].minW = 0;
+          state.xs[removeIndexXs].h = 0;
+          state.xs[removeIndexXs].minH = 0;
+          state.xxs[removeIndexXxs].w = 0;
+          state.xxs[removeIndexXxs].minW = 0;
+          state.xxs[removeIndexXxs].h = 0;
+          state.xxs[removeIndexXxs].minH = 0;
+        };
       }
     },
   });

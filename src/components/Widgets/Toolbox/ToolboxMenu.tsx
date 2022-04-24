@@ -1,5 +1,5 @@
-import { Box, ButtonBase, Checkbox, Drawer, FormGroup, FormControlLabel, IconButton, styled, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, ButtonBase, Drawer, FormGroup, FormControlLabel, IconButton, styled, Typography, Switch } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { closeToolbox, selecToolboxState } from "store/ToolboxSlice";
@@ -7,8 +7,9 @@ import { theme } from "theme/theme";
 import TimerWidget from 'assets/img/TimerWidget.png';
 import NotificationWidget from 'assets/img/NotificationWidget.png';
 import ReminderWidget from 'assets/img/ReminderWidget.png';
-import PhotoWidget from 'assets/img/PhotoWidget.png';
+import PhotosWidget from 'assets/img/PhotoWidget.png';
 import ProgressWidget from 'assets/img/ProgressWidget.png';
+import { addWidget, removeWidget } from "store/layoutSlice";
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
@@ -75,32 +76,44 @@ export default function ToolboxMenu() {
   const toolboxState: boolean | undefined = useAppSelector(selecToolboxState);
   const [isOpen, setOpen] = useState<boolean | undefined>(false);
 
+
   const images = [
     {
       url: TimerWidget,
       title: 'Odliczanie do dnia ślubu',
+      value: 'TimerWidget',
     },
     {
       url: NotificationWidget,
       title: 'Powiadomienia',
+      value: 'NotificationWidget',
     },
     {
       url: ReminderWidget,
       title: 'Przypomnienia',
+      value: 'ReminderWidget',
     },
     {
       url: ProgressWidget,
       title: 'Postęp przygotowań',
+      value: 'ProgressWidget',
     },
     {
-      url: PhotoWidget,
+      url: PhotosWidget,
       title: 'Zdjęcia',
+      value: 'PhotosWidget'
     },
   ];
   
   const handleToolboxClose = () => {
     setOpen(false);
     dispatch(closeToolbox())
+  };
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      event.target.checked 
+      ? dispatch(addWidget({ nameAddingWidget:  event.target.value })) 
+      : dispatch(removeWidget({ nameRemovingWidget: event.target.value }));
   };
 
   useEffect(()=> {
@@ -126,20 +139,33 @@ export default function ToolboxMenu() {
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'left'}}>
           <FormGroup>
           {images.map((image) => (
-            <>
-            <FormControlLabel control={<Checkbox defaultChecked />} label={`${image.title}`} />
+            <React.Fragment key={`divCheckbox-${image.title}`}>
+            <FormControlLabel 
+              key={`label-${image.title}`}
+              control={<Switch
+                        key={`checkbox-${image.title}`}
+                        value={image.value}
+                        defaultChecked
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': `checked ${image.title}` }}
+                        />
+              }
+              label={`${image.title}`} />
             <ImageButton
-              key={image.title}
+              key={`imagebutton-${image.title}`}
               style={{
                 width: '260px',
                 height: '140px',
                 margin: '0.8rem 0',
               }}
             >
-              <ImageSrc style={{ backgroundImage: `url(${image.url})`,  borderRadius: '4%', boxShadow:  '0px 2px 4px -1px rgb(0 0 0 / 20%)' }} />
-              <ImageBackdrop className="MuiImageBackdrop-root" />
-              <Image>
+              <ImageSrc 
+                key={`imagesrc-${image.title}`}
+                style={{ backgroundImage: `url(${image.url})`,  borderRadius: '4%', boxShadow:  '0px 2px 4px -1px rgb(0 0 0 / 20%)' }} />
+              <ImageBackdrop key={`imagebackdrop-${image.title}`} className="MuiImageBackdrop-root" />
+              <Image key={`image-${image.title}`}>
                 <Typography
+                  key={`addText-${image.title}`}
                   className="widgetName"
                   component="span"
                   variant="subtitle1"
@@ -148,7 +174,7 @@ export default function ToolboxMenu() {
                 </Typography>
               </Image>
             </ImageButton>
-        </>
+        </React.Fragment>
       ))}
       </FormGroup>
           </Box>
