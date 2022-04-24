@@ -46,6 +46,7 @@ const FeaturesSection = () => {
           justifyContent: 'center',
           alignItems: 'center',
           gap: '5%',
+          flexWrap: 'wrap',
         }}
       >
         <Box>
