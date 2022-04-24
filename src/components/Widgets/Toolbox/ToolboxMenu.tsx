@@ -25,7 +25,8 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   '& .widgetName': {
     color: theme.palette.common.black,
     position: 'relative',
-    padding: '4rem 6rem',
+    padding: '4rem 5rem',
+    marginRight: '1rem',
        '&:hover': {
           opacity: 0,
     }
@@ -36,7 +37,7 @@ const ImageButton = styled(ButtonBase)(({ theme }) => ({
   '&:hover, &.Mui-focusVisible': {
     zIndex: 1,
     '& .MuiImageBackdrop-root': {
-      opacity: 0.15,
+      opacity: 0,
     },
   },
 }));
@@ -48,6 +49,7 @@ const ImageSrc = styled('span')({
   top: 0,
   bottom: 0,
   backgroundSize: 'cover',
+  marginRight: '1rem'
 });
 
 const Image = styled('span')(({ theme }) => ({
@@ -56,6 +58,7 @@ const Image = styled('span')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'left',
   color: theme.palette.common.white,
+  marginRight: '1rem',
 }));
 
 const ImageBackdrop = styled('span')(({ theme }) => ({
@@ -68,7 +71,7 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
   opacity: 0.8,
   transition: theme.transitions.create('opacity'),
   borderRadius: '2%',
-  
+  marginRight: '1rem',
 }));
 
 export default function ToolboxMenu() {
@@ -122,6 +125,13 @@ export default function ToolboxMenu() {
       : dispatch(removeWidget({ nameRemovingWidget: event.target.value }));
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log(event.currentTarget.value)
+      isLayouts(actualLayout) && actualLayout.lg.find((el)=> (el.i === event.currentTarget.value && el.w>0 && el.h>0)) 
+      ? dispatch(removeWidget({ nameRemovingWidget: event.currentTarget.value }))
+      : dispatch(addWidget({ nameAddingWidget:  event.currentTarget.value }));      
+  };
+
   useEffect(()=> {
     if (toolboxState) {
       setOpen(true);
@@ -161,17 +171,28 @@ export default function ToolboxMenu() {
               label={`${image.title}`} />
             <ImageButton
               key={`imagebutton-${image.title}`}
+              value={image.value}
               style={{
                 width: '260px',
                 height: '140px',
                 margin: '0.8rem 0',
               }}
+              onClick={handleClick}
             >
               <ImageSrc 
                 key={`imagesrc-${image.title}`}
                 style={{ backgroundImage: `url(${image.url})`,  borderRadius: '4%', boxShadow:  '0px 2px 4px -1px rgb(0 0 0 / 20%)' }} />
-              <ImageBackdrop key={`imagebackdrop-${image.title}`} className="MuiImageBackdrop-root" />
-              <Image key={`image-${image.title}`}>
+              <ImageBackdrop key={`imagebackdrop-${image.title}`} className="MuiImageBackdrop-root" 
+                  style={{
+                    display: 
+                    isLayouts(actualLayout) && actualLayout.lg.find((el)=> (el.i === image.value && el.w>0 && el.h>0)) ? 'none' : 'block'
+                    }}/>
+              <Image 
+                  key={`image-${image.title}`}
+                  style={{
+                    display: 
+                    isLayouts(actualLayout) && actualLayout.lg.find((el)=> (el.i === image.value && el.w>0 && el.h>0)) ? 'none' : 'block'
+                    }}>
                 <Typography
                   key={`addText-${image.title}`}
                   className="widgetName"
@@ -187,7 +208,6 @@ export default function ToolboxMenu() {
       </FormGroup>
           </Box>
         </Box>
-      
       </StyledDrawer>
   )
 };

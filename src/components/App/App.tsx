@@ -56,7 +56,7 @@ function App() {
           }}
         />
       <Dialog />
-      <Box height={"100%"} > 
+      <Box height={"100vh"} > 
        <Box component={StyledBox(loggedIn)}>
         <Box sx={{ gridArea: 'header'}}>
           <AppHeader/> 

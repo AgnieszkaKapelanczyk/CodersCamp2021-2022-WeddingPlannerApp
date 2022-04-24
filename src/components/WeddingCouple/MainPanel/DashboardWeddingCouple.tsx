@@ -101,13 +101,14 @@ const DashboardWeddingCouple = () => {
     verticalCompact: true,
     isDraggable: true,
     onLayoutChange: ()=>{},
+    useCSSTransforms: false
   };
 
   const weddingThemeStyle={
     backgroundImage: `url(${PanelThemeBg})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '100%',
+    height: '200vh',
   };  
 
   const handleModify = (layout: Layout[], layouts: Layouts) => {

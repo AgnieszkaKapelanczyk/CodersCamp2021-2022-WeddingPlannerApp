@@ -85,12 +85,18 @@ const userLayout: Layouts  =
         ) 
   };
 
+function isExist(layoutFromStorage: Layouts | null | []): layoutFromStorage is Layouts {
+    return(
+      (layoutFromStorage as Layouts) !== undefined && (layoutFromStorage as Layouts) !== null
+    ) 
+};
+
 const getInitialState = () => {
   let initialLayout: Layouts | [] = userLayout;
   let layoutFromSS: Layouts | null | [] = sessionStorage.getItem("userLayout")
   ? JSON.parse(sessionStorage.getItem("userLayout") || '[]') : null;
 
-  if (layoutFromSS !== null && layoutFromSS.length > 0) {
+  if (isExist(layoutFromSS)) {
     initialLayout = layoutFromSS;
   };
   return initialLayout;
