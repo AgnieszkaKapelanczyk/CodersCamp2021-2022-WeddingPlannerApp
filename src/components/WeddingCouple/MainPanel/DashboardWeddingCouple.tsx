@@ -69,10 +69,16 @@ interface LayoutProps {
 
 const DashboardWeddingCouple = () => {
   const dispatch = useAppDispatch();
-  const actualLayout: Layouts | undefined = useAppSelector(selectLayout);
+  const actualLayout: Layouts | undefined | [] = useAppSelector(selectLayout);
   const ResponsiveGridLayout = WidthProvider(Responsive);
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint | undefined>(undefined);
   const [layouts, setLayouts] = useState<Layouts | undefined>(undefined);
+
+  function isLayouts(actualLayout: Layouts | undefined | []): actualLayout is Layouts {
+    return(
+      (actualLayout as Layouts) !== undefined && (actualLayout as Layouts) !== null
+    ) 
+  };
 
   const Props: LayoutProps = {
     breakpoints: { 
@@ -140,9 +146,12 @@ const DashboardWeddingCouple = () => {
   }, [currentBreakpoint]);
 
   useEffect(()=> {
-    setLayouts(actualLayout);
+    if(isLayouts(actualLayout)){
+      setLayouts(actualLayout);
+    }
   },[actualLayout]);
- 
+
+
   return (
     <Box style={weddingThemeStyle}>
       <ToolboxMenu/>

@@ -79,9 +79,25 @@ const userLayout: Layouts  =
         ]
       };
 
-const initialState: Layouts | undefined = sessionStorage.getItem("userLayout")
-  ? JSON.parse(sessionStorage.getItem("userLayout") || '[]') : userLayout;
+  function isNotEmpty(state: Layouts | undefined | []): state is Layouts {
+        return(
+          (state as Layouts) !== undefined && (state as Layouts) !== null
+        ) 
+  };
 
+const getInitialState = () => {
+  let initialLayout: Layouts | [] = userLayout;
+  let layoutFromSS: Layouts | null | [] = sessionStorage.getItem("userLayout")
+  ? JSON.parse(sessionStorage.getItem("userLayout") || '[]') : null;
+
+  if (layoutFromSS !== null && layoutFromSS.length > 0) {
+    initialLayout = layoutFromSS;
+  };
+  return initialLayout;
+};
+
+const initialState: Layouts | []  = getInitialState();
+  
 const layoutSlice = createSlice({
     name: 'layout',
     initialState,
@@ -92,29 +108,52 @@ const layoutSlice = createSlice({
       },
       addWidget: (state, action) => {
         const defaultArray = defaultLayout;
-      
-        const addingIndexLg = defaultArray?.lg.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
-        const addingIndexMd = defaultArray?.md.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
-        const addingIndexSm = defaultArray?.sm.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
-        const addingIndexXs = defaultArray?.xs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
-        const addingIndexXxs = defaultArray?.xxs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
 
-        if ( addingIndexLg && addingIndexMd && addingIndexSm && addingIndexXs && addingIndexXxs){
-          state?.lg.push(defaultLayout?.lg[addingIndexLg]);
-          state?.md.push(defaultLayout?.md[addingIndexMd]);
-          state?.sm.push(defaultLayout?.sm[addingIndexSm]);
-          state?.xs.push(defaultLayout?.xs[addingIndexXs]);
-          state?.xxs.push(defaultLayout?.xxs[addingIndexXxs]);
+        if (isNotEmpty(state)){
+          const stateIndexLg = state.lg.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const stateIndexMd = state.md.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const stateIndexSm = state.sm.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const stateIndexXs = state.xs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const stateIndexXxs = state.xxs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+        
+          const addingIndexLg = defaultArray.lg.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const addingIndexMd = defaultArray.md.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const addingIndexSm = defaultArray.sm.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const addingIndexXs = defaultArray.xs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+          const addingIndexXxs = defaultArray.xxs.findIndex((el)=>(el.i === action.payload.nameAddingWidget));
+
+          state.lg[stateIndexLg].w = defaultArray.lg[addingIndexLg].w;
+          state.lg[stateIndexLg].minW = defaultArray.lg[addingIndexLg].minW;
+          state.lg[stateIndexLg].h = defaultArray.lg[addingIndexLg].h;
+          state.lg[stateIndexLg].minH = defaultArray.lg[addingIndexLg].minH; 
+          state.md[stateIndexMd].w = defaultArray.md[addingIndexMd].w;
+          state.md[stateIndexMd].minW = defaultArray.md[addingIndexMd].minW;
+          state.md[stateIndexMd].h = defaultArray.md[addingIndexMd].h;
+          state.md[stateIndexMd].minH = defaultArray.md[addingIndexMd].minH;
+          state.sm[stateIndexSm].w = defaultArray.sm[addingIndexSm].w;
+          state.sm[stateIndexSm].minW = defaultArray.sm[addingIndexSm].minW;
+          state.sm[stateIndexSm].h = defaultArray.sm[addingIndexSm].h;
+          state.sm[stateIndexSm].minH = defaultArray.sm[addingIndexSm].minH;
+          state.xs[stateIndexXs].w = defaultArray.xs[addingIndexXs].w;
+          state.xs[stateIndexXs].minW = defaultArray.xs[addingIndexXs].minW;
+          state.xs[stateIndexXs].h = defaultArray.xs[addingIndexXs].h;
+          state.xs[stateIndexXs].minH = defaultArray.xs[addingIndexXs].minH;
+          state.xxs[stateIndexXxs].w = defaultArray.xxs[addingIndexXxs].w;
+          state.xxs[stateIndexXxs].minW = defaultArray.xxs[addingIndexXxs].minW;
+          state.xxs[stateIndexXxs].h = defaultArray.xxs[addingIndexXxs].h;
+          state.xxs[stateIndexXxs].minH = defaultArray.xxs[addingIndexXxs].minH;
         }
+        sessionStorage.setItem("userLayout", JSON.stringify(state));
       },
       removeWidget: (state, action) => {
-        const removeIndexLg = state?.lg.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
-        const removeIndexMd = state?.md.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
-        const removeIndexSm = state?.sm.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
-        const removeIndexXs = state?.xs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
-        const removeIndexXxs = state?.xxs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
 
-        if (state && removeIndexLg && removeIndexMd && removeIndexSm && removeIndexXs && removeIndexXxs) {
+        if (isNotEmpty(state)){
+          const removeIndexLg = state.lg.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+          const removeIndexMd = state.md.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+          const removeIndexSm = state.sm.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+          const removeIndexXs = state.xs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+          const removeIndexXxs = state.xxs.findIndex((el)=>(el.i === action.payload.nameRemovingWidget));
+
           state.lg[removeIndexLg].w = 0;
           state.lg[removeIndexLg].minW = 0;
           state.lg[removeIndexLg].h = 0; 
@@ -135,7 +174,8 @@ const layoutSlice = createSlice({
           state.xxs[removeIndexXxs].minW = 0;
           state.xxs[removeIndexXxs].h = 0;
           state.xxs[removeIndexXxs].minH = 0;
-        };
+        }
+        sessionStorage.setItem("userLayout", JSON.stringify(state));
       }
     },
   });

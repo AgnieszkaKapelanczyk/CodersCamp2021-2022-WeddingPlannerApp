@@ -9,7 +9,7 @@ import NotificationWidget from 'assets/img/NotificationWidget.png';
 import ReminderWidget from 'assets/img/ReminderWidget.png';
 import PhotosWidget from 'assets/img/PhotoWidget.png';
 import ProgressWidget from 'assets/img/ProgressWidget.png';
-import { addWidget, removeWidget } from "store/layoutSlice";
+import { addWidget, Layouts, removeWidget, selectLayout } from "store/layoutSlice";
 
 const StyledDrawer = styled(Drawer)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.light,
@@ -73,9 +73,15 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 
 export default function ToolboxMenu() {
   const dispatch = useAppDispatch();
+  const actualLayout: Layouts | undefined | [] = useAppSelector(selectLayout);
   const toolboxState: boolean | undefined = useAppSelector(selecToolboxState);
   const [isOpen, setOpen] = useState<boolean | undefined>(false);
 
+  function isLayouts(actualLayout: Layouts | undefined | []): actualLayout is Layouts {
+    return(
+      (actualLayout as Layouts) !== undefined && (actualLayout as Layouts) !== null
+    ) 
+  };
 
   const images = [
     {
@@ -145,7 +151,9 @@ export default function ToolboxMenu() {
               control={<Switch
                         key={`checkbox-${image.title}`}
                         value={image.value}
-                        defaultChecked
+                        checked={
+                          isLayouts(actualLayout) && actualLayout.lg.find((el)=> (el.i === image.value && el.w>0 && el.h>0)) ? true : false
+                        } 
                         onChange={handleChange}
                         inputProps={{ 'aria-label': `checked ${image.title}` }}
                         />
