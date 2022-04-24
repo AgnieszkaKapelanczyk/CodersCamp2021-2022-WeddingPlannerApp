@@ -10,6 +10,7 @@
   - [Wykorzystywane technologie](#wykorzystywane-technologie)
   - [Uruchomienie projektu](#uruchomienie-projektu)
   - [Organizacja pracy](#organizacja-pracy)
+- [Statystyki](#statystyki)
 
 ## Zespół projektowy
 
