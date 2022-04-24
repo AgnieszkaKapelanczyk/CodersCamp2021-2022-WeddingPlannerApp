@@ -126,7 +126,6 @@ export default function ToolboxMenu() {
   };
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(event.currentTarget.value)
       isLayouts(actualLayout) && actualLayout.lg.find((el)=> (el.i === event.currentTarget.value && el.w>0 && el.h>0)) 
       ? dispatch(removeWidget({ nameRemovingWidget: event.currentTarget.value }))
       : dispatch(addWidget({ nameAddingWidget:  event.currentTarget.value }));      

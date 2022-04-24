@@ -1,18 +1,17 @@
-import { AppBar, Button, Typography, Box} from '@mui/material'
+import { AppBar, Button, Typography, Box, styled, IconButton} from '@mui/material'
 import Logoprzed from 'assets/img/logo_przed_zalogowaniem.png'
 import Logopo from 'assets/img/logo_po_zalogowaniu.png'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useDispatch } from "react-redux";
 import { openDialog, FormType } from 'store/dialogSlice'
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
-import { useSelector } from 'react-redux';
-import { loggedInUser } from 'store/loginSlice';
-import {selectName} from '../../store/userSlice';
+import {isLoggedIn, selectName} from '../../store/userSlice';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 
  const iconStyle= ({
       color:"#C26D6D",
-      size:"large",
+      fontSize: "2.8rem",
+      marginRight: '0.2rem'
   }
 );
 
@@ -23,27 +22,39 @@ const LogoBox = ({
   display:'flex',
 });
 
+const StyledButton = styled(Button)(({ theme }) => ({
+  margin: '0.66rem 1rem', 
+  padding: '0 1.2rem' ,
+  height: '70%',
+  fontSize:'1rem', 
+  fontWeight: '800',
+    '&:hover': {
+      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.main,
+    }
+}));
+
 function GetLogo() {
-  const navigate=useNavigate()
-  const loggedIn = useSelector(loggedInUser);
-const names= 'Anna & Jakub'
-const names2=useSelector(selectName)
-console.log(names2)
+  const navigate = useNavigate();
+  const loggedIn = useAppSelector(isLoggedIn);
+  const coupleNames = 'Anna & Jakub';
+  
   const LogoBig = (
-  <Box style={LogoBox}>
-  <Button onClick={()=> navigate('/')}>
-    <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
-  <Typography variant='h3' color='primary' style={{margin:'0.5rem'}}>{loggedIn? names : 'WeddingPlanner'}</Typography>
- </Button>
-  </Box>
+  
+    <Box style={LogoBox}>
+    <Button onClick={()=> loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
+      <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
+    <Typography variant='h2' color='primary' style={{margin:'0.5rem'}}>{loggedIn? coupleNames : 'WeddingPlanner'}</Typography>
+    </Button>
+    </Box>
   )
 
   const LogoSmall=(
     <Box >
-  <Button onClick={()=> navigate('/')}>
-    <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
- </Button>
-  </Box>
+      <Button onClick={()=>loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
+        <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
+      </Button>
+    </Box>
   )
 
   const matches = useMediaQuery('(min-width:500px)');
@@ -55,28 +66,36 @@ console.log(names2)
   return logo}
 
   function GetRightSide(){
-    const loggedIn = useSelector(loggedInUser);
-    let dispatch = useDispatch();
+    const dispatch = useAppDispatch();
+    const loggedIn = useAppSelector(isLoggedIn);
+    const userName = useAppSelector(selectName);
     let elementForNotLoggedIn= (
       <Box sx={{display:"flex"}}>
-      <Button sx= {{variant:'text', color:'primary' }} style={{margin:'0.2rem 0.5rem',  fontSize:'0.9rem'}} onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>ZAREJESTRUJ SIĘ</Button>
-      <Button sx={{variant:'text', color:'primary'}} style={{margin:'0.2rem 0.5rem',  fontSize:'0.9rem'}} onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>ZALOGUJ SIĘ</Button>
+      <StyledButton variant='text' color='primary' onClick={() =>dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}>
+        ZAREJESTRUJ SIĘ
+      </StyledButton>
+      <StyledButton variant= 'text' color='primary' onClick={() => dispatch(openDialog({ formType: FormType.loginDialog }))}>
+        ZALOGUJ SIĘ
+      </StyledButton>
     </Box>
     )
     let elementForLoggedIn= (
-      <Button >
-        <AccountCircleIcon style={ iconStyle}
-        onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))} />
+      <Button>
+        <Typography variant='h4' style={{margin: '0 0.8rem'}}>{userName}</Typography>
+        <IconButton title={'Wyloguj'}>
+          <AccountCircleIcon style={ iconStyle} 
+          onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))} />
+        </IconButton>
       </Button>
     )
-    const rightSide= loggedIn? elementForLoggedIn : elementForNotLoggedIn
+    const rightSide= loggedIn ? elementForLoggedIn : elementForNotLoggedIn
     return rightSide
   }
 
 
 
 const AppHeader = () => {
-  
+ 
   return (
     
       <AppBar position='fixed' color='inherit' style={{boxShadow: `0px 10px -14px 14px #B85C5C`}}>

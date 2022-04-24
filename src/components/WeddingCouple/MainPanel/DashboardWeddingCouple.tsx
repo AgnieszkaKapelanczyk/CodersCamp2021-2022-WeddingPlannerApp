@@ -159,17 +159,17 @@ const DashboardWeddingCouple = () => {
         <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex: 2 }}>
             <StyledIconButton 
               aria-label="change theme" 
-              style={{color: `${theme.palette.tertiary.main}` }}
+              style={{color: `${theme.palette.primary.main}` }}
               //onClick={() => dispatch()}
               title='Edytuj motyw' >
-              <EditIcon style= {{fontSize: '1.9rem', borderRadius: '50%', background: '#fff', padding:'0.6rem'}}/>
+              <EditIcon style= {{fontSize: '1.7rem', borderRadius: '50%', background: '#fff', padding:'0.6rem'}}/>
             </StyledIconButton>
             <StyledIconButton 
               aria-label="add a widget" 
-              style={{color: `${theme.palette.tertiary.main}` }}
+              style={{color: `${theme.palette.primary.main}` }}
               onClick={() => dispatch(openToolbox())}
               title='Dodaj Widget'  >
-              <AddIcon style= {{fontSize: '3rem', borderRadius: '50%', background: '#fff'}}/>
+              <AddIcon style= {{fontSize: '2.7rem', borderRadius: '50%', background: '#fff'}}/>
             </StyledIconButton>
         </Box>
         <ResponsiveGridLayout 

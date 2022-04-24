@@ -1,10 +1,11 @@
 import { Typography, Button, Box } from "@mui/material";
-import { useDispatch } from "react-redux";
 import { closeDialog } from "../../store/dialogSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { useAppDispatch } from "store/hooks";
 
 export const ZalozonyProfil = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate= useNavigate();
 
   return (
@@ -23,8 +24,11 @@ export const ZalozonyProfil = () => {
             variant="contained"
             size="small"
             color="primary"
-            onClick={() => {dispatch(closeDialog())
-            navigate('/StartPlanning')}}>
+            onClick={() => {
+              dispatch(closeDialog());
+              navigate('/');
+              toast.success("Jesteś zalogowany");
+              }}>
             ZACZYNAMY!
           </Button>
       </Box>

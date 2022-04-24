@@ -47,11 +47,11 @@ export const theme = createTheme({
         WebkitFontSmoothing: "antialiased",
       },
       h2: {
-        fontSize: '1.8rem',
+        fontSize: '1.5rem',
       },
       h3: {
-        fontSize: '1.2rem',
-        
+        fontSize: '1.3rem',
+        fontFamily: "Lato",
       },
       h4: {
         fontFamily: "Lato",

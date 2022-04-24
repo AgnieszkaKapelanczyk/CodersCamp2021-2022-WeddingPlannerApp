@@ -32,12 +32,12 @@ import { Box, GlobalStyles } from '@mui/material';
 import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from '../../theme/styledBox'
-import {useSelector} from 'react-redux'
-import { loggedInUser } from 'store/loginSlice';
 import StartPlanning from 'components/WeddingCouple/StartPlaning/StartingPlanning';
+import { useAppSelector } from 'store/hooks';
+import { isLoggedIn } from 'store/userSlice';
 
 function App() {
-  const loggedIn= useSelector(loggedInUser)
+  const loggedIn= useAppSelector(isLoggedIn);
   return (
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
@@ -68,7 +68,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />
-        <Route path="/WeddingCouple/" element={<DashboardWeddingCouple/>} />
+        <Route path="/WeddingCouple/" element={loggedIn ? <DashboardWeddingCouple/> : <HomePage/>} />
         <Route path="/WeddingCouple/Groom/" element={<Groom/>} />
         <Route path="/WeddingCouple/Bride/" element={<Bride/>} />
         <Route path="/WeddingCouple/ToDoList/" element={<ToDoList/>} />

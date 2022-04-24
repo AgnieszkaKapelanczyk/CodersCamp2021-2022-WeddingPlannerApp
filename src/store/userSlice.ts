@@ -1,42 +1,68 @@
-import { createSlice, current } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
+import { toast } from 'react-toastify';
 
-type Users = {
-    firstName:string,
-    lastName:string,
-    email: string,
-    password: string
-}
-let users: Users[]=[]
+type User = {
+  loggedIn: boolean,
+  user: string | undefined
+};
 
-const initialState = {
-   users
-  //  {
-  //    firstName:'',
-  //    lastName:'',
-  //    email: '',
-  //    password: ''
-  //  }
+function isLogged(state: string | undefined): state is string {
+  return(
+    (state as string) !== undefined 
+  ) 
+};
+
+const userNotLogged: User = {
+  loggedIn: false,
+  user: undefined
+};
+
+const getInitialState = () => {
+  let initialUser: User | undefined= userNotLogged;
+  let userFromSS: string | undefined = sessionStorage.getItem("user")
+  ? sessionStorage.getItem("user") || '' : undefined;
+
+  if (isLogged(userFromSS)) {
+    initialUser = {
+      loggedIn: true,
+      user:  userFromSS
+    }
   };
+  return initialUser;
+};
+
+const initialState: User | ''  = getInitialState();
+
   
-  const usersSlice = createSlice({
-    name: 'users',
+  const userSlice = createSlice({
+    name: 'user',
     initialState,
     reducers: {
-    
-        addNewUser: (state, action) => {
-          state.users.push(action.payload);
-          console.log(action.payload)
-          console.log(current(state));
-          localStorage.setItem('user', action.payload)
-          console.log(localStorage)
-         }    
-    },
+      login: (state, action) => {
+        state.loggedIn = true;
+        state.user = action.payload.user;
+        console.log(state.loggedIn)
+        console.log(action.payload.user)
+        toast.success("Jesteś zalogowany");
+        if (isLogged(state.user)) {
+          sessionStorage.setItem("user", state.user);
+        }
+      },
+      logout: (state) => {
+        state.loggedIn = false;
+        state.user = undefined;
+        toast.success("Wylogowano!");
+        sessionStorage.clear();
+      }
+    }
   });
   
-  export const { addNewUser} = usersSlice.actions;
+  export const { login, logout } = userSlice.actions;
 
-  export const selectName = (state:RootState)=> state.users;
+  export const selectName = (state: RootState) => state.user.user;
+
+  export const isLoggedIn = (state: RootState) => state.user.loggedIn;
   
-  export default usersSlice.reducer;
+  export default userSlice.reducer;
   

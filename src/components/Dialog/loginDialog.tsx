@@ -1,9 +1,11 @@
 import { TextField, Button, Typography, Link, Box } from  "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
-import { openDialog, FormType } from '../../store/dialogSlice';
-import { useDispatch } from 'react-redux';
-import { login } from "store/loginSlice";
+import { openDialog, FormType } from 'store/dialogSlice';
+import { useAppDispatch } from "store/hooks";
+import { toast } from 'react-toastify';
+import { login } from "store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles({
     field: {
@@ -16,35 +18,30 @@ const useStyles = makeStyles({
     },
   });
 
-
 export const LoginDialog = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const classes = useStyles();
-        // const responseStatus = useSelector(selectResponseStatus);
     const [data, setData] = useState({
       email: "",
       password: ""
     });
   
-        const handleChange=(e: React.ChangeEvent<any>): void => {
-      const value = e.target.value;
+    const handleChange=(event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
+    const value = event.target.value;
       setData({
         ...data,
-        [e.target.name.trim()]: value
+        [event.target.name.trim()]: value
       });
     };
   
-    const handleSubmit = (e: React.ChangeEvent<any>) => {
-      e.preventDefault();
-      dispatch(login(data)); 
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      dispatch(login({user: data.email})); 
+      navigate('/WeddingCouple');
       dispatch(openDialog({formType:FormType.zalogowano}))
-
-    };
-  
-    // if(responseStatus === 'succeeded log in (:') {
-    //   dispatch(login({ user: data.login }));
-    //   dispatch(openDialog({ formType: FormType.zalogowano}));
-    // }  
+      toast.success("Jesteś zalogowany");
+    }; 
   
     return (
       <form onSubmit={handleSubmit}>
@@ -75,9 +72,10 @@ export const LoginDialog = () => {
 
         <Box sx={{display:"flex", justifyContent:'center' }}>
         <Button sx={{marginBottom:'20px'}}
-        type="submit"        
-        color="primary" variant="contained" size="large"
-        className={classes.field} >
+          type="submit"        
+          color="primary" variant="contained" size="large"
+          className={classes.field}
+        >
           Zaloguj się
         </Button>
         </Box>

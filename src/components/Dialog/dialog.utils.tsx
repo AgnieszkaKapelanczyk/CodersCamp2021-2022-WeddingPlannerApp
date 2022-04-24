@@ -39,7 +39,7 @@ export const getDialogEl = (formType: any) => {
     [
       FormType.zalogowano,
       {
-        title: '',
+        title: 'LOGOWANIE',
         component: <Zalogowano />,
         width: "xs",
       },
@@ -47,7 +47,7 @@ export const getDialogEl = (formType: any) => {
     [
       FormType.wyloguj, 
       {
-        title: '',
+        title: 'WYLOGOWANIE',
         component: <Wyloguj />,
         width:'xs'
       }

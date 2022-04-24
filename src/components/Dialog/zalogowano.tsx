@@ -1,21 +1,26 @@
 import { Typography, Button, Box } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { closeDialog } from "../../store/dialogSlice";
+import { closeDialog } from "store/dialogSlice";
+import { useAppDispatch } from "store/hooks";
+import Logo from 'assets/img/logo_przed_zalogowaniem.png';
 
 export const Zalogowano = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   return (
     <Box sx={{ display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"space-between"  }}>
+      <Box display={'flex'} justifyContent={'center'}>
+        <img src={Logo} alt='' width={'100px'}/>
+      </Box>
       <Box sx={{marginTop:'20px', marginBottom:'20px'}}>
           <Typography
             variant="body1"
-            align="center">
+            align="center"
+            marginBottom="2rem">
             Jesteś zalogowany!
           </Typography>
       </Box>
       <Box
-        sx={{ marginBottom:'20px', textAlign:"center" }}
+        sx={{ padding:'1rem', textAlign:"center" }}
         >
           <Button
             variant="contained"

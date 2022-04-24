@@ -1,8 +1,7 @@
 import { TextField, Button, Box} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addNewUser } from "store/userSlice";
+import { useAppDispatch } from "store/hooks";
 import { openDialog, FormType } from '../../store/dialogSlice';
 
 
@@ -13,11 +12,8 @@ const useStyles = makeStyles({
   }
 });
 
-
-
 export const RejestracjaEmail = () => {
-  const dispatch = useDispatch();
-
+  const dispatch = useAppDispatch();
 
   const classes = useStyles();
   const [data, setData] = useState({
@@ -27,24 +23,18 @@ export const RejestracjaEmail = () => {
     password: ""
   });
 
-  const handleChange = (e: React.ChangeEvent<any>): void => {
-    const value = e.target.value;
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
+    const value = event.target.value;
     setData({
       ...data,
-      [e.target.name.trim()]: value
+      [event.target.name.trim()]: value
     });
   };
 
-  const handleSubmit = (e: React.ChangeEvent<any>): void => {
-    e.preventDefault();
-    console.log(data);
-    dispatch(addNewUser(data));
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
     dispatch(openDialog({ formType: FormType.zalozonyProfil }))
   };
-
-//   if(responseStatus === 'succeeded register (:') {
-//     dispatch(openDialog({ formType: FormType.zalozonyProfil }));
-//   };
 
   return (
     <form onSubmit={handleSubmit}>

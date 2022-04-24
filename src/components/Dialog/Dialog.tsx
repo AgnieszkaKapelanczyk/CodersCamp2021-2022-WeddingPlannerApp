@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
   icon:{
       color:"#C26D6D",
-      fontSize:"large",
+      fontSize: '2rem',
       marginRight: '10px'
   }
 });
@@ -41,7 +41,7 @@ const Dialogs = () => {
                 >
                 </PersonIcon>
               <Typography
-                variant="h2"
+                variant="h3"
                 color="primary">
                 {title}
               </Typography>
