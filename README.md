@@ -94,4 +94,4 @@ Przy uyciu narzędzia YouTrack (by JetBrains), rozdzielono wszystkie zadania zap
 Zespół organizował 3 spotkania w tygodniu, mające na celu przedstawienie postępół pracy i ogólnej dyskusji nad projektem.
 Komunikacja odbywała się przez Google Meets oraz Discord.
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AgnieszkaKapelanczyk&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=AgnieszkaKapelanczyk)](https://github.com/anuraghazra/github-readme-stats)
