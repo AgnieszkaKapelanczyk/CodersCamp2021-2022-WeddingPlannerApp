@@ -27,7 +27,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 
 ## E-Wolontariat
 
-![This is an image](https://github.com/marcinnnnb/CodersCamp2021-Project-React-Node-eWolontariat/blob/9d64011d85607468474710fbb63e6153c1418b09/src/assets/img/hero.png)
+![This is an image](https://github.com/AgnieszkaKapelanczyk/CodersCamp2021-2022-WeddingPlannerApp/blob/main/src/assets/img/readMeImage.png)
 
 ### Demo
 
