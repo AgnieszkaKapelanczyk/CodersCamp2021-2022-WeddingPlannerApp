@@ -1,9 +1,10 @@
+import ComingSoon from "common/ComingSoon/ComingSoon";
 
 
 const Hotels = () => {
   return (
-    <div>Hotels</div>
+    <ComingSoon/>
   )
 }
 
-export default Hotels
+export default Hotels;

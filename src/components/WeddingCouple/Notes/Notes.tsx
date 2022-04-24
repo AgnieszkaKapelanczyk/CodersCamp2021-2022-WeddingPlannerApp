@@ -1,8 +1,9 @@
+import ComingSoon from "common/ComingSoon/ComingSoon"
 
 
 const Notes = () => {
   return (
-    <div>Notes</div>
+    <ComingSoon/>
   )
 }
 

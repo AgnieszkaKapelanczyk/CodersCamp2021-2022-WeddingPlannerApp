@@ -24,17 +24,33 @@ import RSVP from '../WeddingGuests/RSVP/RSVP';
 import Hotels from '../WeddingGuests/Hotels/Hotels';
 import ChoosingOfGift from '../WeddingGuests/ChoosingOfGift/ChoosingOfGift';
 import WeddingMap from '../WeddingGuests/WeddingMap/WeddingMap';
-import { theme } from '../../theme/theme';
+import { theme } from 'theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
 import { Box, GlobalStyles } from '@mui/material';
-import DashboardWeddingCouple from '../../components/WeddingCouple/MainPanel/DashboardWeddingCouple';
+import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
-import StyledBox from '../../theme/styledBox'
+import StyledBox from 'theme/styledBox'
 import StartPlanning from 'components/WeddingCouple/StartPlaning/StartingPlanning';
 import { useAppSelector } from 'store/hooks';
 import { isLoggedIn } from 'store/userSlice';
+import RusticThemeBg from "assets/img/rusticTheme.jpg";
+
+const homePageStyle = {
+  gridArea: 'main', 
+  position: 'relative', 
+  top: '66px'
+}
+const rusticThemeStyle={
+  backgroundImage: `url(${RusticThemeBg})`,
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  height: '200vh',
+  gridArea: 'main', 
+  position: 'relative', 
+  top: '66px'
+};
 
 function App() {
   const loggedIn= useAppSelector(isLoggedIn);
@@ -64,7 +80,7 @@ function App() {
       <Box style={{position: 'relative', top: '68px'}}>
         <AppSideBar />
       </Box>
-        <Box sx={{ gridArea: 'main', position: 'relative', top: '66px'}}>
+        <Box sx={loggedIn ? rusticThemeStyle : homePageStyle}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />

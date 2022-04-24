@@ -1,35 +1,9 @@
+import ComingSoon from "common/ComingSoon/ComingSoon"
 
 
 const ArrangementOfTables = () => {
   return (
-    <div>ArrangementOfTables
-     
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      <h1>Test</h1>
-      
-    </div>
+    <ComingSoon/>
   )
 }
 

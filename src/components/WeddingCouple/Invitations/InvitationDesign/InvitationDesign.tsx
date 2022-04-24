@@ -1,8 +1,9 @@
+import ComingSoon from "common/ComingSoon/ComingSoon"
 
 
 const InvitationDesign = () => {
   return (
-    <div>InvitationDesign</div>
+    <ComingSoon/>
   )
 }
 
