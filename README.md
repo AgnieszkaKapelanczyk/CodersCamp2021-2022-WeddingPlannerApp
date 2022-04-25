@@ -154,7 +154,7 @@ W celu usystematyzowaniu pracy z tworzonymi przez nas commitami, postanowiliśmy
 
 - feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in semantic versioning).
 
-- feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in semantic versioning).
+- refactor: did not add new functionality / behavior did not change. Files in other places put, deleted, added. Changed the code formatting. Improved the algorithm, without changing the functionality. 
 
 - Others: commit types other than fix: and feat: are allowed, for example @commitlint/config-conventional (based on the the Angular convention)
   recommends chore:, docs:, style:, refactor:, perf:, test:, and others. We also recommend improvement for commits that improve a current
