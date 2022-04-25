@@ -1,19 +1,16 @@
-//import {  momentLocalizer } from 'react-big-calendar';
-//import 'react-big-calendar/lib/css/react-big-calendar.css';
-//import moment from 'moment';
-import { Card, Box, Button,Input, styled} from "@mui/material";
+import { Card, Box, Button,Input, styled, Typography} from "@mui/material";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import {addEvent, eventInCalendar} from '../../../store/eventInCalendarSlice';
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles} from '@material-ui/core';
 import { theme } from '../../../theme/theme';
 import { useState } from 'react';
-import FullCalendar, {EventInput} from '@fullcalendar/react';
+import FullCalendar, {EventClickArg, EventInput} from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import SaveDialog from "./SaveDialog";
 
-const data: EventInput[] =[
+const initialData: EventInput[] =[
   {
     title:'Ślub',
     start: '2022-05-21'},
@@ -61,7 +58,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-//const localizer = momentLocalizer(moment);
 
 
 const WeddingCalendar = () => {
@@ -72,18 +68,26 @@ const WeddingCalendar = () => {
   const dispatch = useDispatch();
   const [openSave, setOpenSave] = useState(false);
   const [date, setDate] = useState(new Date())
-
-  const injectCellContent = (args:any) =>{
-    return(
-      <div>
-        <button onClick={()=>saveRecored(args.date)}>{args.dayNumberText}</button>
-      </div>
-    )
-  };
-
-  const saveRecored =(date:Date) =>{
+  const [data, setData] = useState<EventInput[]>(initialData)
+  
+  const handleDateClick = (e:DateClickArg)=>{
+    let dateClicked =e.dateStr
+    console.log(dateClicked)
+    setDate(e.date)
     setOpenSave(true);
-    setDate(date)
+  }
+
+  const handleAdd= (data:any) =>{
+    console.log(data.title)
+    const event: EventInput={ ...data, start:date}
+    setData(old=>[...old,event])
+    setOpenSave(false)
+  }
+
+  const renderEvent=(e:EventClickArg)=>{
+    return(
+      <Typography>{e.event.title}</Typography>
+    )
   }
 
   return (
@@ -99,9 +103,10 @@ const WeddingCalendar = () => {
         <FullCalendar 
           plugins={[ dayGridPlugin, interactionPlugin ]}
           events={data}
-          dayCellContent={injectCellContent}
+          eventContent={renderEvent}
+          dateClick={handleDateClick}
         /> 
-        <SaveDialog open={openSave} onClose={setOpenSave} date={date}/>
+        <SaveDialog handleAdd={handleAdd} open={openSave} onClose={setOpenSave}/>
       </StyledBox>
     </StyledCard>
   )

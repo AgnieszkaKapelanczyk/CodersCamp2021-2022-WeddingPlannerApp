@@ -1,17 +1,22 @@
 import { DialogTitle, Dialog, DialogContent, DialogActions, Button, TextField, Typography  } from '@mui/material';
-import {useForm} from 'react-hook-form'
+import {useForm, SubmitHandler} from 'react-hook-form';
 
-const SaveDialog = (props:any) => {
+interface FormInput{
+    title:string
+}
+
+
+const SaveDialog= (props: { onClose: (arg0: boolean) => void; handleAdd: (arg0: FormInput) => void; open: boolean; }) => {
 
     const handleClose = () =>{
         props.onClose(false)
+        
     }
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit} = useForm<FormInput>();
 
-    const handleData = (data:any)=>{
-        const saveEvent = {...data, date_event:props.date}
-        console.log(saveEvent)
+    const submitData:SubmitHandler<FormInput> = (data:FormInput)=>{
+        props.handleAdd(data)
     }
     
   return (
@@ -23,8 +28,8 @@ const SaveDialog = (props:any) => {
                 Nowe wydarzenie
               </Typography></DialogTitle>
         <DialogContent>
-            <form onSubmit={handleSubmit(handleData)}>
-                <TextField {...register('content', { required: true })} label='Treść' fullWidth={true}></TextField>
+            <form onSubmit={handleSubmit(submitData)}>
+                <TextField {...register('title')} label='Treść' fullWidth={true}></TextField>
                 <DialogActions>
                     <Button onClick={handleClose}>Zamknij</Button>
                     <Button type='submit'>Zapisz</Button>
