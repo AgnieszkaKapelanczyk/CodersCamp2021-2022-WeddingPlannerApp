@@ -2,7 +2,7 @@ import { Box, ButtonBase, Drawer, FormGroup, FormControlLabel, IconButton, style
 import React, { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { closeToolbox, selecToolboxState } from "store/ToolboxSlice";
+import { closeToolbox, selectToolboxState } from "store/toolboxSlice";
 import { theme } from "theme/theme";
 import TimerWidget from 'assets/img/TimerWidget.png';
 import NotificationWidget from 'assets/img/NotificationWidget.png';
@@ -77,7 +77,7 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 export default function ToolboxMenu() {
   const dispatch = useAppDispatch();
   const actualLayout: Layouts | undefined | [] = useAppSelector(selectLayout);
-  const toolboxState: boolean | undefined = useAppSelector(selecToolboxState);
+  const toolboxState: boolean | undefined = useAppSelector(selectToolboxState);
   const [isOpen, setOpen] = useState<boolean | undefined>(false);
 
   function isLayouts(actualLayout: Layouts | undefined | []): actualLayout is Layouts {

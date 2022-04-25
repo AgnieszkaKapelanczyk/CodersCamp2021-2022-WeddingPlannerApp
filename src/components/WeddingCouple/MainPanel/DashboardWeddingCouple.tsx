@@ -1,7 +1,6 @@
 import { Card } from "@material-ui/core";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import { styled } from '@mui/material/styles';
-import PanelThemeBg from "assets/img/rusticTheme.jpg";
 import TimerWidget from "components/Widgets/TimerWidget";
 import ReminderWidget from "components/Widgets/ReminderWidget";
 import NotificationWidget from "components/Widgets/NotificationWidget";
@@ -15,9 +14,11 @@ import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig"
 import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
-import { openToolbox } from "store/ToolboxSlice";
+import { openToolbox } from "store/toolboxSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import ToolboxMenu from "components/Widgets/Toolbox/ToolboxMenu";
+import { openToolboxTheme } from "store/themeToolboxSlice";
+import ThemeToolboxMenu from "theme/ThemeToolbox/ThemeToolbox";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',
@@ -148,11 +149,12 @@ const DashboardWeddingCouple = () => {
   return (
     <Box>
       <ToolboxMenu/>
+      <ThemeToolboxMenu/>
         <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex: 2 }}>
             <StyledIconButton 
               aria-label="change theme" 
               style={{color: `${theme.palette.primary.main}` }}
-              //onClick={() => dispatch()}
+              onClick={() =>  dispatch(openToolboxTheme())}
               title='Edytuj motyw' >
               <EditIcon style= {{fontSize: '1.7rem', borderRadius: '50%', background: '#fff', padding:'0.6rem'}}/>
             </StyledIconButton>
@@ -188,7 +190,5 @@ const DashboardWeddingCouple = () => {
     </Box>
   )
 };
-
-
 
 export default DashboardWeddingCouple;

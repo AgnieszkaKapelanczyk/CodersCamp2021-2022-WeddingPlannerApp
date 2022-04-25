@@ -85,11 +85,11 @@ const TimerWidget = () => {
         avatar={
         <TimerIcon className={classes.cardHeaderIcon}/>
         }
-        action={
-        <IconButton aria-label='settings'>
-            <MoreVertIcon className={classes.cardHeaderIcon}/>
-        </IconButton>
-        }>
+        /*action={
+            <IconButton aria-label='settings'>
+                <MoreVertIcon className={classes.cardHeaderIcon}/>
+            </IconButton>
+            }*/>
     </CardHeader>
     <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
     <CardContent style={{textAlign: 'center'}}>

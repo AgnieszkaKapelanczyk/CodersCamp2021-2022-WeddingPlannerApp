@@ -26,6 +26,6 @@ const toolboxSlice = createSlice({
   
   export default toolboxSlice.reducer;
 
-  export const selecToolboxState = (state: RootState)=> state.toolbox.isOpen;
+  export const selectToolboxState = (state: RootState)=> state.toolbox.isOpen;
 
   

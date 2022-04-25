@@ -45,11 +45,11 @@ const NotificationWidget = () => {
             avatar={
               <NotificationsIcon className={classes.cardHeaderIcon}/>
             }
-            action={
+            /*action={
             <IconButton aria-label='settings'>
                 <MoreVertIcon className={classes.cardHeaderIcon}/>
             </IconButton>
-            }>
+            }*/>
            </CardHeader>
            <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
              <StyledListButton

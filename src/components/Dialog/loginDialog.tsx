@@ -3,7 +3,6 @@ import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { openDialog, FormType } from 'store/dialogSlice';
 import { useAppDispatch } from "store/hooks";
-import { toast } from 'react-toastify';
 import { login } from "store/userSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -40,7 +39,6 @@ export const LoginDialog = () => {
       dispatch(login({user: data.email})); 
       navigate('/WeddingCouple');
       dispatch(openDialog({formType:FormType.zalogowano}))
-      toast.success("Jesteś zalogowany");
     }; 
   
     return (

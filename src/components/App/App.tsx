@@ -36,24 +36,42 @@ import StartPlanning from 'components/WeddingCouple/StartPlaning/StartingPlannin
 import { useAppSelector } from 'store/hooks';
 import { isLoggedIn } from 'store/userSlice';
 import RusticThemeBg from "assets/img/rusticTheme.jpg";
-
-const homePageStyle = {
-  gridArea: 'main', 
-  position: 'relative', 
-  top: '66px'
-}
-const rusticThemeStyle={
-  backgroundImage: `url(${RusticThemeBg})`,
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  height: '200vh',
-  gridArea: 'main', 
-  position: 'relative', 
-  top: '66px'
-};
+import MovieThemeBg from "assets/img/movieTheme.jpg";
+import ClassicThemeBg from "assets/img/classicTheme.jpg";
+import { selectActualTheme } from 'store/themeSlice';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const loggedIn= useAppSelector(isLoggedIn);
+  const loggedIn = useAppSelector(isLoggedIn);
+  const themeStatus = useAppSelector(selectActualTheme);
+  const [themeName, setTheme] = useState<string>('rustic');
+
+  const homePageStyle = {
+    gridArea: 'main', 
+    position: 'relative', 
+    top: '66px'
+  }
+  const panelThemeStyle={
+    height: '200vh',
+    gridArea: 'main', 
+    position: 'relative', 
+    top: '66px',
+    backgroundImage: `url(${themeName})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  };
+
+  useEffect(()=> {
+      if (themeStatus === 'Rustic') {
+        setTheme(RusticThemeBg);
+      } else if (themeStatus === 'Classic') {
+        setTheme(ClassicThemeBg);
+      } else if (themeStatus === 'Movie') {
+        setTheme(MovieThemeBg);
+      } 
+  },[themeStatus]);
+
+
   return (
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
@@ -80,7 +98,7 @@ function App() {
       <Box style={{position: 'relative', top: '68px'}}>
         <AppSideBar />
       </Box>
-        <Box sx={loggedIn ? rusticThemeStyle : homePageStyle}>
+        <Box sx={loggedIn ? panelThemeStyle : homePageStyle}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />

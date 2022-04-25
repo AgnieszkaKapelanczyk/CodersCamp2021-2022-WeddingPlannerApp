@@ -42,8 +42,6 @@ const initialState: User | ''  = getInitialState();
       login: (state, action) => {
         state.loggedIn = true;
         state.user = action.payload.user;
-        console.log(state.loggedIn)
-        console.log(action.payload.user)
         toast.success("Jesteś zalogowany");
         if (isLogged(state.user)) {
           sessionStorage.setItem("user", state.user);
