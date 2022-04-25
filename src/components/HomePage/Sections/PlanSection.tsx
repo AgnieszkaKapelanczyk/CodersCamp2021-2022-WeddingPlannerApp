@@ -42,7 +42,7 @@ const PlanSection = () => {
           <CardContent>
             <Divider />
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly', padding: '10px' }}>
-              <Typography style={styles.text}>
+              <Box style={styles.text}>
                 <Box>
                   {' '}
                   <LibraryAddCheckIcon /> Nielimitowana ilość stworzonych projektów zaproszeń
@@ -59,7 +59,7 @@ const PlanSection = () => {
                   {' '}
                   <LibraryAddCheckIcon /> Promocje u naszych partnerów{' '}
                 </Box>
-              </Typography>
+              </Box>
             </Box>
           </CardContent>
         </Card>
@@ -75,7 +75,7 @@ const PlanSection = () => {
           <Divider />
           <CardContent>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-              <Typography style={styles.text}>
+              <Box style={styles.text}>
                 <Box>
                   {' '}
                   <LibraryAddCheckIcon /> Nielimitowana ilość stworzonych projektów zaproszeń{' '}
@@ -96,7 +96,7 @@ const PlanSection = () => {
                   {' '}
                   <LibraryAddCheckIcon /> Promocje u naszych partnerów{' '}
                 </Box>
-              </Typography>
+              </Box>
             </Box>
           </CardContent>
         </Card>
@@ -107,7 +107,7 @@ const PlanSection = () => {
           <Divider />
           <CardContent>
             <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-evenly' }}>
-              <Typography style={styles.text}>
+              <Box style={styles.text}>
                 <Box>
                   {' '}
                   <LibraryAddCheckIcon /> 3 Projekty zaproszenia{' '}
@@ -124,7 +124,7 @@ const PlanSection = () => {
                   {' '}
                   <LibraryAddCheckIcon /> Powiadomienia o potwierdzeniu przybycia{' '}
                 </Box>
-              </Typography>
+              </Box>
             </Box>
           </CardContent>
         </Card>

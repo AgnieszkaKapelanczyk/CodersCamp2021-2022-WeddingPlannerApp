@@ -5,19 +5,38 @@ import { useDispatch } from 'react-redux';
 import { openDialog, FormType } from 'store/dialogSlice';
 import { styled } from '@mui/material/styles';
 
-const BoxResponsive = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down('md')]: {
-    marginLeft: '15%',
+const StyledBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center', 
+  margin: '3rem 0',
+  [theme.breakpoints.down('lg')]: {
+    display: 'block',
   },
+  '& img': {
+    height: "80vh", 
+    width: "auto",
+    margin: '1rem 1rem 1rem 0',
+
+    [theme.breakpoints.down('md')]: {
+      height: "auto",
+      width: "60vw",
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  }
 }));
 
 const AboutSection = () => {
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   return (
-    <Box sx={{margin: '5rem 0rem'}}>
-      <Box>
-        <Typography
+
+    <Box id={"about-section"} margin={'3rem 0'}>
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+      <Typography
+          align={'center'}
           style={{
             color: `${theme.palette.primary.main}`,
             fontFamily: `${theme.typography.fontFamily}`,
@@ -27,48 +46,30 @@ const AboutSection = () => {
         >
           Kilka słów o Wedding Plannerze{' '}
         </Typography>
-        <Divider style={{ height: '0.6rem', backgroundColor: `${theme.palette.secondary.main}` }} variant="inset" />
       </Box>
-      <BoxResponsive>
-        <Box
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            paddingTop: '4vh',
-            gap: '8%',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Box style={{ width: '45%' }}>
-            <img src={AboutSectionImage} alt="WeddingPhoto" height="450px" />
+      <Divider style={{ height: "0.6rem", backgroundColor: `${theme.palette.secondary.main}`, position: 'relative', left: '34%', border: 'none'}}/>
+      <StyledBox>
+          <Box display={'flex'} flexDirection={'row'} justifyContent={'flex-start'} alignItems={'center'} flex={1}>
+          <Box
+              component={'img'}
+              src={AboutSectionImage} 
+              alt={"WeddingPhoto"}/>
           </Box>
-          <Box>
-            <Typography>
-              Wedding Planner powstał z myślą o wszystkich
-              <br />
-              parach, które marzą o idealnie przygotowanej
-              <br />
-              uroczystości. Tak naprawdę w jendym miejscu
-              <br />
-              moecie stworzyć projekt zaproszenia, przygotować
-              <br />
-              listę gości, do których checie je wysłać oraz
-              <br />
-              umoliwić gościom potwierdzanie swojego przybycia!.
-            </Typography>
-            <Button
-              size="large"
-              variant="contained"
-              color="primary"
-              style={{ margin: '4rem 0', width: '70%', textTransform: 'uppercase', marginTop: '3vh' }}
-              onClick={() => dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}
-            >
-              Zarejestruj się
-            </Button>
+          <Box sx={{margin: '8rem 4rem'}} flex={2}>
+              <Typography align={'justify'}>
+                  Wedding Planner powstał z myślą o wszystkich parach, które marzą o idealnie przygotowanej uroczystości. Tak naprawdę w jednym miejscu możecie stworzyć projekt zaproszenia, przygotować listę gości, do których checie je wysłać oraz umożliwić gościom potwierdzanie swojego przybycia!
+              </Typography>
+              <Button
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  style={{ margin:'2rem 0', width: '250px', textTransform: 'uppercase'}}
+                  onClick={() => dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}
+                >
+                  Zarejestruj się
+              </Button>
           </Box>
-        </Box>
-      </BoxResponsive>
+      </StyledBox>
     </Box>
   );
 };

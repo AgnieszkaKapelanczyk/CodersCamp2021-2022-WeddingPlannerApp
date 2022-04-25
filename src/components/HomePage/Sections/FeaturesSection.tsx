@@ -35,6 +35,7 @@ const FeaturesSection = () => {
             height: '0.6rem',
             backgroundColor: `${theme.palette.secondary.main}`,
             marginBottom: '4rem',
+            border: 'none'
           }}
         />
       </Box>

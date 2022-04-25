@@ -32,6 +32,7 @@ const StyledBox = styled(Timeline)(({ theme }) => ({
   margin: '2rem 4rem',
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column',
+    margin:0
   },
   '& img': {
     height: "60vh", 
@@ -56,8 +57,6 @@ const HowItWorksSection = () => {
   return (
     <Box>
     <Box
-      display={"flex"}
-      justifyContent={"center"}
       alignItems={"center"}
   > 
     <SectionTitle
@@ -65,10 +64,10 @@ const HowItWorksSection = () => {
       align={'center'}
       color={'primary'}
     >
-      Jak to działa?
-    </SectionTitle>
+      Jak to działa?    <Divider style={{ width: "53vw", height: "0.6rem", backgroundColor: `${theme.palette.secondary.main}`, border: 'none'}}/>
+    </SectionTitle>, 
     </Box>
-    <Divider style={{width: "53vw", height: "0.6rem", backgroundColor: `${theme.palette.secondary.main}`}}/>
+
     <StyledBox> 
       <img
         alt="mockup Wedding Planner"

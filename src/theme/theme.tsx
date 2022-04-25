@@ -61,10 +61,10 @@ export const theme = createTheme({
         fontWeight: 400,
       },
       body1: {
-        fontSize: '0.9rem',
+        fontSize: '1rem',
         fontFamily:"Lato",
         lineHeight:'1.6',
-        letterSpacing: "2px"
+        letterSpacing: "1px"
       },
       body2: {
         fontSize: '0.9rem',

@@ -42,18 +42,18 @@ function GetLogo() {
   const LogoBig = (
   
     <Box style={LogoBox}>
-    <Button onClick={()=> loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
+    <IconButton onClick={()=> loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
       <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
     <Typography variant='h2' color='primary' style={{margin:'0.5rem'}}>{loggedIn? coupleNames : 'WeddingPlanner'}</Typography>
-    </Button>
+    </IconButton>
     </Box>
   )
 
   const LogoSmall=(
     <Box >
-      <Button onClick={()=>loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
+      <IconButton onClick={()=>loggedIn ? navigate('/WeddingCouple') : navigate('/')}>
         <img alt='' src={loggedIn? Logopo : Logoprzed} height='32px'/>
-      </Button>
+      </IconButton>
     </Box>
   )
 
@@ -82,9 +82,9 @@ function GetLogo() {
     let elementForLoggedIn= (
       <Button>
         <Typography variant='h4' style={{margin: '0 0.8rem'}}>{userName}</Typography>
-        <IconButton title={'Wyloguj'}>
+        <IconButton title={'Wyloguj'}  onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))}>
           <AccountCircleIcon style={ iconStyle} 
-          onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))} />
+          />
         </IconButton>
       </Button>
     )
