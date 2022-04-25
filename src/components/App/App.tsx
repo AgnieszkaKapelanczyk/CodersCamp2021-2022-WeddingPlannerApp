@@ -72,7 +72,7 @@ function App() {
           }}
         />
       <Dialog />
-      <Box height={"100vh"} > 
+      <Box> 
        <Box component={StyledBox(loggedIn)}>
         <Box sx={{ gridArea: 'header'}}>
           <AppHeader/> 
@@ -109,10 +109,9 @@ function App() {
         <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
       </Routes> 
       </Box>
-      <Box sx={{ gridArea: 'footer'}}>
+    
+      </Box>
       <AppFooter/>
-      </Box>
-      </Box>
       </Box>
     </ThemeProvider>
     </StyledEngineProvider>

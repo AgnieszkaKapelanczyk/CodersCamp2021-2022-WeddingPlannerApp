@@ -5,16 +5,13 @@ const StyledBox1 = styled(Box)(({ theme }) =>({
             gridTemplateColumns: 'repeat(6, 1fr)',
             gridTemplateRows: 'auto',
             gridTemplateAreas: `"header header header header header header"
-          "leftBar main main main main main"
-          "footer footer footer footer footer footer"`,
+          "leftBar main main main main main"`,
   
     [theme.breakpoints.down('sm')]: {
       display: 'grid',
       gridTemplateColumns: '1fr',
       gridTemplateRows: 'auto',
-      gridTemplateAreas: `"header "
-    " main"
-    " footer"`
+      gridTemplateAreas: `"header " " main"`
     },
   }))
 

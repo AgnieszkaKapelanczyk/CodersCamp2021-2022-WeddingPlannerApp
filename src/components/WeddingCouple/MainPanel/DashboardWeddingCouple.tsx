@@ -92,7 +92,6 @@ const DashboardWeddingCouple = () => {
     className: "layout",
     rowHeight: 287,
     maxRows: 30,
-    width: 1200,
     margin: [30, 30],
     isResizable: true,
     autoSize: true,
@@ -103,13 +102,6 @@ const DashboardWeddingCouple = () => {
     onLayoutChange: ()=>{},
     useCSSTransforms: false
   };
-
-  const weddingThemeStyle={
-    backgroundImage: `url(${PanelThemeBg})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    height: '200vh',
-  };  
 
   const handleModify = (layout: Layout[], layouts: Layouts) => {
     let tempArray= layouts;
@@ -154,7 +146,7 @@ const DashboardWeddingCouple = () => {
 
 
   return (
-    <Box style={weddingThemeStyle}>
+    <Box>
       <ToolboxMenu/>
         <Box display={'flex'} flexDirection={'column'} style={{ position: 'fixed', top: '80px', right: '10px', zIndex: 2 }}>
             <StyledIconButton 

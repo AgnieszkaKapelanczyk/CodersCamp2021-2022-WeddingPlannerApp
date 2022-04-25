@@ -12,18 +12,17 @@ const AppFooter = () => {
           justifyContent: 'space-between',
           alignItems: 'flex-end',
           height: '8rem',
-          marginTop: '6rem',
         }}
       >
         <Box sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', margin: '10px' }}>
-          <Typography paddingLeft="25px" paddingRight="20px" paragraph>
+          <Typography paddingLeft="25px" paddingRight="20px" paragraph my={0}>
             Projekt został zrealizowany w ramach:
           </Typography>
           <Link href="https://www.coderscamp.edu.pl/">
             <img alt="" src={codersLogo} height="20px" style={{ position: 'relative', top: '2px' }} />
           </Link>
         </Box>
-        <Box sx={{ padding: '20px', paddingRight: '30px' }}>
+        <Box sx={{ padding: '10px', paddingRight: '20px' }}>
           <Link href="https://github.com/AgnieszkaKapelanczyk/CodersCamp2021-2022-WeddingPlannerApp">
             <img alt="" src={gitLogo} height="14px" />
           </Link>
