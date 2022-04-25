@@ -15,15 +15,14 @@ const AboutSection = () => {
   let dispatch = useDispatch();
 
   return (
-    <Box>
+    <Box sx={{margin: '5rem 0rem'}}>
       <Box>
         <Typography
           style={{
             color: `${theme.palette.primary.main}`,
             fontFamily: `${theme.typography.fontFamily}`,
-            fontSize: '4.5rem',
-            paddingTop: '3vh',
-            paddingLeft: '4vw',
+            fontSize: '2.8rem',
+            margin: '1rem 3rem'
           }}
         >
           Kilka słów o Wedding Plannerze{' '}
@@ -37,12 +36,12 @@ const AboutSection = () => {
             flexDirection: 'row',
             alignItems: 'center',
             paddingTop: '4vh',
-            gap: '20%',
+            gap: '8%',
             flexWrap: 'wrap',
           }}
         >
           <Box style={{ width: '45%' }}>
-            <img src={AboutSectionImage} alt="WeddingPhoto" width="100%" height="100%" />
+            <img src={AboutSectionImage} alt="WeddingPhoto" height="450px" />
           </Box>
           <Box>
             <Typography>
@@ -62,7 +61,7 @@ const AboutSection = () => {
               size="large"
               variant="contained"
               color="primary"
-              style={{ margin: '2rem 0', width: '70%', textTransform: 'uppercase', marginTop: '3vh' }}
+              style={{ margin: '4rem 0', width: '70%', textTransform: 'uppercase', marginTop: '3vh' }}
               onClick={() => dispatch(openDialog({ formType: FormType.rejestracjaEmail }))}
             >
               Zarejestruj się

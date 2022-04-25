@@ -29,6 +29,7 @@ const StyledBox = styled(Timeline)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: "center",
   alignItems: "center",
+  margin: '2rem 4rem',
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column',
   },
@@ -45,7 +46,7 @@ const StyledBox = styled(Timeline)(({ theme }) => ({
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
-  margin:'2rem 3rem 0 3rem',
+  margin:'2rem 3rem 1rem 3rem',
   [theme.breakpoints.down('lg')]: {
     margin: 0
   }
@@ -53,7 +54,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
 
 const HowItWorksSection = () => {
   return (
-    <Box  width={"80vw"}>
+    <Box>
     <Box
       display={"flex"}
       justifyContent={"center"}
@@ -67,7 +68,7 @@ const HowItWorksSection = () => {
       Jak to działa?
     </SectionTitle>
     </Box>
-    <Divider style={{width: "43vw", height: "0.6rem", backgroundColor: `${theme.palette.secondary.main}`}}/>
+    <Divider style={{width: "53vw", height: "0.6rem", backgroundColor: `${theme.palette.secondary.main}`}}/>
     <StyledBox> 
       <img
         alt="mockup Wedding Planner"

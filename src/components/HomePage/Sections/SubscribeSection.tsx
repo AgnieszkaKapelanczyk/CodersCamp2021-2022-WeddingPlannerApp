@@ -10,14 +10,12 @@ const SubscribeSection = () => {
       backgroundSize: 'cover',
       height: 'auto',
       width: 'auto',
-      paddingTop: '14vh',
-      paddingLeft: '4vw',
-      paddingBottom: '8vh',
     },
   };
 
   return (
     <Box style={styles.subscribeSection__image}>
+      <Box sx={{ background: 'rgb(0,0,0,0.6)',  paddingTop: '14vh',paddingLeft: '4vw', paddingBottom: '8vh',}}>   
       <Typography
         style={{
           color: `${theme.palette.secondary.main}`,
@@ -34,6 +32,7 @@ const SubscribeSection = () => {
       <Button size="large" variant="contained" color="primary" style={{ margin: '2rem 0', textTransform: 'uppercase' }}>
         Zaczynam planować swój ślub
       </Button>
+      </Box>
     </Box>
   );
 };

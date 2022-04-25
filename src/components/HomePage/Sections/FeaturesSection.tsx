@@ -21,12 +21,12 @@ const FeaturesSection = () => {
           style={{
             color: `${theme.palette.primary.main}`,
             fontFamily: `${theme.typography.fontFamily}`,
-            fontSize: '4.5rem',
+            fontSize: '3rem',
             paddingTop: '3vh',
             paddingLeft: '4vw',
           }}
         >
-          Co mozesz zrobić w Weeding Planerze?{' '}
+          Co możesz zrobić w Weeding Planerze?{' '}
         </Typography>
         <Divider
           component="li"
@@ -34,7 +34,7 @@ const FeaturesSection = () => {
             width: '43vw',
             height: '0.6rem',
             backgroundColor: `${theme.palette.secondary.main}`,
-            marginBottom: '2vh',
+            marginBottom: '4rem',
           }}
         />
       </Box>
