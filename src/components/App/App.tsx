@@ -85,28 +85,28 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />
         <Route path="/WeddingCouple/" element={loggedIn ? <DashboardWeddingCouple/> : <HomePage/>} />
-        <Route path="/WeddingCouple/Groom/" element={<Groom/>} />
-        <Route path="/WeddingCouple/Bride/" element={<Bride/>} />
-        <Route path="/WeddingCouple/ToDoList/" element={<ToDoList/>} />
-        <Route path="/WeddingCouple/WeddingCeremony/" element={<WeddingCeremony/>} />
-        <Route path="/WeddingCouple/WeddingParty/" element={<WeddingParty/>} />
-        <Route path="/WeddingCouple/WeddingCalendar/" element={<WeddingCalendar/>} />
-        <Route path="/WeddingCouple/GuestList/" element={<GuestList/>} />
-        <Route path="/WeddingCouple/GiftList/" element={<GiftList/>} />
-        <Route path="/WeddingCouple/Invitations/" element={<Invitations/>} />
-        <Route path="/WeddingCouple/Invitations/InvitationDesign/" element={<InvitationDesign/>} />
-        <Route path="/WeddingCouple/Invitations/SendingTheInvitation/" element={<SendingTheInvitation/>} />
-        <Route path="/WeddingCouple/Spending/" element={<Spending/>} />
-        <Route path="/WeddingCouple/Messages/" element={<Messages/>} />
-        <Route path="/WeddingCouple/Notes/" element={<Notes/>} />
-        <Route path="/WeddingCouple/ArrangementOfTables/" element={<ArrangementOfTables/>} />
-        <Route path="/WeddingCouple/PicturesForInspiration/" element={<PicturesForInspiration/>} />
-        <Route path="/WeddingCouple/ListOfQuestionsForTheRoom/" element={<ListOfQuestionsForTheRoom/>} />
-        <Route path="/WeddingGuests/" element={<WeddingGuests/>} />
-        <Route path="/WeddingGuests/RSVP/" element={<RSVP/>} />
-        <Route path="/WeddingGuests/ChoosingOfGift/" element={<ChoosingOfGift/>} />
-        <Route path="/WeddingGuests/Hotels/" element={<Hotels/>} />
-        <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
+        <Route path="/WeddingCouple/Groom/" element={loggedIn ?<Groom/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Bride/" element={loggedIn ?<Bride/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ToDoList/" element={loggedIn ?<ToDoList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingCeremony/" element={loggedIn ?<WeddingCeremony/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingParty/" element={loggedIn ?<WeddingParty/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingCalendar/" element={loggedIn ?<WeddingCalendar/> : <HomePage/>} />
+        <Route path="/WeddingCouple/GuestList/" element={loggedIn ?<GuestList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/GiftList/" element={loggedIn ?<GiftList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/" element={loggedIn ?<Invitations/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/InvitationDesign/" element={loggedIn ?<InvitationDesign/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/SendingTheInvitation/" element={loggedIn ?<SendingTheInvitation/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Spending/" element={loggedIn ?<Spending/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Messages/" element={loggedIn ?<Messages/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Notes/" element={loggedIn ?<Notes/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ArrangementOfTables/" element={loggedIn ?<ArrangementOfTables/> : <HomePage/>} />
+        <Route path="/WeddingCouple/PicturesForInspiration/" element={loggedIn ?<PicturesForInspiration/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ListOfQuestionsForTheRoom/" element={loggedIn ?<ListOfQuestionsForTheRoom/> : <HomePage/>} />
+        <Route path="/WeddingGuests/" element={loggedIn ?<WeddingGuests/> : <HomePage/>} />
+        <Route path="/WeddingGuests/RSVP/" element={loggedIn ?<RSVP/> : <HomePage/>} />
+        <Route path="/WeddingGuests/ChoosingOfGift/" element={loggedIn ?<ChoosingOfGift/> : <HomePage/>} />
+        <Route path="/WeddingGuests/Hotels/" element={loggedIn ?<Hotels/> : <HomePage/>} />
+        <Route path="/WeddingGuests/WeddingMap/" element={loggedIn ?<WeddingMap/> : <HomePage/>} />
       </Routes> 
       </Box>
     
