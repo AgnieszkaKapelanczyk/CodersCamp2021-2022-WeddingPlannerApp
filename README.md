@@ -6,6 +6,10 @@
   - [Cel projektu](#cel-projektu)
   - [Działanie aplikacji](#działanie-aplikacji)
     - [Menu Główne](#menu-główne)
+    - [Tablica](#Tablica)
+    - [Ceremonia ślubu](#Ceremonia-ślubu)
+    - [Kalendarz](#Kalendarz)
+    - [W przygotowaniu](#W-przygotowaniu)
 - [Development aplikacji](#development-aplikacji)
   - [Wykorzystywane technologie](#wykorzystywane-technologie)
   - [Uruchomienie projektu](#uruchomienie-projektu)
@@ -68,11 +72,11 @@ Checklista z wszystkimi zadaniami niezbędnymi do organizacji ślubu i wesela
 
 ##### Panna Młoda
 
-Dane panny młodej, checkista ubioru oraz proponowane salony sukien ślubnych w okolicy. 
+Dane panny młodej, checklista ubioru oraz proponowane salony sukien ślubnych w okolicy. 
 
 ##### Pan Młody
 
-Dane pana młodego, checkista ubioru oraz proponowane sklepy z garniturami w okolicy. 
+Dane pana młodego, checklista ubioru oraz proponowane sklepy z garniturami w okolicy. 
 
 ##### Wesele
 
@@ -88,7 +92,7 @@ Lista gości weselnych z danymi kontaktowymi oraz status odpowiedzi na zaproszen
 
 ##### Lista Prezentów
 
-Lista prezentów stworzona przez parę młodą, widoczna w panelu gości- każdy może przypisać sie do danego prezentu dając znać innym że jest już zajęty.
+Lista prezentów stworzona przez parę młodą, widoczna w panelu gości- każdy może przypisać sie do danego prezentu dając znać innym że jest już zajęty (niewidoczne przez parę młodą).
 
 ##### Budżet
 
@@ -96,7 +100,7 @@ Kalkulator wydatków.
 
 ##### Wiadomości
 
-Czat z gościami weselnymi.
+Czat z gośćmi weselnymi.
 
 ##### Notatki
 
@@ -116,7 +120,7 @@ Planer rozsadzenia gości- do wyboru stoły okrągłe i prostokątne
 
 ##### Inspiracje
 
-Miejsce do trzymania wszytskich zdjęć- inspiracji w jednym miejscu. 
+Miejsce do trzymania wszystkich zdjęć- inspiracji w jednym miejscu. 
 
 ##### Panel gości
 
@@ -150,7 +154,7 @@ W celu usystematyzowaniu pracy z tworzonymi przez nas commitami, postanowiliśmy
 
 - feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in semantic versioning).
 
-- feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in semantic versioning).
+- refactor: did not add new functionality / behavior did not change. Files in other places put, deleted, added. Changed the code formatting. Improved the algorithm, without changing the functionality. 
 
 - Others: commit types other than fix: and feat: are allowed, for example @commitlint/config-conventional (based on the the Angular convention)
   recommends chore:, docs:, style:, refactor:, perf:, test:, and others. We also recommend improvement for commits that improve a current
