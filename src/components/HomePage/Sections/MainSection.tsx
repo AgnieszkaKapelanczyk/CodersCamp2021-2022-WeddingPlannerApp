@@ -1,7 +1,8 @@
 import { Box, Typography, Button } from '@mui/material';
-import MainImage from '../../../assets/img/hero.jpg';
+import MainImage from 'assets/img/hero.jpg';
 import { styled } from '@mui/material/styles';
 import { theme } from 'theme/theme';
+import Logo from 'assets/icon/logo.svg';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   backgroundImage: `url(${MainImage})`,
@@ -10,30 +11,33 @@ const StyledBox = styled(Box)(({ theme }) => ({
   width: 'auto',
 }));
 
+const StyledImg = styled('img')(({theme}) => ({
+  height: '70px', 
+  top: '10px', 
+}));
+
 const MainSection = () => {
   return (
     <StyledBox>
-      <Box>
+      <Box sx={{padding: '1rem 4rem'}}>
         <Typography
           variant="h1"
           gutterBottom
           style={{
             color: `${theme.palette.primary.main}`,
             fontFamily: `${theme.typography.fontFamily}`,
-            fontSize: '5.4rem',
             paddingTop: '35vh',
             paddingLeft: '3vw',
           }}
         >
-          Wedding Planner
+          Wedding Planner <StyledImg src={Logo} alt={''}/>
         </Typography>
         <Typography
-          variant="h3"
+          variant="h2"
           style={{
             color: `${theme.palette.primary.contrastText}`,
             fontFamily: `${theme.typography.h4.fontFamily}`,
-            fontSize: '2.6rem',
-            paddingLeft: '8vw',
+            paddingLeft: '3vw',
           }}
         >
           Zaplanuj ślub swoich marzeń, przygotuj

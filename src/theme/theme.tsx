@@ -47,7 +47,9 @@ export const theme = createTheme({
         WebkitFontSmoothing: "antialiased",
       },
       h2: {
-        fontSize: '1.5rem',
+        fontSize: '1.6rem',
+        letterSpacing: '2px',
+        fontWeight: 500
       },
       h3: {
         fontSize: '1.3rem',

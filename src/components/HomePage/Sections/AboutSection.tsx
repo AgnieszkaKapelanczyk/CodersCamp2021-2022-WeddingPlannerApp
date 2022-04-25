@@ -15,15 +15,14 @@ const AboutSection = () => {
   let dispatch = useDispatch();
 
   return (
-    <Box>
+    <Box sx={{margin: '5rem 0rem'}}>
       <Box>
         <Typography
           style={{
             color: `${theme.palette.primary.main}`,
             fontFamily: `${theme.typography.fontFamily}`,
-            fontSize: '4.5rem',
-            paddingTop: '3vh',
-            paddingLeft: '4vw',
+            fontSize: '3rem',
+            marginBottom: '1rem'
           }}
         >
           Kilka słów o Wedding Plannerze{' '}
