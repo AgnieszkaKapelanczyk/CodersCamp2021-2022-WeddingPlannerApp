@@ -15,9 +15,9 @@ import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig"
 import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
-import { openToolbox } from "store/ToolboxSlice";
+import { openToolbox } from "../../../store/ToolboxSlice";
 import EditIcon from '@mui/icons-material/Edit';
-import ToolboxMenu from "components/Widgets/Toolbox/ToolboxMenu";
+import ToolboxMenu from "../../Widgets/Toolbox/ToolboxMenu";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',

@@ -5,7 +5,7 @@ import dateOfWeddingReducer from 'store/dateOfWeddingSlice';
 import timeOfWeddingReducer from 'store/timeOfWeddingSlice';
 import userReducer from 'store/userSlice';
 import eventInCalendarReducer from 'store/eventInCalendarSlice';
-import toolboxReducer from 'store/ToolboxSlice';
+import toolboxReducer from '../store/ToolboxSlice';
 
 export const store = configureStore({
   reducer: {

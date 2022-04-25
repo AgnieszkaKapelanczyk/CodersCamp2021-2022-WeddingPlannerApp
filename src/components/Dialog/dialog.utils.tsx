@@ -3,7 +3,7 @@ import { ZalozonyProfil } from './zalozonyProfil';
 import { LoginDialog } from './loginDialog';
 import { RejestracjaEmail } from './rejestracjEmail'
 import { Zalogowano } from './zalogowano';
-import {Wyloguj} from './wyloguj';
+import {Wyloguj} from '../../components/Dialog/wyloguj';
 
 //  enum Width = [false | "sm" | "md" | "xs" | "lg" | "xl"];
  

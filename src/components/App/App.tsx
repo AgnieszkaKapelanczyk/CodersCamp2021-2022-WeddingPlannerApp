@@ -31,8 +31,8 @@ import Dialog from '../Dialog/Dialog';
 import { Box, GlobalStyles } from '@mui/material';
 import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
-import StyledBox from 'theme/styledBox'
-import StartPlanning from 'components/WeddingCouple/StartPlaning/StartingPlanning';
+import StyledBox from '../../theme/styledBox'
+import StartPlanning from '../WeddingCouple/StartPlaning/StartingPlanning';
 import { useAppSelector } from 'store/hooks';
 import { isLoggedIn } from 'store/userSlice';
 import RusticThemeBg from "assets/img/rusticTheme.jpg";
