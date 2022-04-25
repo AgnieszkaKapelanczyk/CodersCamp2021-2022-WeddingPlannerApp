@@ -28,7 +28,7 @@ import { theme } from 'theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
-import { Box, GlobalStyles } from '@mui/material';
+import { Box, GlobalStyles , useMediaQuery} from '@mui/material';
 import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from 'theme/styledBox'
@@ -45,6 +45,7 @@ function App() {
   const loggedIn = useAppSelector(isLoggedIn);
   const themeStatus = useAppSelector(selectActualTheme);
   const [themeName, setTheme] = useState<string>('rustic');
+  const matches = useMediaQuery('(min-width:600px)');
 
   const homePageStyle = {
     gridArea: 'main', 
@@ -60,6 +61,11 @@ function App() {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   };
+  const boxBigScreenStyle= {
+  
+    position: 'relative',
+     top: '68px',
+  }
 
   useEffect(()=> {
       if (themeStatus === 'Rustic') {
@@ -95,7 +101,7 @@ function App() {
         <Box sx={{ gridArea: 'header'}}>
           <AppHeader/> 
         </Box>  
-      <Box style={{position: 'relative', top: '68px'}}>
+      <Box sx={ matches ? boxBigScreenStyle : null}>
         <AppSideBar />
       </Box>
         <Box sx={loggedIn ? panelThemeStyle : homePageStyle}>
