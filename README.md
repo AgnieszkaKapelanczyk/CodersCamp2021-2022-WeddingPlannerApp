@@ -64,6 +64,64 @@ Para młoda dodaje wydarzenia, o których kalendarz będzie przypominać na Tabl
 
 ##### Lista zadań
 
+Checklista z wszystkimi zadaniami niezbędnymi do organizacji ślubu i wesela
+
+##### Panna Młoda
+
+Dane panny młodej, checkista ubioru oraz proponowane salony sukien ślubnych w okolicy. 
+
+##### Pan Młody
+
+Dane pana młodego, checkista ubioru oraz proponowane sklepy z garniturami w okolicy. 
+
+##### Wesele
+
+Sale weselne w podanej okolicy.
+
+##### Noclegi
+
+Po wybraniu sali weselnej wyświetlane będa noclegi w jej okolicy. 
+
+##### Lista gości
+
+Lista gości weselnych z danymi kontaktowymi oraz status odpowiedzi na zaproszenie (potwierdzono, odmowa, w oczekiwaniu)
+
+##### Lista Prezentów
+
+Lista prezentów stworzona przez parę młodą, widoczna w panelu gości- każdy może przypisać sie do danego prezentu dając znać innym że jest już zajęty.
+
+##### Budżet
+
+Kalkulator wydatków.
+
+##### Wiadomości
+
+Czat z gościami weselnymi.
+
+##### Notatki
+
+Notatki pary młodej
+
+##### Zaproszenia
+
+Projekt i wysyłka zaproszeń do gości
+
+##### Lista pytań
+
+Lista pytań, które można zadać organizatorom wesela, a często się o nich zapomina. 
+
+##### Rozmieszczenie stołów
+
+Planer rozsadzenia gości- do wyboru stoły okrągłe i prostokątne
+
+##### Inspiracje
+
+Miejsce do trzymania wszytskich zdjęć- inspiracji w jednym miejscu. 
+
+##### Panel gości
+
+Potwierdzenie przybycia lub odrzucenie zaproszenia, możliwość ,,zabukowania" prezentu dla pary młodej, proponowane noclegi w okolicy sali weselnej, mapa dojazdu, odliczanie do dnia ślubu. 
+
 ## Development aplikacji
 
 ### Wykorzystywane technologie
