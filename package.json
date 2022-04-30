@@ -23,6 +23,7 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "axios": "^0.26.1",
+    "date-fns": "^2.28.0",
     "install": "^0.13.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.2",
