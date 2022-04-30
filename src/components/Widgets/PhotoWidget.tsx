@@ -28,11 +28,11 @@ const PhotoWidget = () => {
             avatar={
               <CameraAltIcon className={classes.cardHeaderIcon}/>
             }
-            action={
-              <IconButton aria-label='settings'>
-                  <MoreVertIcon className={classes.cardHeaderIcon}/>
-              </IconButton>
-              }>
+             /*action={
+            <IconButton aria-label='settings'>
+                <MoreVertIcon className={classes.cardHeaderIcon}/>
+            </IconButton>
+            }*/>
           </CardHeader>
           <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
           <Box display={'flex'} justifyContent={'center'} style={{alignItems: 'center'}}>

@@ -28,7 +28,7 @@ import { theme } from 'theme/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AppSideBar from './AppSideBar';
 import Dialog from '../Dialog/Dialog';
-import { Box, GlobalStyles } from '@mui/material';
+import { Box, GlobalStyles , useMediaQuery} from '@mui/material';
 import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
 import StyledBox from '../../theme/styledBox'
@@ -36,24 +36,48 @@ import StartPlanning from '../WeddingCouple/StartPlaning/StartingPlanning';
 import { useAppSelector } from 'store/hooks';
 import { isLoggedIn } from 'store/userSlice';
 import RusticThemeBg from "assets/img/rusticTheme.jpg";
-
-const homePageStyle = {
-  gridArea: 'main', 
-  position: 'relative', 
-  top: '66px'
-}
-const rusticThemeStyle={
-  backgroundImage: `url(${RusticThemeBg})`,
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  height: '200vh',
-  gridArea: 'main', 
-  position: 'relative', 
-  top: '66px'
-};
+import MovieThemeBg from "assets/img/movieTheme.jpg";
+import ClassicThemeBg from "assets/img/classicTheme.jpg";
+import { selectActualTheme } from 'store/themeSlice';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const loggedIn= useAppSelector(isLoggedIn);
+  const loggedIn = useAppSelector(isLoggedIn);
+  const themeStatus = useAppSelector(selectActualTheme);
+  const [themeName, setTheme] = useState<string>('rustic');
+  const matches = useMediaQuery('(min-width:600px)');
+
+  const homePageStyle = {
+    gridArea: 'main', 
+    position: 'relative', 
+    top: '66px'
+  }
+  const panelThemeStyle={
+    height: '200vh',
+    gridArea: 'main', 
+    position: 'relative', 
+    top: '66px',
+    backgroundImage: `url(${themeName})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+  };
+  const boxBigScreenStyle= {
+  
+    position: 'relative',
+     top: '68px',
+  }
+
+  useEffect(()=> {
+      if (themeStatus === 'Rustic') {
+        setTheme(RusticThemeBg);
+      } else if (themeStatus === 'Classic') {
+        setTheme(ClassicThemeBg);
+      } else if (themeStatus === 'Movie') {
+        setTheme(MovieThemeBg);
+      } 
+  },[themeStatus]);
+
+
   return (
     <StyledEngineProvider injectFirst>
     <ThemeProvider theme={theme}>
@@ -72,47 +96,46 @@ function App() {
           }}
         />
       <Dialog />
-      <Box height={"100vh"} > 
+      <Box> 
        <Box component={StyledBox(loggedIn)}>
         <Box sx={{ gridArea: 'header'}}>
           <AppHeader/> 
         </Box>  
-      <Box style={{position: 'relative', top: '68px'}}>
+      <Box sx={ matches ? boxBigScreenStyle : null}>
         <AppSideBar />
       </Box>
-        <Box sx={loggedIn ? rusticThemeStyle : homePageStyle}>
+        <Box sx={loggedIn ? panelThemeStyle : homePageStyle}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />
         <Route path="/WeddingCouple/" element={loggedIn ? <DashboardWeddingCouple/> : <HomePage/>} />
-        <Route path="/WeddingCouple/Groom/" element={<Groom/>} />
-        <Route path="/WeddingCouple/Bride/" element={<Bride/>} />
-        <Route path="/WeddingCouple/ToDoList/" element={<ToDoList/>} />
-        <Route path="/WeddingCouple/WeddingCeremony/" element={<WeddingCeremony/>} />
-        <Route path="/WeddingCouple/WeddingParty/" element={<WeddingParty/>} />
-        <Route path="/WeddingCouple/WeddingCalendar/" element={<WeddingCalendar/>} />
-        <Route path="/WeddingCouple/GuestList/" element={<GuestList/>} />
-        <Route path="/WeddingCouple/GiftList/" element={<GiftList/>} />
-        <Route path="/WeddingCouple/Invitations/" element={<Invitations/>} />
-        <Route path="/WeddingCouple/Invitations/InvitationDesign/" element={<InvitationDesign/>} />
-        <Route path="/WeddingCouple/Invitations/SendingTheInvitation/" element={<SendingTheInvitation/>} />
-        <Route path="/WeddingCouple/Spending/" element={<Spending/>} />
-        <Route path="/WeddingCouple/Messages/" element={<Messages/>} />
-        <Route path="/WeddingCouple/Notes/" element={<Notes/>} />
-        <Route path="/WeddingCouple/ArrangementOfTables/" element={<ArrangementOfTables/>} />
-        <Route path="/WeddingCouple/PicturesForInspiration/" element={<PicturesForInspiration/>} />
-        <Route path="/WeddingCouple/ListOfQuestionsForTheRoom/" element={<ListOfQuestionsForTheRoom/>} />
-        <Route path="/WeddingGuests/" element={<WeddingGuests/>} />
-        <Route path="/WeddingGuests/RSVP/" element={<RSVP/>} />
-        <Route path="/WeddingGuests/ChoosingOfGift/" element={<ChoosingOfGift/>} />
-        <Route path="/WeddingGuests/Hotels/" element={<Hotels/>} />
-        <Route path="/WeddingGuests/WeddingMap/" element={<WeddingMap/>} />
+        <Route path="/WeddingCouple/Groom/" element={loggedIn ?<Groom/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Bride/" element={loggedIn ?<Bride/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ToDoList/" element={loggedIn ?<ToDoList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingCeremony/" element={loggedIn ?<WeddingCeremony/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingParty/" element={loggedIn ?<WeddingParty/> : <HomePage/>} />
+        <Route path="/WeddingCouple/WeddingCalendar/" element={loggedIn ?<WeddingCalendar/> : <HomePage/>} />
+        <Route path="/WeddingCouple/GuestList/" element={loggedIn ?<GuestList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/GiftList/" element={loggedIn ?<GiftList/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/" element={loggedIn ?<Invitations/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/InvitationDesign/" element={loggedIn ?<InvitationDesign/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Invitations/SendingTheInvitation/" element={loggedIn ?<SendingTheInvitation/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Spending/" element={loggedIn ?<Spending/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Messages/" element={loggedIn ?<Messages/> : <HomePage/>} />
+        <Route path="/WeddingCouple/Notes/" element={loggedIn ?<Notes/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ArrangementOfTables/" element={loggedIn ?<ArrangementOfTables/> : <HomePage/>} />
+        <Route path="/WeddingCouple/PicturesForInspiration/" element={loggedIn ?<PicturesForInspiration/> : <HomePage/>} />
+        <Route path="/WeddingCouple/ListOfQuestionsForTheRoom/" element={loggedIn ?<ListOfQuestionsForTheRoom/> : <HomePage/>} />
+        <Route path="/WeddingGuests/" element={loggedIn ?<WeddingGuests/> : <HomePage/>} />
+        <Route path="/WeddingGuests/RSVP/" element={loggedIn ?<RSVP/> : <HomePage/>} />
+        <Route path="/WeddingGuests/ChoosingOfGift/" element={loggedIn ?<ChoosingOfGift/> : <HomePage/>} />
+        <Route path="/WeddingGuests/Hotels/" element={loggedIn ?<Hotels/> : <HomePage/>} />
+        <Route path="/WeddingGuests/WeddingMap/" element={loggedIn ?<WeddingMap/> : <HomePage/>} />
       </Routes> 
       </Box>
-      <Box sx={{ gridArea: 'footer'}}>
+    
+      </Box>
       <AppFooter/>
-      </Box>
-      </Box>
       </Box>
     </ThemeProvider>
     </StyledEngineProvider>

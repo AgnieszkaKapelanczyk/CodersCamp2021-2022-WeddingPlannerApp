@@ -31,7 +31,7 @@ const PlanSection = () => {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignText: 'center' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignText: 'center' , margin: '2rem 0', padding: '2rem'}}>
         <Typography style={styles.mainText}>Wybierz swój plan</Typography>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '3%', flexWrap: 'wrap' }}>

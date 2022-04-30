@@ -5,8 +5,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { openDialog, FormType } from 'store/dialogSlice'
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from "@mui/material";
-import {isLoggedIn, selectName} from '../../store/userSlice';
+import {isLoggedIn, selectName} from 'store/userSlice';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { theme } from 'theme/theme';
 
  const iconStyle= ({
       color:"#C26D6D",
@@ -80,13 +81,15 @@ function GetLogo() {
     </Box>
     )
     let elementForLoggedIn= (
-      <Button>
-        <Typography variant='h4' style={{margin: '0 0.8rem'}}>{userName}</Typography>
+      <>
+      <Box display="flex" flexDirection={'row'} alignItems="center" justifyContent={'center'}>
+        <Typography variant='h4' style={{margin: '0 0.8rem', fontSize: '1rem', color: `${theme.palette.primary.main}`}}>{userName}</Typography>
         <IconButton title={'Wyloguj'}  onClick={()=>dispatch(openDialog({formType: FormType.wyloguj}))}>
           <AccountCircleIcon style={ iconStyle} 
           />
         </IconButton>
-      </Button>
+      </Box>
+      </>
     )
     const rightSide= loggedIn ? elementForLoggedIn : elementForNotLoggedIn
     return rightSide

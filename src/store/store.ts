@@ -5,7 +5,9 @@ import dateOfWeddingReducer from 'store/dateOfWeddingSlice';
 import timeOfWeddingReducer from 'store/timeOfWeddingSlice';
 import userReducer from 'store/userSlice';
 import eventInCalendarReducer from 'store/eventInCalendarSlice';
-import toolboxReducer from '../store/ToolboxSlice';
+import toolboxReducer from 'store/ToolboxSlice';
+import toolboxThemeReducer from 'store/themeToolboxSlice';
+import themeReducer from 'store/themeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -15,7 +17,9 @@ export const store = configureStore({
     timeOfWedding: timeOfWeddingReducer,
     user: userReducer,
     eventInCalendar: eventInCalendarReducer,
-    toolbox: toolboxReducer
+    toolbox: toolboxReducer,
+    toolboxTheme: toolboxThemeReducer,
+    theme: themeReducer,
 
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
