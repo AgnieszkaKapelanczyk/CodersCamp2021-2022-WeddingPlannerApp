@@ -1,4 +1,4 @@
-import ComingSoon from "common/ComingSoon/ComingSoon"
+import ComingSoon from "../../../common/ComingSoon/ComingSoon"
 
 
 const PicturesForInspiration = () => {
