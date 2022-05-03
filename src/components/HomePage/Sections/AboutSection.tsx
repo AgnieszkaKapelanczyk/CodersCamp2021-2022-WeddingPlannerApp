@@ -1,5 +1,5 @@
 import { Box, Typography, Button, Divider } from '@mui/material';
-import AboutSectionImage from '../../../assets/img/homepage2.jpg';
+import AboutSectionImage from 'assets/img/homepage2.jpg';
 import { theme } from 'theme/theme';
 import { useDispatch } from 'react-redux';
 import { openDialog, FormType } from 'store/dialogSlice';

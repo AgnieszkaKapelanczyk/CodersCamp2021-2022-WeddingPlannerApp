@@ -1,5 +1,5 @@
 import { Box, Typography, Button } from '@mui/material';
-import SubscribeSectionImage from '../../../assets/img/subscryption.jpg';
+import SubscribeSectionImage from 'assets/img/subscryption.jpg';
 import { theme } from 'theme/theme';
 
 const SubscribeSection = () => {
