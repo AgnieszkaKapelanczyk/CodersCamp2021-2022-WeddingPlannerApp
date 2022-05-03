@@ -1,52 +1,56 @@
-import { Card, Box, Button,Input, styled, Typography} from "@mui/material";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import {addEvent, eventInCalendar} from '../../../store/eventInCalendarSlice';
-import { useDispatch, useSelector } from "react-redux";
-import { makeStyles} from '@material-ui/core';
-import { theme } from '../../../theme/theme';
+import { Card, Box, styled, Typography} from "@mui/material";
 import { useState } from 'react';
 import FullCalendar, {EventClickArg, EventInput} from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction';
 import SaveDialog from "./SaveDialog";
+import ColorChip from "./ColorChip";
+import { GithubPicker } from 'react-color';
 
 const initialData: EventInput[] =[
   {
     title:'Ślub',
-    start: '2022-05-21'},
+    start: '2022-06-04',
+    backgroundColor:'#FF1A4B',
+    borderColor:'#FF1A4B'
+  },
   {
     title:'Wieczór panieński',
-    start:'2022-05-14'
+    start:'2022-05-28',
+    backgroundColor:'#FF1A4B',
+    borderColor:'#FF1A4B'
   },
   {
     title:'Ostateczne podanie liczby gości',
-    start:'2022-04-28'
+    start:'2022-05-04',
+    backgroundColor:'#68B24E',
+    borderColor:'#68B24E'
   },
   {
     title:'Zakupy- pan młody',
-    start:'2022-04-05'
+    start:'2022-05-12',
+    backgroundColor:'#C26D6D',
+    borderColor:'#C26D6D'
   }
 ]
 
-const useStyles = makeStyles({
-  typoTitle: {
-    color: theme.palette.tertiary.main,
-  }
-});
+const palette = [
+  '#FF1A4B',
+  '#68B24E',
+  '#FEC5BB',
+  '#C26D6D'
+]
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display:'flex',
   justifyContent:'center',
   padding:'2rem',
-  margin:'3rem 8rem 5rem 3rem',
+  margin:'3rem 10rem 5rem 5rem',
   [theme.breakpoints.down('md')]: {
     padding:'1rem',
     flexDirection:'column',
     alignItems:'center',
     margin:'1rem 3rem 1rem 2rem',
-    '& .MuiInputBase-root': {
-      fontSize:'1rem',
-    },
   },
 }));
 
@@ -62,13 +66,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
 const WeddingCalendar = () => {
 
-  const events = useSelector(eventInCalendar);
-  const classes = useStyles(theme);
-  const [event, setEvent] = useState('');
-  const dispatch = useDispatch();
   const [openSave, setOpenSave] = useState(false);
-  const [date, setDate] = useState(new Date())
-  const [data, setData] = useState<EventInput[]>(initialData)
+  const [date, setDate] = useState(new Date());
+  const [data, setData] = useState<EventInput[]>(initialData);
+  const [color, setColor] = useState('')
   
   const handleDateClick = (e:DateClickArg)=>{
     let dateClicked =e.dateStr
@@ -78,7 +79,6 @@ const WeddingCalendar = () => {
   }
 
   const handleAdd= (data:any) =>{
-    console.log(data.title)
     const event: EventInput={ ...data, start:date}
     setData(old=>[...old,event])
     setOpenSave(false)
@@ -93,11 +93,10 @@ const WeddingCalendar = () => {
   return (
     <StyledCard>
       <Box style={{marginRight:'3rem' ,display:'flex', flexDirection:'column'}}>
-        <Button color='tertiary' style={{marginBottom:'2rem'}} onClick={()=>dispatch(addEvent.addEvent(event))} variant="contained" startIcon={<AddCircleIcon />}>NOWE PRZYPOMNIENIE</Button>
-        <Input placeholder='Nowe Przypomnienie' value={event} onChange={e=>setEvent(e.target.value)}></Input>
-        <Box style={{marginTop:'3rem'}}>
-        {events.map(e=><Card className={classes.typoTitle} style={{padding:'0.5rem 1rem', marginBottom:'1rem'}}>{e.title}</Card>)}
-        </Box> 
+        <Typography variant="h3" style={{marginBottom:'1rem'}}>Etykiety:</Typography>
+        <ColorChip/>
+        <Typography variant="h3" style={{margin:'1rem 0'}}>Wybierz kolor:</Typography>
+        <GithubPicker color={color} colors={palette} width={'102px'} onChange={(color)=>setColor(color.hex)}/>
       </Box>
       <StyledBox>
         <FullCalendar 

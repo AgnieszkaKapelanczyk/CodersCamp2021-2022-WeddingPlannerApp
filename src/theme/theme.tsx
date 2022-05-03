@@ -33,10 +33,12 @@ export const theme = createTheme({
         contrastText: '#fff'
       },
       success: {
-        main: '#68B24E'
+        main: '#68B24E',
+        contrastText: '#fff',
       },
       error: {
-        main: '#FF1A4B'
+        main: '#FF1A4B',
+        contrastText: '#fff',
       }
     },
     typography: {
