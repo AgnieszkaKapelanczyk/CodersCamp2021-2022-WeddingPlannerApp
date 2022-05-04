@@ -1,7 +1,7 @@
 import LeftBarListCouple from './LeftBarListCouple';
 import {List, ListItem, ListItemIcon, ListItemText} from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-import { theme} from '../../theme/theme'
+import { theme} from 'theme/theme'
 import { styled } from '@material-ui/styles';
 
 const SideBar = styled(List)<{ component?: React.ElementType }>({

@@ -2,9 +2,9 @@ import { Box, Typography, List, ListItem, ListItemAvatar, ListItemText } from '@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MovieIcon from '@mui/icons-material/Movie';
 import ParkIcon from '@mui/icons-material/Park';
-import MotywRustykalny from '../../../assets/img/motywRustykalny.png';
-import MotywKlasyczny from '../../../assets/img/motywKlasyczny.png';
-import MotywFilmowy from '../../../assets/img/motywFilmowy.png';
+import MotywRustykalny from 'assets/img/motywRustykalny.png';
+import MotywKlasyczny from 'assets/img/motywKlasyczny.png';
+import MotywFilmowy from 'assets/img/motywFilmowy.png';
 import { theme } from 'theme/theme';
 
 const ThemeSection = () => {

@@ -1,11 +1,11 @@
-import { Box, Typography, makeStyles, CardHeader } from "@material-ui/core";
-import { CardContent, Divider, IconButton } from "@mui/material";
+import { Box, CardContent, CardHeader, Divider, IconButton, Typography } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { theme } from "../../theme/theme";
 import TimerIcon from '@mui/icons-material/Timer';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useEffect, useRef, useState } from "react";
 import { getDeviceConfig } from "common/Breakpoints/getDeviceConfig";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   timerNumbers: {

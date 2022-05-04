@@ -1,5 +1,5 @@
 import { Box, Typography, Divider, List, ListItem, ListItemText } from '@mui/material';
-import FeaturesSectionImage from '../../../assets/img/homepage3.jpg';
+import FeaturesSectionImage from 'assets/img/homepage3.jpg';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import MarkAsUnreadIcon from '@mui/icons-material/MarkAsUnread';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';

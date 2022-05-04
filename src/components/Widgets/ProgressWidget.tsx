@@ -1,10 +1,10 @@
-import { Typography, makeStyles, CardHeader } from "@material-ui/core";
-import { Divider, IconButton } from "@mui/material";
+import { CardHeader, Divider, IconButton, Typography } from "@mui/material";
 import { theme } from "../../theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import { Box } from "@mui/system";
 import ProgressCircle from 'common/ProgressCircle/ProgressCircle';
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   cardHeaderIcon: {

@@ -1,10 +1,10 @@
 import { Box, Typography, makeStyles } from "@material-ui/core";
 import { CardContent } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import { theme } from "../../../../theme/theme";
+import { theme } from "theme/theme";
 import { useSelector } from "react-redux";
-import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
-import {pickTimeOfWedding} from '../../../../store/timeOfWeddingSlice';
+import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
+import {pickTimeOfWedding} from 'store/timeOfWeddingSlice';
 import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')

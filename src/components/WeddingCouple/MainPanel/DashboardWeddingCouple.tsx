@@ -14,11 +14,11 @@ import { Breakpoint, getDeviceConfig } from "common/Breakpoints/getDeviceConfig"
 import AddIcon from '@mui/icons-material/Add';
 import { Box, IconButton } from "@mui/material";
 import { theme } from "theme/theme";
-import { openToolbox } from "../../../store/ToolboxSlice";
 import EditIcon from '@mui/icons-material/Edit';
 import ToolboxMenu from "components/Widgets/Toolbox/ToolboxMenu";
 import { openToolboxTheme } from "store/themeToolboxSlice";
 import ThemeToolboxMenu from "theme/ThemeToolbox/ThemeToolbox";
+import { openToolbox } from "store/toolboxSlice";
 
 const Widget = styled(Card)(({ theme }) => ({
   background: '#FFFFFF',

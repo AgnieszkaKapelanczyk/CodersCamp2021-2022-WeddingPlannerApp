@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardContent, Box, Divider, Typography } from '@mui/material';
 import LibraryAddCheckIcon from '@mui/icons-material/LibraryAddCheck';
-import { theme } from '../../../theme/theme';
-import logoprzed from '../../../assets/img/logo_przed_zalogowaniem.png';
+import { theme } from 'theme/theme';
+import logoprzed from 'assets/img/logo_przed_zalogowaniem.png';
 
 const PlanSection = () => {
   const styles = {

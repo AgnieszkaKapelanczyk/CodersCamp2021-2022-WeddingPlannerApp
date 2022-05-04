@@ -3,7 +3,7 @@ import { theme } from "../../theme/theme";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import AlarmOnIcon from '@mui/icons-material/AlarmOn';
 import PriorityHighRoundedIcon from '@mui/icons-material/PriorityHighRounded';
-import {makeStyles} from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   cardHeaderIcon: {

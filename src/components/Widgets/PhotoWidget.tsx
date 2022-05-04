@@ -1,9 +1,9 @@
-import { Typography, makeStyles, CardHeader } from "@material-ui/core";
-import { Box, Divider, IconButton } from "@mui/material";
+import { Box, CardHeader, Divider, IconButton, Typography } from "@mui/material";
 import { theme } from "theme/theme"
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import Love from 'assets/img/loveCouple.jpg';
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   cardHeaderIcon: {

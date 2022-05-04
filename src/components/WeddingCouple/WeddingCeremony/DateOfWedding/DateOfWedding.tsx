@@ -7,8 +7,8 @@ import DatePicker from '../DateOfWedding/DatePicker';
 import { theme } from 'theme/theme';
 import {CardContent,makeStyles } from '@material-ui/core';
 import { useSelector } from "react-redux";
-import {pickDateOfWedding} from '../../../../store/dateOfWeddingSlice';
-import {pickTimeOfWedding} from '../../../../store/timeOfWeddingSlice';
+import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
+import {pickTimeOfWedding} from 'store/timeOfWeddingSlice';
 import Timer from '../../WeddingCeremony/DateOfWedding/Timer'
 import moment from 'moment';
 import 'moment/locale/pl'  

@@ -4,7 +4,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { SetStateAction, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import {pickTime} from '../../../../store/timeOfWeddingSlice';
+import {pickTime} from 'store/timeOfWeddingSlice';
 
 const CustomTimePicker = () => {
 
