@@ -2,7 +2,7 @@ import { Box, styled } from "@mui/material";
 import ChoosingOfBestManAndBridesmaid from "./ChoosingOfBestManAndBridesmaid";
 import DateOfWedding from "./DateOfWedding/DateOfWedding";
 import ProgressOfPreparations from "./ProgressOfPreparations/ProgressOfPreparations";
-import TypeOfWedding from "./TypeOfWedding";
+import TypeOfWedding from "./TypeOfWedding/TypeOfWedding";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   margin: "6rem 12rem 6rem 6rem",

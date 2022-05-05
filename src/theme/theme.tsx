@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import type {} from '@mui/lab/themeAugmentation';
+import { plPL } from '@mui/material/locale';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -88,4 +89,6 @@ export const theme = createTheme({
       },
     }, 
     
-});
+},
+plPL,
+);
