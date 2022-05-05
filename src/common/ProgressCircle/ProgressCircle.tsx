@@ -80,9 +80,6 @@ const ProgressCircle = (props: ProgressCircleProps) => {
             <Box style={{flex: '1'}}>
                 <Typography variant="h1" color="secondary" style={{fontSize: '4rem'}}>%</Typography>
             </Box>
-            <Box style={{flex: '2'}}>
-                <Typography variant="body2">Wasz postęp przygotowań do ślubu wynosi 75%.</Typography>
-            </Box>
         </StyledBox> 
       );
     }

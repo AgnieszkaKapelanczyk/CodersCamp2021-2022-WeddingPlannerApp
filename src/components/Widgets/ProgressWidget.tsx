@@ -40,6 +40,9 @@ const ProgressWidget = () => {
               stroke={ 8 }
               progress={ 75 }
             />
+            <Box style={{flex: '2'}}>
+                <Typography variant="body2">Wasz postęp przygotowań do ślubu wynosi 75%.</Typography>
+            </Box>
           </Box>
     </>
   );
