@@ -1,23 +1,27 @@
-import { Button, styled, Chip} from '@mui/material';
+import { Button, styled, Chip, TableCell} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import { ReactChild, ReactFragment, ReactPortal } from 'react';
 import DoneIcon from '@mui/icons-material/Done';
 
 const ColorButton = styled(Button)(() => ({
     backgroundColor: '#FF1A4B',
   }));
 
-const ColorChip = styled(Chip)(() => ({
+  const ColorChipSent = styled(Chip)(() => ({
     backgroundColor: '#ADF893',
+    '& .MuiChip-label': {
+      color:'#000',
+    },
+    '& .MuiSvgIcon-root': {
+      color:'#000',
+    },
   }));
 
-const InvitationColumn = (props: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined) => {
+const InvitationColumn = (props: {invitation:string}) => {
   return (
-      <div>
-          
-    <ColorButton size='small' variant="contained" style={{color:'error'}} startIcon={<SendIcon />}>{props}</ColorButton>
-    <ColorChip icon={<DoneIcon />} label='potwierdzona'/>
-           </div>
+    <TableCell align="center">
+      {props.invitation === 'wyślij'?(<ColorButton size='small' variant="contained" style={{color:'error'}} startIcon={<SendIcon />}>
+      {props.invitation.toUpperCase()}</ColorButton>):(<ColorChipSent icon={<DoneIcon />} label='wysłano'/>)}  
+    </TableCell>
 
   )
 }

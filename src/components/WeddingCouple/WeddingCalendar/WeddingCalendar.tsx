@@ -82,11 +82,12 @@ const WeddingCalendar = () => {
     const event: EventInput={ ...data, start:date}
     setData(old=>[...old,event])
     setOpenSave(false)
+    setColor(color)
   }
 
   const renderEvent=(e:EventClickArg)=>{
     return(
-      <Typography>{e.event.title}</Typography>
+      <Typography >{e.event.title}</Typography>
     )
   }
 

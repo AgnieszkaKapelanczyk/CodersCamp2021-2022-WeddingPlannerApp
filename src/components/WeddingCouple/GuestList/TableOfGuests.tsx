@@ -22,82 +22,40 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { Button, TextField, styled, Chip } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
-import PhoneIcon from '@mui/icons-material/Phone';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import EditIcon from '@mui/icons-material/Edit';
-import InfoIcon from '@mui/icons-material/Info';
-import DoneIcon from '@mui/icons-material/Done';
-import CloseIcon from '@mui/icons-material/Close';
+
 import InvitationColumn from './InvitationColumn';
+import PresenceInChurchColumn from './PresenceInChurchColumn';
+import PresenceAtWeddingColumn from './PresenceAtWeddingColumn';
+import SocialBar from './SocialBar';
 
 
 const StyledBox = styled(Box)(() => ({
   width:'100%',
   font:"Lato",
   '& .MuiTableCell-head': {
-    fontSize:'0.7rem'
-  },
-  '& .MuiTableCell-paddingNone': {
-    fontWeight: '600'
+    fontSize:'0.7rem',
   },
   '& .MuiCheckbox-root': {
-    color:'#FEC5BB'
+    color:'#FEC5BB',
   },
   '& .MuiChip-label': {
     fontFamily:'Lato',
   },
 }));
-
-
-const StyledTableCell = styled(TableCell)(() => ({
-  '& .MuiSvgIcon-root': {
-    color:'#6F59C9',
+const CssTextField = styled(TextField)({
+  '& .MuiOutlinedInput-root': {
+    '&.Mui-focused fieldset': {
+      borderColor: '#BAAAFB',
+    },
   },
-}));
-
-const ColorButton = styled(Button)(() => ({
-  backgroundColor: '#FF1A4B',
-}));
-
-const ColorChipSent = styled(Chip)(() => ({
-  backgroundColor: '#ADF893',
-  '& .MuiChip-label': {
-    color:'#000',
-  },
-  '& .MuiSvgIcon-root': {
-    color:'#000',
-  },
-}));
-
-const ColorChipDone = styled(Chip)(() => ({
-  backgroundColor: '#6F59C9',
-  '& .MuiChip-label': {
-    color:'#fff',
-  },
-  '& .MuiSvgIcon-root': {
-    color:'#fff',
-  },
-}));
-
-const ColorChipDenial = styled(Chip)(() => ({
-  backgroundColor: '#FF7C98',
-  '& .MuiChip-label': {
-    color:'#fff',
-  },
-  '& .MuiSvgIcon-root': {
-    color:'#fff',
-  },
-}));
-
-const ColorChipWaiting = styled(Chip)(() => ({
-  backgroundColor: '#FFAB09',
-  '& .MuiChip-label': {
-    color:'#fff',
-  },
-}));
-
-
+});
+const CssTableSortLabel = styled(TableSortLabel)({
+      '& .MuiTableSortLabel-icon': {
+        '&.MuiSvgIcon-root': {
+          color: '#6F59C9',
+         }, 
+       },   
+});
 
 interface Data {
   name: string;
@@ -249,13 +207,13 @@ function EnhancedTableHead(props: EnhancedTableProps) {
           />
         </TableCell>
         {headCells.map((headCell) => (
-          <StyledTableCell
+          <TableCell
             key={headCell.id}
             align='center'
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
-            <TableSortLabel
+            <CssTableSortLabel
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
               onClick={createSortHandler(headCell.id)}
@@ -266,8 +224,8 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                   {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
                 </Box>
               ) : null}
-            </TableSortLabel>
-          </StyledTableCell>
+            </CssTableSortLabel>
+          </TableCell>
         ))}
       </TableRow>
     </TableHead>
@@ -304,8 +262,8 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
       ) : (
         <Box>
                 <Button style={{margin:'0 2rem 0 0'}} color='tertiary' variant="contained" startIcon={<AddCircleIcon />}>Dodaj Gościa</Button>
-                <TextField color='secondary' sx={{
-                    '& .MuiInputAdornment-root ': { color:'#6F59C9' },
+                <CssTextField focused sx={{
+                    '& .MuiInputAdornment-root ': { color:'#BAAAFB' },
                 }} size="small" type="search" InputProps={{startAdornment: (<InputAdornment position="start">
               <PersonSearchIcon />Szukaj...
             </InputAdornment>
@@ -443,44 +401,14 @@ export default function TableOfGuests() {
                         id={labelId}
                         scope="row"
                         padding="none"
+                        style={{fontWeight:'600'}}
                       >
                         {row.name}
                       </TableCell>
-                      <TableCell align="center">
-                        {row.invitation === 'wyślij'?(<ColorButton size='small' variant="contained" style={{color:'error'}} startIcon={<SendIcon />}>{row.invitation.toUpperCase()}</ColorButton>):(<ColorChipSent icon={<DoneIcon />} label='wysłano'/>)}
-                      </TableCell>
-                      {row.invitation === 'wyślij'?<TableCell align="left"/>:
-                      (<TableCell align="center">
-                        { row.presenceInChurch === 'potwierdzona' ? (<ColorChipDone icon={<DoneIcon />} label='potwierdzona'/>):(<ColorChipWaiting label='oczekiwanie'/>)} 
-                      </TableCell>)}
-                      {row.invitation === 'wyślij'?<TableCell align="left"/>:
-                      (<TableCell align="center"> {row.presenceAtWedding === 'potwierdzona' ? (<ColorChipDone icon={<DoneIcon />} label='potwierdzona'/>):(<ColorChipDenial icon={<CloseIcon/>} label='odmowa'/>)}</TableCell>)}
-                      <TableCell align="right">
-                          <IconButton 
-                            aria-label="social-bar" 
-                            style={{color: '#fff'}}
-                            title='Dodatkowe informacje'>
-                              <InfoIcon style= {{fontSize: '0.8rem', borderRadius: '50%', background: '#6F59C9', padding:'0.4rem'}}/>
-                          </IconButton> 
-                          <IconButton 
-                            aria-label="social-bar" 
-                            style={{color: '#fff'}}
-                            title='Dodatkowe informacje'>
-                              <PhoneIcon style= {{fontSize: '0.8rem', borderRadius: '50%', background: '#6F59C9', padding:'0.4rem'}}/>
-                          </IconButton> 
-                          <IconButton 
-                            aria-label="social-bar" 
-                            style={{color: '#fff'}}
-                            title='Dodatkowe informacje'>
-                              <MailOutlineIcon style= {{fontSize: '0.8rem', borderRadius: '50%', background: '#6F59C9', padding:'0.4rem'}}/>
-                          </IconButton> 
-                          <IconButton 
-                            aria-label="social-bar" 
-                            style={{color: '#fff'}}
-                            title='Dodatkowe informacje'>
-                              <EditIcon style= {{fontSize: '0.8rem', borderRadius: '50%', background: '#6F59C9', padding:'0.4rem'}}/>
-                          </IconButton> 
-                      </TableCell>
+                      <InvitationColumn invitation={row.invitation}/>
+                      <PresenceInChurchColumn invitation={row.invitation} presenceInChurch={row.presenceInChurch}/>
+                      <PresenceAtWeddingColumn invitation={row.invitation} presenceAtWedding={row.presenceAtWedding}/>
+                      <SocialBar/>
                     </TableRow>
                   );
                 })}

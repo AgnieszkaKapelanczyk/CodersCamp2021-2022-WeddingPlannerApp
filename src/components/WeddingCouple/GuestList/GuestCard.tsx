@@ -23,7 +23,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
       },
   }));
 
-const GuestCard = (props:any) => {
+const GuestCard = (props:{title:string}) => {
 
     const classes = useStyles(theme);
 
