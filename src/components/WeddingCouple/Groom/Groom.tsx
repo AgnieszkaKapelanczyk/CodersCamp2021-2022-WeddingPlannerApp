@@ -5,7 +5,7 @@ import { theme } from 'theme/theme';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import TieIcon from 'assets/icon/tie.svg';
 import InfoIcon from '@mui/icons-material/Info';
-import ProgressCircle from "common/ProgressCircle/ProgressCircle";
+import GroomInfo from "./components/GroomInfo";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',
@@ -38,12 +38,12 @@ const Groom = () => {
         >
            <InfoIcon style={{color: `${theme.palette.tertiary.main}`, position: 'relative', top: '16px',  left: '10px'}}/>
           <StyledTypography>
-            Informacje o Pannie Młodej
+            Informacje o Panu Młodym
           </StyledTypography>
         </AccordionSummary>
         <Divider style={{backgroundColor: `${theme.palette.tertiary.main}`}}/>
-            <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
-              
+            <AccordionDetails style={{margin: '2rem 1rem' }}>
+                <GroomInfo/>
             </AccordionDetails>
       </StyledAccordion>
       <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>

@@ -5,7 +5,9 @@ import { theme } from 'theme/theme';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import DressIcon from 'assets/icon/dress.svg';
 import InfoIcon from '@mui/icons-material/Info';
-import ProgressCircle from "common/ProgressCircle/ProgressCircle";
+import BrideInfo from "./components/BrideInfo";
+import BrideClothes from "./components/BrideClothes";
+import BrideShops from "./components/BrideShops";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',
@@ -42,8 +44,8 @@ const Bride = () => {
           </StyledTypography>
         </AccordionSummary>
         <Divider style={{backgroundColor: `${theme.palette.tertiary.main}`}}/>
-            <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
-              
+            <AccordionDetails style={{margin: '2rem 0'}}>
+                <BrideInfo/>
             </AccordionDetails>
       </StyledAccordion>
       <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>
@@ -57,7 +59,7 @@ const Bride = () => {
         </AccordionSummary>
         <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
             <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
-
+              <BrideClothes/>
             </AccordionDetails>
       </StyledAccordion>
       <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel3')}>
@@ -73,7 +75,7 @@ const Bride = () => {
         </AccordionSummary>
         <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
             <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
-              
+                <BrideShops/>
             </AccordionDetails>
       </StyledAccordion>
     </Box>
