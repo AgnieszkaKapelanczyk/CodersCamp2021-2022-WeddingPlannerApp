@@ -67,7 +67,7 @@ export const theme = createTheme({
         fontSize: '1rem',
         fontFamily:"Lato",
         lineHeight:'1.6',
-        letterSpacing: "1px"
+        letterSpacing: "1px",
       },
       body2: {
         fontSize: '0.9rem',
@@ -89,6 +89,5 @@ export const theme = createTheme({
       },
     }, 
     
-},
-plPL,
+}
 );

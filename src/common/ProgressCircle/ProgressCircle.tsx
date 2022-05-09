@@ -18,13 +18,10 @@ const StyledBox = styled(Box)(({ theme }) => ({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
-    padding: "2rem",
-    margin: "1rem 0",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
     [theme.breakpoints.down('md')]: {
-        flexDirection: "column",
         padding: "0", 
         '& p': {
             fontSize: "1rem",
@@ -60,7 +57,6 @@ const ProgressCircle = (props: ProgressCircleProps) => {
 
     return (
         <StyledBox>
-            <Box style={{flex: '1'}}>
             <svg
             height={props.radius * 2}
             width={props.radius * 2}
@@ -76,10 +72,7 @@ const ProgressCircle = (props: ProgressCircleProps) => {
             />
             <text x="50%" y="50%" textAnchor="middle" dy=".3em" style={{...textStyle}}>75</text>
             </svg>
-            </Box>
-            <Box style={{flex: '1'}}>
-                <Typography variant="h1" color="secondary" style={{fontSize: '4rem'}}>%</Typography>
-            </Box>
+            <Typography variant="h1" color="secondary" style={{fontSize: '4rem'}}>%</Typography>
         </StyledBox> 
       );
     }

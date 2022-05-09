@@ -30,7 +30,7 @@ const Groom = () => {
 
   return (
     <Box p={3} style={{width: '65vw'}}>
-      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel1')}>
+      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel1bh-content"
@@ -46,7 +46,7 @@ const Groom = () => {
               
             </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel2')}>
+      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{fill: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel2bh-content"
@@ -60,7 +60,7 @@ const Groom = () => {
 
             </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel3')}>
+      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel3')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel3bh-content"

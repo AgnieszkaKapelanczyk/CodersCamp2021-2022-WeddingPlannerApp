@@ -14,7 +14,6 @@ import Messages from '../WeddingCouple/Messages/Messages';
 import Notes from '../WeddingCouple/Notes/Notes';
 import ArrangementOfTables from '../WeddingCouple/ArrangementOfTables/ArrangementOfTables';
 import PicturesForInspiration from '../WeddingCouple/PicturesForInspiration/PicturesForInspiration';
-import ListOfQuestionsForTheRoom from '../WeddingCouple/ListOfQuestionsForTheRoom/ListOfQuestionsForTheRoom';
 import ToDoList from '../WeddingCouple/ToDoList/ToDoList';
 import WeddingParty from '../WeddingCouple/WeddingParty/WeddingParty';
 import InvitationDesign from '../WeddingCouple/Invitations/InvitationDesign/InvitationDesign';
@@ -127,7 +126,6 @@ function App() {
         <Route path="/WeddingCouple/Notes/" element={loggedIn ?<Notes/> : <HomePage/>} />
         <Route path="/WeddingCouple/ArrangementOfTables/" element={loggedIn ?<ArrangementOfTables/> : <HomePage/>} />
         <Route path="/WeddingCouple/PicturesForInspiration/" element={loggedIn ?<PicturesForInspiration/> : <HomePage/>} />
-        <Route path="/WeddingCouple/ListOfQuestionsForTheRoom/" element={loggedIn ?<ListOfQuestionsForTheRoom/> : <HomePage/>} />
         <Route path="/WeddingGuests/" element={loggedIn ?<WeddingGuests/> : <HomePage/>} />
         <Route path="/WeddingGuests/RSVP/" element={loggedIn ?<RSVP/> : <HomePage/>} />
         <Route path="/WeddingGuests/ChoosingOfGift/" element={loggedIn ?<ChoosingOfGift/> : <HomePage/>} />
