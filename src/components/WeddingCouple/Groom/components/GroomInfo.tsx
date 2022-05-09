@@ -75,9 +75,21 @@ const StyledIconButton = styled(IconButton)(({theme}) => ({
     },
   }));
 
+  const StyledChip = styled(Chip)(({theme})=>({
+    fontFamily: 'Lato', 
+    backgroundColor:`${theme.palette.tertiary.main}`,
+    color: `${theme.palette.common.white}`,
+    marginLeft: '1rem',
+    position: 'relative',
+    top: '-4px',
+    [theme.breakpoints.down('md')]: {
+        marginLeft: 0
+    },
+  }))
+
   const InfoBox = styled(Box)(({theme})=> ({
     padding: '0 1rem',
-    flexGrow: 3,
+    flexGrow: 4,
     margin: '0 1rem',
     [theme.breakpoints.down('sm')]: {
         padding: 0,
@@ -105,16 +117,8 @@ const GroomInfo = () => {
             <InfoBox>
                 <UserName>
                     Michał Kasperczyk 
-                    <Chip 
+                    <StyledChip 
                         label="potwierdzony narzeczony" 
-                        style={{
-                            fontFamily: 'Lato', 
-                            backgroundColor:`${theme.palette.tertiary.main}`,
-                            color: `${theme.palette.common.white}`,
-                            marginLeft: '1rem',
-                            position: 'relative',
-                            top: '-4px'
-                        }}
                     />
                 </UserName>
                 <StyledTypography><EmailIcon/>michalkasperczyk@gmail.com</StyledTypography>
