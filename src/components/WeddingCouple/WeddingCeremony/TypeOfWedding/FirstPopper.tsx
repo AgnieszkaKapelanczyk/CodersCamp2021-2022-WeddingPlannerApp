@@ -9,7 +9,7 @@ import SecondPopper from './SecondPopper';
 
 
 
-const FirstPopper = () => {
+const FirstPopper = (props:{titleTop:string, iconFirstPopperTop:React.ReactNode, titleBottom:string,iconFirstPopperBottom:React.ReactNode}) => {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
     const [open, setOpen] = React.useState(false);
     const [placement, setPlacement] = React.useState<PopperPlacementType>();
@@ -30,8 +30,8 @@ const FirstPopper = () => {
                 <Box display={'flex'}>
                     <Card style={{marginBottom:'1rem'}}>
                         <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-                            <NaturePeopleIcon style= {{fontSize: '5rem', color:'#6F59C9'}}/> 
-                            <Typography style={{padding:'0 2rem'}}>W PLENERZE</Typography>
+                            {props.iconFirstPopperTop}
+                            <Typography style={{padding:'0 2rem'}}>{props.titleTop}</Typography>
                         </CardContent>
                     </Card>
                     <SecondPopper/>
@@ -39,8 +39,8 @@ const FirstPopper = () => {
                 <Box display={'flex'}>
                     <Card >
                         <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-                            <ChurchIcon style= {{fontSize: '5rem', color:'#6F59C9'}}/> 
-                            <Typography style={{padding:'0 2rem'}}>W KOŚCIELE</Typography>
+                            {props.iconFirstPopperBottom} 
+                            <Typography style={{padding:'0 2rem'}}>{props.titleBottom}</Typography>
                         </CardContent>
                     </Card>
                     <SecondPopper/>

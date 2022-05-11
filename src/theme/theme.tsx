@@ -20,12 +20,12 @@ export const theme = createTheme({
     palette: {
       primary: {
         main: '#C26D6D',
-        contrastText: '#fff',
+        contrastText:'#fff' ,
         dark: '#B85C5C',
       },
       secondary: {
         main: '#FEC5BB',
-        contrastText: '#000',
+        contrastText: '#fff',
         light: '#F8EDEB',
       },
       tertiary: {
