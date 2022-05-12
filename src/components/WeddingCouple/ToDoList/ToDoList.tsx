@@ -127,7 +127,7 @@ const ToDoList = () => {
                   progress={ 34 }
                 />
                 <Typography align={'center'} color={theme.palette.secondary.main} style={{fontWeight: 600, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
-              </Box>
+            </Box>
         </AccordionDetails>
       </StyledAccordion>
       <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel2')}>

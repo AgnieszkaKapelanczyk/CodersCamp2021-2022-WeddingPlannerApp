@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, Divider, FormControlLabel, FormGroup, List, ListItem, styled, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Divider, styled, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import { theme } from 'theme/theme';
@@ -6,7 +6,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import DressIcon from 'assets/icon/dress.svg';
 import InfoIcon from '@mui/icons-material/Info';
 import BrideInfo from "./components/BrideInfo";
-import BrideClothes from "./components/BrideClothes";
+import BrideClothes from "./components/BrideClothes/BrideClothes";
 import BrideShops from "./components/BrideShops";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
@@ -38,7 +38,7 @@ const Bride = () => {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-           <InfoIcon style={{color: `${theme.palette.tertiary.main}`, position: 'relative', top: '16px',  left: '10px'}}/>
+           <InfoIcon style={{color: `${theme.palette.tertiary.main}`, position: 'relative',}}/>
           <StyledTypography>
             Informacje o Pannie Młodej
           </StyledTypography>
