@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Card, CardContent, CardHeader, IconButton, Typography, Box, styled, PopperPlacementType} from "@mui/material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Checkbox from '@mui/material/Checkbox';
@@ -15,7 +14,7 @@ const CssIconButton= styled(IconButton)(() => ({
 
 
 
-const InsideCardContent = ({title, children}:{title:string; children:ReactNode}) => {
+const InsideCardContent = (props:{title:string; icon:ReactNode, iconFirstPopperTop:ReactNode, iconFirstPopperBottom:ReactNode, titleTop:string, titleBottom:string}) => {
 
 
   return (
@@ -32,11 +31,11 @@ const InsideCardContent = ({title, children}:{title:string; children:ReactNode})
              }
         />
         <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center', padding:'0rem'}}>
-          {children}
-          <Typography>{title}</Typography>
+          {props.icon}
+          <Typography>{props.title}</Typography>
         </CardContent>
       </Card> 
-      <FirstPopper/>
+      <FirstPopper titleTop={props.titleTop} titleBottom={props.titleBottom} iconFirstPopperTop={props.iconFirstPopperTop} iconFirstPopperBottom={props.iconFirstPopperBottom}/>
     </Box>  
   )
 }
