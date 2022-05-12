@@ -57,13 +57,13 @@ const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const BrideClothes = () => {
+const GroomClothes = () => {
   const [toDoArray, setToDo] = useState<string[]>(ClothesToDoArray);
 
     return (
       <>
          <Box display={'flex'} flexDirection={'column'}>
-          <Button variant={"contained"} color={'tertiary'} style={{width:'260px', margin:'1rem'}} startIcon={<AddCircleIcon style={{margin: '0 12px 0 0'}}/>}>DODAJ DO LISTY</Button>
+          <Button variant={"contained"} color={'tertiary'} style={{width:'260px', margin:'1rem'}} startIcon={<AddCircleIcon style={{margin: '0 12px 0 0', textAlign: 'left'}}/>}>DODAJ DO LISTY</Button>
           <List>
             <FormGroup>
               {
@@ -105,5 +105,5 @@ const BrideClothes = () => {
     )
 };
 
-export default BrideClothes;
+export default GroomClothes;
 

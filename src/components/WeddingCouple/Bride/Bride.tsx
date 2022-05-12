@@ -14,12 +14,30 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+    '& .MuiAccordionDetails-root': {
+      display: 'flex', 
+      flexDirection:'row', 
+      margin: '2rem 1rem',
+      alignItems: 'flex-start',
+        [theme.breakpoints.down('md')]: {
+          display: 'flex',
+          flexDirection: 'column-reverse',
+        },
+    }
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.tertiary.main,
   margin: '0.9rem',
   padding: '0 1rem',
+}));
+
+const StyledBox = styled(Box)(({theme})=> ({
+  padding: '24px',
+  width: '65vw',
+  [theme.breakpoints.down('md')]: {
+    width: '100%'
+  },
 }));
 
 const Bride = () => {
@@ -31,14 +49,14 @@ const Bride = () => {
       };
 
   return (
-    <Box p={3} style={{width: '65vw'}}>
-      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
+    <StyledBox>
+      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-           <InfoIcon style={{color: `${theme.palette.tertiary.main}`, position: 'relative',}}/>
+           <InfoIcon style={{color: `${theme.palette.tertiary.main}`, fontSize:'1.8rem', marginLeft:'8px'}}/>
           <StyledTypography>
             Informacje o Pannie Młodej
           </StyledTypography>
@@ -48,27 +66,27 @@ const Bride = () => {
                 <BrideInfo/>
             </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>
+      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel2')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{fill: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <img src={DressIcon} alt="" style={{height: '22px', position: 'relative', top: '16px', left: '10px'}}/>
+          <img src={DressIcon} alt="" style={{height: '28px', marginLeft:'8px'}}/>
           <StyledTypography>Ubiór</StyledTypography>
         </AccordionSummary>
         <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
-            <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
+            <AccordionDetails style={{ margin: '2rem 1rem', justifyContent:'space-between' }}>
               <BrideClothes/>
             </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel3')}>
+      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel3')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <ShoppingBasketIcon style={{color: `${theme.palette.tertiary.main}`, position: 'relative', top: '15px',  left: '10px'}}/>
+          <ShoppingBasketIcon style={{color: `${theme.palette.tertiary.main}`, fontSize:'1.8rem', marginLeft:'8px'}}/>
           <StyledTypography>
           Proponowane salony sukien ślubnych w Twojej okolicy
           </StyledTypography>
@@ -78,7 +96,7 @@ const Bride = () => {
                 <BrideShops/>
             </AccordionDetails>
       </StyledAccordion>
-    </Box>
+    </StyledBox>
   )
 }
 

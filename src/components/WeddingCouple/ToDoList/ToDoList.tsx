@@ -46,8 +46,8 @@ const StyledNumbersTypography = styled(Typography)(({ theme }) => ({
 
 const StyledListItem = styled(ListItem)(({theme})=> ({
   '&:hover': {
-    position: 'relative',
-    left: '1px',
+    backgroundColor: theme.palette.secondary.light,
+    cursor: 'pointer'
   }
 }));
 
@@ -83,7 +83,7 @@ const ToDoList = () => {
 
   return (
     <StyledBox>
-      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel1')}>
+      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel1bh-content"
@@ -102,21 +102,21 @@ const ToDoList = () => {
               </Typography>
               <List>
                 <FormGroup>
-                  <ListItem >
+                  <StyledListItem >
                     <StyledTooltip title="Szczegóły w zakładce Ceremonia ślubu">
                       <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie szacowanej daty ślubu" />
                     </StyledTooltip>
-                  </ListItem>
-                  <ListItem >
+                  </StyledListItem>
+                  <StyledListItem >
                     <StyledTooltip title="Szczegóły w zakładce Budżet">
                       <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie budżetu" />
                     </StyledTooltip>
-                  </ListItem>
-                  <ListItem >
+                  </StyledListItem>
+                  <StyledListItem >
                   <StyledTooltip title="Szczegóły w zakładce Lista Gości">
                       <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie listy gości" />
                     </StyledTooltip>
-                  </ListItem>
+                  </StyledListItem>
                 </FormGroup>
               </List>
             </Box>
@@ -130,7 +130,7 @@ const ToDoList = () => {
             </Box>
         </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel2')}>
+      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel2bh-content"
@@ -147,31 +147,31 @@ const ToDoList = () => {
                  </Typography>
                 <List>
                   <FormGroup>
-                    <ListItem >
+                    <StyledListItem >
                       <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór miejsca ceremonii" />
                       </StyledTooltip>
-                    </ListItem>
+                    </StyledListItem>
                     <StyledListItem >
                       <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie daty i godziny ceremonii" />
                       </StyledTooltip>
                     </StyledListItem>
-                    <ListItem >
+                    <StyledListItem>
                       <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór świadków" />
                       </StyledTooltip>
-                    </ListItem>
-                    <ListItem >
+                    </StyledListItem>
+                    <StyledListItem>
                       <StyledTooltip title="Szczegóły w zakładce Zaproszenia">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Projekt zaproszenia" />
                       </StyledTooltip>
-                    </ListItem>
-                    <ListItem >
+                    </StyledListItem>
+                    <StyledListItem>
                       <StyledTooltip title="Szczegóły w zakładce Zaproszenia">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wysłanie zaproszeń do gości" />
                       </StyledTooltip>
-                    </ListItem>
+                    </StyledListItem>
                   </FormGroup>
                 </List>
               </Box>
@@ -185,7 +185,7 @@ const ToDoList = () => {
               </Box>
              </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '12px !important'}} onChange={handleChange('panel3')}>
+      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel3')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
           aria-controls="panel3bh-content"
@@ -204,21 +204,21 @@ const ToDoList = () => {
                 </Typography>
                 <List>
                   <FormGroup>
-                    <ListItem >
+                    <StyledListItem >
                       <StyledTooltip title="Szczegóły w zakładce Wesele">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór charakteru przyjęcia weselnego" />
                       </StyledTooltip>
-                    </ListItem>
-                    <ListItem >
+                    </StyledListItem>
+                    <StyledListItem >
                       <StyledTooltip title="Szczegóły w zakładce Wesele">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie miejsca przyjęcia weselnego" />
                       </StyledTooltip>
-                    </ListItem>
-                    <ListItem >
+                    </StyledListItem>
+                    <StyledListItem >
                       <StyledTooltip title="Szczegóły w zakładce Budżet">
                         <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wpłacenie zaliczki w restauracji" />
                       </StyledTooltip>
-                    </ListItem>
+                    </StyledListItem>
                   </FormGroup>
                 </List>
               </Box>
