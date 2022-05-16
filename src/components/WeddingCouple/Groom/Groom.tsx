@@ -6,7 +6,8 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import TieIcon from 'assets/icon/tie.svg';
 import InfoIcon from '@mui/icons-material/Info';
 import GroomInfo from "./components/GroomInfo";
-import GroomClothes from "./components/GroomClothes";
+import GroomClothes from "./components/GroomClothes/GroomClothes";
+import GroomShops from "./components/GroomShops";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',
@@ -41,10 +42,6 @@ const Groom = () => {
 
 const StyledBox = styled(Box)(({theme})=> ({
   padding: '24px',
-  width: '65vw',
-  [theme.breakpoints.down('md')]: {
-    width: '100%'
-  },
 }));
 
   return (
@@ -92,7 +89,7 @@ const StyledBox = styled(Box)(({theme})=> ({
         </AccordionSummary>
         <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
             <AccordionDetails style={{display: 'flex', flexDirection:'row', margin: '2rem 1rem' }}>
-              
+                <GroomShops/>
             </AccordionDetails>
       </StyledAccordion>
     </StyledBox>

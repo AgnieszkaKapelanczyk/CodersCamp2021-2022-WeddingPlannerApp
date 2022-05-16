@@ -104,7 +104,7 @@ const ToDoList = () => {
                 <FormGroup>
                   <StyledListItem >
                     <StyledTooltip title="Szczegóły w zakładce Ceremonia ślubu">
-                      <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie szacowanej daty ślubu" />
+                      <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wyznaczenie daty ślubu" />
                     </StyledTooltip>
                   </StyledListItem>
                   <StyledListItem >

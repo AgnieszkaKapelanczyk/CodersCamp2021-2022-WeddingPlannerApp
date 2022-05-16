@@ -1,13 +1,12 @@
 import { Box, Button, Checkbox, FormControlLabel, FormGroup, List, ListItem, styled, Typography } from "@mui/material";
 import { useState } from "react";
-import { ClothesToDoArray } from "./ClothesToDoArray";
 import CloseIcon from '@mui/icons-material/Close';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
 import { theme } from "theme/theme";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { ClothesToDoArray } from "./ClothesToDoArray";
 
 const StyledCheckboxClothes = styled(Checkbox)(({ theme }) => ({
     '& .MuiSvgIcon-root': {

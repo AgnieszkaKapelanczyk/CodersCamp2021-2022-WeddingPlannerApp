@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 import type {} from '@mui/lab/themeAugmentation';
-import { plPL } from '@mui/material/locale';
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -31,7 +30,8 @@ export const theme = createTheme({
       tertiary: {
         main: '#6F59C9',
         light:'#E7E2FF',
-        contrastText: '#fff'
+        contrastText: '#fff',
+        dark: '#5A42B8'
       },
       success: {
         main: '#68B24E',
@@ -52,38 +52,42 @@ export const theme = createTheme({
       h2: {
         fontSize: '1.6rem',
         letterSpacing: '2px',
-        fontWeight: 500
+        fontWeight: 600
       },
       h3: {
         fontSize: '1.3rem',
-        fontFamily: "Lato",
+        fontFamily: 'Poppins, sans-serif',
       },
       h4: {
-        fontFamily: "Lato",
+        fontFamily: 'Poppins, sans-serif',
         fontSize: "0.9rem",
         fontWeight: 400,
       },
       body1: {
         fontSize: '1rem',
-        fontFamily:"Lato",
+        fontFamily:'Poppins, sans-serif',
         lineHeight:'1.6',
         letterSpacing: "1px",
       },
       body2: {
         fontSize: '0.9rem',
-        fontFamily:"Lato",
+        fontFamily: 'Poppins, sans-serif',
         fontWeight: 400
       },
       subtitle1: {
         fontSize: '1.1rem',
-        fontFamily: "Lato",
+        fontFamily: 'Poppins, sans-serif',
         letterSpacing: '1px',
-        fontWeight: 600,
+        fontWeight: 500,
+      },
+      caption: {
+        fontFamily: 'Poppins, sans-serif',
+        fontWeight: 500,
       },
       button: {
         textTransform: 'none',
         letterSpacing: '2px',
-        fontFamily: "Lato",
+        fontFamily: 'Poppins, sans-serif',
         fontWeight: 500,
         padding: '0.6rem 4rem',
       },

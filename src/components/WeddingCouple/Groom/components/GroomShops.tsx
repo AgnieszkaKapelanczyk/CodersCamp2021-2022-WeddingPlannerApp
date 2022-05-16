@@ -1,9 +1,9 @@
 import { Box, Chip, List, ListItem, styled, ListItemAvatar, ListItemButton, ListItemText, Rating, Tab, Tabs, Typography, IconButton } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
 import { useState } from "react";
-import ShopFoto1 from 'assets/img/weddshop1.jpg';
-import ShopFoto2 from 'assets/img/weddshop2.jpg';
-import ShopFoto3 from 'assets/img/weddshop3.jpg';
+import ShopFoto1 from 'assets/img/groomshop1.jpg';
+import ShopFoto2 from 'assets/img/groomshop2.jpg';
+import ShopFoto3 from 'assets/img/groomshop3.jpg';
 import { theme } from "theme/theme";
 import FacebookIcon from 'assets/icon/facebook-f-brands.svg';
 import InstagramIcon from 'assets/icon/instagram-brands.svg';
@@ -72,7 +72,7 @@ const StyledChipPrimary = styled(Chip)(({theme})=>({
   }));
 
 
-const BrideShops = () => {
+const GroomShops = () => {
     const [value, setValue] = useState('one');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -168,7 +168,7 @@ const BrideShops = () => {
                                     </StyledTooltip>
                                 </List>
                             </Box>
-                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Wedding Dream - salon sukien ślubnych</Typography>
+                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Lavard</Typography>
                             <Typography variant={'body2'}>Salon sukien ślubnych obecny na polskim rynku już 10 lat.  Wszystkie zamówienia realizowane są terminowo, wyróżnia nas fachowa wiedza i doświadczenie.</Typography>
                             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} margin={'1rem 1rem 1rem 0'}>
                                     <StyledChipPrimary label="szycie na miarę" sx={{marginLeft: '0'}} />
@@ -200,7 +200,7 @@ const BrideShops = () => {
                         <ListItemText primary={
                             <>
                             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
-                                <Typography>Wrocław, Igielna 6 <Rating style={{
+                                <Typography>Wrocław, Rymarska 2 <Rating style={{
                                 position: 'relative', top:'5px'
                                 }} name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> (10)</Typography>
                                 <List>
@@ -256,7 +256,7 @@ const BrideShops = () => {
                                     </StyledTooltip>
                                 </List>
                             </Box>
-                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Wedding Dream - salon sukien ślubnych</Typography>
+                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Exlusive Suits</Typography>
                             <Typography variant={'body2'}>Salon sukien ślubnych obecny na polskim rynku już 10 lat.  Wszystkie zamówienia realizowane są terminowo, wyróżnia nas fachowa wiedza i doświadczenie.</Typography>
                             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} margin={'1rem 1rem 1rem 0'}>
                                     <StyledChipPrimary label="szycie na miarę" sx={{marginLeft: '0'}} />
@@ -288,7 +288,7 @@ const BrideShops = () => {
                         <ListItemText primary={
                             <>
                             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'space-between'}>
-                                <Typography>Wrocław, Igielna 6 <Rating style={{
+                                <Typography>Wrocław, Komadorska 2 <Rating style={{
                                 position: 'relative', top:'5px'
                                 }} name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly /> (10)</Typography>
                                 <List>
@@ -344,7 +344,7 @@ const BrideShops = () => {
                                     </StyledTooltip>
                                 </List>
                             </Box>
-                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Wedding Dream - salon sukien ślubnych</Typography>
+                            <Typography variant={'h3'} style={{margin:'1rem 0'}}>Lancerto</Typography>
                             <Typography variant={'body2'}>Salon sukien ślubnych obecny na polskim rynku już 10 lat.  Wszystkie zamówienia realizowane są terminowo, wyróżnia nas fachowa wiedza i doświadczenie.</Typography>
                             <Box display={'flex'} flexDirection={'row'} alignItems={'center'} margin={'1rem 1rem 1rem 0'}>
                                     <StyledChipPrimary label="szycie na miarę" sx={{marginLeft: '0'}} />
@@ -365,4 +365,4 @@ const BrideShops = () => {
     )
 };
 
-export default BrideShops;
+export default GroomShops;

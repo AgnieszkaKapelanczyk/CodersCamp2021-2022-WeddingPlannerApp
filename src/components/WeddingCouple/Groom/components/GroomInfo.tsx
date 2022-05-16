@@ -85,7 +85,7 @@ const StyledIconButton = styled(IconButton)(({theme}) => ({
     [theme.breakpoints.down('md')]: {
         marginLeft: 0
     },
-  }))
+  }));
 
   const InfoBox = styled(Box)(({theme})=> ({
     padding: '0 1rem',

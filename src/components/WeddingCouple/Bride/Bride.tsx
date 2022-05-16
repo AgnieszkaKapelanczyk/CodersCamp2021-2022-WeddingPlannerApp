@@ -34,10 +34,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 const StyledBox = styled(Box)(({theme})=> ({
   padding: '24px',
-  width: '65vw',
-  [theme.breakpoints.down('md')]: {
-    width: '100%'
-  },
+
 }));
 
 const Bride = () => {
