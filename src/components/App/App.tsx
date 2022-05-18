@@ -39,6 +39,7 @@ import MovieThemeBg from "assets/img/movieTheme.jpg";
 import ClassicThemeBg from "assets/img/classicTheme.jpg";
 import { selectActualTheme } from 'store/themeSlice';
 import { useEffect, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 
 

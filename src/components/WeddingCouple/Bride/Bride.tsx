@@ -7,7 +7,7 @@ import DressIcon from 'assets/icon/dress.svg';
 import InfoIcon from '@mui/icons-material/Info';
 import BrideInfo from "./components/BrideInfo";
 import BrideClothes from "./components/BrideClothes/BrideClothes";
-import BrideShops from "./components/BrideShops";
+import BrideShops from "./components/BrideClothes/BrideShops/BrideShops";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',
