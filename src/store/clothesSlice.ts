@@ -19,10 +19,8 @@ const clothesSlice = createSlice({
         state.splice(action.payload, 1);
       },
       updateClothes: (state, action) => {
-        state.splice(0,1,action.payload)
-      },
-      resetClothList: (state, action) => {
         state.splice(0);
+        state.push(...action.payload);
       },
     },
   });

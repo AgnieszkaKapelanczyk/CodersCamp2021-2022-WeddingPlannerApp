@@ -2,7 +2,7 @@ import { listItemCloth } from "store/clothesSlice";
 
 
 export const ClothesToDoArray: listItemCloth[] = [
-    { title: 'Garnitur', checked: true},
+    { title: 'Garnitur', checked: false},
     { title: 'Koszula', checked: false},
     { title: 'Mucha/Krawat', checked: false},
     { title: 'Poszetka', checked: false},

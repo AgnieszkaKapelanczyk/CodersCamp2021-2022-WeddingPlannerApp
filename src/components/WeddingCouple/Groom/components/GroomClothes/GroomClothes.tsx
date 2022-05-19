@@ -1,10 +1,11 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, List, ListItem, styled, TextField, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, List, ListItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
 import { theme } from "theme/theme";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { ClothesToDoArray } from "./ClothesToDoArray";
 import DownloadIcon from '@mui/icons-material/Download';
@@ -24,17 +25,23 @@ const StyledListItem = styled(ListItem)(({theme}) => ({
   flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
-  width: '300px',
+  width: '60%',
   '&:hover': {
     background: theme.palette.secondary.light,
     cursor: 'pointer',
   },
-  '&:hover > .hiddenIcon': {
+  '&:hover > .MuiBox-root .hiddenIcon': {
     display: 'block',
   },
+  '& .MuiTypography-root': {
+    display: 'flex',
+    maxWidth: '90%',
+    wordBreak: 'break-all',
+    margin: '0.8rem 0.6rem'
+  }
 }));
 
-const StyledDeleteIcon = styled(DeleteIcon)(({theme}) => ({
+const StyledIconButton = styled(IconButton)(({theme}) => ({
     color: theme.palette.secondary.main,
     display: 'none',
     borderRadius: '50%',
@@ -95,6 +102,7 @@ const GroomClothes = () => {
 
   const [toDoArray, setClothesArray] = useState<listItemCloth[]>([]);
   const [newValue, setValue] = useState<string>("");
+  const [progress, setProgress] = useState<number>(0);
 
   const handleDownloadClick = () => {
       dispatch(updateClothes(ClothesToDoArray));
@@ -105,35 +113,71 @@ const GroomClothes = () => {
       dispatch(updateClothes([]));
   };
 
+  const handleRemoveItem = (event: React.MouseEvent<HTMLButtonElement>) => {
+      const newList: listItemCloth[] = [...toDoArray];
+      newList.splice(parseInt(event.currentTarget.value),1);
+      dispatch(updateClothes(newList));
+  };
+
+  const handleEditItem = () => {
+
+  };
+
+  const handleChange = (event: React.SyntheticEvent<Element, Event>, checked: boolean) => {
+      const value = (event.target as HTMLInputElement).value;
+      const name = (event.target as HTMLInputElement).name;
+      const id = (event.target as HTMLInputElement).id;
+      const newList: listItemCloth[] = [...toDoArray];
+      const newItem: listItemCloth = {title: name, checked: value==='true' ? false : true};
+      newList.splice(parseInt(id), 1, newItem)
+      dispatch(updateClothes(newList));
+  };
+
   useEffect(()=>{
       setClothesArray(listClothes);
   },[listClothes]);
 
+  useEffect(()=> {
+      setProgress(Math.round((toDoArray.filter(el=>el.checked)).length*100/(toDoArray.length)));
+  },[toDoArray]);
+
+  useEffect(()=> {
+    if (progress === 100) {
+
+    };
+  },[progress]);
+
     return (
       <>
          <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}>
-            
             <Typography variant={'subtitle1'} style={{margin: '1rem 1rem 0 1rem', color: `${theme.palette.tertiary.main}`}}> Listę możesz dowolnie modyfikować dodając lub usuwając elementy.</Typography>
-           <Box display={'flex'} my={2} >
-             <StyledTextField 
-                label="Dodaj element garderoby" 
-                focused
-                size="small"
-                onChange={(e)=>setValue(e.target.value)}
-                variant="outlined"
-                value={newValue}
-              />
-             <Button 
-                variant={"contained"} 
-                color={'tertiary'} 
-                style={{width:'260px', margin:'1rem'}} 
-                disabled={newValue.trim() === ""}
-                onClick = {() => {
-                    dispatch(addCloth({title: newValue.trim(), checked: false}));
-                    setValue("");
-                }}
-                startIcon={<AddCircleIcon style={{margin: '0 12px 0 0', textAlign: 'left'}}/>}>DODAJ DO LISTY</Button>
-           </Box>
+              <Box display={'flex'} my={2} >
+                <StyledTextField 
+                    label="Dodaj element garderoby" 
+                    focused
+                    size="small"
+                    onChange={(e)=>setValue(e.target.value)}
+                    onKeyPress={(ev) => {
+                      if (ev.key === 'Enter' || ev.code === "NumpadEnter") {
+                        ev.preventDefault();
+                        dispatch(addCloth({title: newValue.trim(), checked: false}));
+                        setValue("");
+                      }
+                    }}
+                    variant="outlined"
+                    value={newValue}
+                  />
+                <Button 
+                    variant={"contained"} 
+                    color={'tertiary'} 
+                    style={{width:'260px', margin:'1rem'}} 
+                    disabled={newValue.trim() === ""}
+                    onClick = {() => {
+                        dispatch(addCloth({title: newValue.trim(), checked: false}));
+                        setValue("");
+                    }}
+                    startIcon={<AddCircleIcon style={{margin: '0 12px 0 0', textAlign: 'left'}}/>}>DODAJ DO LISTY</Button>
+              </Box>
            <Typography variant="h3" style={{margin: '1rem'}}>Lista elementów garderoby:</Typography>
             <Divider style={{width: '60%'}}/>
             <List>
@@ -146,17 +190,36 @@ const GroomClothes = () => {
                           key={`formControllLabel-${id}`}
                           control={
                               <StyledCheckboxClothes 
+                                id = {`${id}`}
                                 checked={el.checked}
-                                icon={
-                                  <CloseIcon/>
-                                }
+                                onChange={handleChange}
+                                icon={<CloseIcon/>}
+                                value={el.checked}
+                                name={el.title}
                                 key={`checkbox-${id}`}/>
                           }
                           label={el.title}
                         />
-                        <StyledTooltip title={"Usuń z listy"}>
-                            <StyledDeleteIcon className={'hiddenIcon'}/> 
-                        </StyledTooltip>
+                        <Box display={'flex'} flexDirection={'row'} justifyContent={'flex-end'}>
+                        <StyledIconButton
+                            className={'hiddenIcon'} 
+                            aria-label="edit"
+                            value={id}
+                            onClick={handleEditItem}>
+                            <StyledTooltip title={"Edytuj"}>
+                                <EditIcon /> 
+                            </StyledTooltip>
+                        </StyledIconButton>
+                          <StyledIconButton 
+                            className={'hiddenIcon'} 
+                            aria-label="delete"
+                            value={id}
+                            onClick={handleRemoveItem}>
+                               <StyledTooltip title={"Usuń z listy"}>
+                                  <DeleteIcon /> 
+                              </StyledTooltip>
+                          </StyledIconButton>
+                        </Box>
                     </StyledListItem>
                     )
                   })
@@ -193,7 +256,7 @@ const GroomClothes = () => {
                 <ProgressCircle
                   radius={ 60 }
                   stroke={ 8 }
-                  progress={ 34 } 
+                  progress={ progress } 
                 />
                 <Typography align={'center'} color={theme.palette.tertiary.main} style={{fontWeight: 500, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
           </StyledProgressBox>

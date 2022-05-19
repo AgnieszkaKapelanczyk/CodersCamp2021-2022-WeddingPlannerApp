@@ -27,6 +27,19 @@ const progressSlice = createSlice({
           + (state.list.weddingParty).length
         );
       },
+      updateProgressList: (state, action) => {
+        const stage = action.payload.stage;
+        const title = action.payload.title;
+        const checked = action.payload.checked;
+
+        if (stage === "preparation") {
+            state.list.preparation.filter((el,id)=> el.title === title)
+        } else if (stage === "weddingCeremony") {
+
+        } else if (stage === "weddingParty") {
+
+        }
+      },
     },
   });
   

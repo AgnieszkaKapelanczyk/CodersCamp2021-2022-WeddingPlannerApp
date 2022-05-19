@@ -11,7 +11,7 @@ const circleStyle = ({
 const textStyle = ({
     fill: theme.palette.tertiary.main,
     fontFamily: "'Abril Fatface'",
-    fontSize: '3rem',
+    fontSize: '2.4rem',
 });
 
 const StyledBox = styled(Box)(({ theme }) => ({
