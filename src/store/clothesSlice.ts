@@ -1,8 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'store/store';
 
-const initialState : string[] = [];
- 
+export interface listItemCloth {
+  title: string,
+  checked: boolean
+};
+
+const initialState : listItemCloth[] = [];
+
 const clothesSlice = createSlice({
     name: 'clothes',
     initialState,
@@ -14,8 +19,11 @@ const clothesSlice = createSlice({
         state.splice(action.payload, 1);
       },
       updateClothes: (state, action) => {
-        state = action.payload.updatedList;
-      }
+        state.splice(0,1,action.payload)
+      },
+      resetClothList: (state, action) => {
+        state.splice(0);
+      },
     },
   });
   

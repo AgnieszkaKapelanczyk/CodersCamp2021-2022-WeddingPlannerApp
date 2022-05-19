@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { ClothesToDoArray } from "./ClothesToDoArray";
 import DownloadIcon from '@mui/icons-material/Download';
-import { addCloth, removeCloth, selectListOfClothes, updateClothes } from "store/clothesSlice";
+import { addCloth, listItemCloth, selectListOfClothes, updateClothes } from "store/clothesSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toast } from "react-toastify";
 
@@ -93,17 +93,16 @@ const GroomClothes = () => {
   const dispatch = useAppDispatch();
   const listClothes = useAppSelector(selectListOfClothes);
 
-  const [toDoArray, setClothesArray] = useState<string[]>([]);
+  const [toDoArray, setClothesArray] = useState<listItemCloth[]>([]);
   const [newValue, setValue] = useState<string>("");
 
   const handleDownloadClick = () => {
-      setClothesArray(ClothesToDoArray);
-      updateClothes({updatedList: ClothesToDoArray });
-      toast.success('Dodano przykładową listę')
+      dispatch(updateClothes(ClothesToDoArray));
+      toast.success('Wczytałeś przykładową listę ubrań!');
   };
 
   const handleResetList = () => {
-      dispatch(updateClothes({updatedList: []}));
+      dispatch(updateClothes([]));
   };
 
   useEffect(()=>{
@@ -130,7 +129,7 @@ const GroomClothes = () => {
                 style={{width:'260px', margin:'1rem'}} 
                 disabled={newValue.trim() === ""}
                 onClick = {() => {
-                    dispatch(addCloth(newValue.trim()));
+                    dispatch(addCloth({title: newValue.trim(), checked: false}));
                     setValue("");
                 }}
                 startIcon={<AddCircleIcon style={{margin: '0 12px 0 0', textAlign: 'left'}}/>}>DODAJ DO LISTY</Button>
@@ -147,12 +146,13 @@ const GroomClothes = () => {
                           key={`formControllLabel-${id}`}
                           control={
                               <StyledCheckboxClothes 
+                                checked={el.checked}
                                 icon={
                                   <CloseIcon/>
                                 }
                                 key={`checkbox-${id}`}/>
-                          } 
-                          label={el}
+                          }
+                          label={el.title}
                         />
                         <StyledTooltip title={"Usuń z listy"}>
                             <StyledDeleteIcon className={'hiddenIcon'}/> 
@@ -172,15 +172,16 @@ const GroomClothes = () => {
                     size={'small'} 
                     variant={"contained"} 
                     color={'tertiary'} 
+                    disabled={toDoArray === ClothesToDoArray}
                     style={{ margin:'1rem', fontSize: '0.8rem'}} 
                     onClick={handleDownloadClick}
                     startIcon={<DownloadIcon style={{margin: '0 12px 0 0', textAlign: 'left'}}/>}>
-                      Dodaj przykładową listę
+                      Wczytaj przykładową listę
                   </Button>
                   <Button 
                     size={'small'} 
                     variant={"contained"}
-                    disabled={listClothes.length<0} 
+                    disabled={toDoArray.length===0} 
                     color={'secondary'} 
                     onClick={handleResetList}
                     style={{ margin:'0.5rem 1rem 1rem 1rem'}}> 
