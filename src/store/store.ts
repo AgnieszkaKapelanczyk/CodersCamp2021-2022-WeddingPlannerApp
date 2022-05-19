@@ -8,6 +8,7 @@ import eventInCalendarReducer from 'store/eventInCalendarSlice';
 import toolboxReducer from 'store/toolboxSlice';
 import toolboxThemeReducer from 'store/themeToolboxSlice';
 import themeReducer from 'store/themeSlice';
+import progressReducer from 'store/progressSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,7 +21,7 @@ export const store = configureStore({
     toolbox: toolboxReducer,
     toolboxTheme: toolboxThemeReducer,
     theme: themeReducer,
-
+    progress: progressReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false
