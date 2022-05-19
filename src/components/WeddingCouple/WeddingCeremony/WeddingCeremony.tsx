@@ -6,9 +6,8 @@ import TypeOfWedding from "./TypeOfWedding/TypeOfWedding";
 
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  margin: "1.5rem 20rem 0 1.5rem",
+  margin:'1.5rem',
   [theme.breakpoints.down('md')]: {
-    margin: "1.5rem 8rem 0 1.5rem",
     padding:'0.5rem',
       '& .MuiSvgIcon-root': {
         fontSize: '1rem',

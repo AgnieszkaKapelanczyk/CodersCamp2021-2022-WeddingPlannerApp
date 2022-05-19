@@ -11,8 +11,8 @@ import ChurchIcon from '@mui/icons-material/Church';
 import {ReactComponent as CityHall} from '../../../../assets/icon/cityhall_89246.svg';
 
 
-const StyledAccordion = styled(Accordion)(({ theme }) => ({
-  margin: '2rem 0 0 0',
+const StyledAccordion = styled(Accordion)(() => ({
+  margin: '0 0 1.5rem 0',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
@@ -34,14 +34,14 @@ const TypeOfWedding = () => {
     };
 
   return (
-    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
+    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
       aria-controls="panel1bh-content"
       id="panel1bh-header"
-      style={{padding:'1rem 1rem'}}
+      style={{padding:'0 1rem'}}
     >
-      <EditIcon style={{color: `${theme.palette.tertiary.main}`}}/> 
+      <EditIcon style={{color: `${theme.palette.tertiary.main}`, fontSize:'1.8rem', marginLeft:'8px'}}/> 
       <StyledTypography>
       Rodzaj ślubu
       </StyledTypography>

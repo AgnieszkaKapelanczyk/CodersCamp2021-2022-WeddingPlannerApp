@@ -1,11 +1,11 @@
-import { Box, Card, CardHeader, IconButton, Typography, Divider, IconButtonProps, Collapse, styled} from "@mui/material"
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import React from 'react'
+import { Accordion, AccordionDetails, AccordionSummary, Divider, styled, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
+import { Box} from "@mui/material"
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import CustomTimePicker from '../DateOfWedding/CustomTimePicker';
 import DatePicker from '../DateOfWedding/DatePicker';
-import { theme } from 'theme/theme';
-import {CardContent,makeStyles } from '@material-ui/core';
 import { useSelector } from "react-redux";
 import {pickDateOfWedding} from 'store/dateOfWeddingSlice';
 import {pickTimeOfWedding} from 'store/timeOfWeddingSlice';
@@ -14,7 +14,20 @@ import moment from 'moment';
 import 'moment/locale/pl'  
 moment.locale('pl')
 
-const StyledCardContent = styled(CardContent)(({ theme }) => ({
+const StyledAccordion = styled(Accordion)(() => ({
+  margin: '0 0 1.5rem 0',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+}));
+
+const StyledTypography = styled(Typography)(() => ({
+  color: '#6F59C9',
+  margin: '0.9rem',
+  padding: '0 1rem',
+}));
+
+const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   display:'flex',
   justifyContent:'center',
   padding:'2rem',
@@ -29,64 +42,32 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
 }));
 
 
-const useStyles = makeStyles({
-  cardHeaderIcon: {
-    color: theme.palette.tertiary.main,
-  },
-  headerTitle: {
-    color: theme.palette.tertiary.main,
-  },
-  typoTitle: {
-    color: theme.palette.tertiary.main,
-  }
-});
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})
-(({expand}:ExpandMoreProps) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-}));
-
-
-
 const DateOfWedding = () => {
 
-  const [expanded, setExpanded] = useState(false);
-  const classes = useStyles(theme);
+  const [expanded, setExpanded] =useState<string | false>(false);
   const dateOfWedding = useSelector(pickDateOfWedding);
   const timeOfWedding = useSelector(pickTimeOfWedding) ;
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   return (
-    <Card style={{ display:'flex', flexDirection:'column', marginTop:'2rem',}}>
-      <CardHeader
-         avatar={
-          <CalendarTodayIcon className={classes.cardHeaderIcon}/>
-        }
-        action={
-          <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        }
-        title={<Typography className={classes.headerTitle}>Data ceremonii ślubnej</Typography>}
-      />
-      <Divider/>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <StyledCardContent>
+    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon style={{color: '#6F59C9'}}/>}
+      aria-controls="panel1bh-content"
+      id="panel1bh-header"
+      style={{padding:'0 1rem'}}
+    >
+      <CalendarTodayIcon style={{color: '#6F59C9'}}/> 
+      <StyledTypography>
+      Data ceremonii ślubnej
+      </StyledTypography>
+    </AccordionSummary>
+    <Divider style={{backgroundColor: '#6F59C9'}}/>
+        <StyledAccordionDetails>
         <Box style={{ display:'flex', justifyContent:'center', flexDirection:'column'}}>
           <Box style={{ display:'flex', justifyContent:'center'}}>
             <Typography variant="body2">Wybierz datę ceremonii ślubnej</Typography>
@@ -99,12 +80,11 @@ const DateOfWedding = () => {
         </Box>
         <Box style={{marginLeft:'2rem'}}>
             <Typography variant="body2" style={{paddingBottom:'2rem'}}>Wasz ślub odbędzie się:</Typography>
-            <Typography variant="h3" className={classes.typoTitle}>{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("HH:mm")}`}</Typography>
+            <Typography variant="h3">{`${moment(dateOfWedding).format("dddd DD-MM-YYYY")} o godzinie ${moment(timeOfWedding).format("HH:mm")}`}</Typography>
             <Timer/>
         </Box>
-      </StyledCardContent>
-      </Collapse>
-    </Card>
+        </StyledAccordionDetails>
+</StyledAccordion>
   )
 }
 
