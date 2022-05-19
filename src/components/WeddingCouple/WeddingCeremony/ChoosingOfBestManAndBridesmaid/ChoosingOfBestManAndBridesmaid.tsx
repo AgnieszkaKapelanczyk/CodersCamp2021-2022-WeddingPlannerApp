@@ -8,7 +8,7 @@ import BeforeChoosing from './BeforeChoosing';
 
 
 const StyledAccordion = styled(Accordion)(() => ({
-    margin: '2rem 0 0 0',
+    margin: '0 0 1.5rem 0',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -29,12 +29,12 @@ const ChoosingOfBestManAndBridesmaid = () => {
       };
 
   return (
-    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
+    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
     <AccordionSummary
       expandIcon={<ExpandMoreIcon style={{color: '#6F59C9'}}/>}
       aria-controls="panel1bh-content"
       id="panel1bh-header"
-      style={{padding:'1rem 1rem'}}
+      style={{padding:'0 1rem'}}
     >
       <PersonPinIcon style={{color: '#6F59C9'}}/> 
       <StyledTypography>
@@ -43,8 +43,8 @@ const ChoosingOfBestManAndBridesmaid = () => {
     </AccordionSummary>
     <Divider style={{backgroundColor: '#6F59C9'}}/>
         <AccordionDetails style={{margin: '2rem 0'}}>
-        <AfterChoosing title='Świadek Panny Młodej' name='Kamila Szoltysik'/> 
-        <BeforeChoosing title='Świadek Panna Młodego'/>
+          <AfterChoosing title='Świadek Panny Młodej' name='Kamila Szoltysik'/> 
+          <BeforeChoosing title='Świadek Panna Młodego'/>
         </AccordionDetails>
 </StyledAccordion>
   )

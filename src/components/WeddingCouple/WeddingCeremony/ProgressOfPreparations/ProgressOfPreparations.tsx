@@ -1,17 +1,33 @@
-
-import { Box, CardContent, Typography, Collapse} from "@mui/material"
-import { Card, CardHeader, Divider } from "@material-ui/core";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import React from 'react'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
-import { CircularProgressWithLabel } from '../ProgressOfPreparations/CircularProgress';
+import { Accordion, AccordionDetails, AccordionSummary, Divider, styled, Typography, Box } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
-import { theme } from '../../../../theme/theme';
-import {makeStyles} from '@material-ui/core';
-import { styled } from '@mui/material/styles';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import { CircularProgressWithLabel } from './CircularProgress';
 
 
-const StyledCardContent = styled(CardContent)(({ theme }) => ({
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  marginLeft:'3rem',
+  [theme.breakpoints.down('md')]: {
+    margin:'0rem',
+  },
+}));
+
+const StyledAccordion = styled(Accordion)(() => ({
+  margin: '0 0 1.5rem 0',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+}));
+
+const StyledTypography = styled(Typography)(() => ({
+  color: '#6F59C9',
+  margin: '0.9rem',
+  padding: '0 1rem',
+}));
+
+const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
   display:'flex',
   justifyContent:'center',
   alignItems:'center',
@@ -22,83 +38,44 @@ const StyledCardContent = styled(CardContent)(({ theme }) => ({
   },
 }));
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  marginLeft:'3rem',
-  [theme.breakpoints.down('md')]: {
-    margin:'0rem',
-  },
-}));
-
-const useStyles = makeStyles({
-  cardHeaderIcon: {
-    color: theme.palette.tertiary.main,
-  },
-  headerTitle: {
-    color: theme.palette.tertiary.main,
-  },
-  typoTitle: {
-    color: theme.palette.tertiary.main,
-  }
-});
-
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})
-(({expand}:ExpandMoreProps) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-}));
-
 
 
 const ProgressOfPreparations = () => {
 
-  const classes = useStyles(theme);
+  const [expanded, setExpanded] =useState<string | false>(false);
+  
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+ 
 
   return (
-    <Card style={{display:'flex', flexDirection:'column'}}>
-      <CardHeader
-        title={<Typography className={classes.headerTitle}>Postęp przygotowań ceremonii ślubnej</Typography>}
-         avatar={
-          <BubbleChartIcon className={classes.cardHeaderIcon}/>
-        }
-        action={
-          <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        }
-        
-      />
-      <Divider style={{backgroundColor:'secondary'}}/>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-      <StyledCardContent >
+    <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
+    <AccordionSummary
+      expandIcon={<ExpandMoreIcon style={{color: '#6F59C9'}}/>}
+      aria-controls="panel1bh-content"
+      id="panel1bh-header"
+      style={{padding:'0 1rem'}}
+    >
+      <BubbleChartIcon style={{color: '#6F59C9'}}/> 
+      <StyledTypography>
+        Postęp przygotowań ceremonii ślubnej
+      </StyledTypography>
+    </AccordionSummary>
+    <Divider style={{backgroundColor: '#6F59C9'}}/>
+        <StyledAccordionDetails>
         <Box>
-          <Typography variant="h3" className={classes.typoTitle}>GRATULACJE!</Typography>
+          <Typography variant="h3" style={{color: '#6F59C9'}}>GRATULACJE!</Typography>
           <Typography variant="body1" style={{paddingBottom:'1rem'}}>Wasz postęp przygotowań ceremonii <br/>ślubnej wynosi 75%.
             Wypełnij wszystkie <br/>pola w tej zakładce, aby uzyskać 100%.</Typography>
         </Box>
         <StyledBox>
           <CircularProgressWithLabel value={75} />
         </StyledBox>
-      </StyledCardContent>
-      </Collapse>
-    </Card>
+        </StyledAccordionDetails>
+</StyledAccordion>
   )
 }
 

@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, List, ListItem, styled, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, Input, List, ListItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
@@ -25,7 +25,7 @@ const StyledListItem = styled(ListItem)(({theme}) => ({
   flexDirection: 'row',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
-  width: '60%',
+  width: '70%',
   '&:hover': {
     background: theme.palette.secondary.light,
     cursor: 'pointer',
@@ -38,6 +38,8 @@ const StyledListItem = styled(ListItem)(({theme}) => ({
     maxWidth: '90%',
     wordBreak: 'break-all',
     margin: '0.8rem 0.6rem'
+  },
+  '& input': {
   }
 }));
 
@@ -103,6 +105,13 @@ const GroomClothes = () => {
   const [toDoArray, setClothesArray] = useState<listItemCloth[]>([]);
   const [newValue, setValue] = useState<string>("");
   const [progress, setProgress] = useState<number>(0);
+  const [editingId, setEditingId] = useState<number | undefined>(undefined);
+
+  function isNotUndefined(editingId: number | undefined): editingId is number {
+    return(
+      (editingId as number) !== undefined 
+    ) 
+  };
 
   const handleDownloadClick = () => {
       dispatch(updateClothes(ClothesToDoArray));
@@ -119,8 +128,8 @@ const GroomClothes = () => {
       dispatch(updateClothes(newList));
   };
 
-  const handleEditItem = () => {
-
+  const handleEditItem = (event: React.MouseEvent<HTMLButtonElement>) => {
+ 
   };
 
   const handleChange = (event: React.SyntheticEvent<Element, Event>, checked: boolean) => {
@@ -187,6 +196,7 @@ const GroomClothes = () => {
                     return (
                       <StyledListItem key={`listItem-${id}`}>
                         <FormControlLabel 
+                          sx={{paddingRight: '2rem'}}
                           key={`formControllLabel-${id}`}
                           control={
                               <StyledCheckboxClothes 
@@ -198,7 +208,7 @@ const GroomClothes = () => {
                                 name={el.title}
                                 key={`checkbox-${id}`}/>
                           }
-                          label={el.title}
+                          label={ el.title }
                         />
                         <Box display={'flex'} flexDirection={'row'} justifyContent={'flex-end'}>
                         <StyledIconButton
@@ -256,7 +266,7 @@ const GroomClothes = () => {
                 <ProgressCircle
                   radius={ 60 }
                   stroke={ 8 }
-                  progress={ progress } 
+                  progress={ progress ? progress : 0 } 
                 />
                 <Typography align={'center'} color={theme.palette.tertiary.main} style={{fontWeight: 500, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
           </StyledProgressBox>
