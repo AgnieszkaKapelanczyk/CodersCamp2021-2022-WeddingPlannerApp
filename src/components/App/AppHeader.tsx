@@ -28,7 +28,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   padding: '0 1.2rem' ,
   height: '70%',
   fontSize:'1rem', 
-  fontWeight: '800',
+  fontWeight: '500',
     '&:hover': {
       color: theme.palette.common.white,
       backgroundColor: theme.palette.primary.main,

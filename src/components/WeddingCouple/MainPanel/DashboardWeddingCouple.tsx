@@ -142,6 +142,7 @@ const DashboardWeddingCouple = () => {
   useEffect(()=> {
     if(isLayouts(actualLayout)){
       setLayouts(actualLayout);
+      sessionStorage.setItem("userLayout", JSON.stringify(actualLayout));
     }
   },[actualLayout]);
 
