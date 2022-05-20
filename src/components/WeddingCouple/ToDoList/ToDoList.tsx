@@ -74,7 +74,6 @@ const StyledProgressBox = styled(Box)(({theme})=> ({
   backgroundColor: theme.palette.secondary.light,
   boxShadow: '0px 2px 35px 14px rgba(13, 13, 13, 0.04)',
   padding: '3rem 1rem',
-  margin: '0 2rem 1rem 2rem',
 }));
 
 const StyledCheckbox = styled(Checkbox)(({theme})=> ({

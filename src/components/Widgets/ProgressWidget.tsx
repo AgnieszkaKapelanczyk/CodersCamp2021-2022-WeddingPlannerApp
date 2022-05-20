@@ -34,13 +34,16 @@ const ProgressWidget = () => {
             }*/>
           </CardHeader>
           <Divider style={{ height: "1px", backgroundColor: `${theme.palette.secondary.main}`}}/>
-          <Box display={"flex"}>
-            <ProgressCircle
-              radius={ 60 }
-              stroke={ 8 }
-              progress={ 75 }
-            />
-            <Box style={{flex: '2'}}>
+
+          <Box display={"flex"} alignItems={'center'} justifyContent={'center'} m={2}>
+            <Box>
+              <ProgressCircle
+                radius={ 60 }
+                stroke={ 8 }
+                progress={ 75 }
+              />
+            </Box>
+            <Box style={{flex: '2', margin: '1rem'}}>
                 <Typography variant="body2">Wasz postęp przygotowań do ślubu wynosi 75%.</Typography>
             </Box>
           </Box>
