@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, Input, List, ListItem, styled, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, List, ListItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
@@ -9,9 +9,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { ClothesToDoArray } from "./ClothesToDoArray";
 import DownloadIcon from '@mui/icons-material/Download';
-import { addCloth, listItemCloth, selectListOfClothes, updateClothes } from "store/clothesSlice";
+import { addCloth, listItemBrideCloth, selectListOfClothes, updateClothes } from "store/clothesBrideSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toast } from "react-toastify";
+import { updateProgressList } from "store/progressSlice";
 
 const StyledCheckboxClothes = styled(Checkbox)(({ theme }) => ({
     '& .MuiSvgIcon-root': {
@@ -102,7 +103,7 @@ const BrideClothes = () => {
   const dispatch = useAppDispatch();
   const listClothes = useAppSelector(selectListOfClothes);
 
-  const [toDoArray, setClothesArray] = useState<listItemCloth[]>([]);
+  const [toDoArray, setClothesArray] = useState<listItemBrideCloth[]>([]);
   const [newValue, setValue] = useState<string>("");
   const [progress, setProgress] = useState<number>(0);
   const [editingId, setEditingId] = useState<number | undefined>(undefined);
@@ -123,7 +124,7 @@ const BrideClothes = () => {
   };
 
   const handleRemoveItem = (event: React.MouseEvent<HTMLButtonElement>) => {
-      const newList: listItemCloth[] = [...toDoArray];
+      const newList: listItemBrideCloth[] = [...toDoArray];
       newList.splice(parseInt(event.currentTarget.value),1);
       dispatch(updateClothes(newList));
   };
@@ -136,8 +137,8 @@ const BrideClothes = () => {
       const value = (event.target as HTMLInputElement).value;
       const name = (event.target as HTMLInputElement).name;
       const id = (event.target as HTMLInputElement).id;
-      const newList: listItemCloth[] = [...toDoArray];
-      const newItem: listItemCloth = {title: name, checked: value==='true' ? false : true};
+      const newList: listItemBrideCloth[] = [...toDoArray];
+      const newItem: listItemBrideCloth = {title: name, checked: value==='true' ? false : true};
       newList.splice(parseInt(id), 1, newItem)
       dispatch(updateClothes(newList));
   };
@@ -151,10 +152,10 @@ const BrideClothes = () => {
   },[toDoArray]);
 
   useEffect(()=> {
-    if (progress === 100) {
-      
-    };
-  },[progress]);
+    progress === 100 
+      ? dispatch(updateProgressList({stage: 'weddingCeremony', title: 'Skompletowanie stroju Panny Młodej', checked: true}))
+      : dispatch(updateProgressList({stage: 'weddingCeremony', title: 'Skompletowanie stroju Panny Młodej', checked: false}))
+  },[progress, dispatch]);
 
     return (
       <>

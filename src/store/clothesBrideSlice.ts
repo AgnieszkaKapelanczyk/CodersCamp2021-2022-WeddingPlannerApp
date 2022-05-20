@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from 'store/store';
 
-export interface listItemCloth {
+export interface listItemBrideCloth {
   title: string,
   checked: boolean
 };
 
-const initialState : listItemCloth[] = [];
+const initialState : listItemBrideCloth[] = [];
 
-const clothesSlice = createSlice({
-    name: 'clothes',
+const brideClothesSlice = createSlice({
+    name: 'brideClothes',
     initialState,
     reducers: {
       addCloth : (state, action) => {
@@ -25,10 +25,10 @@ const clothesSlice = createSlice({
     },
   });
   
-  export const { addCloth, removeCloth, updateClothes } = clothesSlice.actions;
+  export const { addCloth, removeCloth, updateClothes } = brideClothesSlice.actions;
   
-  export default clothesSlice.reducer;
+  export default brideClothesSlice.reducer;
 
-  export const selectListOfClothes = ((state: RootState)=>state.clothes);
+  export const selectListOfClothes = ((state: RootState)=>state.brideClothes);
 
   

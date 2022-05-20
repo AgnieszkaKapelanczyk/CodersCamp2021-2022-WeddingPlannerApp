@@ -1,4 +1,4 @@
-import { listItemCloth } from "store/clothesSlice";
+import { listItemCloth } from "store/clothesGroomSlice";
 
 export const ClothesToDoArray: listItemCloth[] = [
     { title: 'Suknia ślubna', checked: false},

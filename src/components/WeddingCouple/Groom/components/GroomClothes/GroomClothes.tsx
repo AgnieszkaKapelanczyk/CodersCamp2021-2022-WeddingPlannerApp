@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, Input, List, ListItem, styled, TextField, Typography } from "@mui/material";
+import { Box, Button, Checkbox, Divider, FormControlLabel, FormGroup, IconButton, List, ListItem, styled, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
@@ -9,9 +9,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 import { ClothesToDoArray } from "./ClothesToDoArray";
 import DownloadIcon from '@mui/icons-material/Download';
-import { addCloth, listItemCloth, selectListOfClothes, updateClothes } from "store/clothesSlice";
+import { addCloth, listItemCloth, selectListOfClothes, updateClothes } from "store/clothesGroomSlice";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { toast } from "react-toastify";
+import { updateProgressList } from "store/progressSlice";
 
 const StyledCheckboxClothes = styled(Checkbox)(({ theme }) => ({
     '& .MuiSvgIcon-root': {
@@ -138,7 +139,7 @@ const GroomClothes = () => {
       const id = (event.target as HTMLInputElement).id;
       const newList: listItemCloth[] = [...toDoArray];
       const newItem: listItemCloth = {title: name, checked: value==='true' ? false : true};
-      newList.splice(parseInt(id), 1, newItem)
+      newList.splice(parseInt(id), 1, newItem);
       dispatch(updateClothes(newList));
   };
 
@@ -151,10 +152,10 @@ const GroomClothes = () => {
   },[toDoArray]);
 
   useEffect(()=> {
-    if (progress === 100) {
-
-    };
-  },[progress]);
+    progress === 100 
+      ? dispatch(updateProgressList({stage: 'weddingCeremony', title: 'Skompletowanie stroju Pana Młodego', checked: true}))
+      : dispatch(updateProgressList({stage: 'weddingCeremony', title: 'Skompletowanie stroju Pana Młodego', checked: false}))
+  },[progress, dispatch]);
 
     return (
       <>
