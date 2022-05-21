@@ -1,4 +1,4 @@
-interface task {
+export interface task {
     id: number,
     title: string,
     checked: boolean,
@@ -11,7 +11,7 @@ export interface toDoList {
 
 export const tasks: toDoList = {
     preparation: [
-        {id: 1, title: "Wyznaczenie daty ślubu", checked: true, tooltip: "Szczegóły w zakładce Ceremonia ślubu"},
+        {id: 1, title: "Wyznaczenie daty ślubu", checked: false, tooltip: "Szczegóły w zakładce Ceremonia ślubu"},
         {id: 2, title: "Zaproszenie Twojej drugiej połówki", checked: false, tooltip: "Szczegóły w zakładce "},
         {id: 3, title: "Ustalenie budżetu", checked: false, tooltip: "Szczegóły w zakładce Budżet"},
         {id: 4, title: "Utworzenie listy gości", checked: false, tooltip: "Szczegóły w zakładce Lista Gości"},

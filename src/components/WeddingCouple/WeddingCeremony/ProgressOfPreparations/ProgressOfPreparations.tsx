@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BubbleChartIcon from '@mui/icons-material/BubbleChart';
 import { Accordion, AccordionDetails, AccordionSummary, Divider, styled, Typography, Box } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import { CircularProgressWithLabel } from './CircularProgress';
+import ProgressCircle from 'common/ProgressCircle/ProgressCircle';
+import { selectToDOList } from 'store/progressSlice';
+import { task, toDoList } from 'components/WeddingCouple/ToDoList/tasks';
+import { useAppSelector } from 'store/hooks';
 
 
 
@@ -41,7 +45,9 @@ const StyledAccordionDetails = styled(AccordionDetails)(({ theme }) => ({
 
 
 const ProgressOfPreparations = () => {
-
+  const [progress, setProgress] = useState<number>(0);
+  const listTasks = useAppSelector(selectToDOList).weddingCeremony;
+  const [toDoArray, setToDoArray] = useState<task[]>([]);
   const [expanded, setExpanded] =useState<string | false>(false);
   
   const handleChange =
@@ -49,7 +55,13 @@ const ProgressOfPreparations = () => {
       setExpanded(isExpanded ? panel : false);
     };
 
- 
+  useEffect(()=>{
+      setToDoArray(listTasks);
+  },[listTasks]);
+
+  useEffect(()=> {
+      setProgress(Math.round((toDoArray.filter(el=>el.checked)).length*100/(toDoArray.length)));
+  },[toDoArray]);
 
   return (
     <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important', padding: '0.8rem 0'}} onChange={handleChange('panel1')}>
@@ -72,7 +84,11 @@ const ProgressOfPreparations = () => {
             Wypełnij wszystkie <br/>pola w tej zakładce, aby uzyskać 100%.</Typography>
         </Box>
         <StyledBox>
-          <CircularProgressWithLabel value={75} />
+        <ProgressCircle
+                  radius={ 60 }
+                  stroke={ 8 }
+                  progress={ progress ? progress : 0 } 
+                />
         </StyledBox>
         </StyledAccordionDetails>
 </StyledAccordion>

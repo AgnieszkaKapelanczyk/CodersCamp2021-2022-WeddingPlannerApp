@@ -41,6 +41,7 @@ import { selectActualTheme } from 'store/themeSlice';
 import { useEffect, useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ActivationPage from 'components/Activation/ActivationPage';
 
 function App() {
   const loggedIn = useAppSelector(isLoggedIn);
@@ -142,6 +143,7 @@ function App() {
         <Route path="/WeddingGuests/ChoosingOfGift/" element={loggedIn ?<ChoosingOfGift/> : <HomePage/>} />
         <Route path="/WeddingGuests/Hotels/" element={loggedIn ?<Hotels/> : <HomePage/>} />
         <Route path="/WeddingGuests/WeddingMap/" element={loggedIn ?<WeddingMap/> : <HomePage/>} />
+        <Route path="/activation&token=:activationToken" element={<ActivationPage/>}/>
       </Routes> 
       </Box>
     
