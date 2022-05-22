@@ -39,8 +39,8 @@ import MovieThemeBg from "assets/img/movieTheme.jpg";
 import ClassicThemeBg from "assets/img/classicTheme.jpg";
 import { selectActualTheme } from 'store/themeSlice';
 import { useEffect, useState } from 'react';
-
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const loggedIn = useAppSelector(isLoggedIn);
@@ -106,6 +106,17 @@ function App() {
         <AppSideBar />
       </Box>
         <Box sx={loggedIn ? panelThemeStyle : homePageStyle}>
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            newestOnTop
+            draggable
+            pauseOnHover
+            />
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />

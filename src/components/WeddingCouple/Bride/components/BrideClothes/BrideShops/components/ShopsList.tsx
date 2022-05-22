@@ -1,7 +1,6 @@
-import { Box, Chip, List, ListItem, styled, ListItemAvatar, ListItemButton, ListItemText, Rating, Tab, Tabs, Typography, IconButton } from "@mui/material";
+import { Box, Chip, List, ListItem, styled, ListItemAvatar, ListItemButton, ListItemText, Rating, Typography, IconButton } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
-import { useState } from "react";
-import ShopFoto1 from 'assets/img/weddshop1.jpg';
+import ShopFoto1 from 'assets/img/margarett.webp';
 import ShopFoto2 from 'assets/img/weddshop2.jpg';
 import ShopFoto3 from 'assets/img/weddshop3.jpg';
 import { theme } from "theme/theme";
@@ -71,28 +70,8 @@ const StyledChipPrimary = styled(Chip)(({theme})=>({
     },
   }));
 
-
-const BrideShops = () => {
-    const [value, setValue] = useState('one');
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
-  return (
-      <Box display={'flex'} flexDirection={'column'}>
-        <Box sx={{ width: '100%' }}>
-            <Tabs
-                value={value}
-                onChange={handleChange}
-                textColor="primary"
-                indicatorColor="primary"
-                aria-label="shops tabs"
-            >
-                <Tab value="one" label="Lista" />
-                <Tab value="two" label="Zobacz na mapie" />
-            </Tabs>
-        </Box>
+const ShopList = () => {
+    return (
         <Box display={'flex'} flexDirection={'column'} flexWrap={'wrap'}>
             <List>
                 <ListItem sx={{paddingLeft: '0'}}>
@@ -361,8 +340,7 @@ const BrideShops = () => {
                 </ListItem>
             </List>
         </Box>
-      </Box>
     )
 };
 
-export default BrideShops;
+export default ShopList;

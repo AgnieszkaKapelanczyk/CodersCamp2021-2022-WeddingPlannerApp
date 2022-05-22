@@ -1,9 +1,12 @@
 import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, Divider, FormControlLabel, FormGroup, List, ListItem, styled, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { theme } from 'theme/theme';
 import ProgressCircle from "common/ProgressCircle/ProgressCircle";
+import { toDoList } from "./tasks";
+import { useAppSelector } from "store/hooks";
+import { selectToDOList } from "store/progressSlice";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',
@@ -19,7 +22,7 @@ const StyledAccordion = styled(Accordion)(({ theme }) => ({
         display: 'flex',
         flexDirection: 'column-reverse',
       },
-    }
+    },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
@@ -47,16 +50,36 @@ const StyledNumbersTypography = styled(Typography)(({ theme }) => ({
 const StyledListItem = styled(ListItem)(({theme})=> ({
   '&:hover': {
     backgroundColor: theme.palette.secondary.light,
-    cursor: 'pointer'
+  },
+  '& .MuiFormControlLabel-root': {
+    cursor: 'default'
+  },
+  '& .MuiCheckbox-root': {
+    cursor: 'default'
   }
 }));
 
 const StyledBox = styled(Box)(({theme})=> ({
   padding: '24px',
-  width: '65vw',
-  [theme.breakpoints.down('md')]: {
-    width: '100%'
-  },
+}));
+
+const StyledProgressBox = styled(Box)(({theme})=> ({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '50%',
+  borderRadius: '8px',
+  backgroundColor: theme.palette.secondary.light,
+  boxShadow: '0px 2px 35px 14px rgba(13, 13, 13, 0.04)',
+  padding: '3rem 1rem',
+}));
+
+const StyledCheckbox = styled(Checkbox)(({theme})=> ({
+  '& .MuiFormControlLabel-root .Mui-disabled': {
+    color: theme.palette.tertiary.main
+  }
 }));
 
 const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -67,171 +90,113 @@ const StyledTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.tertiary.main,
-    fontFamily: 'Lato',
-    fontSize: 11,
-    marginTop: 0
+    fontFamily: 'Poppins, sans-serif',
+    fontSize: '0.8rem',
+    padding: '10px 20px',
   },
 }));
 
+export interface taskList {
+  title: string
+  checked: boolean
+};
+
 const ToDoList = () => {
-    const [expanded, setExpanded] =useState<string | false>(false);
+    const todoArray = useAppSelector(selectToDOList);
+    const [list, setList] = useState< toDoList | undefined >(undefined);
+    const [expanded, setExpanded] = useState< string | false >(false);
+    const panelTitles = Object.keys(todoArray);
+
+    function isList(list: toDoList | undefined  | []): list is  toDoList {
+      return(
+        (list as toDoList) !== undefined && (list as toDoList) !== null
+      ) 
+    };
   
     const handleChange =
       (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
         setExpanded(isExpanded ? panel : false);
-      };
+      }; 
+
+    const getPanelTitle = (title: string): string => {
+      let PanelTitle = '';
+      
+      if (title === "preparation") {
+        PanelTitle = "Przygotowania wstępne"
+      } else if (title === "weddingCeremony") {
+        PanelTitle = "Przygotowania Ceremonii Ślubnej"
+      } else if (title === "weddingParty") {
+        PanelTitle = "Przygotowania Przyjęcia Weselnego"
+      }
+
+      return PanelTitle;
+    };
+
+    useEffect(()=>{
+      if (isList(todoArray)) {
+        setList(todoArray)
+      }
+    },[todoArray]);
+    
 
   return (
     <StyledBox>
-      <StyledAccordion expanded={expanded === 'panel1'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel1')}>
+      {panelTitles.map((title,id)=>(
+        <StyledAccordion expanded={expanded === `panel${id}`} sx={{ borderRadius: '8px !important'}} onChange={handleChange(`panel${id}`)}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
+          aria-controls={`panel${id}bh-content`}
+          id={`panel${id}bh-header`}
         >
-          <StyledNumbersTypography>1</StyledNumbersTypography>
+          <StyledNumbersTypography>{id+1}</StyledNumbersTypography>
           <StyledTypography>
-            Przygotowania wstępne
+            {getPanelTitle(title)}
           </StyledTypography>
         </AccordionSummary>
         <Divider style={{backgroundColor: `${theme.palette.tertiary.main}`}}/>
         <AccordionDetails>
             <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}>
-              <Typography color={'primary'} style={{marginLeft: '1rem', color: '#343434',}}>
-                Punkty na liście zostaną odhaczone automatycznie po zaznaczeniu odpowiednich elementów w zakładkach: Ceremonia Ślubu, Budżet, Lista Gości.
-              </Typography>
+              <Typography color={'primary'} style={{marginLeft: '1rem', color: '#343434'}}>
+                Punkty na liście zostaną odhaczone automatycznie po zaznaczeniu odpowiednich elementów w poszczególnych zakładkach aplikacji. Najedź myszką na wybrany element listy, aby dowiedzieć się więcej.</Typography>
               <List>
                 <FormGroup>
-                  <StyledListItem >
-                    <StyledTooltip title="Szczegóły w zakładce Ceremonia ślubu">
-                      <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wyznaczenie daty ślubu" />
-                    </StyledTooltip>
-                  </StyledListItem>
-                  <StyledListItem >
-                    <StyledTooltip title="Szczegóły w zakładce Budżet">
-                      <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie budżetu" />
-                    </StyledTooltip>
-                  </StyledListItem>
-                  <StyledListItem >
-                  <StyledTooltip title="Szczegóły w zakładce Lista Gości">
-                      <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie listy gości" />
-                    </StyledTooltip>
-                  </StyledListItem>
+                  {isList(list) 
+                      ? list[title].map((task,id)=>(
+                        <StyledTooltip title={task.tooltip}>
+                          <StyledListItem key={`listitem-${id}`} >
+                                <FormControlLabel 
+                                  control={
+                                    <StyledCheckbox 
+                                    checked = {task.checked}
+                                    disabled = {!task.checked}
+                                    disableRipple
+                                    style={{color: `${theme.palette.tertiary.main}`}}
+                                    />
+                                  } 
+                                  label={task.title} />
+                          </StyledListItem>
+                        </StyledTooltip>
+                        ))
+                        : null
+                    }
                 </FormGroup>
               </List>
             </Box>
-            <Box display={'flex'} flex={1} flexDirection={'column'} justifyContent={'center'} style={{height: '50%'}}>
+            <StyledProgressBox>
                 <ProgressCircle
                   radius={ 60 }
                   stroke={ 8 }
-                  progress={ 34 }
+                  progress={ 
+                    isList(list) 
+                      ? (list[title].filter((task)=>(task.checked)).length)*100/list.preparation.length
+                      : 0
+                  } 
                 />
-                <Typography align={'center'} color={theme.palette.secondary.main} style={{fontWeight: 600, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
-            </Box>
+                <Typography align={'center'} color={theme.palette.tertiary.main} style={{fontWeight: 500, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
+            </StyledProgressBox>
         </AccordionDetails>
       </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel2'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel2')}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
-          aria-controls="panel2bh-content"
-          id="panel2bh-header"
-        >
-          <StyledNumbersTypography>2</StyledNumbersTypography>
-          <StyledTypography>Przygotowania Ceremonii Ślubnej</StyledTypography>
-        </AccordionSummary>
-        <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
-        <AccordionDetails>
-            <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}>
-                <Typography style={{margin: '1rem', color: '#343434'}}>
-                    Punkty na liście zostaną odhaczone automatycznie po zaznaczeniu odpowiednich elementów w zakładkach: Ceremonia Ślubu, Zaproszenie, Lista Gości.
-                 </Typography>
-                <List>
-                  <FormGroup>
-                    <StyledListItem >
-                      <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór miejsca ceremonii" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem >
-                      <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie daty i godziny ceremonii" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem>
-                      <StyledTooltip title="Szczegóły w zakładce Ceremonia Ślubu">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór świadków" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem>
-                      <StyledTooltip title="Szczegóły w zakładce Zaproszenia">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Projekt zaproszenia" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem>
-                      <StyledTooltip title="Szczegóły w zakładce Zaproszenia">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wysłanie zaproszeń do gości" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                  </FormGroup>
-                </List>
-              </Box>
-              <Box display={'flex'} flex={1} flexDirection={'column'} justifyContent={'center'} style={{height: '50%'}}>
-                <ProgressCircle
-                  radius={ 60 }
-                  stroke={ 8 }
-                  progress={ 34 }
-                />
-                <Typography align={'center'} color={theme.palette.secondary.main} style={{fontWeight: 600, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
-              </Box>
-             </AccordionDetails>
-      </StyledAccordion>
-      <StyledAccordion expanded={expanded === 'panel3'} sx={{ borderRadius: '8px !important'}} onChange={handleChange('panel3')}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon style={{color: `${theme.palette.tertiary.main}`}}/>}
-          aria-controls="panel3bh-content"
-          id="panel3bh-header"
-        >
-          <StyledNumbersTypography>3</StyledNumbersTypography>
-          <StyledTypography>
-            Przygotowania Przyjęcia Weselnego
-          </StyledTypography>
-        </AccordionSummary>
-        <Divider style={{ backgroundColor: `${theme.palette.tertiary.main}`}}/>
-        <AccordionDetails>
-            <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}>
-                <Typography style={{margin: '1rem', color: '#343434'}}>
-                    Punkty na liście zostaną odhaczone automatycznie po zaznaczeniu odpowiednich elementów w zakładce: Wesele.
-                </Typography>
-                <List>
-                  <FormGroup>
-                    <StyledListItem >
-                      <StyledTooltip title="Szczegóły w zakładce Wesele">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wybór charakteru przyjęcia weselnego" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem >
-                      <StyledTooltip title="Szczegóły w zakładce Wesele">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Ustalenie miejsca przyjęcia weselnego" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                    <StyledListItem >
-                      <StyledTooltip title="Szczegóły w zakładce Budżet">
-                        <FormControlLabel control={<Checkbox defaultChecked style={{color: `${theme.palette.tertiary.main}`}}/>} label="Wpłacenie zaliczki w restauracji" />
-                      </StyledTooltip>
-                    </StyledListItem>
-                  </FormGroup>
-                </List>
-              </Box>
-              <Box display={'flex'} flex={1} flexDirection={'column'} justifyContent={'center'} style={{height: '50%'}}>
-                <ProgressCircle
-                  radius={ 60 }
-                  stroke={ 8 }
-                  progress={ 34 }
-                />
-                <Typography align={'center'} color={theme.palette.secondary.main} style={{fontWeight: 600, marginBottom: '2rem'}}>Postęp Twoich przygotowań</Typography>
-              </Box>
-        </AccordionDetails>
-      </StyledAccordion>
+      ))}
     </StyledBox>
   )
 }

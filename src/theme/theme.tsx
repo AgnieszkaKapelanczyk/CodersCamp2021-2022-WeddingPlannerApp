@@ -27,6 +27,7 @@ export const theme = createTheme({
         main: '#FEC5BB',
         contrastText: '#fff',
         light: '#F8EDEB',
+        dark: '#E4998C'
       },
       tertiary: {
         main: '#6F59C9',
@@ -53,11 +54,12 @@ export const theme = createTheme({
       h2: {
         fontSize: '1.6rem',
         letterSpacing: '2px',
-        fontWeight: 600
+        fontWeight: 500
       },
       h3: {
-        fontSize: '1.3rem',
+        fontSize: '1.4rem',
         fontFamily: 'Poppins, sans-serif',
+        fontWeight: 500
       },
       h4: {
         fontFamily: 'Poppins, sans-serif',
@@ -79,7 +81,7 @@ export const theme = createTheme({
         fontSize: '1.1rem',
         fontFamily: 'Poppins, sans-serif',
         letterSpacing: '1px',
-        fontWeight: 500,
+        fontWeight: 400,
       },
       caption: {
         fontFamily: 'Poppins, sans-serif',

@@ -9,6 +9,9 @@ import toolboxReducer from 'store/toolboxSlice';
 import toolboxThemeReducer from 'store/themeToolboxSlice';
 import themeReducer from 'store/themeSlice';
 import progressReducer from 'store/progressSlice';
+import locationReducer from 'store/locationSlice';
+import groomClothesReducer from  'store/clothesGroomSlice';
+import brideClothesReducer from 'store/clothesBrideSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +25,9 @@ export const store = configureStore({
     toolboxTheme: toolboxThemeReducer,
     theme: themeReducer,
     progress: progressReducer,
+    location: locationReducer,
+    brideClothes: brideClothesReducer,
+    groomClothes: groomClothesReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

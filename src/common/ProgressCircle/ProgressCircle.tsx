@@ -3,15 +3,15 @@ import { styled } from "@mui/material";
 import { theme } from "theme/theme";
 
 const circleStyle = ({
-    stroke: theme.palette.secondary.main,
+    stroke: theme.palette.tertiary.main,
     transform: 'rotate(-90deg)', 
     transformOrigin: '50% 50%',
 });
 
 const textStyle = ({
-    fill: theme.palette.secondary.main,
+    fill: theme.palette.tertiary.main,
     fontFamily: "'Abril Fatface'",
-    fontSize: '3rem',
+    fontSize: '2.4rem',
 });
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -70,9 +70,9 @@ const ProgressCircle = (props: ProgressCircleProps) => {
                 cx={ props.radius }
                 cy={ props.radius }
             />
-            <text x="50%" y="50%" textAnchor="middle" dy=".3em" style={{...textStyle}}>75</text>
+            <text x="50%" y="50%" textAnchor="middle" dy=".3em" style={{...textStyle}}>{props.progress}</text>
             </svg>
-            <Typography variant="h1" color="secondary" style={{fontSize: '4rem'}}>%</Typography>
+            <Typography variant="h1" style={{fontSize: '4rem', color: `${theme.palette.tertiary.main}`}}>%</Typography>
         </StyledBox> 
       );
     }
