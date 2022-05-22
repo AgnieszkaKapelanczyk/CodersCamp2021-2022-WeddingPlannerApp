@@ -26,13 +26,13 @@ const SecondPopper = () => {
          <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Card style={{marginBottom:'1rem'}}>
+            <Card style={{marginBottom:'1rem', backgroundColor:'#F8EDEB'}}>
               <CardContent style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}>
-                <Typography>Dokończ zadanie:</Typography>
-                <Typography>Ślub odbędzie się w:</Typography>
-                <TextField id="standard-basic" label="Restauracji Leśnej w Żurawinie" variant="standard" />
-                <Typography>Wyszukaj i zaznacz na mapie:</Typography>
-                <img src={MapImg} alt="" style={{height: '28px'}}/>
+                <Typography variant="body1" style={{marginBottom:'1rem'}}>Dokończ zadanie:</Typography>
+                <Typography variant="body1" style={{color:'#6F59C9'}}>Ślub odbędzie się w:</Typography>
+                <TextField id="standard-basic" label="Restauracji Leśnej w Żurawinie" variant="standard" style={{marginBottom:'1rem'}}/>
+                <Typography variant="body1">Wyszukaj i zaznacz na mapie:</Typography>
+                <img src={MapImg} alt="" style={{marginBottom:'1rem'}}/>
                 <Button variant="contained" color='primary' style={{alignSelf:'center'}}>ZATWIERDŹ</Button>
               </CardContent>
             </Card>
