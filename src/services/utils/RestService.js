@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { logout } from 'store/systemSlice';
+import { logout } from 'store/userSlice';
 
 const REQUEST_CONTENT_TYPE = "application/json";
 const ACCEPT= "application/json, image/*";

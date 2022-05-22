@@ -40,8 +40,6 @@ const StyledListItem = styled(ListItem)(({theme}) => ({
     wordBreak: 'break-all',
     margin: '0.8rem 0.6rem'
   },
-  '& input': {
-  }
 }));
 
 const StyledIconButton = styled(IconButton)(({theme}) => ({

@@ -1,9 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { toast } from 'react-toastify';
+import AuthClient from 'services/clients/AuthClient';
+
+/* export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data, { rejectWithValue }) => {
+  const response = await AuthClient.loginUser(data)
+  .then((response) => {
+    const token = response.headers["auth-token"];
+    localStorage.setItem("auth-token", token); 
+    return response;
+  })
+  .catch((error) => {
+    return rejectWithValue(error);
+  });
+  
+  return response; 
+});
+
+export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationData ', async (data, { rejectWithValue }) => {
+  const response = await AuthClient.registerUser(data).then((response) => {
+    return response;
+  })
+  .catch((error) => {
+    return rejectWithValue(error);
+  });
+  return response; 
+}); */
 
 type User = {
   loggedIn: boolean,
+  status: string,
+  error: null | string | undefined
   user: string | undefined
 };
 
@@ -15,7 +42,9 @@ function isLogged(state: string | undefined): state is string {
 
 const userNotLogged: User = {
   loggedIn: false,
-  user: undefined
+  status: 'idle',
+  error: null,
+  user: undefined,
 };
 
 const getInitialState = () => {
@@ -26,6 +55,8 @@ const getInitialState = () => {
   if (isLogged(userFromSS)) {
     initialUser = {
       loggedIn: true,
+      status: 'idle',
+      error: null,
       user:  userFromSS
     }
   };
@@ -53,7 +84,39 @@ const initialState: User | ''  = getInitialState();
         toast.success("Wylogowano!");
         sessionStorage.clear();
       }
-    }
+    },
+   /*  extraReducers(builder) {
+      builder
+        .addCase(fetchLoginData.pending, (state, action) => {
+          state.status = 'loading...';
+          state.error = null;
+        })
+        .addCase(fetchLoginData.fulfilled, (state, action) => {
+          if (action.payload.status === 200) {
+            state.status = 'succeeded log in (:';
+            toast.success("Zalogowano!");
+          }        
+        })
+        .addCase(fetchLoginData.rejected, (state, action) => {
+          state.status = 'failed :('
+          state.error = action.error.message;
+          toast.error("Logowanie nie powiodło się")
+        })
+        .addCase(fetchRegistrationData.pending, (state, action) => {
+          state.status = 'loading...';
+        })
+        .addCase(fetchRegistrationData.fulfilled, (state, action) => {
+          if (action.payload.status === 201) {
+            state.status = 'succeeded register (:';
+            toast.success("Zarejestrowałeś się!");
+          }        
+        })
+        .addCase(fetchRegistrationData.rejected, (state, action) => {
+          state.status = 'failed register :('
+          state.error = action.error.message;
+          toast.error("Rejestracja nie powiodło się");
+        })
+    } */
   });
   
   export const { login, logout } = userSlice.actions;

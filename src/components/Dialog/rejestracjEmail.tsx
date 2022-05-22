@@ -2,7 +2,7 @@ import { TextField, Button, Box} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
 import { useAppDispatch } from "store/hooks";
-import { openDialog, FormType } from '../../store/dialogSlice';
+import { openDialog, FormType } from 'store/dialogSlice';
 
 
 const useStyles = makeStyles({
