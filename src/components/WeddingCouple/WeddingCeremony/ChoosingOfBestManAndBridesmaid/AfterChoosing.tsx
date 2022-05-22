@@ -7,8 +7,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   backgroundColor:'#F8EDEB',
   padding:'1rem',
   [theme.breakpoints.down('lg')]: {
-  flexDirection:'column',
-  justifyContent:''
+  flexDirection:'column'
   },
 }));
 
