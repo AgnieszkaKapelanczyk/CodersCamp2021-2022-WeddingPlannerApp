@@ -51,7 +51,7 @@ const FirstPopper = (props:{titleTop:string, iconFirstPopperTop:React.ReactNode,
           </Fade>
         )}
       </Popper>
-      <Button onClick={handleClick('right-start')}>{<Checkbox style={{color:'#6F59C9'}}/>}</Button>
+      <Button onClick={handleClick('right-start')}>{<Checkbox disabled={true} style={{color:'#6F59C9'}}/>}</Button>
     </Box>
     </ThemeProvider>
   )

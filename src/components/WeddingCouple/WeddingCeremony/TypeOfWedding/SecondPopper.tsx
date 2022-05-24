@@ -4,7 +4,7 @@ import Popper, { PopperPlacementType } from '@mui/material/Popper';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import { Checkbox } from '@material-ui/core';
 import ChurchIcon from '@mui/icons-material/Church';
-import MapImg from '../../../../assets/img/mapa_sala.png';
+import MapImg from 'assets/img/mapa_sala.png';
 
 
 

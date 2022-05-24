@@ -1,9 +1,17 @@
 import { TextField, Button, Box} from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { useState } from 'react';
-import { useAppDispatch } from "store/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 import { openDialog, FormType } from 'store/dialogSlice';
+import { fetchRegistrationData, selectResponseStatus } from "store/userSlice";
 
+export interface RegistrationData {
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    repassword: string
+};
 
 const useStyles = makeStyles({
   field: {
@@ -16,11 +24,12 @@ export const RejestracjaEmail = () => {
   const dispatch = useAppDispatch();
 
   const classes = useStyles();
-  const [data, setData] = useState({
+  const [data, setData] = useState<RegistrationData>({
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    repassword: ""
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void => {
@@ -33,7 +42,7 @@ export const RejestracjaEmail = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(openDialog({ formType: FormType.zalozonyProfil }))
+    dispatch(fetchRegistrationData(data));
   };
 
   return (
@@ -90,6 +99,20 @@ export const RejestracjaEmail = () => {
         fullWidth
         error={data.password? data.password.trim().length < 5 : true}
         value={data.password}
+        onChange={handleChange}
+        helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
+      />
+
+      <TextField sx={{marginBottom:'20px'}}
+        className={classes.field}
+        type="password"
+        name="repassword"
+        label="Powtórz hasło"
+        variant="outlined"
+        required
+        fullWidth
+        error={data.repassword? data.repassword.trim().length < 5 : true}
+        value={data.repassword}
         onChange={handleChange}
         helperText="Co najmniej 8 znaków, jedna wielka litera i jedna cyfra."
       />

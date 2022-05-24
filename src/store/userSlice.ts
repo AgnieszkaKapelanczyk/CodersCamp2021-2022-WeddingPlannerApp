@@ -2,8 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { toast } from 'react-toastify';
 import AuthClient from 'services/clients/AuthClient';
+import { RegistrationData } from 'components/Dialog/rejestracjEmail';
+import { LoginData } from 'components/Dialog/loginDialog';
 
-/* export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data, { rejectWithValue }) => {
+export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data: LoginData, { rejectWithValue }) => {
   const response = await AuthClient.loginUser(data)
   .then((response) => {
     const token = response.headers["auth-token"];
@@ -17,7 +19,7 @@ import AuthClient from 'services/clients/AuthClient';
   return response; 
 });
 
-export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationData ', async (data, { rejectWithValue }) => {
+export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationData ', async (data: RegistrationData, { rejectWithValue }) => {
   const response = await AuthClient.registerUser(data).then((response) => {
     return response;
   })
@@ -25,7 +27,7 @@ export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationDat
     return rejectWithValue(error);
   });
   return response; 
-}); */
+}); 
 
 type User = {
   loggedIn: boolean,
@@ -85,7 +87,7 @@ const initialState: User | ''  = getInitialState();
         sessionStorage.clear();
       }
     },
-   /*  extraReducers(builder) {
+     extraReducers(builder) {
       builder
         .addCase(fetchLoginData.pending, (state, action) => {
           state.status = 'loading...';
@@ -116,7 +118,7 @@ const initialState: User | ''  = getInitialState();
           state.error = action.error.message;
           toast.error("Rejestracja nie powiodło się");
         })
-    } */
+    } 
   });
   
   export const { login, logout } = userSlice.actions;
@@ -124,6 +126,13 @@ const initialState: User | ''  = getInitialState();
   export const selectName = (state: RootState) => state.user.user;
 
   export const isLoggedIn = (state: RootState) => state.user.loggedIn;
+
+  export const selectResponseStatus = (state: RootState) => state.user.status;
+
+  export const selectResponseError = (state: RootState) =>  state.user.error;
+
+  export const selectLoggedInUser = (state: RootState) =>  state.user.user;
   
   export default userSlice.reducer;
+
   

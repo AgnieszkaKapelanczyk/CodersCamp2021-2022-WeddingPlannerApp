@@ -155,8 +155,8 @@ const ToDoList = () => {
         </AccordionSummary>
         <Divider style={{backgroundColor: `${theme.palette.tertiary.main}`}}/>
         <AccordionDetails>
-            <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}>
-              <Typography color={'primary'} style={{marginLeft: '1rem', color: '#343434'}}>
+            <Box display={'flex'} flexDirection={'column'} flex={2} justifyContent={'center'}  style={{margin: '0 2rem', color: '#343434'}}>
+              <Typography color={'primary'} style={{color: '#343434'}}>
                 Punkty na liście zostaną odhaczone automatycznie po zaznaczeniu odpowiednich elementów w poszczególnych zakładkach aplikacji. Najedź myszką na wybrany element listy, aby dowiedzieć się więcej.</Typography>
               <List>
                 <FormGroup>

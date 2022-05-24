@@ -6,7 +6,7 @@ const REQUEST_CONTENT_TYPE = "application/json";
 const ACCEPT= "application/json, image/*";
 const X_REQUESTED_WITH = "XMLHttpRequest";
 const ACCESS_CONTROL_ALLOW_ORIGIN = "*";
-const ACCESS_CONTROL_EXPOSE_HEADERS = "Auth-Token, Content-Type";
+const ACCESS_CONTROL_EXPOSE_HEADERS = "Content-Type";
 
 class RestService {
     constructor(){
@@ -21,7 +21,7 @@ class RestService {
                 "Accept": ACCEPT,
                 "Access-Control-Expose-Headers": ACCESS_CONTROL_EXPOSE_HEADERS
               },
-            baseURL: 'http://localhost:4000',
+            baseURL: 'https://weddingapplication123.herokuapp.com',
         });
 
         axiosInstance.interceptors.request.use(request => {
