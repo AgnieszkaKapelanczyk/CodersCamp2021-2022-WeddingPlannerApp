@@ -5,7 +5,8 @@ import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import { Checkbox } from '@material-ui/core';
 import ChurchIcon from '@mui/icons-material/Church';
 import SecondPopper from './SecondPopper';
-
+import { ThemeProvider } from '@material-ui/core/styles';
+import { theme } from 'theme/theme';
 
 
 
@@ -22,6 +23,7 @@ const FirstPopper = (props:{titleTop:string, iconFirstPopperTop:React.ReactNode,
         setPlacement(newPlacement);
       };
   return (
+    <ThemeProvider theme={theme}>
     <Box>
          <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
@@ -51,6 +53,7 @@ const FirstPopper = (props:{titleTop:string, iconFirstPopperTop:React.ReactNode,
       </Popper>
       <Button onClick={handleClick('right-start')}>{<Checkbox style={{color:'#6F59C9'}}/>}</Button>
     </Box>
+    </ThemeProvider>
   )
 }
 

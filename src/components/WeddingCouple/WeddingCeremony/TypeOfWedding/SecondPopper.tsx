@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Box, Button, Card, CardContent, Fade, styled, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Fade, styled, TextField, Typography } from "@mui/material";
 import Popper, { PopperPlacementType } from '@mui/material/Popper';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import { Checkbox } from '@material-ui/core';
 import ChurchIcon from '@mui/icons-material/Church';
+import MapImg from '../../../../assets/img/mapa_sala.png';
 
 
 
@@ -25,10 +26,15 @@ const SecondPopper = () => {
          <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Card style={{marginBottom:'1rem'}}>
-                <CardContent style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
-                    <Typography style={{padding:'0 2rem'}}>MAPA</Typography>
-                </CardContent>
+            <Card style={{marginBottom:'1rem', backgroundColor:'#F8EDEB'}}>
+              <CardContent style={{display:'flex', flexDirection:'column', justifyContent:'flex-start'}}>
+                <Typography variant="body1" style={{marginBottom:'1rem'}}>Dokończ zadanie:</Typography>
+                <Typography variant="body1" style={{color:'#6F59C9'}}>Ślub odbędzie się w:</Typography>
+                <TextField id="standard-basic" label="Restauracji Leśnej w Żurawinie" variant="standard" style={{marginBottom:'1rem'}}/>
+                <Typography variant="body1">Wyszukaj i zaznacz na mapie:</Typography>
+                <img src={MapImg} alt="" style={{marginBottom:'1rem'}}/>
+                <Button variant="contained" color='primary' style={{alignSelf:'center'}}>ZATWIERDŹ</Button>
+              </CardContent>
             </Card>
           </Fade>
         )}

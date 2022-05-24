@@ -9,6 +9,7 @@ import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import ChurchIcon from '@mui/icons-material/Church';
 import {ReactComponent as CityHall} from '../../../../assets/icon/cityhall_89246.svg';
+import Tree from './Tree';
 
 
 const StyledAccordion = styled(Accordion)(() => ({
