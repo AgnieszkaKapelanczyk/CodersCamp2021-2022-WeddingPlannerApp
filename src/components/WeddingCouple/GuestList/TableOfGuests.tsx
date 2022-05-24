@@ -21,7 +21,7 @@ import { visuallyHidden } from '@mui/utils';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import InputAdornment from '@mui/material/InputAdornment';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import { Button, TextField, styled, Chip } from '@mui/material';
+import { Button, TextField, styled } from '@mui/material';
 
 import InvitationColumn from './InvitationColumn';
 import PresenceInChurchColumn from './PresenceInChurchColumn';

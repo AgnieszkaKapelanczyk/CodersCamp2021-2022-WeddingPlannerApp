@@ -1,22 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-const initialState:{}= {};
+export type weddingType = 'KONKORDATOWY' | 'CYWILNY'
+export type weddingPlace= 'W PLENERZE' | 'W KOŚCIELE' | 'W URZĘDZIE'
 
-const titleOfWedding = {
-    title:'KONKORDATOWY',
+export interface WeddingPlace{
+    type:weddingType | undefined,
+    place:weddingPlace | undefined
 }
+
+const initialState: WeddingPlace = 
+    {
+        type:undefined,
+        place:undefined,
+    }
+
 
 const typeOfWeddingSlice = createSlice({
     name: 'typeOfWedding',
     initialState,
     reducers:{
-        chooseType:(state,action) =>{
-            return action.payload
+       updateTypeOfWedding:(state,action) =>{
+           if(action.payload.type)
+           {state.type = action.payload.type}
+           if(action.payload.place)
+           {state.place = action.payload.place}
         }
-
     }
 })
-export const pickDate = typeOfWeddingSlice.actions;
+export const updateTypeOfWedding = typeOfWeddingSlice.actions;
 export default typeOfWeddingSlice.reducer;
-export const pickDateOfWedding = ((state: RootState)=>state.dateOfWedding);
+export const chooseTypeOfWedding = ((state: RootState)=>state.typeOfWedding.type);
+export const chooseTypeOfPlace = ((state: RootState)=>state.typeOfWedding.place);

@@ -1,6 +1,5 @@
-import { Card, CardContent, CardHeader, IconButton, Typography, Box, styled, PopperPlacementType} from "@mui/material";
+import { Card, CardContent, CardHeader, IconButton, Typography, Box, styled} from "@mui/material";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import Checkbox from '@mui/material/Checkbox';
 import { ReactNode } from "react";
 import FirstPopper from './FirstPopper';
 

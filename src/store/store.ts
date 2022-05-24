@@ -12,6 +12,7 @@ import progressReducer from 'store/progressSlice';
 import locationReducer from 'store/locationSlice';
 import groomClothesReducer from  'store/clothesGroomSlice';
 import brideClothesReducer from 'store/clothesBrideSlice';
+import typeOfWeddingReducer from 'store/typeOfWeddingSlice';
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ export const store = configureStore({
     location: locationReducer,
     brideClothes: brideClothesReducer,
     groomClothes: groomClothesReducer,
+    typeOfWedding: typeOfWeddingReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false
