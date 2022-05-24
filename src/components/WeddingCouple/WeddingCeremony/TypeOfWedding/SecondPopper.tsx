@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { Box, Button, Card, CardContent, Fade, styled, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, Fade, TextField, Typography } from "@mui/material";
 import Popper, { PopperPlacementType } from '@mui/material/Popper';
-import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import { Checkbox } from '@material-ui/core';
-import ChurchIcon from '@mui/icons-material/Church';
 import MapImg from '../../../../assets/img/mapa_sala.png';
 
 

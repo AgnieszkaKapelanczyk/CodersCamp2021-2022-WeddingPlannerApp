@@ -2,7 +2,6 @@ import TreeView from '@mui/lab/TreeView';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import TreeItem from '@mui/lab/TreeItem';
-import InsideCardContent from './InsideCardContent';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import ChurchIcon from '@mui/icons-material/Church';
 import {ReactComponent as Cross} from '../../../../assets/icon/cross.svg';
