@@ -2,15 +2,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Typography, Divider, styled,Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
-import { theme } from '../../../../theme/theme';
+import { theme } from 'theme/theme';
 import InsideCardContent from './InsideCardContent';
-import {ReactComponent as Cross} from '../../../../assets/icon/cross.svg';
+import {ReactComponent as Cross} from 'assets/icon/cross.svg';
 import EmojiFlagsIcon from '@mui/icons-material/EmojiFlags';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
 import ChurchIcon from '@mui/icons-material/Church';
-import {ReactComponent as CityHall} from '../../../../assets/icon/cityhall_89246.svg';
-
-
+import {ReactComponent as CityHall} from 'assets/icon/cityhall_89246.svg';
 
 const StyledAccordion = styled(Accordion)(() => ({
   margin: '0 0 1.5rem 0',

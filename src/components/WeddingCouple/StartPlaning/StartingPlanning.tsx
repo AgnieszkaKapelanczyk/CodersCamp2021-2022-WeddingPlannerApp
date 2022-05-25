@@ -1,6 +1,6 @@
-import bg from '../../../assets/img/bg1.jpg'
+import bg from 'assets/img/bg1.jpg'
 import {Card, Box,Button, CardHeader, CardContent, Divider, Typography, TextField, Checkbox} from '@mui/material'
-import { theme} from '../../../theme/theme'
+import { theme} from 'theme/theme'
 import {useNavigate} from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 

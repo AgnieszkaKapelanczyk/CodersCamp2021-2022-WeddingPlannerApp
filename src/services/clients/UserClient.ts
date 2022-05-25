@@ -1,10 +1,16 @@
 import RestService from "../utils/RestService";
 
-export default class AuthClient {
+export default class UserClient {
     static baseUrl = '/users';
 
-    static activatUser() {
-        return RestService.post(`${this.baseUrl}/activate`);
+    static activateUser(token: string) {
+        return RestService.get(`${this.baseUrl}/activate`,
+            {
+              headers: {
+                "Authorization": `Bearer ${token}`,
+              }
+            }
+          );
     };
 
 };

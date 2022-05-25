@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import AuthClient from 'services/clients/AuthClient';
 import { RegistrationData } from 'components/Dialog/rejestracjEmail';
 import { LoginData } from 'components/Dialog/loginDialog';
+import UserClient from 'services/clients/UserClient';
 
 export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data: LoginData, { rejectWithValue }) => {
   const response = await AuthClient.loginUser(data)
@@ -26,6 +27,17 @@ export const fetchRegistrationData = createAsyncThunk('user/fetchRegistrationDat
   .catch((error) => {
     return rejectWithValue(error);
   });
+  return response; 
+}); 
+
+export const fetchActivateToken = createAsyncThunk('user/fetchActivateToken ', async (token: string, { rejectWithValue }) => {
+  const response = await UserClient.activateUser(token).then((response) => {
+    return response;
+  })
+  .catch((error) => {
+    return rejectWithValue(error);
+  });
+  console.log(response)
   return response; 
 }); 
 
@@ -115,6 +127,20 @@ const initialState: User | ''  = getInitialState();
           state.status = 'failed register :('
           state.error = action.error.message;
           toast.error("Rejestracja nie powiodło się");
+        })
+        .addCase(fetchActivateToken.pending, (state, action) => {
+          state.status = 'loading...';
+        })
+        .addCase(fetchActivateToken.fulfilled, (state, action) => {
+          if (action.payload.status === 200) {
+            state.status = 'succeeded activate';
+            toast.success("Konto aktywne");
+          }        
+        })
+        .addCase(fetchActivateToken.rejected, (state, action) => {
+          state.status = 'failed register :('
+          state.error = action.error.message;
+          toast.error("Aktywacja nie powiodła się");
         })
     } 
   });
