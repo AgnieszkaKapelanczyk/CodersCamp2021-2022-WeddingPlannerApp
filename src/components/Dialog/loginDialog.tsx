@@ -1,7 +1,7 @@
 import { TextField, Button, Typography, Link, Box } from  "@mui/material";
 import { makeStyles } from '@mui/styles';
-import { useState } from 'react';
-import { openDialog, FormType } from 'store/dialogSlice';
+import { useEffect, useState } from 'react';
+import { openDialog, FormType, closeDialog } from 'store/dialogSlice';
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { fetchLoginData, login, selectResponseStatus } from "store/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +27,7 @@ export const LoginDialog = () => {
     const navigate = useNavigate();
     const classes = useStyles();
     const responseStatus = useAppSelector(selectResponseStatus);
+    const [status, setStatus] = useState<string>('idle');
     const [data, setData] = useState<LoginData>({
       email: "",
       password: ""
@@ -42,15 +43,22 @@ export const LoginDialog = () => {
   
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      dispatch(fetchLoginData(data)); 
-
-      if(responseStatus === 'succeeded log in (:') {
-        dispatch(login({ user: data.email }));
-        dispatch(openDialog({formType:FormType.zalogowano}));
-        navigate(`/WeddingCouple`)
-      }  
-      
+      dispatch(fetchLoginData(data));       
     }; 
+
+    useEffect(()=> {
+      if(responseStatus) {
+        setStatus(responseStatus);
+      }
+  
+    },[responseStatus]);
+  
+    useEffect(()=> {
+      if (responseStatus === 'succeeded log in (:')
+          dispatch(login({ user: data.email }));
+          dispatch(openDialog({formType:FormType.zalogowano}));
+          navigate(`/WeddingCouple`)
+    },[responseStatus]);
   
     return (
       <form onSubmit={handleSubmit}>
