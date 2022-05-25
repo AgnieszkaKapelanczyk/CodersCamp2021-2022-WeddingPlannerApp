@@ -119,7 +119,7 @@ function App() {
             pauseOnHover
             />
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={loggedIn ? <DashboardWeddingCouple/> : <HomePage/>} />
         <Route path="/StartPlanning" element={<StartPlanning/>} />
         <Route path="/WeddingCouple/" element={loggedIn ? <DashboardWeddingCouple/> : <HomePage/>} />
         <Route path="/WeddingCouple/Groom/" element={loggedIn ?<Groom/> : <HomePage/>} />
