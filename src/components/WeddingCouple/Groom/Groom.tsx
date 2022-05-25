@@ -7,7 +7,7 @@ import TieIcon from 'assets/icon/tie.svg';
 import InfoIcon from '@mui/icons-material/Info';
 import GroomInfo from "./components/GroomInfo";
 import GroomClothes from "./components/GroomClothes/GroomClothes";
-import GroomShops from "./components/GroomShops";
+import GroomShops from "./components/GroomShops/GroomShops";
 
 const StyledAccordion = styled(Accordion)(({ theme }) => ({
   margin: '0 0 1.5rem 0',

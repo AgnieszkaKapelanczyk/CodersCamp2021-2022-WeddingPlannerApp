@@ -1,6 +1,5 @@
-import { Box, Chip, List, ListItem, styled, ListItemAvatar, ListItemButton, ListItemText, Rating, Tab, Tabs, Typography, IconButton } from "@mui/material";
+import { Box, Chip, List, ListItem, styled, ListItemAvatar, ListItemButton, ListItemText, Rating, Typography, IconButton } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
-import { useState } from "react";
 import ShopFoto1 from 'assets/img/groomshop1.jpg';
 import ShopFoto2 from 'assets/img/groomshop2.jpg';
 import ShopFoto3 from 'assets/img/groomshop3.jpg';
@@ -71,28 +70,8 @@ const StyledChipPrimary = styled(Chip)(({theme})=>({
     },
   }));
 
-
-const GroomShops = () => {
-    const [value, setValue] = useState('one');
-
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
-  return (
-      <Box display={'flex'} flexDirection={'column'}>
-        <Box sx={{ width: '100%' }}>
-            <Tabs
-                value={value}
-                onChange={handleChange}
-                textColor="primary"
-                indicatorColor="primary"
-                aria-label="shops tabs"
-            >
-                <Tab value="one" label="Lista" />
-                <Tab value="two" label="Zobacz na mapie" />
-            </Tabs>
-        </Box>
+const ShopsList = () => {
+    return (
         <Box display={'flex'} flexDirection={'column'} flexWrap={'wrap'}>
             <List>
                 <ListItem sx={{paddingLeft: '0'}}>
@@ -361,8 +340,7 @@ const GroomShops = () => {
                 </ListItem>
             </List>
         </Box>
-      </Box>
     )
 };
 
-export default GroomShops;
+export default ShopsList;

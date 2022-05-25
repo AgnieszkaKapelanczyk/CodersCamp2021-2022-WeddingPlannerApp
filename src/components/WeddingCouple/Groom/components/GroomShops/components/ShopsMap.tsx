@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useAppDispatch, useAppSelector } from "store/hooks";
 import { coordinates, selectUserLocation, setUserLocation } from "store/locationSlice";
 
-const ShopMap = () => {
+const ShopsMap = () => {
     const dispatch = useAppDispatch();
     const userLocationState: coordinates | undefined = useAppSelector(selectUserLocation);
     const [userPosition, setPosition] = useState(userLocationState);
@@ -50,7 +50,7 @@ const ShopMap = () => {
                 />
                 <Marker position={[userPosition.lat, userPosition.long]}>
                 <Popup>
-                    <p>Tak, tu mieszkam (:</p>
+                    <p>Tu jesteś!</p>
                 </Popup>
                 </Marker>   
             </MapContainer>
@@ -61,4 +61,4 @@ const ShopMap = () => {
     )
 };
 
-export default ShopMap;
+export default ShopsMap;

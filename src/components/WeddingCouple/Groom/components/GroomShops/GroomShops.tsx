@@ -1,11 +1,11 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { useEffect, useState } from "react";
+import ShopsList from "./components/ShopsList";
 import ShopsMap from "./components/ShopsMap";
-import ShopList from "./components/ShopsList";
 
-const BrideShops = () => {
+const GroomShops = () => {
     const [value, setValue] = useState('one');
-    const [tabContent, setContent] = useState(<ShopList/>);
+    const [tabContent, setContent] = useState(<ShopsList/>);
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
@@ -13,7 +13,7 @@ const BrideShops = () => {
 
     useEffect(()=>{
         if (value === 'one'){
-            setContent(<ShopList/>);
+            setContent(<ShopsList/>);
         } else if (value === 'two'){
             setContent(<ShopsMap/>)
         };
@@ -38,4 +38,4 @@ const BrideShops = () => {
     )
 };
 
-export default BrideShops;
+export default GroomShops;
