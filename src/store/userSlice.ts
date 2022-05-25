@@ -9,8 +9,8 @@ import UserClient from 'services/clients/UserClient';
 export const fetchLoginData = createAsyncThunk('user/fetchLoginData ', async (data: LoginData, { rejectWithValue }) => {
   const response = await AuthClient.loginUser(data)
   .then((response) => {
-    const token = response.headers["auth-token"];
-    localStorage.setItem("auth-token", token); 
+    const token: string = response.data;
+    sessionStorage.setItem("token", token); 
     return response;
   })
   .catch((error) => {
