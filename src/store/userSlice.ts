@@ -67,7 +67,6 @@ const getInitialState = () => {
 
 const initialState: User | ''  = getInitialState();
 
-  
   const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -75,10 +74,6 @@ const initialState: User | ''  = getInitialState();
       login: (state, action) => {
         state.loggedIn = true;
         state.user = action.payload.user;
-        toast.success("Jesteś zalogowany");
-        if (isLogged(state.user)) {
-          sessionStorage.setItem("user", state.user);
-        }
       },
       logout: (state) => {
         state.loggedIn = false;
@@ -94,10 +89,13 @@ const initialState: User | ''  = getInitialState();
           state.error = null;
         })
         .addCase(fetchLoginData.fulfilled, (state, action) => {
-          if (action.payload.status === 200) {
+          if (action.payload.status === 201) {
             state.status = 'succeeded log in (:';
-            toast.success("Zalogowano!");
+            toast.success("Jesteś zalogowany");
           }        
+          if (isLogged(state.user)) {
+            sessionStorage.setItem("user", state.user);
+          }
         })
         .addCase(fetchLoginData.rejected, (state, action) => {
           state.status = 'failed :('

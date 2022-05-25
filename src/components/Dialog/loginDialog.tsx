@@ -46,9 +46,10 @@ export const LoginDialog = () => {
 
       if(responseStatus === 'succeeded log in (:') {
         dispatch(login({ user: data.email }));
+        dispatch(openDialog({formType:FormType.zalogowano}));
+        navigate(`/WeddingCouple`)
       }  
-      navigate('/WeddingCouple');
-      dispatch(openDialog({formType:FormType.zalogowano}))
+      
     }; 
   
     return (
