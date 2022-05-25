@@ -30,7 +30,7 @@ import Dialog from '../Dialog/Dialog';
 import { Box, GlobalStyles , useMediaQuery} from '@mui/material';
 import DashboardWeddingCouple from 'components/WeddingCouple/MainPanel/DashboardWeddingCouple';
 import { StyledEngineProvider } from '@mui/material/styles';
-import StyledBox from '../../theme/styledBox'
+import StyledBox from 'theme/styledBox'
 import StartPlanning from '../WeddingCouple/StartPlaning/StartingPlanning';
 import { useAppSelector } from 'store/hooks';
 import { isLoggedIn } from 'store/userSlice';
