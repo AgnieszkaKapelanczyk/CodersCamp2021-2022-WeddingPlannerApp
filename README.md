@@ -35,7 +35,7 @@ Aplikację została wykonana przez uczestników kursu pod okiem dwóch mentorów
 
 ### Demo
 
-Wersja demonstracyjna aplikacji jest dostępna [TUTAJ](https://coders-camp2021-2022-wedding-planner-app.vercel.app/).
+Wersja demonstracyjna aplikacji jest dostępna [TUTAJ](https://coders-camp-wedding-planner-app.vercel.app/).
 
 ### Cel projektu
 
