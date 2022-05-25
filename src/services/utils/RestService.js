@@ -25,7 +25,7 @@ class RestService {
         });
 
         axiosInstance.interceptors.request.use(request => {
-          const token = localStorage.getItem('token');
+          const token = sessionStorage.getItem('token');
           request.headers["Authorization"] = `Bearer ${token}`;
           return request;
       });
