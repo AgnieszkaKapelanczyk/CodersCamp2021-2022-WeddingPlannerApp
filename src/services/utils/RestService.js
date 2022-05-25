@@ -21,7 +21,7 @@ class RestService {
                 "Accept": ACCEPT,
                 "Access-Control-Expose-Headers": ACCESS_CONTROL_EXPOSE_HEADERS
               },
-            baseURL: `process.env.BACKEND_URL`,
+            baseURL: process.env.BACKEND_URL,
         });
 
         axiosInstance.interceptors.request.use(request => {
