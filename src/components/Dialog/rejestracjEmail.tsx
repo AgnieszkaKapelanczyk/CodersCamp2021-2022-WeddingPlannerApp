@@ -1,8 +1,8 @@
 import { TextField, Button, Box} from "@mui/material";
 import { makeStyles } from '@mui/styles';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { openDialog, FormType } from 'store/dialogSlice';
+import { openDialog, FormType, closeDialog } from 'store/dialogSlice';
 import { fetchRegistrationData, selectResponseStatus } from "store/userSlice";
 
 export interface RegistrationData {
@@ -22,6 +22,8 @@ const useStyles = makeStyles({
 
 export const RejestracjaEmail = () => {
   const dispatch = useAppDispatch();
+  const responseStatus = useAppSelector(selectResponseStatus);
+  const [status, setStatus] = useState<string>('idle');
 
   const classes = useStyles();
   const [data, setData] = useState<RegistrationData>({
@@ -44,6 +46,18 @@ export const RejestracjaEmail = () => {
     event.preventDefault();
     dispatch(fetchRegistrationData(data));
   };
+
+  useEffect(()=> {
+    if(responseStatus) {
+      setStatus(responseStatus);
+    }
+
+  },[responseStatus]);
+
+  useEffect(()=> {
+    if (responseStatus === 'succeeded register (:')
+      dispatch(closeDialog());
+  },[responseStatus]);
 
   return (
     <form onSubmit={handleSubmit}>
