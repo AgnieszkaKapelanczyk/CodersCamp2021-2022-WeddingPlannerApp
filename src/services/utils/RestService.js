@@ -21,7 +21,7 @@ class RestService {
                 "Accept": ACCEPT,
                 "Access-Control-Expose-Headers": ACCESS_CONTROL_EXPOSE_HEADERS
               },
-            baseURL: 'https://weddingapicoderscamp.herokuapp.com',
+            baseURL: `process.env.BACKEND_URL`,
         });
 
         axiosInstance.interceptors.request.use(request => {
