@@ -1,6 +1,6 @@
 export const geojsonBrideShopsArray = [
     {
-        "type": "Feature",
+        "type": "Salon Digel-Alberto",
         "properties": {
             "name": "Margarett",
             "city": "Wrocław",
@@ -22,13 +22,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.11947091656028, 17.033009024240343]
+            "coordinates": [51.10859198130387, 17.03666688952941]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Salon Sukien Ślubnych FLOSSMANN",
+            "name": "Diuk",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -48,13 +48,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.1006178, 17.0321318,19]
+            "coordinates": [51.102149370042476, 17.030119184289646]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Bellissima Salon Sukien Ślubnych",
+            "name": "Vistula Magnolia",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -74,13 +74,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.11097878482248, 17.019324198126217]
+            "coordinates": [51.118823107432476, 16.989268530319663]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Salon Sukien Ślubnych LORETTA",
+            "name": "PAWIS - Polskie Garnitury",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -100,13 +100,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.11829907647684, 17.0395830288129]
+            "coordinates": [51.109419715656195, 17.03405548428964]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Suknie ślubne MAXIMA",
+            "name": "Salon Recman ",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -126,13 +126,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.10064273228717, 17.031644064394982]
+            "coordinates": [51.1189235604364, 16.988597768946306]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Lauren Salon Sukni Ślubnych",
+            "name": "Lancerto",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -152,13 +152,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.10309411064559, 17.028308346603943]
+            "coordinates": [51.11298301254003, 17.05912259963299]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Celebrity Salon Ślubny",
+            "name": "PAWIS - Polskie Garnitury",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -178,13 +178,13 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.125994908740005, 17.046279711021857]
+            "coordinates": [51.12697140064642, 16.976530554712735]
         }
     },
     {
         "type": "Feature",
         "properties": {
-            "name": "Suknie ślubne - Vogue",
+            "name": "Salon Mody Męskiej KONIECZNY",
             "city": "Wrocław",
             "address": "Henryka Brodatego 10",
             "rating": 4.6,
@@ -204,7 +204,7 @@ export const geojsonBrideShopsArray = [
         },
         "geometry": {
             "type": "Point",
-            "coordinates": [51.10935347794372, 17.036970011021857]
+            "coordinates": [52.42546427037203, 16.78577053696983]
         }
     },
 ]
