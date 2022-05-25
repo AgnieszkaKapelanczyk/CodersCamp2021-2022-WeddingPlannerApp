@@ -54,10 +54,11 @@ export const LoginDialog = () => {
     },[responseStatus]);
   
     useEffect(()=> {
-      if (responseStatus === 'succeeded log in (:')
-          dispatch(login({ user: data.email }));
-          dispatch(openDialog({formType:FormType.zalogowano}));
-          navigate(`/WeddingCouple`)
+      if (responseStatus === 'succeeded log in (:'){
+        dispatch(login({ user: data.email }));
+        dispatch(openDialog({formType:FormType.zalogowano}));
+        navigate(`/WeddingCouple`)
+      }
     },[responseStatus]);
   
     return (
